@@ -15,9 +15,9 @@
   <div class="l-header--right">
     <nav class="l-nav">
       <ul class="c-nav">
-        <li class="c-nav__item c-nav__item--btn"><a class="c-nav__link c-nav__link--btn" href="register.html">会員登録</a>
+        <li class="c-nav__item c-nav__item--btn"><a class="c-nav__link c-nav__link--btn" href="{{route('register')}}">会員登録</a>
         </li>
-        <li class="c-nav__item c-nav__item--btn"><a class="c-nav__link c-nav__link--btn" href="login.html">ログイン</a>
+        <li class="c-nav__item c-nav__item--btn"><a class="c-nav__link c-nav__link--btn" href="{{route('login')}}">ログイン</a>
         </li>
       </ul>
     </nav>
@@ -34,22 +34,31 @@
 
 <!-- メインコンテンツ -->
 <main id="main" class="l-main">
+
   <section class="l-container">
     <div class="l-container__header">
       <h2 class="l-container__title">会員登録</h2>
     </div>
+
     <div class="l-container__body l-container__body--form">
-      <form action="" class="c-form">
+      <form method="POST" action="{{ route('register') }}" class="c-form">
+        @csrf
+
         <div class="c-form__group">
-          <p class="c-form__error"></p>
-          <input class="c-form__input" type="email" id="email" name="email" placeholder="メールアドレス">
+          @error('email')
+          <span class="c-form__error">{{ $message }}</span>
+          @enderror
+          <input class="c-form__input @error('email') is-invalid @enderror" type="email" id="email" name="email" value="{{ old('email') }}" placeholder="メールアドレス">
         </div>
+
         <div class="c-form__group">
-          <p class="c-form__error"></p>
-          <input class="c-form__input" type="password" id="password" name="password" placeholder="パスワード">
+          @error('password')
+          <span class="c-form__error">{{ $message }}</span>
+          @enderror
+          <input class="c-form__input @error('password') is-invalid @enderror" type="password" id="password" name="password" placeholder="パスワード">
         </div>
+
         <div class="c-form__group">
-          <p class="c-form__error"></p>
           <input class="c-form__input" type="password" id="password_confirmation" name="password_confirmation" placeholder="パスワード（再入力）">
         </div>
         <input class="c-btn c-btn--full" type="submit" value="会員登録">
