@@ -1,0 +1,50 @@
+.p-projectDetail {
+  background: white;
+  padding: $space_3l;
+  @include mq() {
+    padding: $space_default;
+  }
+  &__title {
+    font-size: $font-size_2l;
+    margin-bottom: $space_2l;
+    @include mq() {
+      font-size: $font-size_l;
+      margin-bottom: $space_l;
+    }
+  }
+  &__table {
+    font-size: $font-size_m;
+    margin-bottom: $space_3l;
+    width: 60%;
+    @include mq() {
+      font-size: $font-size_s;
+      margin-bottom: $space_default;
+      width: 100%;
+    }
+  }
+  &__head, &__data {
+    border-bottom: 1px solid $color_sub2;
+    padding: $space_s;
+  }
+  &__head {
+    @include mq() {
+      padding-left: 0;
+      padding-right: 5px;
+    }
+  }
+  &__data {
+    @include mq() {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+  &__detail {
+    background: $color_bg;
+    margin-bottom: $space_3l;
+    padding: $space_default;
+    @include mq() {
+      font-size: $font-size_m;
+      padding: $space_s;
+    }
+  }
+}

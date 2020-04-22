@@ -1,0 +1,57 @@
+.l-container {
+  max-width: $site-width;
+  margin: 0 auto;
+  padding: $space_3l;
+  @include mq() {
+    padding: $space_default;
+  }
+  &--withSide {
+    display: flex;
+    @include mq('md') {
+      display: block;
+    }
+  }
+  &__header {
+    margin-bottom: $space_3l;
+    text-align: center;
+    @include mq() {
+      margin-bottom: $space_2l;
+    }
+  }
+  &__title {
+    color: $color_main;
+    font-size: $font-size_3l;
+    font-weight: bold;
+    @include mq() {
+      font-size: $font-size_2l;
+    }
+  }
+  &__body {
+    width: 100%;
+    margin-bottom: $space_3l;
+    &--withSide {
+      width: 75%;
+      margin-left: $space_3l;
+      box-sizing: border-box;
+      @include mq('md') {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+    &--form {
+      max-width: 580px;
+      margin: 0 auto;
+    }
+    &--1column {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+  }
+  &__side {
+    width: 25%;
+    @include mq('md') {
+      width: 100%;
+      display: none;
+    }
+  }
+}

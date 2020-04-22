@@ -1,0 +1,12 @@
+.l-footer {
+  background: $color_sub2;
+  color: white;
+  min-height: 100px;
+  &__body {
+    padding: $space_3l;
+    text-align: center;
+  }
+  &__text {
+    font-size: $font-size_s;
+  }
+}

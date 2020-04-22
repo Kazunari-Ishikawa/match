@@ -1,0 +1,49 @@
+.c-nav {
+  display: flex;
+  align-items: center;
+  @include mq('md') {
+    display: none;
+  }
+  &--sp {
+    display: none;
+    @include mq('md') {
+      display: block;
+    }
+  }
+  &__item {
+    display: block;
+    box-sizing: border-box;
+    border-radius: $radius_s;
+    font-size: $font-size_m;
+    height: 40px;
+    line-height: 40px;
+    margin-right: $space_s;
+    &:last-child {
+      margin-right: 0;
+    }
+    text-align: center;
+    transition: $time_s;
+    min-width: 80px;
+    @include mq('md') {
+      font-size: $font-size_default;
+      margin-right: 0;
+      margin-bottom: $space_default;
+    }
+  }
+  &__link {
+    display: block;
+    box-sizing: border-box;
+    border-bottom: 2px solid white;
+    height: 40px;
+    transition: $time_s;
+    &:hover {
+      border-bottom: 2px solid $color_main;
+    }
+    @include mq('md') {
+      border: none;
+      &:hover {
+        border: none;
+      }
+    }
+  }
+}
