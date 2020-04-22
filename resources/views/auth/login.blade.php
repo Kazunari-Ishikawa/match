@@ -1,73 +1,70 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+<header class="l-header">
+  <div class="l-header--left">
+    <a class="l-header__title" href="index.html">
+      <h1>match</h1>
+    </a>
+    <form action="login.html" class="c-search">
+      <input type="text" class="c-search__input" placeholder="キーワードを入力">
+      <div class="c-search__btn"><i class="fas fa-search"></i></div>
+    </form>
+  </div>
+  <div class="l-header--right">
+    <nav class="l-nav">
+      <ul class="c-nav">
+        <li class="c-nav__item c-nav__item--btn"><a class="c-nav__link c-nav__link--btn" href="register.html">会員登録</a>
+        </li>
+        <li class="c-nav__item c-nav__item--btn"><a class="c-nav__link c-nav__link--btn" href="login.html">ログイン</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+  <!-- ハンバーガーメニュー -->
+  <div class="c-triggerMenu">
+    <span class="c-triggerMenu__bar"></span>
+    <span class="c-triggerMenu__bar"></span>
+    <span class="c-triggerMenu__bar"></span>
+  </div>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+</header>
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+<main id="main" class="l-main">
+  <section class="l-container">
+    <div class="l-container__header">
+      <h2 class="l-container__title">ログイン</h2>
     </div>
-</div>
+    <div class="l-container__body l-container__body--form">
+      <form action="" class="c-form">
+        <p class="c-form__error">メールアドレスかパスワードが違います</p>
+        <div class="c-form__group">
+          <input class="c-form__input" type="email" id="email" name="email" placeholder="メールアドレス">
+        </div>
+        <div class="c-form__group">
+          <input class="c-form__input" type="password" id="password" name="password" placeholder="パスワード">
+        </div>
+        <div class="c-form__group">
+          <input class="c-btn c-btn--full" type="submit" value="ログイン">
+        </div>
+        <p class="c-form__link">
+          <a href="passRemind.html">パスワードを忘れた方はこちら</a>
+        </p>
+        <p class="c-form__link">
+          <a href="register.html">まだ会員登録をしていない方はこちら</a>
+        </p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- フッター -->
+<footer id="footer" class="l-footer">
+  <div class="l-footer__body">
+    <p class="l-footer__text">&copy; 2020 match All Rights Reserved.</p>
+  </div>
+</footer>
+
 @endsection

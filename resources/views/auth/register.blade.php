@@ -1,77 +1,68 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
+<header class="l-header">
+  <div class="l-header--left">
+    <a class="l-header__title" href="index.html">
+      <h1>match</h1>
+    </a>
+    <form action="login.html" class="c-search">
+      <input type="text" class="c-search__input" placeholder="キーワードを入力">
+      <div class="c-search__btn"><i class="fas fa-search"></i></div>
+    </form>
+  </div>
+  <div class="l-header--right">
+    <nav class="l-nav">
+      <ul class="c-nav">
+        <li class="c-nav__item c-nav__item--btn"><a class="c-nav__link c-nav__link--btn" href="register.html">会員登録</a>
+        </li>
+        <li class="c-nav__item c-nav__item--btn"><a class="c-nav__link c-nav__link--btn" href="login.html">ログイン</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+  <!-- ハンバーガーメニュー -->
+  <div class="c-triggerMenu">
+    <span class="c-triggerMenu__bar"></span>
+    <span class="c-triggerMenu__bar"></span>
+    <span class="c-triggerMenu__bar"></span>
+  </div>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+</header>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+<!-- メインコンテンツ -->
+<main id="main" class="l-main">
+  <section class="l-container">
+    <div class="l-container__header">
+      <h2 class="l-container__title">会員登録</h2>
     </div>
-</div>
+    <div class="l-container__body l-container__body--form">
+      <form action="" class="c-form">
+        <div class="c-form__group">
+          <p class="c-form__error"></p>
+          <input class="c-form__input" type="email" id="email" name="email" placeholder="メールアドレス">
+        </div>
+        <div class="c-form__group">
+          <p class="c-form__error"></p>
+          <input class="c-form__input" type="password" id="password" name="password" placeholder="パスワード">
+        </div>
+        <div class="c-form__group">
+          <p class="c-form__error"></p>
+          <input class="c-form__input" type="password" id="password_confirmation" name="password_confirmation" placeholder="パスワード（再入力）">
+        </div>
+        <input class="c-btn c-btn--full" type="submit" value="会員登録">
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- フッター -->
+<footer id="footer" class="l-footer">
+  <div class="l-footer__body">
+    <p class="l-footer__text">&copy; 2020 match All Rights Reserved.</p>
+  </div>
+</footer>
+
 @endsection
