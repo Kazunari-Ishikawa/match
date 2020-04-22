@@ -1,0 +1,69 @@
+.c-project {
+  background: white;
+  display: block;
+  margin-bottom: $space_default;
+  padding: $space_default;
+  &__header {
+    border-bottom: 1px solid $color_sub2;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: $space_l;
+    @include mq() {
+      display: block;
+    }
+  }
+  &__body {
+    display: flex;
+    @include mq() {
+      display: block;
+    }
+  }
+  &__title {
+    font-size: $font-size_l;
+    max-width: 75%;
+    @include mq() {
+      font-size: $font-size_default;
+      max-width: 100%;
+      margin-bottom: $space_m;
+    }
+  }
+  &__date {
+    font-size: $font-size_s;
+    @include mq() {
+      text-align: right;
+    }
+  }
+  &__info {
+    box-sizing: border-box;
+    margin-right: $space_default;
+    min-width: 35%;
+    @include mq() {
+      margin-right: 0;
+      margin-bottom: $space_default;
+    }
+  }
+  &__type, &__category, &__price {
+    font-size: $font-size_m;
+    margin-bottom: $space_m;
+    @include mq() {
+      font-size: $font-size_s;
+      margin-bottom: $space_s;
+    }
+  }
+  &__price--lower, &__price--upper {
+    font-size: $font-size_l;
+    @include mq() {
+      font-size: $font-size_default;
+    }
+  }
+  &__detail {
+    font-size: $font-size_m;
+    max-height: 120px;
+    overflow: scroll;
+    @include mq() {
+      font-size: $font-size_s;
+      max-height: 90px;
+    }
+  }
+}

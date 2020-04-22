@@ -1,0 +1,39 @@
+.c-cardList {
+  margin: $space_3l 0;
+  @include mq() {
+    margin: $space_default 0;
+  }
+  &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: $space_2l;
+    @include mq() {
+      margin-bottom: $space_l;
+    }
+  }
+  &__title {
+    font-size: $font-size_2l;
+    max-width: 70%;
+    @include mq() {
+      font-size: $font-size_l;
+    }
+  }
+  &__link {
+    font-size: $font-size_m;
+    @include mq() {
+      font-size: $font-size_s;
+    }
+  }
+  &__body {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -$space_3l;
+    @include mq('md') {
+      margin-right: -$space_default;
+    }
+    @include mq('sm') {
+      margin-right: 0;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+.c-projectList {
+  width: 100%;
+  margin-bottom: $space_4l;
+  @include mq() {
+    margin-bottom: $space_3l;
+  }
+  &__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    background: white;
+    margin-bottom: $space_2l;
+    padding: $space_default;
+    @include mq() {
+      display: block;
+    }
+  }
+  &__title {
+    color: $color_main;
+    font-size: $font-size_2l;
+    font-weight: bold;
+    @include mq() {
+      font-size: $font-size_l;
+      margin-bottom: $space_default;
+    }
+  }
+  &__info {
+    @include mq() {
+      font-size: $font-size_s;
+      text-align: right;
+    }
+  }
+}

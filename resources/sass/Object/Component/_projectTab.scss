@@ -1,0 +1,42 @@
+.c-projectTab {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: $space_default;
+  &__item {
+    cursor: pointer;
+    display: block;
+    background: #ddd;
+    box-sizing: border-box;
+    border-right: 1px solid white;
+    &:last-child {
+      border-right: none;
+    }
+    font-size: $font-size_m;
+    font-weight: bold;
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    width: 25%;
+    @include mq('md') {
+      width: 50%;
+      &:nth-child(1), &:nth-child(2) {
+        border-bottom: 1px solid white;
+      }
+      &:nth-child(even) {
+        border-right: none;
+      }
+    }
+    &:hover {
+      color: $color_main;
+    }
+    &.active {
+      background: white;
+      color: $color_default;
+      &:hover {
+        color: $color_main;
+      }
+    }
+
+  }
+}

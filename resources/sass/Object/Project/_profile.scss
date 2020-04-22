@@ -1,0 +1,24 @@
+.p-profile {
+  box-sizing: border-box;
+  width: 100%;
+  margin-bottom: $space_3l;
+  &__icon {
+    background-image: url('../img/DSC_2123.jpg');
+    background-position: center;
+    background-size: cover;
+    border: 2px solid $color_sub2;
+    border-radius: 50%;
+    margin: 0 auto;
+    height: 120px;
+    width: 120px;
+    @include mq('md') {
+      height: 90px;
+      width: 90px;
+    }
+  }
+  &__name {
+    font-size: $font-size_m;
+    margin-top: $space_m;
+    text-align: center;
+  }
+}

@@ -1,0 +1,54 @@
+.p-desc {
+  &__container {
+    display: flex;
+    @include mq('md') {
+      display: block;
+    }
+  }
+  background: white;
+  box-sizing: border-box;
+  margin-right: $space_default;
+  &:last-child {
+    margin-right: 0;
+  }
+  padding: $space_default;
+  width: 33.3%;
+  @include mq('md') {
+    margin-bottom: $space_default;
+    width: 100%;
+  }
+  &__img {
+    width: 100%;
+    height: 60px;
+    background: #fff;
+  }
+  &__title {
+    font-size: $font-size_2l;
+    margin-bottom: $space_2l;
+    @include mq(){
+      font-size: $font-size_l;
+      margin-bottom: $space_l
+    }
+  }
+  &__subtitle {
+    font-size: $font-size_default;
+    margin-bottom: $space_default;
+    border-bottom: 2px solid $color_main;
+    @include mq() {
+      font-size: $font-size_m;
+      margin-bottom: $space_m;
+    }
+  }
+  &__text {
+    font-size: $font-size_m;
+    margin-bottom: $space_3l;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    @include mq() {
+      font-size: $font-size_s;
+      margin-bottom: $space_default;
+    }
+  }
+
+}

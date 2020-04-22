@@ -1,0 +1,28 @@
+.p-band {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include mq('md') {
+    display: block;
+    margin: $space_default 0;
+  }
+  &__text {
+    font-size: $font-size_2l;
+    color: white;
+    margin-right: $space_m;
+    @include mq('md') {
+      font-size: $font-size_l;
+      margin-right: 0;
+      margin-bottom: $space_l;
+    }
+  }
+  &__btn {
+    border: 2px solid white;
+    font-size: $font-size_l;
+    padding: $space_s;
+    &:hover {
+      background: white;
+      color: $color_main;
+    }
+  }
+}
