@@ -22,7 +22,11 @@
 
 <body>
   <div id="app">
+
     @yield('content')
+
+    @include('layouts.footer')
+
   </div>
 </body>
 
