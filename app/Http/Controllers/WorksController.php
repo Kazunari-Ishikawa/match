@@ -9,7 +9,8 @@ class WorksController extends Controller
 {
     public function index()
     {
-        return view('works.index');
+        $works = Work::all();
+        return view('works.index', ['works' => $works]);
     }
 
     public function new()
