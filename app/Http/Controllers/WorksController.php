@@ -13,6 +13,12 @@ class WorksController extends Controller
         return view('works.index', ['works' => $works]);
     }
 
+    public function getworks()
+    {
+        $works = Work::all();
+        return response($works);
+    }
+
     public function new()
     {
         return view('works.new');

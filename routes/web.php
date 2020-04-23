@@ -23,3 +23,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/works', 'WorksController@index')->name('works.index');
 Route::get('/works/new', 'WorksController@new')->name('works.new');
 Route::post('/works/new', 'WorksController@create');
+
+ Route::post('/api/works', 'WorksController@getworks');
