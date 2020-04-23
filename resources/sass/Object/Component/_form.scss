@@ -101,6 +101,7 @@
   }
   &__error {
     color: red;
+    display: block;
     font-size: $font-size_m;
     margin-bottom: $space_m;
   }

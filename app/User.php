@@ -40,4 +40,9 @@ class User extends Authenticatable
     protected $attributes = [
         'name' => '名無しさん',
     ];
+
+    public function works()
+    {
+        return $this->hasMany('App\Work');
+    }
 }
