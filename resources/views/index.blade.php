@@ -7,7 +7,7 @@
     <p class="p-hero__text">もっと気軽にやり取りしたい…</p>
     <p class="p-hero__text">大手の案件サイトは分かりにくい…</p>
     <p class="p-hero__text p-hero__text--em">matchなら<span>3</span>ステップで<br class="p-hero__br">解決します！</p>
-    <a class="c-btn c-btn--hero" href="">仕事を探す</a>
+    <a class="c-btn c-btn--hero" href="{{ route('works.index') }}">仕事を探す</a>
   </div>
 </section>
 
