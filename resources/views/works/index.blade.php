@@ -61,50 +61,32 @@
 
   <!-- メインコンテンツ -->
   <section class="l-container__body--withSide">
-    <div class="c-projectList__header">
-      <h2 class="c-projectList__title">案件一覧</h2>
-      <p class="c-projectList__info">20件中 <span>1</span> - <span>10</span>件表示</p>
+    <div class="c-workList__header">
+      <h2 class="c-workList__title">案件一覧</h2>
+      <p class="c-workList__info">20件中 <span>1</span> - <span>10</span>件表示</p>
     </div>
 
-    <div class="c-projectList">
-      <div class="c-project">
-        <div class="c-project__header">
-          <h3 class="c-project__title">タイトルタイトルタイトルタイトルタイトル</h3>
-          <p class="c-project__date">登録日:2020/4/16</p>
+    <div class="c-workList">
+      <div class="c-work">
+        <div class="c-work__header">
+          <h3 class="c-work__title">タイトルタイトルタイトルタイトルタイトル</h3>
+          <p class="c-work__date">登録日:2020/4/16</p>
         </div>
-        <div class="c-project__body">
-          <div class="c-project__info">
-            <p class="c-project__type">単発案件</p>
-            <p class="c-project__category">ホームページ制作</p>
-            <p class="c-project__price">
-              <span class="c-project__price--lower">10,000</span> ~
-              <span class="c-project__price--upper">50,000</span>円
+        <div class="c-work__body">
+          <div class="c-work__info">
+            <p class="c-work__type">単発案件</p>
+            <p class="c-work__category">ホームページ制作</p>
+            <p class="c-work__price">
+              <span class="c-work__price--lower">10,000</span> ~
+              <span class="c-work__price--upper">50,000</span>円
             </p>
           </div>
-          <p class="c-project__detail">
+          <p class="c-work__content">
             ああああああああああああデフォつろファフェアフェアフェアfあああああああああああああああああああああああテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストああああああああああああデフォつろファフェアフェアフェアfあああああああああああああああああああああああテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
           </p>
         </div>
       </div>
-      <a href="" class="c-project">
-        <div class="c-project__header">
-          <h3 class="c-project__title">タイトルタイトルタイトルタイトルタイトル</h3>
-          <p class="c-project__date">登録日:2020/4/16</p>
-        </div>
-        <div class="c-project__body">
-          <div class="c-project__info">
-            <p class="c-project__type">単発案件</p>
-            <p class="c-project__category">ホームページ制作</p>
-            <p class="c-project__price">
-              <span class="c-project__price--lower">10,000</span> ~
-              <span class="c-project__price--upper">50,000</span>円
-            </p>
-          </div>
-          <p class="c-project__detail">
-            ああああああああああああデフォつろファフェアフェアフェアfあああああああああああああああああああああああテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストああああああああああああデフォつろファフェアフェアフェアfあああああああああああああああああああああああテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
-          </p>
-        </div>
-      </a>
+
     </div>
 
   </section>
