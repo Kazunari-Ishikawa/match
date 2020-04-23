@@ -20,9 +20,12 @@
         <select name="category" id="category" class="c-form__select">
           <option value="0">指定しない</option>
           <option value="1">ホームページ制作</option>
-          <option value="2">Webシステム開発</option>
+          <option value="2">WEBシステム開発</option>
           <option value="3">業務システム開発</option>
-          <option value="4">組み込み系</option>
+          <option value="4">アプリ開発</option>
+          <option value="5">ECサイト構築</option>
+          <option value="6">サーバー・クラウド</option>
+          <option value="7">WEBマーケティング</option>
         </select>
       </div>
       <div class="c-form__group">

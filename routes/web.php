@@ -19,4 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// Works
 Route::get('/works', 'WorksController@index')->name('works.index');
+Route::get('/works/new', 'WorksController@new')->name('works.new');
+Route::post('/works/new', 'WorksController@create');
