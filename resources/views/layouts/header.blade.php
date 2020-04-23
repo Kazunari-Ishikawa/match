@@ -16,7 +16,7 @@
       <!-- PC向けメニュー -->
       <!-- 未ログイン時 -->
       <ul class="c-menu">
-        <li class="c-menu__item"><a class="c-menu__link" href="search.html">案件を探す</a></li>
+        <li class="c-menu__item"><a class="c-menu__link" href="{{ route('works.index') }}">案件を探す</a></li>
         <li class="c-menu__item"><a class="c-menu__link " href="{{ route('register') }}">会員登録</a></li>
         <li class="c-menu__item"><a class="c-menu__link" href="{{ route('login') }}">ログイン</a></li>
       </ul>
