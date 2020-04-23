@@ -15,6 +15,12 @@
     <li class="c-menu__item c-menu__item--side"><a href="editProfile.html" class="c-menu__link c-menu__link--side">プロフィール編集</a></li>
     <li class="c-menu__item c-menu__item--side"><a href="editPassword.html" class="c-menu__link c-menu__link--side">パスワード変更</a></li>
     <li class="c-menu__item c-menu__item--side"><a href="help.html" class="c-menu__link c-menu__link--side">ヘルプ</a></li>
-    <li class="c-menu__item c-menu__item--side"><a href="" class="c-menu__link c-menu__link--side">ログアウト</a></li>
+    <li class="c-menu__item c-menu__item--side">
+      <a href="{{'logout'}}" class="c-menu__link c-menu__link--side" onclick="event.preventDefault();
+        document.getElementById('logoutSideForm').submit();">ログアウト</a>
+      <form id="logoutSideForm" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+      </form>
+    </li>
   </ul>
 </section>

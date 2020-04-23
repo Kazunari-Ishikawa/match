@@ -52,7 +52,13 @@
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="editProfile.html">プロフィール編集</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="editPassword.html">パスワード変更</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="help.html">ヘルプ</a></li>
-        <li class="c-spMenu__item"><a class="c-spMenu__link" href="">ログアウト</a></li>
+        <li class="c-menu__item c-menu__item--side">
+          <a href="{{'logout'}}" class="c-menu__link c-menu__link--side" onclick="event.preventDefault();
+            document.getElementById('logoutForm').submit();">ログアウト</a>
+          <form id="logoutForm" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+          </form>
+        </li>
       </ul>
       @endauth
     </nav>
