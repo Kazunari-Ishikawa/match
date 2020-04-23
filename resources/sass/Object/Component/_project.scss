@@ -27,6 +27,10 @@
       max-width: 100%;
       margin-bottom: $space_m;
     }
+    &:hover {
+      color: $color_main;
+      cursor: pointer;
+    }
   }
   &__date {
     font-size: $font-size_s;
@@ -52,6 +56,7 @@
     }
   }
   &__price--lower, &__price--upper {
+    color: $color_sub1;
     font-size: $font-size_l;
     @include mq() {
       font-size: $font-size_default;
@@ -60,7 +65,7 @@
   &__detail {
     font-size: $font-size_m;
     max-height: 120px;
-    overflow: scroll;
+    overflow: hidden;
     @include mq() {
       font-size: $font-size_s;
       max-height: 90px;

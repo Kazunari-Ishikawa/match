@@ -1,37 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<header class="l-header">
-  <div class="l-header--left">
-    <a class="l-header__title" href="/">
-      <h1>match</h1>
-    </a>
-    <form action="login.html" class="c-search">
-      <input type="text" class="c-search__input" placeholder="キーワードを入力">
-      <div class="c-search__btn"><i class="fas fa-search"></i></div>
-    </form>
-  </div>
-  <div class="l-header--right">
-    <nav class="l-nav">
-      <ul class="c-nav">
-        <li class="c-nav__item"><a class="c-nav__link " href="{{ route('register') }}">会員登録</a>
-        </li>
-        <li class="c-nav__item"><a class="c-nav__link" href="{{ route('login') }}">ログイン</a>
-        </li>
-      </ul>
-    </nav>
 
-    <!-- ハンバーガーメニュー -->
-    <div class="c-triggerMenu">
-      <span class="c-triggerMenu__bar"></span>
-      <span class="c-triggerMenu__bar"></span>
-      <span class="c-triggerMenu__bar"></span>
-    </div>
-  </div>
-
-</header>
-
-<!-- メインコンテンツ -->
 <main id="main" class="l-main">
   <section id="hero" class="l-hero">
     <div class="p-hero">
