@@ -15,7 +15,7 @@ class CreateWorksTable extends Migration
     {
         Schema::create('works', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->string('title');
             $table->unsignedTinyInteger('type');
             $table->unsignedTinyInteger('category');
             $table->unsignedInteger('max_price');

@@ -18,6 +18,6 @@ class Work extends Model
     }
 
     protected $fillable = [
-        'name', 'type', 'category', 'max_price', 'min_price', 'content', 'is_closed'
+        'title', 'type', 'category', 'max_price', 'min_price', 'content', 'user_id', 'is_closed'
     ];
 }
