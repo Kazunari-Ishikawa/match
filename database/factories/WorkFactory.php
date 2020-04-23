@@ -6,7 +6,7 @@ use Faker\Generator as Faker;
 
 $factory->define(Work::class, function (Faker $faker) {
     return [
-        'name' => $faker->sentence,
+        'title' => $faker->sentence,
         'type' => $faker->numberBetween(0,1),
         'category' => $faker->numberBetween(1,8),
         'max_price' => $faker->numberBetween(30000, 50000),
