@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Work;
 use Illuminate\Support\Facades\Auth;
+use App\Work;
+use App\Http\Requests\CreateWorkRequest;
 
 class WorksController extends Controller
 {
@@ -18,15 +19,12 @@ class WorksController extends Controller
         return view('works.new');
     }
 
-    public function create(Request $request)
+    public function create(CreateWorkRequest $request)
     {
-        \Log::debug($request);
         $work = new Work;
 
         $work->user_id = Auth::id();
         $work->fill($request->all())->save();
-
-        \Log::debug($work);
 
         return view('works.new');
     }

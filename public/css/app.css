@@ -342,12 +342,12 @@ textarea {
   font-size: 12px;
 }
 
-.l-sideBar {
+.l-sidebar {
   width: 25%;
 }
 
 @media screen and (max-width: 768px) {
-  .l-sideBar {
+  .l-sidebar {
     width: 100%;
     display: none;
   }
@@ -721,6 +721,7 @@ textarea {
 
 .c-form__error {
   color: red;
+  display: block;
   font-size: 14px;
   margin-bottom: 15px;
 }
@@ -923,23 +924,6 @@ textarea {
   width: 20px;
   height: 40px;
   line-height: 40px;
-}
-
-.c-sideMenu {
-  width: 100%;
-  margin-bottom: 40px;
-}
-
-.c-sideMenu:last-child {
-  margin-bottom: 0;
-}
-
-.c-sideMenu__item {
-  background: white;
-  border-bottom: 1px solid #f5f5f5;
-  font-size: 14px;
-  display: block;
-  padding: 15px;
 }
 
 .c-project {
