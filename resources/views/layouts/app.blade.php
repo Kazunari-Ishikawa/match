@@ -23,7 +23,11 @@
 <body>
   <div id="app">
 
-    @yield('content')
+    @include('layouts.header')
+
+    <main id="main" class="l-main">
+      @yield('content')
+    </main>
 
     @include('layouts.footer')
 

@@ -1,0 +1,44 @@
+.c-menu {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  @include mq('md') {
+    display: none;
+  }
+  &--side {
+    display: block;
+    margin-bottom: $space_3l;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  &__item {
+    display: block;
+    margin-right: $space_s;
+    &:last-child {
+      margin-right: 0;
+    }
+    &--side {
+      background: white;
+      border-bottom: 1px solid $color_bg;
+      margin-right: 0;
+    }
+  }
+  &__link {
+    border-bottom: 2px solid white;
+    display: block;
+    font-size: $font-size_m;
+    padding: $space_s 0;
+    transition: $time_s;
+    &:hover {
+      border-bottom: 2px solid $color_main;
+    }
+    &--side {
+      border: none;
+      padding: $space_m;
+      &:hover {
+        border: none;
+      }
+    }
+  }
+}

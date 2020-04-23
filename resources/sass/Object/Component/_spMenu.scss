@@ -1,0 +1,22 @@
+.c-spMenu {
+  display: none;
+  @include mq('md') {
+    display: block;
+  }
+  &__item {
+    border-bottom: 1px solid $color_bg;
+    display: block;
+    margin-bottom: $space_default;
+    padding: 0 $space_3l;
+    text-align: right;
+    @include mq() {
+      margin-bottom: $space_m;
+      padding: 0 $space_default;
+    }
+  }
+  &__link {
+    @include mq() {
+      font-size: $font-size_m;
+    }
+  }
+}

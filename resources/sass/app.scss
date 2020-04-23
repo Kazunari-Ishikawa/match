@@ -10,6 +10,7 @@
 @import 'Layout/nav';
 @import 'Layout/container';
 @import 'Layout/footer';
+@import 'Layout/sideBar';
 
 // Component
 @import 'Object/Component/btn';
@@ -17,13 +18,15 @@
 @import 'Object/Component/cardList';
 @import 'Object/Component/form';
 @import 'Object/Component/mypage';
+@import 'Object/Component/menu';
 @import 'Object/Component/nav';
 @import 'Object/Component/search';
 @import 'Object/Component/sideMenu';
-@import 'Object/Component/triggerMenu';
 @import 'Object/Component/project';
 @import 'Object/Component/projectTab';
 @import 'Object/Component/projectList';
+@import 'Object/Component/spMenu';
+@import 'Object/Component/menuTrigger';
 
 // Project
 @import 'Object/Project/hero';
