@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Work;
+use Illuminate\Support\Facades\Auth;
 
 class WorksController extends Controller
 {
@@ -22,7 +23,8 @@ class WorksController extends Controller
         \Log::debug($request);
         $work = new Work;
 
-        $work->fill($request->all());
+        $work->user_id = Auth::id();
+        $work->fill($request->all())->save();
 
         \Log::debug($work);
 
