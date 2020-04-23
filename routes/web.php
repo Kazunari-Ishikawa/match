@@ -17,7 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/mypage', function() {
+    return view('mypage');
+});
 
 // Works
 Route::get('/works', 'WorksController@index')->name('works.index');
