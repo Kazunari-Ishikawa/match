@@ -10,17 +10,31 @@ export default {
   components: {
     Work
   },
+  props: {
+    isRegistered: Boolean
+  },
   data() {
     return {
       works: null
     };
   },
   mounted() {
-    this.getWorks();
+    this.selectList();
   },
   methods: {
+    selectList() {
+      if (this.isRegistered) {
+        this.getRegisteredWorks();
+      } else {
+        this.getWorks();
+      }
+    },
     async getWorks() {
       const response = await axios.post("/api/works");
+      this.works = response.data;
+    },
+    async getRegisteredWorks() {
+      const response = await axios.get("/api/works/registered");
       this.works = response.data;
     }
   }
