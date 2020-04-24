@@ -11,9 +11,9 @@
     <form method="POST" action="{{ route('login') }}" class="c-form">
       @csrf
 
-      @error('email')
-      <span class="c-form__error">{{ $message }}</span>
-      @enderror
+      @foreach($errors->all() as $error)
+      <span class="c-form__error">{{ $error }}</span>
+      @endforeach
 
       <div class="c-form__group">
         <input class="c-form__input" type="email" id="email" name="email" value="{{ old('email') }}" placeholder="メールアドレス">
@@ -28,10 +28,10 @@
       </div>
 
       <p class="c-form__link">
-        <a href="passRemind.html">パスワードを忘れた方はこちら</a>
+        <a href="{{ route('password.request') }}">パスワードを忘れてしまった方はこちら</a>
       </p>
       <p class="c-form__link">
-        <a href="{{route('login')}}">まだ会員登録をしていない方はこちら</a>
+        <a href="{{route('login')}}">会員登録をしていない方はこちら</a>
       </p>
     </form>
   </div>
