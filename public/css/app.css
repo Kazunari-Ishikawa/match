@@ -369,6 +369,7 @@ textarea {
 
 .c-btn:hover {
   cursor: pointer;
+  color: white;
   opacity: 0.8;
   transform: scale(1.05);
 }
@@ -421,7 +422,6 @@ textarea {
 }
 
 .c-btn--hero:hover {
-  color: white;
   opacity: 1;
 }
 
