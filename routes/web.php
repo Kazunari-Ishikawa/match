@@ -14,14 +14,14 @@
 Route::get('/', function () {
     return view('index');
 });
-
 Auth::routes();
-
-Route::get('/mypage', function() {
-    return view('mypage');
-});
-
-// Works
 Route::get('/works', 'WorksController@index')->name('works.index');
-Route::get('/works/new', 'WorksController@new')->name('works.new');
-Route::post('/works/new', 'WorksController@create');
+
+// ログイン時のみのルーティング
+Route::group(['middleware' => 'auth'], function(){
+    Route::get('/mypage', function() {
+        return view('mypage');
+    });
+    Route::get('/works/new', 'WorksController@new')->name('works.new');
+    Route::post('/works/new', 'WorksController@create');
+});
