@@ -14,6 +14,7 @@ class WorksController extends Controller
     public function index()
     {
         $works = Work::all();
+
         return view('works.index', ['works' => $works]);
     }
     // Work一覧取得API
@@ -23,6 +24,7 @@ class WorksController extends Controller
         foreach ($works as $work) {
             $work->user;
         }
+
         return response($works);
     }
     // Work新規登録画面表示
@@ -34,7 +36,6 @@ class WorksController extends Controller
     public function create(CreateWorkRequest $request)
     {
         $work = new Work;
-
         $work->user_id = Auth::id();
         $work->fill($request->all())->save();
 
@@ -44,11 +45,15 @@ class WorksController extends Controller
     public function edit($id)
     {
         $work = Work::find($id);
+
         return view('works.edit', ['work' => $work]);
     }
     // Work編集機能
-    public function update()
+    public function update(CreateWorkRequest $request, $id)
     {
-        return redirect()->route('work.edit');
+        $work = Work::find($id);
+        $work->fill($request->all())->save();
+
+        return redirect('/mypage');
     }
 }

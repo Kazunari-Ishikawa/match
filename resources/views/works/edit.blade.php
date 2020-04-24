@@ -10,6 +10,7 @@
   <div class="l-container__body l-container__body--1column">
     <form method="POST" action="{{ route('works.edit', $work->id) }}" class="c-form">
       @csrf
+
       <div class="c-form__group">
         <label for="title" class="c-form__label">タイトル</label>
         @error('title')
@@ -24,10 +25,10 @@
         <span class="c-form__error">{{ $message }}</span>
         @enderror
         <label for="type1" class="c-form__label--radio">
-          <input type="radio" name="type" id="type1" class="c-form__radio" value="0" {{ old('type') == 0 ? 'checked' : '' }}>単発
+          <input type="radio" name="type" id="type1" class="c-form__radio" value="0" {{ old('type', $work->type) == 0 ? 'checked' : '' }}>単発
         </label>
         <label for="type2" class="c-form__label--radio">
-          <input type="radio" name="type" id="type2" class="c-form__radio" value="1" {{ old('type') == 1 ? 'checked' : '' }}>レベニューシェア
+          <input type="radio" name="type" id="type2" class="c-form__radio" value="1" {{ old('type', $work->type) == 1 ? 'checked' : '' }}>レベニューシェア
         </label>
       </div>
 
@@ -38,14 +39,14 @@
         @enderror
         <select name="category" id="category" class="c-form__select">
           <option value="0">選択してください</option>
-          <option value="1">ホームページ制作</option>
-          <option value="2">WEBシステム開発</option>
-          <option value="3">業務システム開発</option>
-          <option value="4">アプリ開発</option>
-          <option value="5">ECサイト構築</option>
-          <option value="6">サーバー・クラウド</option>
-          <option value="7">WEBマーケティング</option>
-          <option value="8">その他</option>
+          <option value="1" {{old('category', $work->category) == 1 ? 'selected' : ''}}>ホームページ制作</option>
+          <option value="2" {{old('category', $work->category) == 2 ? 'selected' : ''}}>WEBシステム開発</option>
+          <option value="3" {{old('category', $work->category) == 3 ? 'selected' : ''}}>業務システム開発</option>
+          <option value="4" {{old('category', $work->category) == 4 ? 'selected' : ''}}>アプリ開発</option>
+          <option value="5" {{old('category', $work->category) == 5 ? 'selected' : ''}}>ECサイト構築</option>
+          <option value="6" {{old('category', $work->category) == 6 ? 'selected' : ''}}>サーバー・クラウド</option>
+          <option value="7" {{old('category', $work->category) == 7 ? 'selected' : ''}}>WEBマーケティング</option>
+          <option value="8" {{old('category', $work->category) == 8 ? 'selected' : ''}}>その他</option>
         </select>
       </div>
 
