@@ -23,6 +23,7 @@ Route::get('/mypage', function() {
 
 // Users
 Route::get('/users/edit', 'UsersController@edit')->name('users.edit');
+Route::post('/users/edit', 'UsersController@update');
 
 // Works
 Route::get('/works', 'WorksController@index')->name('works.index');

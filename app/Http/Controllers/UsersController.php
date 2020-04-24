@@ -10,4 +10,10 @@ class UsersController extends Controller
     {
         return view('users.edit');
     }
+
+    public function update()
+    {
+        \Log::debug('OK');
+        return view('users.edit');
+    }
 }
