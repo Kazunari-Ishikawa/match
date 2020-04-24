@@ -1,7 +1,7 @@
 <template>
   <div class="c-work">
     <div class="c-work__header">
-      <h3 class="c-work__title">{{ work.title }}</h3>
+      <h3 class="c-work__title" @click="goDetail">{{ work.title }}</h3>
       <p class="c-work__date">登録日:{{ work.created_at }}</p>
     </div>
     <div class="c-work__body">
@@ -22,6 +22,12 @@
 export default {
   props: {
     work: Object
+  },
+  methods: {
+    // 詳細ページへ遷移する
+    goDetail() {
+      window.location.href = `/works/${this.work.id}`;
+    }
   }
 };
 </script>
