@@ -16,16 +16,18 @@ Route::get('/', function () {
 });
 Auth::routes();
 Route::get('/works', 'WorksController@index')->name('works.index');
+Route::post('/api/works', 'WorksController@getworks');
 
 // ログイン時のみのルーティング
 Route::group(['middleware' => 'auth'], function(){
     Route::get('/mypage', function() {
         return view('mypage');
     });
-
+    // Users
     Route::get('/users/edit', 'UsersController@edit')->name('users.edit');
     Route::post('/users/edit', 'UsersController@update');
-
+    // Works
     Route::get('/works/new', 'WorksController@new')->name('works.new');
     Route::post('/works/new', 'WorksController@create');
 });
+
