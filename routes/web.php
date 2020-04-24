@@ -31,4 +31,6 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/works/new', 'WorksController@create');
     Route::get('/works/{id}/edit', 'WorksController@edit')->name('works.edit');
     Route::post('/works/{id}/edit', 'WorksController@update');
+    Route::get('/works/registered', 'WorksController@showRegisteredWorks')->name('works.registered');
+    Route::get('/api/works/registered', 'WorksController@getRegisteredWorks');
 });

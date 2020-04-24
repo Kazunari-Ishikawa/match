@@ -10,7 +10,7 @@ use App\User;
 
 class WorksController extends Controller
 {
-    // Work一覧画面表示
+    // Work一覧表示
     public function index()
     {
         $works = Work::all();
@@ -55,5 +55,18 @@ class WorksController extends Controller
         $work->fill($request->all())->save();
 
         return redirect('/mypage');
+    }
+    // 登録した案件一覧日画面表示
+    public function showRegisteredWorks()
+    {
+        return view('works.registeredWorks');
+    }
+    // ユーザーが登録したWork一覧を取得する
+    public function getRegisteredWorks()
+    {
+        $user_id = Auth::id();
+        $works = Work::where('user_id', Auth::id())->get();
+        \Log::debug($works);
+        return response($works);
     }
 }

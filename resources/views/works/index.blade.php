@@ -4,7 +4,7 @@
 <div class="l-container l-container--withSide">
 
   <!-- サイドバー -->
-  <section class="l-sideBar">
+  <section class="l-sidebar">
     <form action="" class="c-form--side">
       <div class="c-form__group">
         <p class="c-form__label">案件種別</p>
