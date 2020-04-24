@@ -42,7 +42,7 @@
       <ul class="c-spMenu">
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="/mypage">マイページ</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('works.new') }}">案件を登録する</a></li>
-        <li class="c-spMenu__item"><a class="c-spMenu__link" href="registeredProjects.html">登録した案件一覧</a></li>
+        <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('works.registered') }}">登録した案件一覧</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="appliedProjects.html">応募した案件一覧</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="closedProjects.html">成約済み案件一覧</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="likeProjects.html">気になるリスト</a></li>

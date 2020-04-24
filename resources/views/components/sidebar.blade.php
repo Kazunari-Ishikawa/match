@@ -1,7 +1,7 @@
 <section class="l-sidebar">
   <ul class="c-menu--side">
     <li class="c-menu__item c-menu__item--side"><a href="{{ route('works.new') }}" class="c-menu__link c-menu__link--side">案件を登録する</a></li>
-    <li class="c-menu__item c-menu__item--side"><a href="registeredProjects.html" class="c-menu__link c-menu__link--side">登録した案件一覧</a></li>
+    <li class="c-menu__item c-menu__item--side"><a href="{{ route('works.registered') }}" class="c-menu__link c-menu__link--side">登録した案件一覧</a></li>
     <li class="c-menu__item c-menu__item--side"><a href="appliedProjects.html" class="c-menu__link c-menu__link--side">応募した案件一覧</a></li>
     <li class="c-menu__item c-menu__item--side"><a href="closedProjects.html" class="c-menu__link c-menu__link--side">成約済み案件一覧</a></li>
     <li class="c-menu__item c-menu__item--side"><a href="likeProjects.html" class="c-menu__link c-menu__link--side">気になるリスト</a></li>
