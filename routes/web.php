@@ -22,6 +22,10 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/mypage', function() {
         return view('mypage');
     });
+
+    Route::get('/users/edit', 'UsersController@edit')->name('users.edit');
+    Route::post('/users/edit', 'UsersController@update');
+
     Route::get('/works/new', 'WorksController@new')->name('works.new');
     Route::post('/works/new', 'WorksController@create');
 });
