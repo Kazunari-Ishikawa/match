@@ -12,7 +12,7 @@
     <li class="c-menu__item c-menu__item--side"><a href="messages.html" class="c-menu__link c-menu__link--side">ダイレクトメッセージ一覧</a></li>
   </ul>
   <ul class="c-menu--side">
-    <li class="c-menu__item c-menu__item--side"><a href="editProfile.html" class="c-menu__link c-menu__link--side">プロフィール編集</a></li>
+    <li class="c-menu__item c-menu__item--side"><a href="{{ route('users.edit')}}" class="c-menu__link c-menu__link--side">プロフィール編集</a></li>
     <li class="c-menu__item c-menu__item--side"><a href="editPassword.html" class="c-menu__link c-menu__link--side">パスワード変更</a></li>
     <li class="c-menu__item c-menu__item--side"><a href="help.html" class="c-menu__link c-menu__link--side">ヘルプ</a></li>
     <li class="c-menu__item c-menu__item--side">

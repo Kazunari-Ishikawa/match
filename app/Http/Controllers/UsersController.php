@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class UsersContoller extends Controller
+class UsersController extends Controller
 {
     public function edit()
     {
-        return view();
+        return view('users.edit');
     }
 }

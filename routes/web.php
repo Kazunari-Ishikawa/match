@@ -22,7 +22,7 @@ Route::get('/mypage', function() {
 });
 
 // Users
-Route::get('/users/{id}', 'UsersController@edit')->name('users.edit');
+Route::get('/users/edit', 'UsersController@edit')->name('users.edit');
 
 // Works
 Route::get('/works', 'WorksController@index')->name('works.index');
