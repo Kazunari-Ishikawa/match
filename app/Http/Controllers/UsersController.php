@@ -16,4 +16,9 @@ class UsersController extends Controller
         \Log::debug('OK');
         return view('users.edit');
     }
+
+    public function showWithdrawForm()
+    {
+        return view('users.withdraw');
+    }
 }

@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth'], function(){
     // Users
     Route::get('/users/edit', 'UsersController@edit')->name('users.edit');
     Route::post('/users/edit', 'UsersController@update');
+    Route::get('/withdraw', 'UsersController@showWithdrawForm')->name('withdraw');
     // Works
     Route::get('/works/new', 'WorksController@new')->name('works.new');
     Route::post('/works/new', 'WorksController@create');

@@ -52,7 +52,7 @@
         </div>
 
         <p class="c-form__link">
-          <a href="">matchを退会する</a>
+          <a href="{{route('withdraw')}}">matchを退会する</a>
         </p>
 
       </form>
