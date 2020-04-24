@@ -69,4 +69,9 @@ class WorksController extends Controller
         \Log::debug($works);
         return response($works);
     }
+    // Work詳細表示
+    public function show()
+    {
+        return view('works.show');
+    }
 }

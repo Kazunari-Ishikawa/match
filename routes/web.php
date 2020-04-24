@@ -17,6 +17,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/works', 'WorksController@index')->name('works.index');
 Route::post('/api/works', 'WorksController@getworks');
+Route::get('/works/{id}', 'WorksController@show')->name('works.show');
 
 // ログイン時のみのルーティング
 Route::group(['middleware' => 'auth'], function(){
