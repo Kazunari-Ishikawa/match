@@ -21,6 +21,9 @@ Route::get('/mypage', function() {
     return view('mypage');
 });
 
+// Users
+Route::get('/users/{id}', 'UsersController@edit')->name('users.edit');
+
 // Works
 Route::get('/works', 'WorksController@index')->name('works.index');
 Route::get('/works/new', 'WorksController@new')->name('works.new');
