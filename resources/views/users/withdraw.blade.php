@@ -16,10 +16,13 @@
       <p class="c-mypage__text">ご利用ありがとうございました。</p>
 
       <div class="c-btn__container">
-        <div class="c-btn c-btn--em">退会する</div>
+        <a href="{{ route('withdraw') }}" class="c-btn c-btn--em" onclick="event.preventDefault(); document.getElementById('withdrawBtn').submit();">退会する</a>
+        <form action="{{route('withdraw')}}" method="POST" id="withdrawBtn" style="display: none;">
+          @csrf
+        </form>
       </div>
-    </div>
 
+    </div>
   </section>
 
 </div>
