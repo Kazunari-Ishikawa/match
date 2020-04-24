@@ -10,12 +10,13 @@ use App\User;
 
 class WorksController extends Controller
 {
+    // Work一覧画面表示
     public function index()
     {
         $works = Work::all();
         return view('works.index', ['works' => $works]);
     }
-
+    // Work一覧取得API
     public function getworks()
     {
         $works = Work::all();
@@ -24,12 +25,12 @@ class WorksController extends Controller
         }
         return response($works);
     }
-
+    // Work新規登録画面表示
     public function new()
     {
         return view('works.new');
     }
-
+    // Work新規登録機能
     public function create(CreateWorkRequest $request)
     {
         $work = new Work;
@@ -38,5 +39,16 @@ class WorksController extends Controller
         $work->fill($request->all())->save();
 
         return view('works.new');
+    }
+    // Work編集画面表示
+    public function edit($id)
+    {
+        $work = Work::find($id);
+        return view('works.edit', ['work' => $work]);
+    }
+    // Work編集機能
+    public function update()
+    {
+        return redirect()->route('work.edit');
     }
 }
