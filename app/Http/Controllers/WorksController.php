@@ -66,7 +66,15 @@ class WorksController extends Controller
     {
         $user_id = Auth::id();
         $works = Work::where('user_id', Auth::id())->get();
-        \Log::debug($works);
+
         return response($works);
+    }
+    // Work詳細表示
+    public function show($id)
+    {
+        $work = Work::find($id);
+        $work->user;
+
+        return view('works.show', ['work' => $work]);
     }
 }

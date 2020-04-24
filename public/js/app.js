@@ -1973,9 +1973,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     work: Object
+  },
+  methods: {
+    // 詳細ページへ遷移する
+    goDetail: function goDetail() {
+      window.location.href = "/works/".concat(this.work.id);
+    }
   }
 });
 
@@ -38515,7 +38523,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "c-work" }, [
     _c("div", { staticClass: "c-work__header" }, [
-      _c("h3", { staticClass: "c-work__title" }, [
+      _c("h3", { staticClass: "c-work__title", on: { click: _vm.goDetail } }, [
         _vm._v(_vm._s(_vm.work.title))
       ]),
       _vm._v(" "),
