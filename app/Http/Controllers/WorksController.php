@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Work;
+use App\User;
 
 class WorksController extends Controller
 {
@@ -16,6 +17,9 @@ class WorksController extends Controller
     public function getworks()
     {
         $works = Work::all();
+        foreach ($works as $work) {
+            $work->user;
+        }
         return response($works);
     }
 

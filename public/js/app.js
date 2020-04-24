@@ -1976,6 +1976,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     work: Object
+  },
+  mounted: function mounted() {
+    console.log(this.work.created_at);
   }
 });
 
@@ -38485,15 +38488,19 @@ var render = function() {
         _vm._v(_vm._s(_vm.work.title))
       ]),
       _vm._v(" "),
-      _c("p", { staticClass: "c-work__date" }, [_vm._v("登録日:2020/4/16")])
+      _c("p", { staticClass: "c-work__date" }, [
+        _vm._v("登録日:" + _vm._s(_vm.work.created_at))
+      ])
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "c-work__body" }, [
       _c("div", { staticClass: "c-work__info" }, [
-        _c("p", { staticClass: "c-work__type" }, [_vm._v("単発案件")]),
+        _c("p", { staticClass: "c-work__type" }, [
+          _vm._v(_vm._s(_vm.work.type))
+        ]),
         _vm._v(" "),
         _c("p", { staticClass: "c-work__category" }, [
-          _vm._v("ホームページ制作")
+          _vm._v(_vm._s(_vm.work.category))
         ]),
         _vm._v(" "),
         _c("p", { staticClass: "c-work__price" }, [
@@ -51018,8 +51025,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/vagrant/code/match/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/vagrant/code/match/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/kazunari-ishikawa/code/match/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/kazunari-ishikawa/code/match/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
