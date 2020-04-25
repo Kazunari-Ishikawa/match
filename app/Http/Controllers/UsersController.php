@@ -9,6 +9,13 @@ use App\User;
 
 class UsersController extends Controller
 {
+    // マイページ表示
+    public function mypage()
+    {
+        $user = Auth::user();
+
+        return view('users.mypage', ['user' => $user]);
+    }
     // プロフィール編集画面表示
     public function edit()
     {

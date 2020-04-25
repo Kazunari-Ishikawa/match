@@ -21,14 +21,12 @@ Route::get('/works/{id}', 'WorksController@show')->name('works.show');
 
 // ログイン時のみのルーティング
 Route::group(['middleware' => 'auth'], function(){
-    Route::get('/mypage', function() {
-        return view('mypage');
-    });
     // Users
     Route::get('/users/edit', 'UsersController@edit')->name('users.edit');
     Route::post('/users/edit', 'UsersController@update');
     Route::get('/withdraw', 'UsersController@showWithdrawForm')->name('withdraw');
     Route::post('/withdraw', 'UsersController@withdraw');
+    Route::get('/mypage', 'UsersController@mypage')->name('users.mypage');
 
     // Works
     Route::get('/works/new', 'WorksController@new')->name('works.new');
