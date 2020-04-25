@@ -19,14 +19,14 @@
           @error('name')
           <span class="c-form__error">{{ $message }}</span>
           @enderror
-          <input type="text" class="c-form__input" name="name" id="name" placeholder="ユーザー名">
+          <input type="text" class="c-form__input" name="name" id="name" value="{{ old('name', $user->name) }}" placeholder="ユーザー名">
         </div>
 
         <div class="c-form__group">
           @error('email')
           <span class="c-form__error">{{ $message }}</span>
           @enderror
-          <input type="email" class="c-form__input" name="email" id="email" placeholder="メールアドレス">
+          <input type="email" class="c-form__input" name="email" id="email" value="{{ old('email', $user->email) }}" placeholder="メールアドレス">
         </div>
 
         <div class="c-form__group">
@@ -44,7 +44,7 @@
           @error('profile')
           <span class="c-form__error">{{ $message }}</span>
           @enderror
-          <textarea name="profile" id="profile" class="c-form__textarea"></textarea>
+          <textarea name="profile" id="profile" class="c-form__textarea">{{ old('profile', $user->profile) }}</textarea>
         </div>
 
         <div class="c-form__group">
