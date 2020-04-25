@@ -13,7 +13,7 @@
     <div class="p-profile">
       <div class="p-profile__icon">
       </div>
-      <p class="p-profile__name">Username</p>
+      <p class="p-profile__name">{{ $user->name }}</p>
     </div>
 
     <!-- タブ -->

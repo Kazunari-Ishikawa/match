@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','icon','profile'
     ];
 
     /**
@@ -37,6 +37,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * モデルのデフォルト値
+     *
+     * @var array
+     */
     protected $attributes = [
         'name' => '名無しさん',
     ];

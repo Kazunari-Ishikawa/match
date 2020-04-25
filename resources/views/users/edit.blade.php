@@ -12,21 +12,21 @@
     <h2 class="c-mypage__title">プロフィール編集</h2>
 
     <div class="c-mypage__contents">
-      <form action="{{ route('users.edit') }}" method="POST" class="c-form">
+      <form action="{{ route('users.edit') }}" method="POST" enctype="multipart/form-data" class="c-form">
         @csrf
 
         <div class="c-form__group">
           @error('name')
           <span class="c-form__error">{{ $message }}</span>
           @enderror
-          <input type="text" class="c-form__input" name="name" id="name" placeholder="ユーザー名">
+          <input type="text" class="c-form__input" name="name" id="name" value="{{ old('name', $user->name) }}" placeholder="ユーザー名">
         </div>
 
         <div class="c-form__group">
           @error('email')
           <span class="c-form__error">{{ $message }}</span>
           @enderror
-          <input type="email" class="c-form__input" name="email" id="email" placeholder="メールアドレス">
+          <input type="email" class="c-form__input" name="email" id="email" value="{{ old('email', $user->email) }}" placeholder="メールアドレス">
         </div>
 
         <div class="c-form__group">
@@ -34,7 +34,7 @@
           <span class="c-form__error">{{ $message }}</span>
           @enderror
           <label class="c-form__group--drop">
-            <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
+            <input type="hidden" name="MAX_FILE_SIZE" value="1048576">
             <input type="file" class="c-form__file" name="icon" id="icon" accept="image/*" />
             ドラッグ＆ドロップ
           </label>
@@ -44,7 +44,7 @@
           @error('profile')
           <span class="c-form__error">{{ $message }}</span>
           @enderror
-          <textarea name="profile" id="profile" class="c-form__textarea"></textarea>
+          <textarea name="profile" id="profile" class="c-form__textarea">{{ old('profile', $user->profile) }}</textarea>
         </div>
 
         <div class="c-form__group">
