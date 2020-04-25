@@ -12,7 +12,7 @@
     <h2 class="c-mypage__title">プロフィール編集</h2>
 
     <div class="c-mypage__contents">
-      <form action="{{ route('users.edit') }}" method="POST" class="c-form">
+      <form action="{{ route('users.edit') }}" method="POST" enctype="multipart/form-data" class="c-form">
         @csrf
 
         <div class="c-form__group">
@@ -34,7 +34,7 @@
           <span class="c-form__error">{{ $message }}</span>
           @enderror
           <label class="c-form__group--drop">
-            <input type="hidden" name="MAX_FILE_SIZE" value="3145728">
+            <input type="hidden" name="MAX_FILE_SIZE" value="1048576">
             <input type="file" class="c-form__file" name="icon" id="icon" accept="image/*" />
             ドラッグ＆ドロップ
           </label>
