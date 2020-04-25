@@ -22,7 +22,7 @@ class UsersController extends Controller
         $user = Auth::user();
         // icon以外の入力を代入
         $user->fill($request->except('icon'));
-        // ファイルのアップロードに成功した場合、ファイル名をモデルへ代入
+        // リクエストにファイルが存在し、アップロードに成功した場合、ファイル名をモデルへ代入
         if ($request->hasFile('icon')) {
             if ($request->file('icon')->isValid()) {
                 $path = $request->icon->store('public/img/icons');
