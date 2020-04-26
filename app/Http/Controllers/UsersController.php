@@ -50,9 +50,10 @@ class UsersController extends Controller
     public function updatePassword(UpdatePasswordRequest $request)
     {
         $user = Auth::user();
-        \Log::debug($request);
+        $user->password = bcrypt($request->password);
+        $user->save();
 
-        return view('users.editPassword');
+        return redirect('/mypage');
     }
     // 退会画面表示
     public function showWithdrawForm()
