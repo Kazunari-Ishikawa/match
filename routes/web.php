@@ -24,6 +24,8 @@ Route::group(['middleware' => 'auth'], function(){
     // Users
     Route::get('/users/edit', 'UsersController@edit')->name('users.edit');
     Route::post('/users/edit', 'UsersController@update');
+    Route::get('/users/password/edit', 'UsersController@editPassword')->name('users.editPassword');
+    Route::post('/users/password/edit', 'UsersController@updatePassword');
     Route::get('/withdraw', 'UsersController@showWithdrawForm')->name('withdraw');
     Route::post('/withdraw', 'UsersController@withdraw');
     Route::get('/mypage', 'UsersController@mypage')->name('users.mypage');

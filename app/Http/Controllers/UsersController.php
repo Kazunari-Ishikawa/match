@@ -40,6 +40,18 @@ class UsersController extends Controller
 
         return redirect('/mypage');
     }
+    // パスワード変更画面表示
+    public function editPassword()
+    {
+        return view('users.editPassword');
+    }
+    // パスワードを変更する
+    public function updatePassword()
+    {
+        $user = Auth::user();
+
+        return redirect('/mypage');
+    }
     // 退会画面表示
     public function showWithdrawForm()
     {
