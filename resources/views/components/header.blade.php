@@ -26,7 +26,6 @@
         <li class="c-menu__item"><a class="c-menu__link" href="{{ route('register') }}">会員登録</a></li>
         <li class="c-menu__item"><a class="c-menu__link" href="{{ route('login') }}">ログイン</a></li>
       </ul>
-
       @endguest
 
       <!-- ログイン時 -->
@@ -40,7 +39,7 @@
       </ul>
       <!-- スマホ向けメニュー -->
       <ul class="c-spMenu">
-        <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('mypage')}}">マイページ</a></li>
+        <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('users.mypage')}}">マイページ</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('works.new') }}">案件を登録する</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('works.registered') }}">登録した案件一覧</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="appliedProjects.html">応募した案件一覧</a></li>
