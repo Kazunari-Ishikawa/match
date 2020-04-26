@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\UpdatePasswordRequest;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 
@@ -36,6 +37,20 @@ class UsersController extends Controller
                 $user->icon = basename($path);
             }
         }
+        $user->save();
+
+        return redirect('/mypage');
+    }
+    // パスワード変更画面表示
+    public function editPassword()
+    {
+        return view('users.editPassword');
+    }
+    // パスワードを変更する
+    public function updatePassword(UpdatePasswordRequest $request)
+    {
+        $user = Auth::user();
+        $user->password = bcrypt($request->password);
         $user->save();
 
         return redirect('/mypage');
