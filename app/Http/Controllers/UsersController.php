@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\UpdateUserRequest;
+use App\Http\Requests\UpdatePasswordRequest;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 
@@ -46,11 +47,12 @@ class UsersController extends Controller
         return view('users.editPassword');
     }
     // パスワードを変更する
-    public function updatePassword()
+    public function updatePassword(UpdatePasswordRequest $request)
     {
         $user = Auth::user();
+        \Log::debug($request);
 
-        return redirect('/mypage');
+        return view('users.editPassword');
     }
     // 退会画面表示
     public function showWithdrawForm()
