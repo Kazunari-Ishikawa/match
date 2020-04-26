@@ -13,14 +13,12 @@ class WorksController extends Controller
     // Work一覧表示
     public function index()
     {
-        $works = Work::all();
-
-        return view('works.index', ['works' => $works]);
+        return view('works.index');
     }
     // Work一覧取得API
     public function getworks()
     {
-        $works = Work::all();
+        $works = Work::with(['user'])->get();
         foreach ($works as $work) {
             $work->user;
         }
