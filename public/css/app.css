@@ -935,39 +935,67 @@ textarea {
   padding: 20px;
 }
 
-.c-work__header {
-  border-bottom: 1px solid #707070;
+.c-work__main {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 @media screen and (max-width: 425px) {
-  .c-work__header {
+  .c-work__main {
     display: block;
   }
 }
 
-.c-work__body {
-  display: flex;
+.c-work__left {
+  flex: 1 1 60%;
+  box-sizing: border-box;
+}
+
+.c-work__center {
+  flex: 1 1 25%;
+  box-sizing: border-box;
+  border-left: 1px dashed #707070;
+  border-right: 1px dashed #707070;
+  margin: 0 10px;
+  padding: 0 10px;
 }
 
 @media screen and (max-width: 425px) {
-  .c-work__body {
-    display: block;
+  .c-work__center {
+    border-top: 1px dashed #707070;
+    border-bottom: 1px dashed #707070;
+    border-left: none;
+    border-right: none;
+    margin: 10px 0;
+    padding: 10px 0;
+    text-align: center;
+  }
+}
+
+.c-work__right {
+  flex: 1 1 15%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 425px) {
+  .c-work__right--inner {
+    display: flex;
+    align-items: center;
   }
 }
 
 .c-work__title {
-  font-size: 20px;
-  max-width: 75%;
+  display: block;
+  font-size: 16px;
+  margin-bottom: 20px;
 }
 
 @media screen and (max-width: 425px) {
   .c-work__title {
-    font-size: 16px;
-    max-width: 100%;
+    font-size: 14px;
     margin-bottom: 15px;
   }
 }
@@ -977,38 +1005,14 @@ textarea {
   cursor: pointer;
 }
 
-.c-work__date {
-  font-size: 12px;
-}
-
-@media screen and (max-width: 425px) {
-  .c-work__date {
-    text-align: right;
-  }
-}
-
-.c-work__info {
-  box-sizing: border-box;
-  margin-right: 20px;
-  min-width: 35%;
-}
-
-@media screen and (max-width: 425px) {
-  .c-work__info {
-    margin-right: 0;
-    margin-bottom: 20px;
-  }
-}
-
-.c-work__type,
 .c-work__category,
 .c-work__price {
+  display: block;
   font-size: 14px;
   margin-bottom: 15px;
 }
 
 @media screen and (max-width: 425px) {
-  .c-work__type,
   .c-work__category,
   .c-work__price {
     font-size: 12px;
@@ -1016,29 +1020,111 @@ textarea {
   }
 }
 
-.c-work__price--lower,
-.c-work__price--upper {
+.c-work__price > br {
+  display: block;
+}
+
+@media screen and (max-width: 425px) {
+  .c-work__price > br {
+    display: none;
+  }
+}
+
+.c-work__price--min,
+.c-work__price--max {
   color: #fa5858;
   font-size: 20px;
 }
 
+.c-work__type {
+  border-bottom: 2px solid #51a1a2;
+  display: inline-block;
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+.c-work__count {
+  font-size: 14px;
+  text-align: center;
+}
+
+.c-work__count > span {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.c-work__tag {
+  display: block;
+  font-size: 12px;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #707070;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+.c-work__tag:last-child {
+  margin-bottom: 0;
+}
+
+.c-work__tag:hover {
+  color: white;
+}
+
 @media screen and (max-width: 425px) {
-  .c-work__price--lower,
-  .c-work__price--upper {
-    font-size: 16px;
+  .c-work__tag {
+    margin-bottom: 0;
+    margin-right: 10px;
+  }
+
+  .c-work__tag:last-child {
+    margin-right: 0;
   }
 }
 
-.c-work__content {
-  font-size: 14px;
-  max-height: 120px;
-  overflow: hidden;
+.c-work__tag--more:hover {
+  background: #51a1a2;
+  border: 1px solid #51a1a2;
+}
+
+.c-work__tag--like:hover {
+  background: #f6993f;
+  border: 1px solid #f6993f;
+}
+
+.c-work__tag--twitter:hover {
+  background: #1DA1F2;
+  border: 1px solid #1DA1F2;
+}
+
+.c-work__sub {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 @media screen and (max-width: 425px) {
-  .c-work__content {
-    font-size: 12px;
-    max-height: 90px;
+  .c-work__sub {
+    display: block;
+  }
+}
+
+.c-work__name,
+.c-work__date {
+  font-size: 12px;
+}
+
+@media screen and (max-width: 425px) {
+  .c-work__name,
+  .c-work__date {
+    text-align: right;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .c-work__name {
+    margin-bottom: 10px;
   }
 }
 

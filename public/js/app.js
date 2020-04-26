@@ -1973,16 +1973,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     work: Object
   },
-  methods: {
-    // 詳細ページへ遷移する
-    goDetail: function goDetail() {
-      window.location.href = "/works/".concat(this.work.id);
-    }
-  }
+  methods: {}
 });
 
 /***/ }),
@@ -38520,45 +38530,83 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "c-work" }, [
-    _c("div", { staticClass: "c-work__header" }, [
-      _c("h3", { staticClass: "c-work__title", on: { click: _vm.goDetail } }, [
-        _vm._v(_vm._s(_vm.work.title))
+    _c("div", { staticClass: "c-work__main" }, [
+      _c("div", { staticClass: "c-work__left" }, [
+        _c("a", { staticClass: "c-work__title", attrs: { href: "" } }, [
+          _c("h3", [_vm._v(_vm._s(_vm.work.title))])
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "c-work__category" }, [
+          _vm._v(_vm._s(_vm.work.category))
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "c-work__center" }, [
+        _c("p", { staticClass: "c-work__type" }, [
+          _vm._v(_vm._s(_vm.work.type))
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "c-work__price" }, [
+          _c("span", { staticClass: "c-work__price--min" }, [
+            _vm._v(_vm._s(_vm.work.min_price))
+          ]),
+          _vm._v("~\n        "),
+          _c("br"),
+          _vm._v(" "),
+          _c("span", { staticClass: "c-work__price--max" }, [
+            _vm._v(_vm._s(_vm.work.max_price))
+          ]),
+          _vm._v("円\n      ")
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ]),
+      _vm._v(" "),
+      _vm._m(1)
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "c-work__sub" }, [
+      _c("p", { staticClass: "c-work__name" }, [
+        _vm._v("依頼者:" + _vm._s(_vm.work.user.name))
       ]),
       _vm._v(" "),
       _c("p", { staticClass: "c-work__date" }, [
         _vm._v("登録日:" + _vm._s(_vm.work.created_at))
       ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "c-work__body" }, [
-      _c("div", { staticClass: "c-work__info" }, [
-        _c("p", { staticClass: "c-work__type" }, [
-          _vm._v(_vm._s(_vm.work.type))
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "c-work__category" }, [
-          _vm._v(_vm._s(_vm.work.category))
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "c-work__price" }, [
-          _c("span", { staticClass: "c-work__price--lower" }, [
-            _vm._v(_vm._s(_vm.work.min_price))
-          ]),
-          _vm._v(" ~\n        "),
-          _c("span", { staticClass: "c-work__price--upper" }, [
-            _vm._v(_vm._s(_vm.work.max_price))
-          ]),
-          _vm._v("円\n      ")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "c-work__content" }, [
-        _vm._v(_vm._s(_vm.work.content))
-      ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "c-work__count" }, [
+      _c("span", [_vm._v("3")]),
+      _vm._v("人が応募中です\n      ")
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "c-work__right" }, [
+      _c("div", { staticClass: "c-work__right--inner" }, [
+        _c("a", { staticClass: "c-work__tag c-work__tag--more" }, [
+          _vm._v("くわしく!")
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "c-work__tag c-work__tag--like" }, [
+          _vm._v("気になる!")
+        ]),
+        _vm._v(" "),
+        _c("a", { staticClass: "c-work__tag c-work__tag--twitter" }, [
+          _vm._v("シェア")
+        ])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

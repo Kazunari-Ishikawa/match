@@ -3,28 +3,53 @@
   display: block;
   margin-bottom: $space_default;
   padding: $space_default;
-  &__header {
-    border-bottom: 1px solid $color_sub2;
+  &__main {
     display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin-bottom: $space_l;
+    margin-bottom: $space_default;
     @include mq() {
       display: block;
     }
   }
-  &__body {
-    display: flex;
+  &__left {
+    flex: 1 1 60%;
+    box-sizing: border-box;
+  }
+  &__center {
+    flex: 1 1 25%;
+    box-sizing: border-box;
+    border-left: 1px dashed $color_sub2;
+    border-right: 1px dashed $color_sub2;
+    margin: 0 $space_s;
+    padding: 0 $space_s;
     @include mq() {
-      display: block;
+      border-top: 1px dashed $color_sub2;
+      border-bottom: 1px dashed $color_sub2;
+      border-left: none;
+      border-right: none;
+      margin: $space_s 0;
+      padding: $space_s 0;
+      text-align: center;
+    }
+  }
+  &__right {
+    flex: 1 1 15%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &--inner {
+      @include mq() {
+        display: flex;
+        align-items: center;
+      }
     }
   }
   &__title {
-    font-size: $font-size_l;
-    max-width: 75%;
+    display: block;
+    font-size: $font-size_default;
+    margin-bottom: $space_default;
     @include mq() {
-      font-size: $font-size_default;
-      max-width: 100%;
+      font-size: $font-size_m;
       margin-bottom: $space_m;
     }
     &:hover {
@@ -32,22 +57,8 @@
       cursor: pointer;
     }
   }
-  &__date {
-    font-size: $font-size_s;
-    @include mq() {
-      text-align: right;
-    }
-  }
-  &__info {
-    box-sizing: border-box;
-    margin-right: $space_default;
-    min-width: 35%;
-    @include mq() {
-      margin-right: 0;
-      margin-bottom: $space_default;
-    }
-  }
-  &__type, &__category, &__price {
+  &__category, &__price {
+    display: block;
     font-size: $font-size_m;
     margin-bottom: $space_m;
     @include mq() {
@@ -55,20 +66,90 @@
       margin-bottom: $space_s;
     }
   }
-  &__price--lower, &__price--upper {
-    color: $color_sub1;
-    font-size: $font-size_l;
-    @include mq() {
-      font-size: $font-size_default;
+  &__price {
+    & > br {
+      display: block;
+      @include mq() {
+        display: none;
+      }
     }
   }
-  &__content {
+  &__price--min, &__price--max {
+    color: $color_sub1;
+    font-size: $font-size_l;
+  }
+  &__type {
+    border-bottom: 2px solid $color_main;
+    display: inline-block;
     font-size: $font-size_m;
-    max-height: 120px;
-    overflow: hidden;
+    margin-bottom: $space_m;
+  }
+  &__count {
+    font-size: $font-size_m;
+    text-align: center;
+    & > span {
+      font-size: $font-size_default;
+      font-weight: bold;
+    }
+  }
+  &__tag {
+    display: block;
+    font-size: $font-size_s;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid $color_sub2;
+    border-radius: $radius_s;
+    margin-bottom: $space_s;
+    transition: $time_s;
+    &:last-child {
+      margin-bottom: 0;
+    }
+    &:hover {
+      color: white;
+    }
     @include mq() {
-      font-size: $font-size_s;
-      max-height: 90px;
+      margin-bottom: 0;
+      margin-right: $space_s;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+    &--more {
+      &:hover {
+        background: $color_main;
+        border: 1px solid $color_main;
+      }
+    }
+    &--like {
+      &:hover {
+        background: $orange;
+        border: 1px solid $orange;
+      }
+    }
+    &--twitter {
+      &:hover {
+        background: $twitter;
+        border: 1px solid $twitter;
+      }
+    }
+  }
+  &__sub {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include mq() {
+      display: block;
+    }
+  }
+  &__name, &__date {
+    font-size: $font-size_s;
+    @include mq() {
+      text-align: right;
+    }
+  }
+  &__name {
+    @include mq() {
+      margin-bottom: $space_s;
     }
   }
 }
