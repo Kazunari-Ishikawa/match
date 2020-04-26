@@ -36,11 +36,11 @@
         </li>
         <li class="c-menu__item"><a class="c-menu__link" href="likeProjects.html">気になるリスト</a></li>
         <li class="c-menu__item"><a class="c-menu__link" href="history.html">閲覧履歴</a></li>
-        <li class="c-menu__item"><a class="c-menu__link" href="/mypage">マイページ</a></li>
+        <li class="c-menu__item"><a class="c-menu__link" href="{{route('users.mypage')}}">マイページ</a></li>
       </ul>
       <!-- スマホ向けメニュー -->
       <ul class="c-spMenu">
-        <li class="c-spMenu__item"><a class="c-spMenu__link" href="/mypage">マイページ</a></li>
+        <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('mypage')}}">マイページ</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('works.new') }}">案件を登録する</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('works.registered') }}">登録した案件一覧</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="appliedProjects.html">応募した案件一覧</a></li>
@@ -49,8 +49,8 @@
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="history.html">閲覧履歴</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="">投稿したコメント一覧</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="">ダイレクトメッセージ一覧</a></li>
-        <li class="c-spMenu__item"><a class="c-spMenu__link" href="editProfile.html">プロフィール編集</a></li>
-        <li class="c-spMenu__item"><a class="c-spMenu__link" href="editPassword.html">パスワード変更</a></li>
+        <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('users.edit') }}">プロフィール編集</a></li>
+        <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('users.editPassword')}}">パスワード変更</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="help.html">ヘルプ</a></li>
         <li class="c-menu__item c-menu__item--side">
           <a href="{{'logout'}}" class="c-menu__link c-menu__link--side" onclick="event.preventDefault();
