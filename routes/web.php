@@ -15,9 +15,6 @@ Route::get('/', function () {
     return view('index');
 });
 Auth::routes();
-Route::get('/works', 'WorksController@index')->name('works.index');
-Route::post('/api/works', 'WorksController@getworks');
-Route::get('/works/{id}', 'WorksController@show')->name('works.show');
 
 // ログイン時のみのルーティング
 Route::group(['middleware' => 'auth'], function(){
@@ -38,3 +35,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/works/registered', 'WorksController@showRegisteredWorks')->name('works.registered');
     Route::get('/api/works/registered', 'WorksController@getRegisteredWorks');
 });
+
+Route::get('/works', 'WorksController@index')->name('works.index');
+Route::post('/api/works', 'WorksController@getworks');
+Route::get('/works/{id}', 'WorksController@show')->name('works.show');
