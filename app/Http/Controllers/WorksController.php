@@ -78,6 +78,22 @@ class WorksController extends Controller
 
         return redirect('/mypage');
     }
+    // Workの完了処理
+    public function close($id)
+    {
+        if (!ctype_digit($id)) {
+            return redirect('/mypage');
+        }
+
+        if (!Auth::user()->works()->find($id)) {
+            return redirect('/mypage');
+        }
+        $work = Auth::user()->works()->find($id);
+        $work->is_closed = true;
+        $work->save();
+
+        return redirect('/mypage');
+    }
     // 登録した案件一覧日画面表示
     public function showRegisteredWorks()
     {
