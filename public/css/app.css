@@ -614,6 +614,7 @@ textarea {
 }
 
 .c-flatBtn:hover {
+  cursor: pointer;
   color: white;
   border: 1px solid #fa5858;
   background: #fa5858;
