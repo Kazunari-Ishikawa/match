@@ -585,6 +585,42 @@ textarea {
   }
 }
 
+.c-flatBtn {
+  display: block;
+  font-size: 14px;
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid #707070;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.c-flatBtn__container--right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.c-flatBtn:last-child {
+  margin-right: 0;
+}
+
+.c-flatBtn:hover {
+  color: white;
+  border: 1px solid #fa5858;
+  background: #fa5858;
+}
+
+@media screen and (max-width: 425px) {
+  .c-flatBtn {
+    font-size: 12px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+
 .c-form {
   background: white;
   padding: 40px;

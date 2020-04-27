@@ -11,6 +11,11 @@
     <form method="POST" action="{{ route('works.edit', $work->id) }}" class="c-form">
       @csrf
 
+      <div class="c-flatBtn__container--right">
+        <a id="deleteBtn" class="c-flatBtn">削除する</a>
+        <a id="closeBtn" class="c-flatBtn">完了する</a>
+      </div>
+
       <div class="c-form__group">
         <label for="title" class="c-form__label">タイトル</label>
         @error('title')
@@ -52,10 +57,8 @@
 
       <div class="c-form__group">
         <p for="price" class="c-form__label">金額（1,000円〜）</p>
-
         <span class="c-form__error">{{ $errors->first('min_price') }}</span>
         <span class="c-form__error">{{ $errors->first('max_price') }}</span>
-
         <div class="c-form__group--price">
           <input type="number" class="c-form__input c-form__input--price" name="min_price" id="lower" placeholder="1000" value="{{ old('min_price', $work->min_price) }}">
           <span class="c-form__price">〜</span>
