@@ -1,0 +1,30 @@
+.c-flatBtn {
+  &__container--right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: $space_default $space_3l;
+    @include mq() {
+      padding: $space_m $space_default;
+    }
+  }
+  display: block;
+  font-size: $font-size_m;
+  margin-right: $space_s;
+  &:last-child {
+    margin-right: 0;
+  }
+  padding: $space_s;
+  border: 1px solid $color_sub2;
+  border-radius: $radius_s;
+  transition: $time_s;
+  &:hover {
+    cursor: pointer;
+    color: white;
+    border: 1px solid $color_sub1;
+    background: $color_sub1;
+  }
+  @include mq() {
+    font-size: $font-size_s;
+  }
+}

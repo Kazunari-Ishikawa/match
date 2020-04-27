@@ -327,6 +327,7 @@ textarea {
 .l-container__body--1column {
   max-width: 720px;
   margin: 0 auto;
+  background: white;
 }
 
 .l-footer {
@@ -585,6 +586,46 @@ textarea {
   }
 }
 
+.c-flatBtn {
+  display: block;
+  font-size: 14px;
+  margin-right: 10px;
+  padding: 10px;
+  border: 1px solid #707070;
+  border-radius: 4px;
+  transition: 0.3s;
+}
+
+.c-flatBtn__container--right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 20px 40px;
+}
+
+@media screen and (max-width: 425px) {
+  .c-flatBtn__container--right {
+    padding: 15px 20px;
+  }
+}
+
+.c-flatBtn:last-child {
+  margin-right: 0;
+}
+
+.c-flatBtn:hover {
+  cursor: pointer;
+  color: white;
+  border: 1px solid #fa5858;
+  background: #fa5858;
+}
+
+@media screen and (max-width: 425px) {
+  .c-flatBtn {
+    font-size: 12px;
+  }
+}
+
 .c-form {
   background: white;
   padding: 40px;
@@ -599,6 +640,15 @@ textarea {
 .c-form--side {
   background: white;
   padding: 20px;
+}
+
+.c-form--btn {
+  background: white;
+  margin-right: 10px;
+}
+
+.c-form--btn:last-child {
+  margin-right: 0;
 }
 
 .c-form__group {

@@ -8,6 +8,13 @@
     background: white;
     padding: $space_default;
   }
+  &--btn {
+    background: white;
+    margin-right: $space_s;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
   &__group {
     margin-bottom: $space_3l;
     @include mq() {

@@ -8,6 +8,18 @@
   </div>
 
   <div class="l-container__body l-container__body--1column">
+
+    <div class="c-flatBtn__container--right">
+      <form action="{{ route('works.destroy', $work->id) }}" method="POST" class="c-form--btn">
+        @csrf
+        <input type="submit" id="deleteBtn" class="c-flatBtn" value="削除する">
+      </form>
+      <form action="" class="c-form--btn">
+        @csrf
+        <a id="closeBtn" class="c-flatBtn">完了する</a>
+      </form>
+    </div>
+
     <form method="POST" action="{{ route('works.edit', $work->id) }}" class="c-form">
       @csrf
 
@@ -52,10 +64,8 @@
 
       <div class="c-form__group">
         <p for="price" class="c-form__label">金額（1,000円〜）</p>
-
         <span class="c-form__error">{{ $errors->first('min_price') }}</span>
         <span class="c-form__error">{{ $errors->first('max_price') }}</span>
-
         <div class="c-form__group--price">
           <input type="number" class="c-form__input c-form__input--price" name="min_price" id="lower" placeholder="1000" value="{{ old('min_price', $work->min_price) }}">
           <span class="c-form__price">〜</span>
@@ -77,7 +87,6 @@
       </div>
 
     </form>
-  </div>
   </div>
 </section>
 

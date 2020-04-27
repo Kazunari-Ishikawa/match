@@ -42,15 +42,39 @@ class WorksController extends Controller
     // Work編集画面表示
     public function edit($id)
     {
-        $work = Work::find($id);
+        // パラメータが数字でない場合リダイレクト
+        if(!ctype_digit($id)){
+            return redirect('/mypage')->with('flash_message',__('Invalid operation was performed.'));
+        }
+        // 登録者以外が対象のworkを編集しようとした場合リダイレクト
+        if (!Auth::user()->works()->find($id)) {
+            return redirect('/mypage')->with('flash_message',__('This is not yours! DO NOT EDIT!'));
+        }
+        $work = Auth::user()->works()->find($id);
+        \Log::debug($work);
 
-        return view('works.edit', ['work' => $work]);
+        return view('works.edit', compact('work'));
     }
     // Work編集機能
     public function update(CreateWorkRequest $request, $id)
     {
         $work = Work::find($id);
         $work->fill($request->all())->save();
+
+        return redirect('/mypage');
+    }
+    // Workの削除
+    public function destroy($id)
+    {
+        // パラメータが数字でない場合リダイレクト
+        if(!ctype_digit($id)){
+            return redirect('/mypage')->with('flash_message',__('Invalid operation was performed.'));
+        }
+        // 登録者以外が対象のworkを編集しようとした場合リダイレクト
+        if (!Auth::user()->works()->find($id)) {
+            return redirect('/mypage')->with('flash_message',__('This is not yours! DO NOT EDIT!'));
+        }
+        $work = Auth::user()->works()->find($id)->delete();
 
         return redirect('/mypage');
     }
