@@ -8,13 +8,20 @@
   </div>
 
   <div class="l-container__body l-container__body--1column">
+
+    <div class="c-flatBtn__container--right">
+      <form action="{{ route('works.destroy', $work->id) }}" method="POST" class="c-form--btn">
+        @csrf
+        <input type="submit" id="deleteBtn" class="c-flatBtn" value="削除する">
+      </form>
+      <form action="" class="c-form--btn">
+        @csrf
+        <a id="closeBtn" class="c-flatBtn">完了する</a>
+      </form>
+    </div>
+
     <form method="POST" action="{{ route('works.edit', $work->id) }}" class="c-form">
       @csrf
-
-      <div class="c-flatBtn__container--right">
-        <a id="deleteBtn" class="c-flatBtn">削除する</a>
-        <a id="closeBtn" class="c-flatBtn">完了する</a>
-      </div>
 
       <div class="c-form__group">
         <label for="title" class="c-form__label">タイトル</label>
@@ -80,7 +87,6 @@
       </div>
 
     </form>
-  </div>
   </div>
 </section>
 

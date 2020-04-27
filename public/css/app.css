@@ -327,6 +327,7 @@ textarea {
 .l-container__body--1column {
   max-width: 720px;
   margin: 0 auto;
+  background: white;
 }
 
 .l-footer {
@@ -599,8 +600,13 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin-top: 15px;
-  margin-bottom: 15px;
+  padding: 20px 40px;
+}
+
+@media screen and (max-width: 425px) {
+  .c-flatBtn__container--right {
+    padding: 15px 20px;
+  }
 }
 
 .c-flatBtn:last-child {
@@ -616,8 +622,6 @@ textarea {
 @media screen and (max-width: 425px) {
   .c-flatBtn {
     font-size: 12px;
-    margin-top: 10px;
-    margin-bottom: 10px;
   }
 }
 
@@ -635,6 +639,15 @@ textarea {
 .c-form--side {
   background: white;
   padding: 20px;
+}
+
+.c-form--btn {
+  background: white;
+  margin-right: 10px;
+}
+
+.c-form--btn:last-child {
+  margin-right: 0;
 }
 
 .c-form__group {

@@ -54,6 +54,15 @@ class WorksController extends Controller
 
         return redirect('/mypage');
     }
+    // Workの削除
+    public function destroy($id)
+    {
+        $work = Auth::user()->works->find($id);
+        // $work = Work::find($id);
+        \Log::debug($work);
+
+        return redirect('/mypage');
+    }
     // 登録した案件一覧日画面表示
     public function showRegisteredWorks()
     {
