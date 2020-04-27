@@ -14,9 +14,9 @@
         @csrf
         <input type="submit" id="deleteBtn" class="c-flatBtn" value="削除する">
       </form>
-      <form action="" class="c-form--btn">
+      <form action="{{ route('works.close', $work->id) }}" method="POST" class="c-form--btn">
         @csrf
-        <a id="closeBtn" class="c-flatBtn">完了する</a>
+        <input type="submit" id="closeBtn" class="c-flatBtn" value="完了する">
       </form>
     </div>
 
