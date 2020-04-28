@@ -46,6 +46,17 @@
     <!-- コメント一覧 -->
     <comments-list :work-id='@json($work->id)'></comments-list>
 
+    <!-- コメント入力フォーム -->
+    <form action="{{ route('comments.new', $work->id) }}" method="POST" class="c-form--comment">
+      @csrf
+      <div class="c-form__group">
+        <textarea class="c-form__textarea"></textarea>
+      </div>
+      <div class="c-btn__container">
+        <input type="submit" class="c-btn c-btn--em" value="コメントする" />
+      </div>
+    </form>
+
   </div>
 </section>
 

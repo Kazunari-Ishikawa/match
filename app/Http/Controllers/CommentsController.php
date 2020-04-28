@@ -14,4 +14,11 @@ class CommentsController extends Controller
 
         return response($comments);
     }
+
+    // コメントを投稿する
+    public function create($id)
+    {
+        \Log::debug($id);
+        return redirect('/mypage');
+    }
 }

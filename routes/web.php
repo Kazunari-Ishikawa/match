@@ -36,6 +36,9 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/works/{id}/close', 'WorksController@close')->name('works.close');
     Route::get('/works/registered', 'WorksController@showRegisteredWorks')->name('works.registered');
     Route::get('/api/works/registered', 'WorksController@getRegisteredWorks');
+
+    // Comments
+    Route::post('/works/{id}/comments/create', 'CommentsController@create')->name('comments.new');
 });
 
 Route::get('/works', 'WorksController@index')->name('works.index');

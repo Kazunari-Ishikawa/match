@@ -1971,16 +1971,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -38618,39 +38608,13 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "c-comment__list" },
-    [
-      _vm._l(_vm.comments, function(comment) {
-        return _c("Comment", { key: comment.id, attrs: { comment: comment } })
-      }),
-      _vm._v(" "),
-      _vm._m(0)
-    ],
-    2
+    _vm._l(_vm.comments, function(comment) {
+      return _c("Comment", { key: comment.id, attrs: { comment: comment } })
+    }),
+    1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "form",
-      { staticClass: "c-form--comment", attrs: { action: "" } },
-      [
-        _c("div", { staticClass: "c-form__group" }, [
-          _c("textarea", { staticClass: "c-form__textarea" })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "c-btn__container" }, [
-          _c("input", {
-            staticClass: "c-btn c-btn--em",
-            attrs: { value: "コメントする" }
-          })
-        ])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
