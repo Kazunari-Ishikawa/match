@@ -2157,9 +2157,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 response = _context2.sent;
+                console.log(response);
                 _this2.works = response.data;
 
-              case 4:
+              case 5:
               case "end":
                 return _context2.stop();
             }

@@ -19,9 +19,6 @@ class WorksController extends Controller
     public function getworks()
     {
         $works = Work::with(['user'])->get();
-        foreach ($works as $work) {
-            $work->user;
-        }
 
         return response($works);
     }
@@ -102,8 +99,7 @@ class WorksController extends Controller
     // ユーザーが登録したWork一覧を取得する
     public function getRegisteredWorks()
     {
-        $user_id = Auth::id();
-        $works = Work::where('user_id', Auth::id())->get();
+        $works = Work::where('user_id', Auth::id())->with(['user'])->get();
 
         return response($works);
     }
