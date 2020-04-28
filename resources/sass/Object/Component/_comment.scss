@@ -1,0 +1,55 @@
+.c-comment {
+  &__list {
+    background: white;
+    padding: $space_default;
+    margin-bottom: $space_3l;
+  }
+  display: flex;
+  background: $color_bg;
+  border-radius: 8px;
+  margin-bottom: $space_3l;
+  @include mq() {
+    display: block;
+  }
+  &__account {
+    margin-right: $space_m;
+    padding: $space_m;
+    text-align: center;
+    @include mq() {
+      margin-right: 0;
+      padding: $space_s;
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+  &__icon {
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto;
+  }
+  &__name {
+    font-size: $font-size_m;
+    margin-bottom: $space_m;
+    @include mq() {
+      font-size: $font-size_s;
+      margin-bottom: $space_s;
+    }
+  }
+  &__tag {
+    font-size: $font-size_s;
+  }
+  &__body {
+    padding: $space_m;
+    @include mq() {
+      padding: $space_s;
+    }
+  }
+  &__content {
+    font-size: $font-size_m;
+    margin-bottom: $space_m;
+  }
+  &__date {
+    font-size: $font-size_s;
+  }
+}

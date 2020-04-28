@@ -1,15 +1,31 @@
 .p-projectDetail {
   background: white;
+  margin-bottom: $space_3l;
   padding: $space_3l;
   @include mq() {
     padding: $space_default;
   }
   &__title {
-    font-size: $font-size_2l;
-    margin-bottom: $space_2l;
+    font-size: $font-size_l;
+    margin-bottom: $space_l;
     @include mq() {
-      font-size: $font-size_l;
-      margin-bottom: $space_l;
+      font-size: $font-size_default;
+      margin-bottom: $space_default;
+    }
+  }
+  &__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: $font-size_s;
+    margin-bottom: $space_s;
+  }
+  &__body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include mq() {
+      display: block;
     }
   }
   &__table {
@@ -38,9 +54,49 @@
       padding-right: 0;
     }
   }
-  &__detail {
+  &__action {
+    margin-bottom: $space_default;
+  }
+  &__tag {
+    display: inline-block;
+    font-size: $font-size_s;
+    border: 1px solid $color_sub2;
+    border-radius: $radius_s;
+    padding: 5px;
+    transition: $time_s;
+    margin-right: $space_s;
+    &:last-child {
+      margin-right: 0;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+    &--container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: $space_default;
+      @include mq() {
+        justify-content: start;
+      }
+    }
+    &--like {
+      &:hover {
+        background: $orange;
+        border: 1px solid $orange;
+        color: white;
+      }
+    }
+    &--twitter {
+      &:hover {
+        background: $twitter;
+        border: 1px solid $twitter;
+        color: white;
+      }
+    }
+  }
+
+  &__content {
     background: $color_bg;
-    margin-bottom: $space_3l;
     padding: $space_default;
     @include mq() {
       font-size: $font-size_m;
