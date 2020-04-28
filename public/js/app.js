@@ -38639,12 +38639,17 @@ var render = function() {
   return _c("div", { staticClass: "c-work" }, [
     _c("div", { staticClass: "c-work__main" }, [
       _c("div", { staticClass: "c-work__left" }, [
-        _c("a", { staticClass: "c-work__title", attrs: { href: "" } }, [
-          _c("h3", [_vm._v(_vm._s(_vm.work.title))])
-        ]),
+        _c(
+          "a",
+          {
+            staticClass: "c-work__title",
+            attrs: { href: "/works/" + _vm.work.id }
+          },
+          [_c("h3", [_vm._v(_vm._s(_vm.work.title))])]
+        ),
         _vm._v(" "),
         _c("a", { staticClass: "c-work__category" }, [
-          _vm._v(_vm._s(_vm.work.category))
+          _vm._v(_vm._s(_vm.work.category_id))
         ])
       ]),
       _vm._v(" "),
@@ -38669,7 +38674,26 @@ var render = function() {
         _vm._m(0)
       ]),
       _vm._v(" "),
-      _vm._m(1)
+      _c("div", { staticClass: "c-work__right" }, [
+        _c("div", { staticClass: "c-work__right--inner" }, [
+          _c(
+            "a",
+            {
+              staticClass: "c-work__tag c-work__tag--more",
+              attrs: { href: "/works/" + _vm.work.id }
+            },
+            [_vm._v("くわしく!")]
+          ),
+          _vm._v(" "),
+          _c("a", { staticClass: "c-work__tag c-work__tag--like" }, [
+            _vm._v("気になる!")
+          ]),
+          _vm._v(" "),
+          _c("a", { staticClass: "c-work__tag c-work__tag--twitter" }, [
+            _vm._v("シェア")
+          ])
+        ])
+      ])
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "c-work__sub" }, [
@@ -38691,26 +38715,6 @@ var staticRenderFns = [
     return _c("p", { staticClass: "c-work__count" }, [
       _c("span", [_vm._v("3")]),
       _vm._v("人が応募中です\n      ")
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "c-work__right" }, [
-      _c("div", { staticClass: "c-work__right--inner" }, [
-        _c("a", { staticClass: "c-work__tag c-work__tag--more" }, [
-          _vm._v("くわしく!")
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "c-work__tag c-work__tag--like" }, [
-          _vm._v("気になる!")
-        ]),
-        _vm._v(" "),
-        _c("a", { staticClass: "c-work__tag c-work__tag--twitter" }, [
-          _vm._v("シェア")
-        ])
-      ])
     ])
   }
 ]
