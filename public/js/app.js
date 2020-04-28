@@ -1937,7 +1937,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: {// comment
+  props: {
+    comment: {
+      type: Object,
+      "default": null
+    }
   }
 });
 
@@ -1995,16 +1999,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   methods: {
     getComments: function getComments() {
+      var _this = this;
+
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                console.log("OK"); // const response = await axios.get(`/api/works/{this.id}/comments`);
-                // this.comments = response.data;
-                // console.log(this.comments);
+                _context.next = 2;
+                return axios.get("/api/works/".concat(_this.workId, "/comments"));
 
-              case 1:
+              case 2:
+                response = _context.sent;
+                _this.comments = response.data;
+                console.log(_this.comments);
+
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -38555,39 +38566,34 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "c-comment" }, [
-      _c("div", { staticClass: "c-comment__account" }, [
-        _c("img", {
-          staticClass: "c-comment__icon",
-          attrs: { src: "", alt: "" }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "c-comment__accountName" }, [
-          _c("p", { staticClass: "c-comment__name" }, [_vm._v("Username")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "c-comment__tag" }, [_vm._v("依頼者")])
-        ])
-      ]),
+  return _c("div", { staticClass: "c-comment" }, [
+    _c("div", { staticClass: "c-comment__account" }, [
+      _c("img", {
+        staticClass: "c-comment__icon",
+        attrs: { src: _vm.comment.icon, alt: "アイコン" }
+      }),
       _vm._v(" "),
-      _c("div", { staticClass: "c-comment__body" }, [
-        _c("p", { staticClass: "c-comment__content" }, [
-          _vm._v(
-            "コメントコメントコメントコメントコメントコメントコメントコメント"
-          )
+      _c("div", { staticClass: "c-comment__accountName" }, [
+        _c("p", { staticClass: "c-comment__name" }, [
+          _vm._v(_vm._s(_vm.comment.user.name))
         ]),
         _vm._v(" "),
-        _c("p", { staticClass: "c-comment__date" }, [_vm._v("2020/4/22 19:14")])
+        _c("div", { staticClass: "c-comment__tag" })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "c-comment__body" }, [
+      _c("p", { staticClass: "c-comment__content" }, [
+        _vm._v(_vm._s(_vm.comment.content))
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "c-comment__date" }, [
+        _vm._v(_vm._s(_vm.comment.created_at))
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

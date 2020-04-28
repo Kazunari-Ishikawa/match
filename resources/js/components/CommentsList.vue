@@ -33,10 +33,9 @@ export default {
   },
   methods: {
     async getComments() {
-      console.log("OK");
-      // const response = await axios.get(`/api/works/{this.id}/comments`);
-      // this.comments = response.data;
-      // console.log(this.comments);
+      const response = await axios.get(`/api/works/${this.workId}/comments`);
+      this.comments = response.data;
+      console.log(this.comments);
     }
   }
 };
