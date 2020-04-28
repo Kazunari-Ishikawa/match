@@ -37,7 +37,7 @@ class WorksController extends Controller
         $work->user_id = Auth::id();
         $work->fill($request->all())->save();
 
-        return view('works.new');
+        return redirect('/mypage');
     }
     // Work編集画面表示
     public function edit($id)

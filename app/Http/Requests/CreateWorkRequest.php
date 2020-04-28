@@ -26,7 +26,7 @@ class CreateWorkRequest extends FormRequest
         return [
             'title' => 'required|string|max:30',
             'type' => 'required|boolean',
-            'category' => 'required|numeric|between:1,8',
+            'category_id' => 'required|numeric|between:1,8',
             'max_price' => 'required|numeric|gt:min_price',
             'min_price' => 'required|numeric|min:1000',
             'content' => 'required|string',

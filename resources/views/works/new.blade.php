@@ -32,11 +32,11 @@
       </div>
 
       <div class="c-form__group">
-        <label for="category" class="c-form__label">カテゴリ</label>
-        @error('category')
+        <label for="category_id" class="c-form__label">カテゴリ</label>
+        @error('category_id')
         <span class="c-form__error">{{ $message }}</span>
         @enderror
-        <select name="category" id="category" class="c-form__select">
+        <select name="category_id" id="category_id" class="c-form__select">
           <option value="0">選択してください</option>
           <option value="1">ホームページ制作</option>
           <option value="2">WEBシステム開発</option>
