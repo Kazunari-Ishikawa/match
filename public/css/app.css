@@ -778,6 +778,18 @@ textarea {
   margin-bottom: 15px;
 }
 
+.c-form__text {
+  font-size: 14px;
+  margin-bottom: 15px;
+}
+
+@media screen and (max-width: 425px) {
+  .c-form__text {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+}
+
 .c-mypage__title {
   color: #51a1a2;
   background: white;
