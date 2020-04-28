@@ -9,8 +9,9 @@
     padding: $space_default;
   }
   &--comment {
-    padding: 0;
-    margin-bottom: $space_default;
+    padding-bottom: $space_3l;
+    margin-left: $space_default;
+    margin-right: $space_default;
   }
   &__group {
     margin-bottom: $space_3l;
