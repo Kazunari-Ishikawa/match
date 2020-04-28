@@ -44,54 +44,7 @@
     </div>
 
     <!-- コメント一覧 -->
-    <div class="c-comment__list">
-      <div class="c-comment">
-        <div class="c-comment__account">
-          <img src="" alt="" class="c-comment__icon">
-          <div class="c-comment__accountName">
-            <p class="c-comment__name">Username</p>
-            <div class="c-comment__tag">依頼者</div>
-          </div>
-        </div>
-        <div class="c-comment__body">
-          <p class="c-comment__content">コメントコメントコメントコメントコメントコメントコメントコメント</p>
-          <p class="c-comment__date">2020/4/22 19:14</p>
-        </div>
-      </div>
-      <div class="c-comment">
-        <div class="c-comment__user">
-          <img src="" alt="" class="c-comment__icon">
-          <p class="c-comment__name">Username</p>
-          <div class="c-comment__tag">依頼者</div>
-        </div>
-        <div class="c-comment__body">
-          <p class="c-comment__content">コメントコメントコメントコメントコメントコメントコメントコメント</p>
-          <p class="c-comment__date">2020/4/22 19:14</p>
-        </div>
-      </div>
-      <div class="c-comment">
-        <div class="c-comment__user">
-          <img src="" alt="" class="c-comment__icon">
-          <p class="c-comment__name">Username</p>
-          <div class="c-comment__tag">依頼者</div>
-        </div>
-        <div class="c-comment__body">
-          <p class="c-comment__content">コメントコメントコメントコメントコメントコメントコメントコメント</p>
-          <p class="c-comment__date">2020/4/22 19:14</p>
-        </div>
-      </div>
-
-      <!-- コメント入力フォーム -->
-      <form action="" class="c-form--comment">
-        <div class="c-form__group">
-          <textarea class="c-form__textarea"></textarea>
-        </div>
-        <div class="c-btn__container">
-          <input class="c-btn c-btn--em" value="コメントする">
-        </div>
-      </form>
-
-    </div>
+    <comments-list :work-id='@json($work->id)'></comments-list>
 
   </div>
 </section>

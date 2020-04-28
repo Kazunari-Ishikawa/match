@@ -112,7 +112,7 @@ class WorksController extends Controller
     {
         $work = Work::find($id);
         $work->user;
-
+        \Log::debug($work);
         return view('works.show', ['work' => $work]);
     }
 }
