@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Comment;
 
 class CommentsController extends Controller
@@ -16,9 +17,23 @@ class CommentsController extends Controller
     }
 
     // コメントを投稿する
-    public function create($id)
+    public function create(Request $request, $id)
     {
-        \Log::debug($id);
-        return redirect('/mypage');
+        // ログインユーザーでない場合ログインページへ
+        if (!Auth::check()) {
+            return redirect('/login');
+        }
+        // パラメータが数字でない場合リダイレクト
+        if(!ctype_digit($id)){
+            return redirect('/mypage')->with('flash_message',__('Invalid operation was performed.'));
+        }
+        $comment = new Comment;
+        $comment->work_id = $id;
+        $comment->user_id = Auth::id();
+        $comment->content = $request->content;
+        $comment->save();
+
+        // DBへ保存後、Work詳細表示へリダイレクト
+        return redirect()->route('works.show', ['id' => $id]);
     }
 }
