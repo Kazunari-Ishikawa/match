@@ -66,7 +66,7 @@
       <p class="c-workList__info">20件中 <span>1</span> - <span>10</span>件表示</p>
     </div>
 
-    <work-list></work-list>
+    <works-list></works-list>
 
   </section>
 
