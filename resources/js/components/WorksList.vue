@@ -1,6 +1,6 @@
 <template>
   <div class="c-workList">
-    <Work v-for="work in works" :key="work.id" :work="work" />
+    <Work v-for="work in works" :key="work.id" :work="work" :with-comment="withComment" />
   </div>
 </template>
 
@@ -11,7 +11,8 @@ export default {
     Work
   },
   props: {
-    isRegistered: Boolean
+    isRegistered: Boolean,
+    withComment: Boolean
   },
   data() {
     return {

@@ -2027,6 +2027,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Comment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Comment */ "./resources/js/components/Comment.vue");
 //
 //
 //
@@ -2061,9 +2062,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    Comment: _Comment__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   props: {
-    work: Object
+    work: Object,
+    withComment: Boolean
   },
   methods: {}
 });
@@ -2100,7 +2112,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     Work: _Work__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   props: {
-    isRegistered: Boolean
+    isRegistered: Boolean,
+    withComment: Boolean
   },
   data: function data() {
     return {
@@ -38636,74 +38649,89 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "c-work" }, [
-    _c("div", { staticClass: "c-work__main" }, [
-      _c("div", { staticClass: "c-work__left" }, [
-        _c(
-          "a",
-          {
-            staticClass: "c-work__title",
-            attrs: { href: "/works/" + _vm.work.id }
-          },
-          [_c("h3", [_vm._v(_vm._s(_vm.work.title))])]
-        ),
-        _vm._v(" "),
-        _c("a", { staticClass: "c-work__category" }, [
-          _vm._v(_vm._s(_vm.work.category_id))
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "c-work__center" }, [
-        _c("p", { staticClass: "c-work__type" }, [
-          _vm._v(_vm._s(_vm.work.type))
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "c-work__price" }, [
-          _c("span", { staticClass: "c-work__price--min" }, [
-            _vm._v(_vm._s(_vm.work.min_price))
-          ]),
-          _vm._v("~\n        "),
-          _c("span", { staticClass: "c-work__price--max" }, [
-            _vm._v(_vm._s(_vm.work.max_price))
-          ]),
-          _vm._v("円\n      ")
-        ]),
-        _vm._v(" "),
-        _vm._m(0)
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "c-work__right" }, [
-        _c("div", { staticClass: "c-work__right--inner" }, [
+  return _c(
+    "div",
+    { staticClass: "c-work" },
+    [
+      _c("div", { staticClass: "c-work__main" }, [
+        _c("div", { staticClass: "c-work__left" }, [
           _c(
             "a",
             {
-              staticClass: "c-work__tag c-work__tag--more",
+              staticClass: "c-work__title",
               attrs: { href: "/works/" + _vm.work.id }
             },
-            [_vm._v("くわしく!")]
+            [_c("h3", [_vm._v(_vm._s(_vm.work.title))])]
           ),
           _vm._v(" "),
-          _c("a", { staticClass: "c-work__tag c-work__tag--like" }, [
-            _vm._v("気になる!")
+          _c("a", { staticClass: "c-work__category" }, [
+            _vm._v(_vm._s(_vm.work.category_id))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "c-work__center" }, [
+          _c("p", { staticClass: "c-work__type" }, [
+            _vm._v(_vm._s(_vm.work.type))
           ]),
           _vm._v(" "),
-          _c("a", { staticClass: "c-work__tag c-work__tag--twitter" }, [
-            _vm._v("シェア")
+          _c("p", { staticClass: "c-work__price" }, [
+            _c("span", { staticClass: "c-work__price--min" }, [
+              _vm._v(_vm._s(_vm.work.min_price))
+            ]),
+            _vm._v("~\n        "),
+            _c("span", { staticClass: "c-work__price--max" }, [
+              _vm._v(_vm._s(_vm.work.max_price))
+            ]),
+            _vm._v("円\n      ")
+          ]),
+          _vm._v(" "),
+          _vm._m(0)
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "c-work__right" }, [
+          _c("div", { staticClass: "c-work__right--inner" }, [
+            _c(
+              "a",
+              {
+                staticClass: "c-work__tag c-work__tag--more",
+                attrs: { href: "/works/" + _vm.work.id }
+              },
+              [_vm._v("くわしく!")]
+            ),
+            _vm._v(" "),
+            _c("a", { staticClass: "c-work__tag c-work__tag--like" }, [
+              _vm._v("気になる!")
+            ]),
+            _vm._v(" "),
+            _c("a", { staticClass: "c-work__tag c-work__tag--twitter" }, [
+              _vm._v("シェア")
+            ])
           ])
         ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "c-work__sub" }, [
-      _c("p", { staticClass: "c-work__name" }, [
-        _vm._v("依頼者:" + _vm._s(_vm.work.user.name))
       ]),
       _vm._v(" "),
-      _c("p", { staticClass: "c-work__date" }, [
-        _vm._v("登録日:" + _vm._s(_vm.work.created_at))
-      ])
-    ])
-  ])
+      _c("div", { staticClass: "c-work__sub" }, [
+        _c("p", { staticClass: "c-work__name" }, [
+          _vm._v("依頼者:" + _vm._s(_vm.work.user.name))
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "c-work__date" }, [
+          _vm._v("登録日:" + _vm._s(_vm.work.created_at))
+        ])
+      ]),
+      _vm._v(" "),
+      _vm.withComment
+        ? [
+            _c("p", { staticClass: "c-work__comment" }, [
+              _vm._v("最新コメント")
+            ]),
+            _vm._v(" "),
+            _c("Comment")
+          ]
+        : _vm._e()
+    ],
+    2
+  )
 }
 var staticRenderFns = [
   function() {
@@ -38741,7 +38769,10 @@ var render = function() {
     "div",
     { staticClass: "c-workList" },
     _vm._l(_vm.works, function(work) {
-      return _c("Work", { key: work.id, attrs: { work: work } })
+      return _c("Work", {
+        key: work.id,
+        attrs: { work: work, "with-comment": _vm.withComment }
+      })
     }),
     1
   )

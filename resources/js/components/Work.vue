@@ -29,13 +29,25 @@
       <p class="c-work__name">依頼者:{{work.user.name}}</p>
       <p class="c-work__date">登録日:{{work.created_at}}</p>
     </div>
+
+    <template v-if="withComment">
+      <p class="c-work__comment">最新コメント</p>
+
+      <Comment />
+    </template>
   </div>
 </template>
 
 <script>
+import Comment from "./Comment";
+
 export default {
+  components: {
+    Comment
+  },
   props: {
-    work: Object
+    work: Object,
+    withComment: Boolean
   },
   methods: {}
 };
