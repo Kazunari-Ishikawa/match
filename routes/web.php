@@ -38,6 +38,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/api/works/registered', 'WorksController@getRegisteredWorks');
 
     // Comments
+    Route::get('/comments', 'CommentsController@index')->name('comments.index');
     Route::post('/works/{id}/comments/create', 'CommentsController@create')->name('comments.new');
 });
 
