@@ -2,16 +2,15 @@
   <div class="c-work">
     <div class="c-work__main">
       <div class="c-work__left">
-        <a href class="c-work__title">
+        <a :href="`/works/${work.id}`" class="c-work__title">
           <h3>{{work.title}}</h3>
         </a>
-        <a class="c-work__category">{{work.category}}</a>
+        <a class="c-work__category">{{work.category_id}}</a>
       </div>
       <div class="c-work__center">
         <p class="c-work__type">{{work.type}}</p>
         <p class="c-work__price">
           <span class="c-work__price--min">{{work.min_price}}</span>~
-          <br />
           <span class="c-work__price--max">{{work.max_price}}</span>円
         </p>
         <p class="c-work__count">
@@ -20,7 +19,7 @@
       </div>
       <div class="c-work__right">
         <div class="c-work__right--inner">
-          <a class="c-work__tag c-work__tag--more">くわしく!</a>
+          <a :href="`/works/${work.id}`" class="c-work__tag c-work__tag--more">くわしく!</a>
           <a class="c-work__tag c-work__tag--like">気になる!</a>
           <a class="c-work__tag c-work__tag--twitter">シェア</a>
         </div>

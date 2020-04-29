@@ -35,6 +35,7 @@ export default {
     },
     async getRegisteredWorks() {
       const response = await axios.get("/api/works/registered");
+      console.log(response);
       this.works = response.data;
     }
   }

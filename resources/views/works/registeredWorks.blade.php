@@ -13,7 +13,7 @@
       <p class="c-workList__info">件中 <span>1</span> - <span>10</span>件表示</p>
     </div>
 
-    <work-list :is-registered="true"></work-list>
+    <works-list :is-registered="true"></works-list>
 
   </section>
 

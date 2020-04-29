@@ -8,8 +8,8 @@
     <div class="p-projectDetail">
       <h2 class="p-projectDetail__title">{{ $work->title }}</h2>
       <div class="p-projectDetail__meta">
-        <div class="p-projectDetail__name">Username</div>
-        <div class="p-projectDetail__date">登録日:2020/4/25</div>
+        <div class="p-projectDetail__name">{{ $work->user->name}}</div>
+        <div class="p-projectDetail__date">登録日:{{ $work->created_at }}</div>
       </div>
       <div class="p-projectDetail__body">
         <table class="p-projectDetail__table">
