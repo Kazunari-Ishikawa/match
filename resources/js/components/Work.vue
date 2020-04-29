@@ -11,7 +11,6 @@
         <p class="c-work__type">{{work.type}}</p>
         <p class="c-work__price">
           <span class="c-work__price--min">{{work.min_price}}</span>~
-          <br />
           <span class="c-work__price--max">{{work.max_price}}</span>円
         </p>
         <p class="c-work__count">

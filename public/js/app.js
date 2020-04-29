@@ -2061,7 +2061,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     work: Object
@@ -38664,8 +38663,6 @@ var render = function() {
             _vm._v(_vm._s(_vm.work.min_price))
           ]),
           _vm._v("~\n        "),
-          _c("br"),
-          _vm._v(" "),
           _c("span", { staticClass: "c-work__price--max" }, [
             _vm._v(_vm._s(_vm.work.max_price))
           ]),
