@@ -34,8 +34,11 @@ class BoardsController extends Controller
     }
 
     // メッセージ詳細ページ表示
-    public function show()
+    public function show($id)
     {
-        return view('messages.show');
+        $board = Board::find($id);
+        $request_user_id = (Auth::id() == $board->from_user_id ) ? $board->from_user_id : $board->to_user_id;
+
+        return view('messages.show', compact('board', 'request_user_id'));
     }
 }

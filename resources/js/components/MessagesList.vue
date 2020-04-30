@@ -8,7 +8,12 @@
     </div>
 
     <div class="p-messageDetail__body">
-      <Message />
+      <Message
+        v-for="message in messages"
+        :key="message.id"
+        :message="message"
+        :request-user-id="requestUserId"
+      />
     </div>
 
     <div class="p-messageDetail__post">
@@ -29,6 +34,25 @@ import Message from "./Message";
 export default {
   components: {
     Message
+  },
+  props: {
+    boardId: Number,
+    requestUserId: Number
+  },
+  data() {
+    return {
+      messages: null
+    };
+  },
+  created() {
+    this.getMessages();
+  },
+  methods: {
+    async getMessages() {
+      const response = await axios.get(`/api/messages/${this.boardId}`);
+      console.log(response);
+      this.messages = response.data;
+    }
   }
 };
 </script>
