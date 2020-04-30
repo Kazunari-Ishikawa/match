@@ -125,7 +125,12 @@ class WorksController extends Controller
 
     public function apply($id)
     {
-        \Log::info(Auth::user()->name.'がwork_id：'.$id.'に応募しました。');
-        return redirect('/mypage');
+        $work = Work::with('user')->find($id);
+        // BoardsControllerを呼び出して、createメソッドを行う
+        $board = app()->make('App\Http\Controllers\BoardsController');
+        $board->create($id, Auth::id(), $work->user_id);
+
+        // return redirect()->action('BoardsController@create', ['id' => $id]);
+        return redirect('/messages');
     }
 }
