@@ -36,7 +36,10 @@
             <div class="p-projectDetail__tag p-projectDetail__tag--twitter">シェア!</div>
           </div>
           <div class="c-btn__container">
-            <div class="c-btn c-btn--em">応募する</div>
+            <form action="{{ route('works.apply', $work->id) }}" method="POST">
+              @csrf
+              <input type="submit" class="c-btn c-btn--em" value="応募する">
+            </form>
           </div>
         </div>
       </div>

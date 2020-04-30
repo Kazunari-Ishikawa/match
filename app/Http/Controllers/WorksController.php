@@ -122,4 +122,10 @@ class WorksController extends Controller
         $work->user;
         return view('works.show', ['work' => $work]);
     }
+
+    public function apply($id)
+    {
+        \Log::info(Auth::user()->name.'がwork_id：'.$id.'に応募しました。');
+        return redirect('/mypage');
+    }
 }
