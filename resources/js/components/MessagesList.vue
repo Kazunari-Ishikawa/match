@@ -1,0 +1,34 @@
+<template>
+  <div class="p-messageDetail">
+    <div class="p-messageDetail__header">
+      <h2 class="p-messageDetail__title">
+        かず
+        <span>さん</span>
+      </h2>
+    </div>
+
+    <div class="p-messageDetail__body">
+      <Message />
+    </div>
+
+    <div class="p-messageDetail__post">
+      <form action method="POST">
+        <div class="c-form__group--sm">
+          <textarea class="c-form__textarea c-form__textarea--message"></textarea>
+        </div>
+        <div class="c-btn__container">
+          <input type="submit" class="c-btn c-btn--em" value="送信する" />
+        </div>
+      </form>
+    </div>
+  </div>
+</template>
+
+<script>
+import Message from "./Message";
+export default {
+  components: {
+    Message
+  }
+};
+</script>
