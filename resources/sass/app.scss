@@ -28,6 +28,8 @@
 @import 'Object/Component/projectTab';
 @import 'Object/Component/spMenu';
 @import 'Object/Component/menuTrigger';
+@import 'Object/Component/message';
+@import 'Object/Component/messageBoard';
 
 // Project
 @import 'Object/Project/hero';
@@ -37,3 +39,4 @@
 @import 'Object/Project/projectDetail';
 
 // Utility
+@import 'Object/Utility/u-mb0';

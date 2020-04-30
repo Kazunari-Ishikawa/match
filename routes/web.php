@@ -38,10 +38,17 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/api/works/registered', 'WorksController@getRegisteredWorks');
     Route::get('/api/works/commented', 'WorksController@getCommentedWorks');
 
+    Route::post('/works/{id}/apply', 'WorksController@apply')->name('works.apply');
+
     // Comments
     Route::get('/comments', 'CommentsController@index')->name('comments.index');
     Route::post('/works/{id}/comments/create', 'CommentsController@create')->name('comments.new');
     Route::get('/api/works/{id}/comments/latest', 'CommentsController@getLatestComment');
+
+    // Messages
+    Route::get('/messages', function(){
+        return view('messages.index');
+    });
 });
 
 Route::get('/works', 'WorksController@index')->name('works.index');

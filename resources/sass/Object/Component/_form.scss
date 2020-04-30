@@ -9,9 +9,11 @@
     padding: $space_default;
   }
   &--comment {
-    padding-bottom: $space_3l;
-    margin-left: $space_default;
-    margin-right: $space_default;
+    padding: 0;
+    margin-bottom: $space_default;
+  }
+  &--message {
+    padding: 0;
   }
   &__group {
     margin-bottom: $space_3l;
@@ -33,6 +35,9 @@
       text-align: center;
       position: relative;
       width: 150px;
+    }
+    &--sm {
+      margin-bottom: $space_default;
     }
   }
   &__label {
@@ -70,6 +75,12 @@
   }
   &__textarea {
     height: 200px;
+    &--message {
+      height: 80px;
+      @include mq() {
+        height: 40px;
+      }
+    }
   }
   &__radio {
     width: 20px;

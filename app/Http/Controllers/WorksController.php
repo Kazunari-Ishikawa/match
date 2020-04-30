@@ -122,4 +122,15 @@ class WorksController extends Controller
         $work->user;
         return view('works.show', ['work' => $work]);
     }
+
+    public function apply($id)
+    {
+        $work = Work::with('user')->find($id);
+        // BoardsControllerを呼び出して、createメソッドを行う
+        $board = app()->make('App\Http\Controllers\BoardsController');
+        $board->create($id, Auth::id(), $work->user_id);
+
+        // return redirect()->action('BoardsController@create', ['id' => $id]);
+        return redirect('/messages');
+    }
 }

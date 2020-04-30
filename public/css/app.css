@@ -717,9 +717,12 @@ textarea {
 }
 
 .c-form--comment {
-  padding-bottom: 40px;
-  margin-left: 20px;
-  margin-right: 20px;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.c-form--message {
+  padding: 0;
 }
 
 .c-form__group {
@@ -748,6 +751,10 @@ textarea {
   text-align: center;
   position: relative;
   width: 150px;
+}
+
+.c-form__group--sm {
+  margin-bottom: 20px;
 }
 
 .c-form__label {
@@ -800,6 +807,16 @@ textarea {
 
 .c-form__textarea {
   height: 200px;
+}
+
+.c-form__textarea--message {
+  height: 80px;
+}
+
+@media screen and (max-width: 425px) {
+  .c-form__textarea--message {
+    height: 40px;
+  }
 }
 
 .c-form__radio {
@@ -1417,6 +1434,142 @@ textarea {
   bottom: 0;
 }
 
+.c-message {
+  width: 70%;
+  margin-bottom: 20px;
+}
+
+.c-message:last-child {
+  margin-bottom: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .c-message {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .c-message {
+    width: 90%;
+    margin-bottom: 10px;
+  }
+}
+
+.c-message--other {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.c-message--myself {
+  margin-left: auto;
+  margin-right: 0;
+}
+
+.c-message__content {
+  padding: 20px 10px;
+  margin-bottom: 10px;
+}
+
+.c-message__content--other {
+  background: rgba(81, 161, 162, 0.5);
+  border-radius: 15px 15px 15px 0;
+}
+
+.c-message__content--myself {
+  background: rgba(250, 88, 88, 0.5);
+  border-radius: 15px 15px 0 15px;
+}
+
+@media screen and (max-width: 425px) {
+  .c-message__content {
+    font-size: 14px;
+    padding: 15px 10px;
+  }
+}
+
+.c-message__date {
+  font-size: 14px;
+}
+
+.c-message__date--myself {
+  text-align: right;
+}
+
+@media screen and (max-width: 425px) {
+  .c-message__date {
+    font-size: 12px;
+  }
+}
+
+.c-messageBoard {
+  background: white;
+  margin-bottom: 20px;
+  padding: 20px;
+  display: flex;
+  transition: 0.3s;
+}
+
+@media screen and (max-width: 425px) {
+  .c-messageBoard {
+    padding: 10px;
+  }
+}
+
+.c-messageBoard__icon {
+  display: block;
+  width: 60px;
+  height: 60px;
+  margin-right: 20px;
+  flex: 0 0 auto;
+}
+
+@media screen and (max-width: 425px) {
+  .c-messageBoard__icon {
+    margin-right: 10px;
+  }
+}
+
+.c-messageBoard__body {
+  flex: 1 1 auto;
+}
+
+@media screen and (max-width: 425px) {
+  .c-messageBoard__body {
+    font-size: 14px;
+  }
+}
+
+.c-messageBoard__name {
+  margin-bottom: 10px;
+}
+
+.c-messageBoard__name > span {
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 425px) {
+  .c-messageBoard__name > span {
+    font-size: 12px;
+  }
+}
+
+.c-messageBoard__date {
+  flex: 0 1 auto;
+  font-size: 14px;
+}
+
+@media screen and (max-width: 425px) {
+  .c-messageBoard__date {
+    font-size: 12px;
+  }
+}
+
+.c-messageBoard__list {
+  margin-bottom: 40px;
+}
+
 .p-hero {
   background-image: url(/images/top-img-2.jpg?bd340779fbbd1aa662693220c9774ef0);
   background-attachment: fixed;
@@ -1746,5 +1899,9 @@ textarea {
     font-size: 14px;
     padding: 10px;
   }
+}
+
+.u-mb0 {
+  margin-bottom: 0;
 }
 
