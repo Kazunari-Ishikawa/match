@@ -13,5 +13,26 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    board: Object
+  },
+  data() {
+    return {
+      message: null
+    };
+  },
+  created() {
+    // this.getLatestMessage();
+  },
+  methods: {
+    async getLatestMessage() {
+      const response = await axios.get(
+        `/api/boards/${this.board.id}/messages/latest`
+      );
+      console.log(response);
+      this.message = response.data;
+    }
+  }
+};
 </script>

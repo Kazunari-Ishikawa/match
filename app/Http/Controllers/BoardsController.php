@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Board;
 
 class BoardsController extends Controller
@@ -20,5 +21,13 @@ class BoardsController extends Controller
         $board->from_user_id = $from_user_id;
         $board->to_user_id = $to_user_id;
         $board->save();
+    }
+
+    public function getBoards()
+    {
+        $boards = Board::with(['fromUser', 'toUser'])->where('from_user_id', Auth::id())
+            ->orWhere('to_user_id', Auth::id())->get();
+        \Log::debug($boards);
+        return response($boards);
     }
 }

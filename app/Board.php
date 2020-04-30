@@ -17,6 +17,11 @@ class Board extends Model
         return $this->hasOne('App\User', 'id', 'to_user_id');
     }
 
+    // public function user()
+    // {
+    //     return $this->hasOne('App\User');
+    // }
+
     public function messages()
     {
         return $this->hasMany('App\Message');
