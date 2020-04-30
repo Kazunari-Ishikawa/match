@@ -9,7 +9,7 @@ class BoardsController extends Controller
 {
     public function index()
     {
-        view('messages.index');
+       return view('messages.index');
     }
 
     // 受け取った各種IDをもとにBoardを作成する

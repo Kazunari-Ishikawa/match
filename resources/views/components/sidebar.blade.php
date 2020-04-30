@@ -9,7 +9,7 @@
   </ul>
   <ul class="c-menu--side">
     <li class="c-menu__item c-menu__item--side"><a href="{{ route('comments.index')}}" class="c-menu__link c-menu__link--side">投稿したコメント一覧</a></li>
-    <li class="c-menu__item c-menu__item--side"><a href="messages.html" class="c-menu__link c-menu__link--side">ダイレクトメッセージ一覧</a></li>
+    <li class="c-menu__item c-menu__item--side"><a href="{{ route('messages.index') }}" class="c-menu__link c-menu__link--side">ダイレクトメッセージ一覧</a></li>
   </ul>
   <ul class="c-menu--side">
     <li class="c-menu__item c-menu__item--side"><a href="{{ route('users.edit')}}" class="c-menu__link c-menu__link--side">プロフィール編集</a></li>
