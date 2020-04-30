@@ -1942,9 +1942,6 @@ __webpack_require__.r(__webpack_exports__);
       type: Object,
       "default": null
     }
-  },
-  created: function created() {
-    console.log("Comment created.");
   }
 });
 
@@ -2095,10 +2092,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   created: function created() {
-    console.log("Work created.");
-
     if (this.withComment) {
-      console.log("実行");
       this.getLatestComment();
     }
   },
@@ -2112,18 +2106,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                console.log(_this.getCommentFinished);
-                _context.next = 3;
+                _context.next = 2;
                 return axios.get("/api/works/".concat(_this.work.id, "/comments/latest"));
 
-              case 3:
+              case 2:
                 response = _context.sent;
                 console.log(response);
                 _this.comment = response.data;
                 _this.getCommentFinished = true;
-                console.log(_this.getCommentFinished);
 
-              case 8:
+              case 6:
               case "end":
                 return _context.stop();
             }

@@ -21,9 +21,6 @@ export default {
       type: Object,
       default: null
     }
-  },
-  created() {
-    console.log("Comment created.");
   }
 };
 </script>
