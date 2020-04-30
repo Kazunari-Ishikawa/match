@@ -2175,9 +2175,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    messsage: Object,
+    message: Object,
     requestUserId: Number
   }
 });
@@ -39070,24 +39079,46 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "c-message c-message--other" }, [
-      _c("p", { staticClass: "c-message__content c-message__content--other" }, [
-        _vm._v("メッセージメッセージメッセージメッセージメッセージメッセージ")
-      ]),
+  return _c(
+    "div",
+    {
+      staticClass: "c-message",
+      class: [
+        _vm.requestUserId == _vm.message.user_id
+          ? "c-message--myself"
+          : "c-message--other"
+      ]
+    },
+    [
+      _c(
+        "p",
+        {
+          staticClass: "c-message__content",
+          class: [
+            _vm.requestUserId == _vm.message.user_id
+              ? "c-message__content--myself"
+              : "c-message__content--other"
+          ]
+        },
+        [_vm._v(_vm._s(_vm.message.content))]
+      ),
       _vm._v(" "),
-      _c("p", { staticClass: "c-message__date c-message__date--other" }, [
-        _vm._v("4/25 12:15")
-      ])
-    ])
-  }
-]
+      _c(
+        "p",
+        {
+          staticClass: "c-message__date",
+          class: [
+            _vm.requestUserId == _vm.message.user_id
+              ? "c-message__date--myself"
+              : "c-message__date--other"
+          ]
+        },
+        [_vm._v(_vm._s(_vm.message.created_at))]
+      )
+    ]
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
