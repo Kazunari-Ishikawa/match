@@ -2253,7 +2253,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
-      messages: null
+      messages: null,
+      messageText: ""
     };
   },
   created: function created() {
@@ -2283,6 +2284,36 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee);
+      }))();
+    },
+    sendMessage: function sendMessage() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return axios.post("/api/messages/".concat(_this2.boardId, "/"), {
+                  board_id: _this2.boardId,
+                  user_id: _this2.requestUserId,
+                  content: _this2.messageText
+                });
+
+              case 2:
+                response = _context2.sent;
+                console.log(response);
+
+                _this2.getMessages();
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
       }))();
     }
   }
@@ -39155,7 +39186,45 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    _vm._m(1)
+    _c("div", { staticClass: "p-messageDetail__post" }, [
+      _c(
+        "form",
+        {
+          on: {
+            submit: function($event) {
+              $event.preventDefault()
+              return _vm.sendMessage($event)
+            }
+          }
+        },
+        [
+          _c("div", { staticClass: "c-form__group--sm" }, [
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.messageText,
+                  expression: "messageText"
+                }
+              ],
+              staticClass: "c-form__textarea c-form__textarea--message",
+              domProps: { value: _vm.messageText },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.messageText = $event.target.value
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _vm._m(1)
+        ]
+      )
+    ])
   ])
 }
 var staticRenderFns = [
@@ -39174,21 +39243,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "p-messageDetail__post" }, [
-      _c("form", { attrs: { action: "", method: "POST" } }, [
-        _c("div", { staticClass: "c-form__group--sm" }, [
-          _c("textarea", {
-            staticClass: "c-form__textarea c-form__textarea--message"
-          })
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "c-btn__container" }, [
-          _c("input", {
-            staticClass: "c-btn c-btn--em",
-            attrs: { type: "submit", value: "送信する" }
-          })
-        ])
-      ])
+    return _c("div", { staticClass: "c-btn__container" }, [
+      _c("input", {
+        staticClass: "c-btn c-btn--em",
+        attrs: { type: "submit", value: "送信する" }
+      })
     ])
   }
 ]

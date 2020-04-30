@@ -50,6 +50,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/api/boards', 'BoardsController@getBoards');
     Route::get('/messages/{id}', 'BoardsController@show')->name('messages.show');
     Route::get('/api/messages/{id}', 'MessagesController@getMessages');
+    Route::post('/api/messages/{id}', 'MessagesController@sendMessage');
 });
 
 Route::get('/works', 'WorksController@index')->name('works.index');
