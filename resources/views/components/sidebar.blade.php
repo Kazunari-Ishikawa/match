@@ -8,7 +8,7 @@
     <li class="c-menu__item c-menu__item--side"><a href="history.html" class="c-menu__link c-menu__link--side">閲覧履歴</a></li>
   </ul>
   <ul class="c-menu--side">
-    <li class="c-menu__item c-menu__item--side"><a href="comments.html" class="c-menu__link c-menu__link--side">投稿したコメント一覧</a></li>
+    <li class="c-menu__item c-menu__item--side"><a href="{{ route('comments.index')}}" class="c-menu__link c-menu__link--side">投稿したコメント一覧</a></li>
     <li class="c-menu__item c-menu__item--side"><a href="messages.html" class="c-menu__link c-menu__link--side">ダイレクトメッセージ一覧</a></li>
   </ul>
   <ul class="c-menu--side">

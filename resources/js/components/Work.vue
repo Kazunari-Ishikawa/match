@@ -29,14 +29,46 @@
       <p class="c-work__name">依頼者:{{work.user.name}}</p>
       <p class="c-work__date">登録日:{{work.created_at}}</p>
     </div>
+
+    <template v-if="getCommentFinished">
+      <p class="c-work__comment">最新コメント</p>
+
+      <Comment :comment="comment" />
+    </template>
   </div>
 </template>
 
 <script>
+import Comment from "./Comment";
+
 export default {
-  props: {
-    work: Object
+  components: {
+    Comment
   },
-  methods: {}
+  props: {
+    work: Object,
+    withComment: Boolean
+  },
+  data() {
+    return {
+      comment: null,
+      getCommentFinished: false
+    };
+  },
+  created() {
+    if (this.withComment) {
+      this.getLatestComment();
+    }
+  },
+  methods: {
+    async getLatestComment() {
+      const response = await axios.get(
+        `/api/works/${this.work.id}/comments/latest`
+      );
+      console.log(response);
+      this.comment = response.data;
+      this.getCommentFinished = true;
+    }
+  }
 };
 </script>

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CreateWorkRequest;
 use App\Work;
 use App\User;
+use App\Comment;
 
 class WorksController extends Controller
 {
@@ -103,6 +104,17 @@ class WorksController extends Controller
 
         return response($works);
     }
+    // ユーザーがコメントしたWork一覧を取得する
+    public function getCommentedWorks()
+    {
+        // ユーザーがコメントしたWorkのIDを取得する
+        $commented_work_id = Comment::select('work_id')->where('user_id', Auth::id())->groupBy('work_id')->get();
+        // 該当するWorkを取得
+        $works = Work::with('user')->find($commented_work_id);
+
+        return response()->json($works);
+    }
+
     // Work詳細表示
     public function show($id)
     {

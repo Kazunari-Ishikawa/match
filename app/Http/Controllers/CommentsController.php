@@ -4,14 +4,21 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Comment;
+use App\Work;
 
 class CommentsController extends Controller
 {
-    // パラメータで指定されたWorkに対するCommentを取得する
+    public function index()
+    {
+        return view('comments.index');
+    }
+
+    // パラメータで指定されたWorkのCommentを取得する
     public function getComments($id)
     {
-        $comments = Comment::where('work_id', $id)->with(['user'])->get();
+        $comments = Comment::where('work_id', $id)->with('user')->get();
 
         return response($comments);
     }
@@ -35,5 +42,13 @@ class CommentsController extends Controller
 
         // DBへ保存後、Work詳細表示へリダイレクト
         return redirect()->route('works.show', ['id' => $id]);
+    }
+
+    // パラメータで指定されたWorkの最新Commentを取得する
+    public function getLatestComment($id)
+    {
+        $comment = Comment::with('user')->where('work_id', $id)->latest()->first();
+
+        return response()->json($comment);
     }
 }

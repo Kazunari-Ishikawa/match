@@ -1,6 +1,6 @@
 <template>
   <div class="c-workList">
-    <Work v-for="work in works" :key="work.id" :work="work" />
+    <Work v-for="work in works" :key="work.id" :work="work" :with-comment="withComment" />
   </div>
 </template>
 
@@ -11,19 +11,22 @@ export default {
     Work
   },
   props: {
-    isRegistered: Boolean
+    isRegistered: Boolean,
+    withComment: Boolean
   },
   data() {
     return {
       works: null
     };
   },
-  mounted() {
+  created() {
     this.selectList();
   },
   methods: {
     selectList() {
-      if (this.isRegistered) {
+      if (this.withComment) {
+        this.getCommentedWorks();
+      } else if (this.isRegistered) {
         this.getRegisteredWorks();
       } else {
         this.getWorks();
@@ -31,10 +34,16 @@ export default {
     },
     async getWorks() {
       const response = await axios.post("/api/works");
+      console.log(response);
       this.works = response.data;
     },
     async getRegisteredWorks() {
       const response = await axios.get("/api/works/registered");
+      console.log(response);
+      this.works = response.data;
+    },
+    async getCommentedWorks() {
+      const response = await axios.get("/api/works/commented");
       console.log(response);
       this.works = response.data;
     }
