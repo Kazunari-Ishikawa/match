@@ -1,0 +1,46 @@
+.c-messageBoard {
+  background: white;
+  margin-bottom: $space_default;
+  padding: $space_default;
+  display: flex;
+  transition: $time_s;
+  @include mq() {
+    padding: $space_s;
+  }
+  &__icon {
+    display: block;
+    width: 60px;
+    height: 60px;
+    margin-right: $space_default;
+    flex: 0 0 auto;
+    @include mq() {
+      margin-right: $space_s;
+    }
+  }
+  &__body {
+    flex: 1 1 auto;
+    @include mq() {
+      font-size: $font-size_m;
+    }
+  }
+  &__name {
+    margin-bottom: $space_s;
+    & > span {
+      margin-left: $space_s;
+      font-size: $font-size_m;
+      @include mq() {
+        font-size: $font-size_s;
+      }
+    }
+  }
+  &__date {
+    flex: 0 1 auto;
+    font-size: $font-size_m;
+    @include mq() {
+      font-size: $font-size_s;
+    }
+  }
+  &__list {
+    margin-bottom: $space_3l;
+  }
+}

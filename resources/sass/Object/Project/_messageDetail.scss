@@ -1,0 +1,29 @@
+.p-messageDetail {
+  background: white;
+  margin-bottom: $space_3l;
+  padding: $space_default;
+  &__header {
+    margin-bottom: $space_default;
+  }
+  &__title {
+    color: $color_main;
+    font-size: $font-size_l;
+    font-weight: bold;
+    & > span {
+      color: $color_default;
+      font-size: $font-size_s;
+      margin-left: 5px;
+    }
+  }
+  &__body {
+    margin-bottom: $space_default;
+    max-height: 280px;
+    overflow: scroll;
+    background: $color_bg;
+    padding: $space_default;
+    @include mq() {
+      padding: $space_s;
+      max-height: 200px;
+    }
+  }
+}
