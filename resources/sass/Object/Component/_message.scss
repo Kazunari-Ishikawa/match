@@ -23,11 +23,11 @@
     padding: $space_default $space_s;
     margin-bottom: $space_s;
     &--other {
-      background: rgba($color: $color_main, $alpha: 0.5);
+      background: rgba($color: $color_main, $alpha: 0.3);
       border-radius: 15px 15px 15px 0;
     }
     &--myself {
-      background: rgba($color: $color_sub1, $alpha: 0.5);
+      background: rgba($color: $color_sub1, $alpha: 0.3);
       border-radius: 15px 15px 0 15px;
     }
     @include mq() {

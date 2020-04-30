@@ -1,5 +1,5 @@
 <template>
-  <a href="messageDetail.html" class="c-messageBoard">
+  <a :href="`/messages/${board.id}`" class="c-messageBoard">
     <img alt="アイコン" class="c-messageBoard__icon" />
     <div class="c-messageBoard__body">
       <p class="c-messageBoard__name">
