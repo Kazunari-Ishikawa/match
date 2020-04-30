@@ -48,6 +48,7 @@ Route::group(['middleware' => 'auth'], function(){
     // Messages
     Route::get('/messages', 'BoardsController@index')->name('messages.index');
     Route::get('/api/boards', 'BoardsController@getBoards');
+    Route::get('/messages/{id}', 'BoardsController@show')->name('messages.show');
 });
 
 Route::get('/works', 'WorksController@index')->name('works.index');

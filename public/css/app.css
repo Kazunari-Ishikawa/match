@@ -1472,12 +1472,12 @@ textarea {
 }
 
 .c-message__content--other {
-  background: rgba(81, 161, 162, 0.5);
+  background: rgba(81, 161, 162, 0.3);
   border-radius: 15px 15px 15px 0;
 }
 
 .c-message__content--myself {
-  background: rgba(250, 88, 88, 0.5);
+  background: rgba(250, 88, 88, 0.3);
   border-radius: 15px 15px 0 15px;
 }
 
@@ -1898,6 +1898,43 @@ textarea {
   .p-projectDetail__content {
     font-size: 14px;
     padding: 10px;
+  }
+}
+
+.p-messageDetail {
+  background: white;
+  margin-bottom: 40px;
+  padding: 20px;
+}
+
+.p-messageDetail__header {
+  margin-bottom: 20px;
+}
+
+.p-messageDetail__title {
+  color: #51a1a2;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.p-messageDetail__title > span {
+  color: #333;
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+.p-messageDetail__body {
+  margin-bottom: 20px;
+  max-height: 280px;
+  overflow: scroll;
+  background: #f5f5f5;
+  padding: 20px;
+}
+
+@media screen and (max-width: 425px) {
+  .p-messageDetail__body {
+    padding: 10px;
+    max-height: 200px;
   }
 }
 

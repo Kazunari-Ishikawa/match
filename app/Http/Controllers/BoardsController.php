@@ -8,6 +8,7 @@ use App\Board;
 
 class BoardsController extends Controller
 {
+    // メッセージボード一覧を取得する
     public function index()
     {
        return view('messages.index');
@@ -23,11 +24,18 @@ class BoardsController extends Controller
         $board->save();
     }
 
+    // ログインユーザーのメッセージボードを取得する
     public function getBoards()
     {
         $boards = Board::with(['fromUser', 'toUser'])->where('from_user_id', Auth::id())
             ->orWhere('to_user_id', Auth::id())->get();
 
         return response($boards);
+    }
+
+    // メッセージ詳細ページ表示
+    public function show()
+    {
+        return view('messages.show');
     }
 }

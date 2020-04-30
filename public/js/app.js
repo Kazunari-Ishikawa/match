@@ -38784,36 +38784,39 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "a",
+    {
+      staticClass: "c-messageBoard",
+      attrs: { href: "/messages/" + _vm.board.id }
+    },
+    [
+      _c("img", {
+        staticClass: "c-messageBoard__icon",
+        attrs: { alt: "アイコン" }
+      }),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _c("p", { staticClass: "c-messageBoard__date" }, [_vm._v("4/22 19:14")])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "c-messageBoard", attrs: { href: "messageDetail.html" } },
-      [
-        _c("img", {
-          staticClass: "c-messageBoard__icon",
-          attrs: { alt: "アイコン" }
-        }),
-        _vm._v(" "),
-        _c("div", { staticClass: "c-messageBoard__body" }, [
-          _c("p", { staticClass: "c-messageBoard__name" }, [
-            _vm._v("\n      Username\n      "),
-            _c("span", [_vm._v("さん")])
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "c-messageBoard__content" }, [
-            _vm._v("コメントコメントコメントコメントコメント")
-          ])
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "c-messageBoard__date" }, [_vm._v("4/22 19:14")])
-      ]
-    )
+    return _c("div", { staticClass: "c-messageBoard__body" }, [
+      _c("p", { staticClass: "c-messageBoard__name" }, [
+        _vm._v("\n      Username\n      "),
+        _c("span", [_vm._v("さん")])
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "c-messageBoard__content" }, [
+        _vm._v("コメントコメントコメントコメントコメント")
+      ])
+    ])
   }
 ]
 render._withStripped = true
