@@ -21,6 +21,7 @@ window.Vue = require('vue');
 
 Vue.component('works-list', require('./components/WorksList.vue').default);
 Vue.component('comments-list', require('./components/CommentsList.vue').default);
+Vue.component('boards-list', require('./components/BoardsList.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
