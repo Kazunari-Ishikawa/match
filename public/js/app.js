@@ -1942,6 +1942,9 @@ __webpack_require__.r(__webpack_exports__);
       type: Object,
       "default": null
     }
+  },
+  created: function created() {
+    console.log("Comment created.");
   }
 });
 
@@ -2027,7 +2030,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Comment__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Comment */ "./resources/js/components/Comment.vue");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _Comment__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Comment */ "./resources/js/components/Comment.vue");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 //
 //
 //
@@ -2071,13 +2082,56 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    Comment: _Comment__WEBPACK_IMPORTED_MODULE_0__["default"]
+    Comment: _Comment__WEBPACK_IMPORTED_MODULE_1__["default"]
   },
   props: {
     work: Object,
     withComment: Boolean
   },
-  methods: {}
+  data: function data() {
+    return {
+      comment: null,
+      getCommentFinished: false
+    };
+  },
+  created: function created() {
+    console.log("Work created.");
+
+    if (this.withComment) {
+      console.log("実行");
+      this.getLatestComment();
+    }
+  },
+  methods: {
+    getLatestComment: function getLatestComment() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                console.log(_this.getCommentFinished);
+                _context.next = 3;
+                return axios.get("/api/works/".concat(_this.work.id, "/comments/latest"));
+
+              case 3:
+                response = _context.sent;
+                console.log(response);
+                _this.comment = response.data;
+                _this.getCommentFinished = true;
+                console.log(_this.getCommentFinished);
+
+              case 8:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    }
+  }
 });
 
 /***/ }),
@@ -2120,12 +2174,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       works: null
     };
   },
-  mounted: function mounted() {
+  created: function created() {
     this.selectList();
   },
   methods: {
     selectList: function selectList() {
-      if (this.isRegistered) {
+      if (this.withComment) {
+        this.getCommentedWorks();
+      } else if (this.isRegistered) {
         this.getRegisteredWorks();
       } else {
         this.getWorks();
@@ -2145,9 +2201,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 response = _context.sent;
+                console.log(response);
                 _this.works = response.data;
 
-              case 4:
+              case 5:
               case "end":
                 return _context.stop();
             }
@@ -2178,6 +2235,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee2);
+      }))();
+    },
+    getCommentedWorks: function getCommentedWorks() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return axios.get("/api/works/commented");
+
+              case 2:
+                response = _context3.sent;
+                console.log(response);
+                _this3.works = response.data;
+
+              case 5:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
       }))();
     }
   }
@@ -38571,10 +38653,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "c-comment" }, [
     _c("div", { staticClass: "c-comment__account" }, [
-      _c("img", {
-        staticClass: "c-comment__icon",
-        attrs: { src: _vm.comment.icon, alt: "アイコン" }
-      }),
+      _c("img", { staticClass: "c-comment__icon", attrs: { alt: "アイコン" } }),
       _vm._v(" "),
       _c("div", { staticClass: "c-comment__accountName" }, [
         _c("p", { staticClass: "c-comment__name" }, [
@@ -38720,13 +38799,13 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm.withComment
+      _vm.getCommentFinished
         ? [
             _c("p", { staticClass: "c-work__comment" }, [
               _vm._v("最新コメント")
             ]),
             _vm._v(" "),
-            _c("Comment")
+            _c("Comment", { attrs: { comment: _vm.comment } })
           ]
         : _vm._e()
     ],

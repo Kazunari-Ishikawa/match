@@ -36,10 +36,12 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/works/{id}/close', 'WorksController@close')->name('works.close');
     Route::get('/works/registered', 'WorksController@showRegisteredWorks')->name('works.registered');
     Route::get('/api/works/registered', 'WorksController@getRegisteredWorks');
+    Route::get('/api/works/commented', 'WorksController@getCommentedWorks');
 
     // Comments
     Route::get('/comments', 'CommentsController@index')->name('comments.index');
     Route::post('/works/{id}/comments/create', 'CommentsController@create')->name('comments.new');
+    Route::get('/api/works/{id}/comments/latest', 'CommentsController@getLatestComment');
 });
 
 Route::get('/works', 'WorksController@index')->name('works.index');

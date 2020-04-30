@@ -1,7 +1,7 @@
 <template>
   <div class="c-comment">
     <div class="c-comment__account">
-      <img :src="comment.icon" alt="アイコン" class="c-comment__icon" />
+      <img alt="アイコン" class="c-comment__icon" />
       <div class="c-comment__accountName">
         <p class="c-comment__name">{{ comment.user.name }}</p>
         <div class="c-comment__tag"></div>
@@ -21,6 +21,9 @@ export default {
       type: Object,
       default: null
     }
+  },
+  created() {
+    console.log("Comment created.");
   }
 };
 </script>

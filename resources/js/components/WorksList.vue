@@ -19,12 +19,14 @@ export default {
       works: null
     };
   },
-  mounted() {
+  created() {
     this.selectList();
   },
   methods: {
     selectList() {
-      if (this.isRegistered) {
+      if (this.withComment) {
+        this.getCommentedWorks();
+      } else if (this.isRegistered) {
         this.getRegisteredWorks();
       } else {
         this.getWorks();
@@ -32,10 +34,16 @@ export default {
     },
     async getWorks() {
       const response = await axios.post("/api/works");
+      console.log(response);
       this.works = response.data;
     },
     async getRegisteredWorks() {
       const response = await axios.get("/api/works/registered");
+      console.log(response);
+      this.works = response.data;
+    },
+    async getCommentedWorks() {
+      const response = await axios.get("/api/works/commented");
       console.log(response);
       this.works = response.data;
     }
