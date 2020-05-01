@@ -7,7 +7,7 @@
       </h2>
     </div>
 
-    <div class="p-messageDetail__body">
+    <div id="messageBox" class="p-messageDetail__body" @click="scroll">
       <Message
         v-for="message in messages"
         :key="message.id"
@@ -48,6 +48,9 @@ export default {
   created() {
     this.getMessages();
   },
+  updated() {
+    this.scroll();
+  },
   methods: {
     reset() {
       this.messageText = "";
@@ -66,6 +69,10 @@ export default {
       console.log(response);
       this.reset();
       this.getMessages();
+    },
+    scroll() {
+      const meesageBox = document.getElementById("messageBox");
+      messageBox.scrollTop = messageBox.scrollHeight;
     }
   }
 };

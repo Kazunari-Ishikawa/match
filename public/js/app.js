@@ -2260,7 +2260,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   created: function created() {
     this.getMessages();
   },
+  updated: function updated() {
+    this.scroll();
+  },
   methods: {
+    reset: function reset() {
+      this.messageText = "";
+    },
     getMessages: function getMessages() {
       var _this = this;
 
@@ -2306,15 +2312,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 response = _context2.sent;
                 console.log(response);
 
+                _this2.reset();
+
                 _this2.getMessages();
 
-              case 5:
+              case 6:
               case "end":
                 return _context2.stop();
             }
           }
         }, _callee2);
       }))();
+    },
+    scroll: function scroll() {
+      var meesageBox = document.getElementById("messageBox");
+      messageBox.scrollTop = messageBox.scrollHeight;
     }
   }
 });
@@ -39176,7 +39188,11 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      { staticClass: "p-messageDetail__body" },
+      {
+        staticClass: "p-messageDetail__body",
+        attrs: { id: "messageBox" },
+        on: { click: _vm.scroll }
+      },
       _vm._l(_vm.messages, function(message) {
         return _c("Message", {
           key: message.id,
