@@ -144,9 +144,11 @@ return [
     */
 
     'attributes' => [
+        'name' => 'ユーザー名',
         'email' =>  'メールアドレス',
         'password'  => 'パスワード',
-        'current_password' => '現在のパスワード'
+        'current_password' => '現在のパスワード',
+        'icon' => 'アイコン画像'
     ],
 
 ];

@@ -16,20 +16,23 @@
         @csrf
 
         <div class="c-form__group">
+          <label for="name">ユーザー名（20文字まで）</label>
           @error('name')
           <span class="c-form__error">{{ $message }}</span>
           @enderror
-          <input type="text" class="c-form__input" name="name" id="name" value="{{ old('name', $user->name) }}" placeholder="ユーザー名">
+          <input type="text" class="c-form__input" name="name" id="name" value="{{ old('name', $user->name) }}">
         </div>
 
         <div class="c-form__group">
+          <label for="email">メールアドレス</label>
           @error('email')
           <span class="c-form__error">{{ $message }}</span>
           @enderror
-          <input type="email" class="c-form__input" name="email" id="email" value="{{ old('email', $user->email) }}" placeholder="メールアドレス">
+          <input type="email" class="c-form__input" name="email" id="email" value="{{ old('email', $user->email) }}">
         </div>
 
         <div class="c-form__group">
+          <label for="icon">アイコン（1MB以内）</label>
           @error('icon')
           <span class="c-form__error">{{ $message }}</span>
           @enderror
@@ -41,6 +44,7 @@
         </div>
 
         <div class="c-form__group">
+          <label for="profile">自己紹介</label>
           @error('profile')
           <span class="c-form__error">{{ $message }}</span>
           @enderror
