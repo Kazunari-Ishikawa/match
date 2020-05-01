@@ -16,21 +16,24 @@
         @csrf
 
         <div class="c-form__group">
+          <label for="current_password" class="c-form__label">現在のパスワード</label>
           @error('current_password')
           <span class="c-form__error">{{ $message }}</span>
           @enderror
-          <input type="password" class="c-form__input" name="current_password" id="current_password" placeholder="現在のパスワード">
+          <input type="password" class="c-form__input" name="current_password" id="current_password">
         </div>
 
         <div class="c-form__group">
+          <label for="password" class="c-form__label">新しいパスワード</label>
           @error('password')
           <span class="c-form__error">{{ $message }}</span>
           @enderror
-          <input type="password" class="c-form__input" name="password" id="password" placeholder="新しいパスワード">
+          <input type="password" class="c-form__input" name="password" id="password" placeholder="8〜16文字の半角英数字">
         </div>
 
         <div class="c-form__group">
-          <input type="password" class="c-form__input" name="password_confirmation" id="password_confirmation" placeholder="新しいパスワード（再入力）">
+          <label for="password_confirmation" class="c-form__label">新しいパスワード（再入力）</label>
+          <input type="password" class="c-form__input" name="password_confirmation" id="password_confirmation">
         </div>
 
         <div class="c-form__group">

@@ -27,7 +27,7 @@ class UpdateUserRequest extends FormRequest
     {
         $user = Auth::user();
         return [
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:20',
             'email' => [
                 'required',
                 'email',
