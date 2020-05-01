@@ -585,70 +585,69 @@ textarea {
 }
 
 .c-comment {
-  display: flex;
   background: #f5f5f5;
-  border-radius: 8px;
+  border-radius: 10px;
   margin-bottom: 40px;
 }
 
 .c-comment__list {
   background: white;
-  padding: 20px;
-  margin-bottom: 40px;
+  padding: 0 40px;
 }
 
 @media screen and (max-width: 425px) {
-  .c-comment {
-    display: block;
+  .c-comment__list {
+    padding: 20px;
   }
 }
 
-.c-comment__account {
-  margin-right: 15px;
-  padding: 15px;
-  text-align: center;
+.c-comment:last-child {
+  margin-bottom: 0;
+}
+
+.c-comment__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+  padding: 10px;
 }
 
 @media screen and (max-width: 425px) {
-  .c-comment__account {
-    margin-right: 0;
-    padding: 10px;
-    display: flex;
-    flex-wrap: wrap;
+  .c-comment__name {
+    font-size: 14px;
   }
+}
+
+.c-comment__body {
+  display: flex;
+  padding: 10px;
 }
 
 .c-comment__icon {
+  flex: 0 1 auto;
+  margin-right: 15px;
+  text-align: center;
+}
+
+.c-comment__img {
   display: block;
   width: 60px;
   height: 60px;
   margin: 0 auto;
 }
 
-.c-comment__name {
-  font-size: 14px;
-  margin-bottom: 15px;
-}
-
-@media screen and (max-width: 425px) {
-  .c-comment__name {
-    font-size: 12px;
-    margin-bottom: 10px;
-  }
-}
-
 .c-comment__tag {
+  color: white;
+  display: inline-block;
   font-size: 12px;
+  background: #51a1a2;
+  padding: 5px;
+  border-radius: 4px;
 }
 
-.c-comment__body {
-  padding: 15px;
-}
-
-@media screen and (max-width: 425px) {
-  .c-comment__body {
-    padding: 10px;
-  }
+.c-comment__main {
+  flex: 1 1 auto;
 }
 
 .c-comment__content {
@@ -658,6 +657,7 @@ textarea {
 
 .c-comment__date {
   font-size: 12px;
+  text-align: right;
 }
 
 .c-flatBtn {
@@ -714,11 +714,6 @@ textarea {
 .c-form--side {
   background: white;
   padding: 20px;
-}
-
-.c-form--comment {
-  padding: 0;
-  margin-bottom: 20px;
 }
 
 .c-form--message {
@@ -1771,7 +1766,6 @@ textarea {
 
 .p-projectDetail {
   background: white;
-  margin-bottom: 40px;
   padding: 40px;
 }
 
@@ -1944,5 +1938,11 @@ textarea {
 
 .u-mb0 {
   margin-bottom: 0;
+}
+
+.u-icon {
+  color: #333;
+  cursor: pointer;
+  display: inline-block;
 }
 

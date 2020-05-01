@@ -50,10 +50,10 @@
     <comments-list :work-id='@json($work->id)'></comments-list>
 
     <!-- コメント入力フォーム -->
-    <form action="{{ route('comments.new', $work->id) }}" method="POST" class="c-form--comment">
+    <form action="{{ route('comments.new', $work->id) }}" method="POST" class="c-form">
       @csrf
       <div class="c-form__group">
-        <textarea name="content" class="c-form__textarea"></textarea>
+        <textarea name="content" class="c-form__textarea c-form__textarea--message"></textarea>
       </div>
       <div class="c-btn__container">
         <input type="submit" class="c-btn c-btn--em" value="コメントする" />

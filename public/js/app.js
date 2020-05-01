@@ -2084,6 +2084,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     comment: {
@@ -39071,30 +39074,41 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "c-comment" }, [
-    _c("div", { staticClass: "c-comment__account" }, [
-      _c("img", { staticClass: "c-comment__icon", attrs: { alt: "アイコン" } }),
+    _c("div", { staticClass: "c-comment__header" }, [
+      _c("p", { staticClass: "c-comment__name" }, [
+        _vm._v(_vm._s(_vm.comment.user.name))
+      ]),
       _vm._v(" "),
-      _c("div", { staticClass: "c-comment__accountName" }, [
-        _c("p", { staticClass: "c-comment__name" }, [
-          _vm._v(_vm._s(_vm.comment.user.name))
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "c-comment__tag" })
-      ])
+      _c("i", { staticClass: "far fa-trash-alt fa-lg u-icon" })
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "c-comment__body" }, [
-      _c("p", { staticClass: "c-comment__content" }, [
-        _vm._v(_vm._s(_vm.comment.content))
-      ]),
+      _vm._m(0),
       _vm._v(" "),
-      _c("p", { staticClass: "c-comment__date" }, [
-        _vm._v(_vm._s(_vm.comment.created_at))
+      _c("div", { staticClass: "c-comment__main" }, [
+        _c("p", { staticClass: "c-comment__content" }, [
+          _vm._v(_vm._s(_vm.comment.content))
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "c-comment__date" }, [
+          _vm._v(_vm._s(_vm.comment.created_at))
+        ])
       ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "c-comment__icon" }, [
+      _c("img", { staticClass: "c-comment__img", attrs: { src: "", alt: "" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "c-comment__tag" }, [_vm._v("依頼者")])
+    ])
+  }
+]
 render._withStripped = true
 
 
