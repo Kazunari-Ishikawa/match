@@ -6,9 +6,12 @@
 
 <script>
 import Work from "./Work";
+import Loader from "./Loader";
+
 export default {
   components: {
-    Work
+    Work,
+    Loader
   },
   props: {
     isRegistered: Boolean,
@@ -16,7 +19,8 @@ export default {
   },
   data() {
     return {
-      works: null
+      works: null,
+      isLoading: false
     };
   },
   created() {
@@ -33,11 +37,14 @@ export default {
       }
     },
     async getWorks() {
+      this.isLoading = true;
       const response = await axios.post("/api/works");
       console.log(response);
       this.works = response.data;
+      this.isLoading = false;
     },
     async getRegisteredWorks() {
+      this.isLoading = true;
       const response = await axios.get("/api/works/registered");
       console.log(response);
       this.works = response.data;
@@ -46,6 +53,7 @@ export default {
       const response = await axios.get("/api/works/commented");
       console.log(response);
       this.works = response.data;
+      this.isLoading = false;
     }
   }
 };
