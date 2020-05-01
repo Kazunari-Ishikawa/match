@@ -1,14 +1,18 @@
 <template>
   <a :href="`/messages/${board.id}`" class="c-messageBoard">
-    <img alt="アイコン" class="c-messageBoard__icon" />
-    <div class="c-messageBoard__body">
-      <p class="c-messageBoard__name">
-        Username
-        <span>さん</span>
-      </p>
-      <p class="c-messageBoard__content">コメントコメントコメントコメントコメント</p>
-    </div>
-    <p class="c-messageBoard__date">4/22 19:14</p>
+    <template v-if="getMessageFinished && message !== '' ">
+      <img alt="アイコン" class="c-messageBoard__icon" />
+      <div class="c-messageBoard__body">
+        <p class="c-messageBoard__name">{{ message.user.name }}</p>
+        <p class="c-messageBoard__content">{{ message.content }}</p>
+      </div>
+      <p class="c-messageBoard__date">{{ message.created_at }}</p>
+    </template>
+    <template v-else>
+      <div class="c-messageBoard__body">
+        <p class="c-messageBoard__content">コメントがありません</p>
+      </div>
+    </template>
   </a>
 </template>
 
@@ -19,11 +23,12 @@ export default {
   },
   data() {
     return {
-      message: null
+      message: null,
+      getMessageFinished: false
     };
   },
   created() {
-    // this.getLatestMessage();
+    this.getLatestMessage();
   },
   methods: {
     async getLatestMessage() {
@@ -32,6 +37,7 @@ export default {
       );
       console.log(response);
       this.message = response.data;
+      this.getMessageFinished = true;
     }
   }
 };

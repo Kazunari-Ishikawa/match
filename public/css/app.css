@@ -1526,18 +1526,14 @@ textarea {
   display: block;
   width: 60px;
   height: 60px;
-  margin-right: 20px;
+  margin-right: 10px;
   flex: 0 0 auto;
-}
-
-@media screen and (max-width: 425px) {
-  .c-messageBoard__icon {
-    margin-right: 10px;
-  }
 }
 
 .c-messageBoard__body {
   flex: 1 1 auto;
+  overflow: hidden;
+  margin-right: 10px;
 }
 
 @media screen and (max-width: 425px) {
@@ -1550,15 +1546,10 @@ textarea {
   margin-bottom: 10px;
 }
 
-.c-messageBoard__name > span {
-  margin-left: 10px;
-  font-size: 14px;
-}
-
-@media screen and (max-width: 425px) {
-  .c-messageBoard__name > span {
-    font-size: 12px;
-  }
+.c-messageBoard__content {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .c-messageBoard__date {

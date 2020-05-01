@@ -11,27 +11,24 @@
     display: block;
     width: 60px;
     height: 60px;
-    margin-right: $space_default;
+    margin-right: $space_s;
     flex: 0 0 auto;
-    @include mq() {
-      margin-right: $space_s;
-    }
   }
   &__body {
     flex: 1 1 auto;
+    overflow: hidden;
+    margin-right: $space_s;
     @include mq() {
       font-size: $font-size_m;
     }
   }
   &__name {
     margin-bottom: $space_s;
-    & > span {
-      margin-left: $space_s;
-      font-size: $font-size_m;
-      @include mq() {
-        font-size: $font-size_s;
-      }
-    }
+  }
+  &__content {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
   &__date {
     flex: 0 1 auto;
