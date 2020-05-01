@@ -13,4 +13,13 @@ class MessagesController extends Controller
 
         return response($messages);
     }
+
+    public function sendMessage(Request $request)
+    {
+        \Log::debug($request);
+        $message = new Message;
+        $message->fill($request->all())->save();
+
+        return response($message);
+    }
 }

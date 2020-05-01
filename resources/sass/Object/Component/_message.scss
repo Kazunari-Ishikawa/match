@@ -9,7 +9,7 @@
   }
   @include mq('sm') {
     width: 90%;
-    margin-bottom: $space_s;
+    margin-bottom: $space_m;
   }
   &--other {
     margin-left: 0;
@@ -18,21 +18,24 @@
   &--myself {
     margin-left: auto;
     margin-right: 0;
+    text-align: right;
   }
   &__content {
-    padding: $space_default $space_s;
-    margin-bottom: $space_s;
+    padding: $space_s $space_default;
+    margin-bottom: 5px;
+    display: inline-block;
+    text-align: left;
     &--other {
       background: rgba($color: $color_main, $alpha: 0.3);
-      border-radius: 15px 15px 15px 0;
+      border-radius: 20px 20px 20px 0;
     }
     &--myself {
       background: rgba($color: $color_sub1, $alpha: 0.3);
-      border-radius: 15px 15px 0 15px;
+      border-radius: 20px 20px 0 20px;
     }
     @include mq() {
       font-size: $font-size_m;
-      padding: $space_m $space_s;
+      padding: $space_s $space_m;
     }
   }
   &__date {
