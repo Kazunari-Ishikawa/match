@@ -1209,6 +1209,13 @@ textarea {
   bottom: 0;
 }
 
+.c-loader {
+  transition: 0.6s;
+  text-align: center;
+  font-size: 20px;
+  display: inline-block;
+}
+
 .p-hero {
   background-image: url(/images/top-img-2.jpg?bd340779fbbd1aa662693220c9774ef0);
   background-attachment: fixed;

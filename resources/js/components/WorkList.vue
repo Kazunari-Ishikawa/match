@@ -1,6 +1,6 @@
 <template>
   <div class="c-workList">
-    <Loader v-if="isLoading" />
+    <Loader v-show="isLoading" />
     <Work v-for="work in works" :key="work.id" :work="work" />
   </div>
 </template>
