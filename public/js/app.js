@@ -38546,16 +38546,7 @@ var render = function() {
     "div",
     { staticClass: "c-workList" },
     [
-      _c("Loader", {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.isLoading,
-            expression: "isLoading"
-          }
-        ]
-      }),
+      _vm.isLoading ? _c("Loader") : _vm._e(),
       _vm._v(" "),
       _vm._l(_vm.works, function(work) {
         return _c("Work", { key: work.id, attrs: { work: work } })
