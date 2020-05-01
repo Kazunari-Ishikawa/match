@@ -1942,16 +1942,22 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     board: Object
   },
   data: function data() {
     return {
-      message: null
+      message: null,
+      getMessageFinished: false
     };
   },
-  created: function created() {// this.getLatestMessage();
+  created: function created() {
+    this.getLatestMessage();
   },
   methods: {
     getLatestMessage: function getLatestMessage() {
@@ -1970,8 +1976,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 response = _context.sent;
                 console.log(response);
                 _this.message = response.data;
+                _this.getMessageFinished = true;
 
-              case 5:
+              case 6:
               case "end":
                 return _context.stop();
             }
@@ -38965,15 +38972,30 @@ var render = function() {
       attrs: { href: "/messages/" + _vm.board.id }
     },
     [
-      _c("img", {
-        staticClass: "c-messageBoard__icon",
-        attrs: { alt: "アイコン" }
-      }),
-      _vm._v(" "),
-      _vm._m(0),
-      _vm._v(" "),
-      _c("p", { staticClass: "c-messageBoard__date" }, [_vm._v("4/22 19:14")])
-    ]
+      _vm.getMessageFinished && _vm.message !== ""
+        ? [
+            _c("img", {
+              staticClass: "c-messageBoard__icon",
+              attrs: { alt: "アイコン" }
+            }),
+            _vm._v(" "),
+            _c("div", { staticClass: "c-messageBoard__body" }, [
+              _c("p", { staticClass: "c-messageBoard__name" }, [
+                _vm._v(_vm._s(_vm.message.user.name))
+              ]),
+              _vm._v(" "),
+              _c("p", { staticClass: "c-messageBoard__content" }, [
+                _vm._v(_vm._s(_vm.message.content))
+              ])
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "c-messageBoard__date" }, [
+              _vm._v(_vm._s(_vm.message.created_at))
+            ])
+          ]
+        : [_vm._m(0)]
+    ],
+    2
   )
 }
 var staticRenderFns = [
@@ -38982,13 +39004,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "c-messageBoard__body" }, [
-      _c("p", { staticClass: "c-messageBoard__name" }, [
-        _vm._v("\n      Username\n      "),
-        _c("span", [_vm._v("さん")])
-      ]),
-      _vm._v(" "),
       _c("p", { staticClass: "c-messageBoard__content" }, [
-        _vm._v("コメントコメントコメントコメントコメント")
+        _vm._v("コメントがありません")
       ])
     ])
   }
