@@ -42,7 +42,6 @@
   }
   &__label {
     display: inline-block;
-    // margin-bottom: $space_s;
     &--radio {
       display: flex;
       font-size: $font-size_m;
@@ -52,6 +51,9 @@
       display: block;
       font-size: $font-size_m;
       // margin-bottom: $space_m;
+    }
+    @include mq() {
+      font-size: $font-size_m;
     }
   }
   &__input, &__textarea, &__select {

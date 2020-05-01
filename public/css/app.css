@@ -771,6 +771,12 @@ textarea {
   font-size: 14px;
 }
 
+@media screen and (max-width: 425px) {
+  .c-form__label {
+    font-size: 14px;
+  }
+}
+
 .c-form__input,
 .c-form__textarea,
 .c-form__select {
