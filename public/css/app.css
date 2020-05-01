@@ -759,19 +759,16 @@ textarea {
 
 .c-form__label {
   display: inline-block;
-  margin-bottom: 10px;
 }
 
 .c-form__label--radio {
   display: flex;
   font-size: 14px;
-  margin-bottom: 15px;
 }
 
 .c-form__label--back {
   display: block;
   font-size: 14px;
-  margin-bottom: 15px;
 }
 
 .c-form__input,
