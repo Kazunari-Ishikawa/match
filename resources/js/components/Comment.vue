@@ -3,7 +3,6 @@
     <div class="c-comment__header">
       <p class="c-comment__name">{{ comment.user.name }}</p>
       <i class="far fa-trash-alt fa-lg u-icon" @click="clickDelete"></i>
-      <form action=""></form>
     </div>
     <div class="c-comment__body">
       <div class="c-comment__icon">

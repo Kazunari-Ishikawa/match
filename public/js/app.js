@@ -2087,7 +2087,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     comment: {
@@ -2203,6 +2202,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 console.log(response);
 
                 if (response.status === 200) {
+                  alert("削除しました。");
+
                   _this2.getComments();
                 }
 
@@ -2213,23 +2214,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee2);
       }))();
-    } // async deleteComment(id) {
-    //   if (confirm("削除します。よろしいですか？")) {
-    //     const response = await axios
-    //       .post(`/api/comments/${id}/delete`)
-    //       .catch(err => {
-    //         console.log(err);
-    //         err.response || err;
-    //       });
-    //     console.log(response);
-    //     if (response.status === 200) {
-    //       this.getComments();
-    //     } else {
-    //       alert("あなたのコメントではないので削除できません。");
-    //     }
-    //   }
-    // }
-
+    }
   }
 });
 
@@ -39148,9 +39133,7 @@ var render = function() {
       _c("i", {
         staticClass: "far fa-trash-alt fa-lg u-icon",
         on: { click: _vm.clickDelete }
-      }),
-      _vm._v(" "),
-      _c("form", { attrs: { action: "" } })
+      })
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "c-comment__body" }, [
