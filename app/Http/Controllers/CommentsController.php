@@ -18,7 +18,7 @@ class CommentsController extends Controller
     // パラメータで指定されたWorkのCommentを取得する
     public function getComments($id)
     {
-        $comments = Comment::where('work_id', $id)->with('user')->get();
+        $comments = Comment::where('work_id', $id)->with(['work', 'user'])->get();
 
         return response($comments);
     }
@@ -47,7 +47,7 @@ class CommentsController extends Controller
     // パラメータで指定されたWorkの最新Commentを取得する
     public function getLatestComment($id)
     {
-        $comment = Comment::with('user')->where('work_id', $id)->latest()->first();
+        $comment = Comment::with(['work','user'])->where('work_id', $id)->latest()->first();
 
         return response()->json($comment);
     }

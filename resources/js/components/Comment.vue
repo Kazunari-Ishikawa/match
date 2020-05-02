@@ -7,7 +7,7 @@
     <div class="c-comment__body">
       <div class="c-comment__icon">
         <img src alt class="c-comment__img" />
-        <div class="c-comment__tag">依頼者</div>
+        <div v-show="comment.user_id === comment.work.user_id" class="c-comment__tag">依頼者</div>
       </div>
       <div class="c-comment__main">
         <p class="c-comment__content">{{ comment.content }}</p>

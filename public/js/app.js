@@ -39137,7 +39137,28 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "c-comment__body" }, [
-      _vm._m(0),
+      _c("div", { staticClass: "c-comment__icon" }, [
+        _c("img", {
+          staticClass: "c-comment__img",
+          attrs: { src: "", alt: "" }
+        }),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.comment.user_id === _vm.comment.work.user_id,
+                expression: "comment.user_id === comment.work.user_id"
+              }
+            ],
+            staticClass: "c-comment__tag"
+          },
+          [_vm._v("依頼者")]
+        )
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "c-comment__main" }, [
         _c("p", { staticClass: "c-comment__content" }, [
@@ -39151,18 +39172,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "c-comment__icon" }, [
-      _c("img", { staticClass: "c-comment__img", attrs: { src: "", alt: "" } }),
-      _vm._v(" "),
-      _c("div", { staticClass: "c-comment__tag" }, [_vm._v("依頼者")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
