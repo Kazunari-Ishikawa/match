@@ -1,55 +1,67 @@
 .c-comment {
   &__list {
     background: white;
-    padding: $space_default;
-    margin-bottom: $space_3l;
-  }
-  display: flex;
-  background: $color_bg;
-  border-radius: 8px;
-  margin-bottom: $space_3l;
-  @include mq() {
-    display: block;
-  }
-  &__account {
-    margin-right: $space_m;
-    padding: $space_m;
-    text-align: center;
+    padding: 0 $space_3l;
+    // margin-bottom: $space_3l;
     @include mq() {
-      margin-right: 0;
-      padding: $space_s;
-      display: flex;
-      flex-wrap: wrap;
+      padding: $space_default;
     }
   }
+  background: $color_bg;
+  border-radius: 10px;
+  margin-bottom: $space_3l;
+  &:last-child {
+    margin-bottom: 0;
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: $space_s;
+  }
+  &__name {
+    @include mq() {
+      font-size: $font-size_m;
+    }
+  }
+  &__body {
+    display: flex;
+    padding: $space_s;
+  }
   &__icon {
+    flex: 0 1 auto;
+    margin-right: $space_m;
+    text-align: center;
+    @include mq() {
+    }
+  }
+  &__img {
     display: block;
     width: 60px;
     height: 60px;
     margin: 0 auto;
   }
-  &__name {
-    font-size: $font-size_m;
-    margin-bottom: $space_m;
-    @include mq() {
-      font-size: $font-size_s;
-      margin-bottom: $space_s;
-    }
-  }
   &__tag {
+    color: white;
+    display: inline-block;
     font-size: $font-size_s;
+    background: $color_main;
+    padding: 5px;
+    border-radius: $radius_s;
   }
-  &__body {
-    padding: $space_m;
-    @include mq() {
-      padding: $space_s;
-    }
+  &__main {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
   }
   &__content {
+    flex-grow: 1;
     font-size: $font-size_m;
     margin-bottom: $space_m;
   }
   &__date {
     font-size: $font-size_s;
+    text-align: right;
   }
 }

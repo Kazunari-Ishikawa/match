@@ -1,6 +1,11 @@
 <template>
   <div class="c-comment__list">
-    <Comment v-for="comment in comments" :key="comment.id" :comment="comment" />
+    <Comment
+      v-for="comment in comments"
+      :key="comment.id"
+      :comment="comment"
+      @click-delete="deleteComment"
+    />
   </div>
 </template>
 
@@ -15,7 +20,8 @@ export default {
   },
   data() {
     return {
-      comments: null
+      comments: null,
+      commentId: null
     };
   },
   mounted() {
@@ -26,6 +32,24 @@ export default {
       const response = await axios.get(`/api/works/${this.workId}/comments`);
       this.comments = response.data;
       console.log(this.comments);
+    },
+    async deleteComment(id) {
+      if (confirm("削除します。よろしいですか？")) {
+        const response = await axios
+          .post(`/api/comments/${id}/delete`)
+          .catch(error => {
+            console.log(error);
+            console.log("ERROR!");
+            alert("あなたのコメントではないので削除できません。");
+            return error.response;
+          });
+
+        console.log(response);
+        if (response.status === 200) {
+          alert("削除しました。");
+          this.getComments();
+        }
+      }
     }
   }
 };

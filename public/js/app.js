@@ -2084,11 +2084,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     comment: {
       type: Object,
       "default": null
+    }
+  },
+  methods: {
+    clickDelete: function clickDelete() {
+      this.$emit("click-delete", this.comment.id);
     }
   }
 });
@@ -2119,6 +2127,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2129,7 +2142,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
-      comments: null
+      comments: null,
+      commentId: null
     };
   },
   mounted: function mounted() {
@@ -2159,6 +2173,46 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee);
+      }))();
+    },
+    deleteComment: function deleteComment(id) {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                if (!confirm("削除します。よろしいですか？")) {
+                  _context2.next = 6;
+                  break;
+                }
+
+                _context2.next = 3;
+                return axios.post("/api/comments/".concat(id, "/delete"))["catch"](function (error) {
+                  console.log(error);
+                  console.log("ERROR!");
+                  alert("あなたのコメントではないので削除できません。");
+                  return error.response;
+                });
+
+              case 3:
+                response = _context2.sent;
+                console.log(response);
+
+                if (response.status === 200) {
+                  alert("削除しました。");
+
+                  _this2.getComments();
+                }
+
+              case 6:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
       }))();
     }
   }
@@ -39071,30 +39125,44 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "c-comment" }, [
-    _c("div", { staticClass: "c-comment__account" }, [
-      _c("img", { staticClass: "c-comment__icon", attrs: { alt: "アイコン" } }),
+    _c("div", { staticClass: "c-comment__header" }, [
+      _c("p", { staticClass: "c-comment__name" }, [
+        _vm._v(_vm._s(_vm.comment.user.name))
+      ]),
       _vm._v(" "),
-      _c("div", { staticClass: "c-comment__accountName" }, [
-        _c("p", { staticClass: "c-comment__name" }, [
-          _vm._v(_vm._s(_vm.comment.user.name))
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "c-comment__tag" })
-      ])
+      _c("i", {
+        staticClass: "far fa-trash-alt fa-lg u-icon",
+        on: { click: _vm.clickDelete }
+      })
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "c-comment__body" }, [
-      _c("p", { staticClass: "c-comment__content" }, [
-        _vm._v(_vm._s(_vm.comment.content))
-      ]),
+      _vm._m(0),
       _vm._v(" "),
-      _c("p", { staticClass: "c-comment__date" }, [
-        _vm._v(_vm._s(_vm.comment.created_at))
+      _c("div", { staticClass: "c-comment__main" }, [
+        _c("p", { staticClass: "c-comment__content" }, [
+          _vm._v(_vm._s(_vm.comment.content))
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "c-comment__date" }, [
+          _vm._v(_vm._s(_vm.comment.created_at))
+        ])
       ])
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "c-comment__icon" }, [
+      _c("img", { staticClass: "c-comment__img", attrs: { src: "", alt: "" } }),
+      _vm._v(" "),
+      _c("div", { staticClass: "c-comment__tag" }, [_vm._v("依頼者")])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -39120,7 +39188,11 @@ var render = function() {
     "div",
     { staticClass: "c-comment__list" },
     _vm._l(_vm.comments, function(comment) {
-      return _c("Comment", { key: comment.id, attrs: { comment: comment } })
+      return _c("Comment", {
+        key: comment.id,
+        attrs: { comment: comment },
+        on: { "click-delete": _vm.deleteComment }
+      })
     }),
     1
   )

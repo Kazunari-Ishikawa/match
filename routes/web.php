@@ -44,6 +44,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/comments', 'CommentsController@index')->name('comments.index');
     Route::post('/works/{id}/comments/create', 'CommentsController@create')->name('comments.new');
     Route::get('/api/works/{id}/comments/latest', 'CommentsController@getLatestComment');
+    Route::post('/api/comments/{id}/delete', 'CommentsController@destroy');
 
     // Messages
     Route::get('/messages', 'BoardsController@index')->name('messages.index');

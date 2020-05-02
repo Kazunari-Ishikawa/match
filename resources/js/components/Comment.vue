@@ -1,15 +1,18 @@
 <template>
   <div class="c-comment">
-    <div class="c-comment__account">
-      <img alt="アイコン" class="c-comment__icon" />
-      <div class="c-comment__accountName">
-        <p class="c-comment__name">{{ comment.user.name }}</p>
-        <div class="c-comment__tag"></div>
-      </div>
+    <div class="c-comment__header">
+      <p class="c-comment__name">{{ comment.user.name }}</p>
+      <i class="far fa-trash-alt fa-lg u-icon" @click="clickDelete"></i>
     </div>
     <div class="c-comment__body">
-      <p class="c-comment__content">{{ comment.content }}</p>
-      <p class="c-comment__date">{{ comment.created_at }}</p>
+      <div class="c-comment__icon">
+        <img src alt class="c-comment__img" />
+        <div class="c-comment__tag">依頼者</div>
+      </div>
+      <div class="c-comment__main">
+        <p class="c-comment__content">{{ comment.content }}</p>
+        <p class="c-comment__date">{{ comment.created_at }}</p>
+      </div>
     </div>
   </div>
 </template>
@@ -20,6 +23,11 @@ export default {
     comment: {
       type: Object,
       default: null
+    }
+  },
+  methods: {
+    clickDelete() {
+      this.$emit("click-delete", this.comment.id);
     }
   }
 };
