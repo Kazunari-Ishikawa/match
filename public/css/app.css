@@ -1510,13 +1510,41 @@ textarea {
   background: white;
   margin-bottom: 20px;
   padding: 20px;
-  display: flex;
   transition: 0.3s;
 }
 
 @media screen and (max-width: 425px) {
   .c-messageBoard {
     padding: 10px;
+  }
+}
+
+.c-messageBoard__header {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.c-messageBoard__body {
+  display: flex;
+}
+
+.c-messageBoard__title {
+  overflow: hidden;
+  margin-right: 10px;
+}
+
+.c-messageBoard__title > h3 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 425px) {
+  .c-messageBoard__title {
+    font-size: 14px;
   }
 }
 
@@ -1528,14 +1556,14 @@ textarea {
   flex: 0 0 auto;
 }
 
-.c-messageBoard__body {
+.c-messageBoard__main {
   flex: 1 1 auto;
   overflow: hidden;
   margin-right: 10px;
 }
 
 @media screen and (max-width: 425px) {
-  .c-messageBoard__body {
+  .c-messageBoard__main {
     font-size: 14px;
   }
 }
@@ -1548,6 +1576,12 @@ textarea {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+}
+
+@media screen and (max-width: 425px) {
+  .c-messageBoard__content {
+    font-size: 14px;
+  }
 }
 
 .c-messageBoard__date {

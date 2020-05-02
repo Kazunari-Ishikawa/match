@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Board extends Model
 {
+    public function work()
+    {
+        return $this->belongsTo('App\Work');
+    }
 
     public function fromUser()
     {

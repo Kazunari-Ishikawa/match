@@ -40,6 +40,11 @@ class Work extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function boards()
+    {
+        return $this->hasMany('App\Board');
+    }
+
     public function comments()
     {
         return $this->hasMany('App\Comment');
