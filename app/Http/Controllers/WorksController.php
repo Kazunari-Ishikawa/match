@@ -124,6 +124,7 @@ class WorksController extends Controller
         return view('works.show', ['work' => $work]);
     }
 
+    // Workへの応募処理
     public function apply($id)
     {
         $work = Work::with('user')->find($id);
@@ -140,5 +141,12 @@ class WorksController extends Controller
 
         // return redirect()->action('BoardsController@create', ['id' => $id]);
         return redirect('/messages');
+    }
+
+    public function getApplyCount($id)
+    {
+        $count = Apply::where('work_id', $id)->count();
+
+        return response($count);
     }
 }
