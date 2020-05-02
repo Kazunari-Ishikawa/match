@@ -51,4 +51,16 @@ class CommentsController extends Controller
 
         return response()->json($comment);
     }
+
+    public function destroy($id)
+    {
+        // 登録者以外が対象のcommentsを編集しようとした場合エラーを返す
+        if (!Auth::user()->comments()->find($id)) {
+            abort(401);
+        }
+        $comment = Auth::user()->comments()->find($id)->delete();
+        \Log::debug($comment);
+
+        return response(200);
+    }
 }

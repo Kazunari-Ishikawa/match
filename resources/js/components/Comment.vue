@@ -2,7 +2,8 @@
   <div class="c-comment">
     <div class="c-comment__header">
       <p class="c-comment__name">{{ comment.user.name }}</p>
-      <i class="far fa-trash-alt fa-lg u-icon"></i>
+      <i class="far fa-trash-alt fa-lg u-icon" @click="clickDelete"></i>
+      <form action=""></form>
     </div>
     <div class="c-comment__body">
       <div class="c-comment__icon">
@@ -23,6 +24,11 @@ export default {
     comment: {
       type: Object,
       default: null
+    }
+  },
+  methods: {
+    clickDelete() {
+      this.$emit("click-delete", this.comment.id);
     }
   }
 };
