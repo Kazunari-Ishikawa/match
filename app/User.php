@@ -64,4 +64,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\Message');
     }
+
+    public function applies()
+    {
+        return $this->hasMany('App\Apply');
+    }
 }

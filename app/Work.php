@@ -49,4 +49,9 @@ class Work extends Model
     {
         return $this->hasMany('App\Comment');
     }
+
+    public function applies()
+    {
+        return $this->hasMany('App\Apply');
+    }
 }
