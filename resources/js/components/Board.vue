@@ -1,19 +1,29 @@
 <template>
-  <a :href="`/messages/${board.id}`" class="c-messageBoard">
+  <div class="c-messageBoard">
+    <div class="c-messageBoard__header">
+      <a :href="`/messages/${board.id}`" class="c-messageBoard__title">
+        <h3 class>{{ board.work.title }}</h3>
+      </a>
+      <i class="far fa-trash-alt fa-lg u-icon"></i>
+    </div>
     <template v-if="getMessageFinished && message !== '' ">
-      <img alt="アイコン" class="c-messageBoard__icon" />
       <div class="c-messageBoard__body">
-        <p class="c-messageBoard__name">{{ message.user.name }}</p>
-        <p class="c-messageBoard__content">{{ message.content }}</p>
+        <img alt="アイコン" class="c-messageBoard__icon" />
+        <div class="c-messageBoard__main">
+          <p class="c-messageBoard__name">{{ message.user.name }}</p>
+          <p class="c-messageBoard__content">{{ message.content }}</p>
+        </div>
+        <p class="c-messageBoard__date">{{ message.created_at }}</p>
       </div>
-      <p class="c-messageBoard__date">{{ message.created_at }}</p>
     </template>
     <template v-else>
       <div class="c-messageBoard__body">
-        <p class="c-messageBoard__content">コメントがありません</p>
+        <div class="c-messageBoard__main">
+          <p class="c-messageBoard__content">まだコメントがありません</p>
+        </div>
       </div>
     </template>
-  </a>
+  </div>
 </template>
 
 <script>

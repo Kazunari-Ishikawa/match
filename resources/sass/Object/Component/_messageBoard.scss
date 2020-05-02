@@ -2,10 +2,31 @@
   background: white;
   margin-bottom: $space_default;
   padding: $space_default;
-  display: flex;
   transition: $time_s;
   @include mq() {
     padding: $space_s;
+  }
+  &__header {
+    margin-bottom: $space_s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+  &__body {
+    display: flex;
+  }
+  &__title {
+    overflow: hidden;
+    margin-right: $space_s;
+    & > h3 {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    @include mq() {
+      font-size: $font-size_m;
+    }
   }
   &__icon {
     display: block;
@@ -14,7 +35,7 @@
     margin-right: $space_s;
     flex: 0 0 auto;
   }
-  &__body {
+  &__main {
     flex: 1 1 auto;
     overflow: hidden;
     margin-right: $space_s;
@@ -29,6 +50,9 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    @include mq() {
+      font-size: $font-size_m;
+    }
   }
   &__date {
     flex: 0 1 auto;
