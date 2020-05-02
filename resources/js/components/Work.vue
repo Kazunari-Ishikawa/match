@@ -14,7 +14,7 @@
           <span class="c-work__price--max">{{work.max_price}}</span>円
         </p>
         <p class="c-work__count">
-          <span>3</span>人が応募中です
+          <span>{{this.applyCount}}</span>人が応募中です
         </p>
       </div>
       <div class="c-work__right">
@@ -53,10 +53,12 @@ export default {
   data() {
     return {
       comment: null,
-      getCommentFinished: false
+      getCommentFinished: false,
+      applyCount: 0
     };
   },
   created() {
+    this.getApplyCount();
     if (this.withComment) {
       this.getLatestComment();
     }
@@ -69,6 +71,12 @@ export default {
       console.log(response);
       this.comment = response.data;
       this.getCommentFinished = true;
+    },
+
+    async getApplyCount() {
+      const response = await axios.get(`/api/works/${this.work.id}/apply`);
+      console.log(response);
+      this.applyCount = response.data;
     }
   }
 };

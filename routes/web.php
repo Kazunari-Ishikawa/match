@@ -39,6 +39,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/api/works/commented', 'WorksController@getCommentedWorks');
 
     Route::post('/works/{id}/apply', 'WorksController@apply')->name('works.apply');
+    Route::get('/api/works/{id}/apply', 'WorksController@getApplyCount');
 
     // Comments
     Route::get('/comments', 'CommentsController@index')->name('comments.index');

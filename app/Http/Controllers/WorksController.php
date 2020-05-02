@@ -8,6 +8,7 @@ use App\Http\Requests\CreateWorkRequest;
 use App\Work;
 use App\User;
 use App\Comment;
+use App\Apply;
 
 class WorksController extends Controller
 {
@@ -123,14 +124,29 @@ class WorksController extends Controller
         return view('works.show', ['work' => $work]);
     }
 
+    // Workへの応募処理
     public function apply($id)
     {
         $work = Work::with('user')->find($id);
+
+        // 応募テーブルにレコードを保存
+        $apply = new Apply;
+        $apply->work_id = $work->id;
+        $apply->user_id = Auth::id();
+        $apply->save();
+
         // BoardsControllerを呼び出して、createメソッドを行う
         $board = app()->make('App\Http\Controllers\BoardsController');
         $board->create($id, Auth::id(), $work->user_id);
 
         // return redirect()->action('BoardsController@create', ['id' => $id]);
         return redirect('/messages');
+    }
+
+    public function getApplyCount($id)
+    {
+        $count = Apply::where('work_id', $id)->count();
+
+        return response($count);
     }
 }
