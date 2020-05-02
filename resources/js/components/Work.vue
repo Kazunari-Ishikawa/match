@@ -47,6 +47,7 @@ export default {
   },
   props: {
     work: Object,
+    isRegistered: Boolean,
     withComment: Boolean
   },
   data() {

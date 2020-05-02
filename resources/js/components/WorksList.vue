@@ -1,6 +1,12 @@
 <template>
   <div class="c-workList">
-    <Work v-for="work in works" :key="work.id" :work="work" :with-comment="withComment" />
+    <Work
+      v-for="work in works"
+      :key="work.id"
+      :work="work"
+      :with-comment="withComment"
+      :is-registered="isRegistered"
+    />
   </div>
 </template>
 

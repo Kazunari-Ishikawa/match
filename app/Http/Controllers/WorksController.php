@@ -118,8 +118,8 @@ class WorksController extends Controller
     // Work詳細表示
     public function show($id)
     {
-        $work = Work::find($id);
-        $work->user;
+        $work = Work::with('user')->find($id);
+
         return view('works.show', ['work' => $work]);
     }
 
