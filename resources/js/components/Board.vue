@@ -4,7 +4,7 @@
       <a :href="`/messages/${board.id}`" class="c-messageBoard__title">
         <h3 class>{{ board.work.title }}</h3>
       </a>
-      <i class="far fa-trash-alt fa-lg u-icon"></i>
+      <i class="far fa-trash-alt fa-lg u-icon" @click="clickDelete"></i>
     </div>
     <template v-if="getMessageFinished && message !== '' ">
       <div class="c-messageBoard__body">
@@ -48,6 +48,9 @@ export default {
       console.log(response);
       this.message = response.data;
       this.getMessageFinished = true;
+    },
+    clickDelete() {
+      this.$emit('click-delete', this.board.id)
     }
   }
 };

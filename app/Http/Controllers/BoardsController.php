@@ -40,4 +40,12 @@ class BoardsController extends Controller
 
         return view('messages.show', compact('board', 'request_user_id'));
     }
+
+    public function destroy($id)
+    {
+        $board = Board::find($id);
+        \Log::debug($board);
+
+        return response(200);
+    }
 }

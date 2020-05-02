@@ -1995,6 +1995,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee);
       }))();
+    },
+    clickDelete: function clickDelete() {
+      this.$emit('click-delete', this.board.id);
     }
   }
 });
@@ -2062,6 +2065,41 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee);
+      }))();
+    },
+    deleteBoard: function deleteBoard(id) {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                if (!confirm("削除します。よろしいですか？")) {
+                  _context2.next = 6;
+                  break;
+                }
+
+                _context2.next = 3;
+                return axios.post("/api/boards/".concat(id, "/delete"));
+
+              case 3:
+                response = _context2.sent;
+                console.log(response);
+
+                if (response.status === 200) {
+                  alert("削除しました。");
+
+                  _this2.getBoards();
+                }
+
+              case 6:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
       }))();
     }
   }
@@ -39058,7 +39096,10 @@ var render = function() {
           [_c("h3", {}, [_vm._v(_vm._s(_vm.board.work.title))])]
         ),
         _vm._v(" "),
-        _c("i", { staticClass: "far fa-trash-alt fa-lg u-icon" })
+        _c("i", {
+          staticClass: "far fa-trash-alt fa-lg u-icon",
+          on: { click: _vm.clickDelete }
+        })
       ]),
       _vm._v(" "),
       _vm.getMessageFinished && _vm.message !== ""
@@ -39128,7 +39169,11 @@ var render = function() {
     "div",
     { staticClass: "c-messageBoard__list" },
     _vm._l(_vm.boards, function(board) {
-      return _c("Board", { key: board.id, attrs: { board: board } })
+      return _c("Board", {
+        key: board.id,
+        attrs: { board: board },
+        on: { "click-delete": _vm.deleteBoard }
+      })
     }),
     1
   )
