@@ -36,6 +36,11 @@ class Work extends Model
         return $this->belongsTo('App\User');
     }
 
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
+    }
+
     public function boards()
     {
         return $this->hasMany('App\Board');
