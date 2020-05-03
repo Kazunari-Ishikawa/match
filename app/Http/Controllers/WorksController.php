@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CreateWorkRequest;
 use App\Work;
+use App\Category;
 use App\User;
 use App\Comment;
 use App\Apply;
