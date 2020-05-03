@@ -45,7 +45,7 @@ export default {
     },
     async getWorks() {
       this.isLoading = true;
-      const response = await axios.post("/api/works");
+      const response = await axios.get("/api/works");
       console.log(response);
       this.works = response.data.works;
 
@@ -59,12 +59,24 @@ export default {
       this.isLoading = true;
       const response = await axios.get("/api/works/registered");
       console.log(response);
-      this.works = response.data;
+      this.works = response.data.works;
+
+      const len = response.data.works.length;
+      for (let i = 0; i < len; i++) {
+        this.works[i].apply = response.data.counts[i];
+      }
+      this.isLoading = false;
     },
     async getCommentedWorks() {
+      this.isLoading = true;
       const response = await axios.get("/api/works/commented");
       console.log(response);
-      this.works = response.data;
+      this.works = response.data.works;
+
+      const len = response.data.works.length;
+      for (let i = 0; i < len; i++) {
+        this.works[i].apply = response.data.counts[i];
+      }
       this.isLoading = false;
     }
   }

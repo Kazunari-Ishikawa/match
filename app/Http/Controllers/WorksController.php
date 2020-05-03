@@ -110,7 +110,13 @@ class WorksController extends Controller
     {
         $works = Work::where('user_id', Auth::id())->with(['user', 'category'])->get();
 
-        return response($works);
+        // 各Workに対して応募数を取得する
+        $counts = $works->map(function($work) {
+            $count = Apply::where('work_id', $work->id)->count();
+            return $count;
+        });
+
+        return response()->json(compact('works', 'counts'));
     }
     // ユーザーがコメントしたWork一覧を取得する
     public function getCommentedWorks()
@@ -118,9 +124,14 @@ class WorksController extends Controller
         // ユーザーがコメントしたWorkのIDを取得する
         $commented_work_id = Comment::select('work_id')->where('user_id', Auth::id())->groupBy('work_id')->get();
         // 該当するWorkを取得
-        $works = Work::with('user')->find($commented_work_id);
+        $works = Work::with(['user', 'category'])->find($commented_work_id);
+        // 各Workに対して応募数を取得する
+        $counts = $works->map(function($work) {
+            $count = Apply::where('work_id', $work->id)->count();
+            return $count;
+        });
 
-        return response()->json($works);
+        return response()->json(compact('works', 'counts'));
     }
 
     // Work詳細表示
@@ -160,12 +171,5 @@ class WorksController extends Controller
 
         // return redirect()->action('BoardsController@create', ['id' => $id]);
         return redirect('/messages');
-    }
-
-    public function getApplyCount($id)
-    {
-        $count = Apply::where('work_id', $id)->count();
-
-        return response($count);
     }
 }
