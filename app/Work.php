@@ -13,14 +13,10 @@ class Work extends Model
         1 => 'レベニューシェア'
     ];
 
+    // 案件種別を文字列に変換
     public function getTypeAttribute()
     {
         $type = $this->attributes['type'];
-
-        // 未定義の場合
-        if (!isset(self::TYPE[$type])) {
-            return '';
-        }
 
         return self::TYPE[$type];
     }
@@ -28,7 +24,7 @@ class Work extends Model
     // 日付フォーマットの変換
     public function getCreatedAtAttribute()
     {
-        return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['created_at'])->format('Y/m/d');
+        return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['created_at'])->format('Y/n/j');
     }
 
     protected $fillable = [
@@ -38,6 +34,11 @@ class Work extends Model
     public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function category()
+    {
+        return $this->belongsTo('App\Category');
     }
 
     public function boards()

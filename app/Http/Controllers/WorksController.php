@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CreateWorkRequest;
 use App\Work;
+use App\Category;
 use App\User;
 use App\Comment;
 use App\Apply;
@@ -20,9 +21,15 @@ class WorksController extends Controller
     // Work一覧取得API
     public function getworks()
     {
-        $works = Work::with(['user'])->get();
+        $works = Work::with(['user', 'category'])->get();
 
-        return response($works);
+        // 各Workに対して応募数を取得する
+        $counts = $works->map(function($work) {
+            $count = Apply::where('work_id', $work->id)->count();
+            return $count;
+        });
+
+        return response()->json(compact('works', 'counts'));
     }
     // Work新規登録画面表示
     public function new()
@@ -101,9 +108,15 @@ class WorksController extends Controller
     // ユーザーが登録したWork一覧を取得する
     public function getRegisteredWorks()
     {
-        $works = Work::where('user_id', Auth::id())->with(['user'])->get();
+        $works = Work::where('user_id', Auth::id())->with(['user', 'category'])->get();
 
-        return response($works);
+        // 各Workに対して応募数を取得する
+        $counts = $works->map(function($work) {
+            $count = Apply::where('work_id', $work->id)->count();
+            return $count;
+        });
+
+        return response()->json(compact('works', 'counts'));
     }
     // ユーザーがコメントしたWork一覧を取得する
     public function getCommentedWorks()
@@ -111,17 +124,34 @@ class WorksController extends Controller
         // ユーザーがコメントしたWorkのIDを取得する
         $commented_work_id = Comment::select('work_id')->where('user_id', Auth::id())->groupBy('work_id')->get();
         // 該当するWorkを取得
-        $works = Work::with('user')->find($commented_work_id);
+        $works = Work::with(['user', 'category'])->find($commented_work_id);
+        // 各Workに対して応募数を取得する
+        $counts = $works->map(function($work) {
+            $count = Apply::where('work_id', $work->id)->count();
+            return $count;
+        });
 
-        return response()->json($works);
+        return response()->json(compact('works', 'counts'));
     }
 
     // Work詳細表示
     public function show($id)
     {
-        $work = Work::with('user')->find($id);
+        $work = Work::with(['user', 'category'])->find($id);
+        // 該当のWorkに対して、ユーザーがWorkの登録者であるか判定
+        $is_registered = ($work->user_id === Auth::id() ) ? true : false;
 
-        return view('works.show', ['work' => $work]);
+        $apply = Apply::where('work_id', $id)->get();
+        // 該当のWorkに対して、ユーザーが応募済みであるか判定
+        if (!$apply) {
+            $is_applied = ($apply->user_id === Auth::id()) ? true : false;
+        } else {
+            $is_applied = false;
+        }
+        // 該当のWorkの応募数をカウント
+        $count = $apply->count();
+
+        return view('works.show', compact('work', 'is_registered','is_applied','count'));
     }
 
     // Workへの応募処理
@@ -141,12 +171,5 @@ class WorksController extends Controller
 
         // return redirect()->action('BoardsController@create', ['id' => $id]);
         return redirect('/messages');
-    }
-
-    public function getApplyCount($id)
-    {
-        $count = Apply::where('work_id', $id)->count();
-
-        return response($count);
     }
 }

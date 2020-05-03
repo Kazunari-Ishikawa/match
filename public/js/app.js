@@ -2500,6 +2500,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2513,13 +2516,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       comment: null,
-      getCommentFinished: false,
-      applyCount: 0
+      getCommentFinished: false
     };
   },
   created: function created() {
-    this.getApplyCount();
-
     if (this.withComment) {
       this.getLatestComment();
     }
@@ -2550,31 +2550,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee);
       }))();
-    },
-    getApplyCount: function getApplyCount() {
-      var _this2 = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                _context2.next = 2;
-                return axios.get("/api/works/".concat(_this2.work.id, "/apply"));
-
-              case 2:
-                response = _context2.sent;
-                console.log(response);
-                _this2.applyCount = response.data;
-
-              case 5:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }))();
     }
   }
 });
@@ -2600,6 +2575,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -2646,22 +2622,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var response;
+        var response, len, i;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
                 _this.isLoading = true;
                 _context.next = 3;
-                return axios.post("/api/works");
+                return axios.get("/api/works");
 
               case 3:
                 response = _context.sent;
                 console.log(response);
-                _this.works = response.data;
+                _this.works = response.data.works;
+                len = response.data.works.length;
+
+                for (i = 0; i < len; i++) {
+                  _this.works[i].apply = response.data.counts[i];
+                }
+
                 _this.isLoading = false;
 
-              case 7:
+              case 9:
               case "end":
                 return _context.stop();
             }
@@ -2673,7 +2655,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var response;
+        var response, len, i;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
@@ -2685,9 +2667,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 3:
                 response = _context2.sent;
                 console.log(response);
-                _this2.works = response.data;
+                _this2.works = response.data.works;
+                len = response.data.works.length;
 
-              case 6:
+                for (i = 0; i < len; i++) {
+                  _this2.works[i].apply = response.data.counts[i];
+                }
+
+                _this2.isLoading = false;
+
+              case 9:
               case "end":
                 return _context2.stop();
             }
@@ -2699,21 +2688,28 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-        var response;
+        var response, len, i;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                _context3.next = 2;
+                _this3.isLoading = true;
+                _context3.next = 3;
                 return axios.get("/api/works/commented");
 
-              case 2:
+              case 3:
                 response = _context3.sent;
                 console.log(response);
-                _this3.works = response.data;
+                _this3.works = response.data.works;
+                len = response.data.works.length;
+
+                for (i = 0; i < len; i++) {
+                  _this3.works[i].apply = response.data.counts[i];
+                }
+
                 _this3.isLoading = false;
 
-              case 6:
+              case 9:
               case "end":
                 return _context3.stop();
             }
@@ -39547,8 +39543,8 @@ var render = function() {
             [_c("h3", [_vm._v(_vm._s(_vm.work.title))])]
           ),
           _vm._v(" "),
-          _c("a", { staticClass: "c-work__category" }, [
-            _vm._v(_vm._s(_vm.work.category_id))
+          _c("div", { staticClass: "c-work__category" }, [
+            _vm._v(_vm._s(_vm.work.category.name))
           ])
         ]),
         _vm._v(" "),
@@ -39557,19 +39553,28 @@ var render = function() {
             _vm._v(_vm._s(_vm.work.type))
           ]),
           _vm._v(" "),
-          _c("p", { staticClass: "c-work__price" }, [
-            _c("span", { staticClass: "c-work__price--min" }, [
-              _vm._v(_vm._s(_vm.work.min_price))
-            ]),
-            _vm._v("~\n        "),
-            _c("span", { staticClass: "c-work__price--max" }, [
-              _vm._v(_vm._s(_vm.work.max_price))
-            ]),
-            _vm._v("円\n      ")
-          ]),
+          _c(
+            "p",
+            { staticClass: "c-work__price" },
+            [
+              _vm.work.type === "レベニューシェア"
+                ? [_vm._v("金額は依頼者との相談")]
+                : [
+                    _c("span", { staticClass: "c-work__price--min" }, [
+                      _vm._v(_vm._s(_vm.work.min_price))
+                    ]),
+                    _vm._v("~\n          "),
+                    _c("span", { staticClass: "c-work__price--max" }, [
+                      _vm._v(_vm._s(_vm.work.max_price))
+                    ]),
+                    _vm._v("円\n        ")
+                  ]
+            ],
+            2
+          ),
           _vm._v(" "),
           _c("p", { staticClass: "c-work__count" }, [
-            _c("span", [_vm._v(_vm._s(this.applyCount))]),
+            _c("span", [_vm._v(_vm._s(_vm.work.apply))]),
             _vm._v("人が応募中です\n      ")
           ])
         ]),
@@ -39644,17 +39649,21 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "c-workList" },
-    _vm._l(_vm.works, function(work) {
-      return _c("Work", {
-        key: work.id,
-        attrs: {
-          work: work,
-          "with-comment": _vm.withComment,
-          "is-registered": _vm.isRegistered
-        }
+    [
+      _vm.isLoading ? _c("Loader") : _vm._e(),
+      _vm._v(" "),
+      _vm._l(_vm.works, function(work) {
+        return _c("Work", {
+          key: work.id,
+          attrs: {
+            work: work,
+            "with-comment": _vm.withComment,
+            "is-registered": _vm.isRegistered
+          }
+        })
       })
-    }),
-    1
+    ],
+    2
   )
 }
 var staticRenderFns = []

@@ -16,19 +16,23 @@
         <table class="p-projectDetail__table">
           <tr class="p-projectDetail__row">
             <th class="p-projectDetail__head">カテゴリ</th>
-            <td class="p-projectDetail__data">ホームページ制作</td>
+            <td class="p-projectDetail__data">{{ $work->category->name }}</td>
           </tr>
           <tr class="p-projectDetail__row">
             <th class="p-projectDetail__head">案件種別</th>
-            <td class="p-projectDetail__data">レベニューシェア</td>
+            <td class="p-projectDetail__data">{{ $work->type }}</td>
           </tr>
           <tr class="p-projectDetail__row">
             <th class="p-projectDetail__head">金額</th>
+            @if($work->type == 'レベニューシェア')
             <td class="p-projectDetail__data">依頼者との相談</td>
+            @else
+            <td class="p-projectDetail__data">{{ $work->min_price }}〜{{ $work->max_price }}円</td>
+            @endif
           </tr>
           <tr class="p-projectDetail__row">
             <th class="p-projectDetail__head">応募者数</th>
-            <td class="p-projectDetail__data">3人が応募しています</td>
+            <td class="p-projectDetail__data">{{ $count }}人が応募しています</td>
           </tr>
         </table>
 
@@ -39,13 +43,13 @@
           </div>
 
           <div class="c-btn__container">
-            @if ($work->user_id === Auth::id())
+            @if ($is_registered)
             <a href="{{ route('works.edit', $work->id) }}" class="c-btn">編集する</a>
-            {{-- @elseif()
+            @elseif($is_applied)
             <form action="" method="POST">
               @csrf
               <input type="submit" class="c-btn c-btn--em" value="応募を取り消す">
-            </form> --}}
+            </form>
             @else
             <form action="{{ route('works.apply', $work->id) }}" method="POST">
               @csrf
