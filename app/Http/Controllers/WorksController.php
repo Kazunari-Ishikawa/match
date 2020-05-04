@@ -57,7 +57,6 @@ class WorksController extends Controller
             return redirect('/mypage')->with('flash_message',__('This is not yours! DO NOT EDIT!'));
         }
         $work = Auth::user()->works()->with('category')->find($id);
-        \Log::debug($work);
 
         return view('works.edit', compact('work'));
     }

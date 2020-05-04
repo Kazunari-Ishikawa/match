@@ -31,7 +31,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/works/new', 'WorksController@new')->name('works.new');
     Route::post('/works/new', 'WorksController@create');
     Route::get('/works/{id}/edit', 'WorksController@edit')->name('works.edit');
-    Route::post('/works/{id}/edit', 'WorksController@update');
+    Route::post('/works/{id}/edit', 'WorksController@update')->name('works.update');
     Route::post('/works/{id}/delete', 'WorksController@destroy')->name('works.destroy');
     Route::post('/works/{id}/close', 'WorksController@close')->name('works.close');
     Route::get('/works/registered', 'WorksController@showRegisteredWorks')->name('works.registered');
