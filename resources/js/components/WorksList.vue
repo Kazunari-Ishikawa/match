@@ -22,6 +22,7 @@ export default {
   },
   props: {
     isRegistered: Boolean,
+    isApplied: Boolean,
     withComment: Boolean
   },
   data() {
@@ -37,6 +38,8 @@ export default {
     selectList() {
       if (this.withComment) {
         this.getCommentedWorks();
+      } else if (this.isApplied) {
+        this.getAppliedWorks();
       } else if (this.isRegistered) {
         this.getRegisteredWorks();
       } else {
@@ -70,6 +73,18 @@ export default {
     async getCommentedWorks() {
       this.isLoading = true;
       const response = await axios.get("/api/works/commented");
+      console.log(response);
+      this.works = response.data.works;
+
+      const len = response.data.works.length;
+      for (let i = 0; i < len; i++) {
+        this.works[i].apply = response.data.counts[i];
+      }
+      this.isLoading = false;
+    },
+    async getAppliedWorks() {
+      this.isLoading = true;
+      const response = await axios.get("/api/works/applied");
       console.log(response);
       this.works = response.data.works;
 

@@ -118,6 +118,26 @@ class WorksController extends Controller
 
         return response()->json(compact('works', 'counts'));
     }
+    // 応募した案件一覧画面表示
+    public function showAppliedWorks()
+    {
+        return view('works.appliedWorks');
+    }
+    // ユーザーが応募したWork一覧を取得する
+    public function getAppliedWorks()
+    {
+        // ユーザーが応募したWorkのIDを取得する
+        $applied_work_id = Apply::select('work_id')->where('user_id', Auth::id())->get();
+        // 該当するWorkを取得
+        $works = Work::with(['user', 'category'])->find($applied_work_id);
+        // 各Workに対して応募数を取得する
+        $counts = $works->map(function($work) {
+            $count = Apply::where('work_id', $work->id)->count();
+            return $count;
+        });
+
+        return response()->json(compact('works', 'counts'));
+    }
     // ユーザーがコメントしたWork一覧を取得する
     public function getCommentedWorks()
     {

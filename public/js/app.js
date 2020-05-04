@@ -2597,6 +2597,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   props: {
     isRegistered: Boolean,
+    isApplied: Boolean,
     withComment: Boolean
   },
   data: function data() {
@@ -2612,6 +2613,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     selectList: function selectList() {
       if (this.withComment) {
         this.getCommentedWorks();
+      } else if (this.isApplied) {
+        this.getAppliedWorks();
       } else if (this.isRegistered) {
         this.getRegisteredWorks();
       } else {
@@ -2715,6 +2718,39 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee3);
+      }))();
+    },
+    getAppliedWorks: function getAppliedWorks() {
+      var _this4 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee4() {
+        var response, len, i;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _this4.isLoading = true;
+                _context4.next = 3;
+                return axios.get("/api/works/applied");
+
+              case 3:
+                response = _context4.sent;
+                console.log(response);
+                _this4.works = response.data.works;
+                len = response.data.works.length;
+
+                for (i = 0; i < len; i++) {
+                  _this4.works[i].apply = response.data.counts[i];
+                }
+
+                _this4.isLoading = false;
+
+              case 9:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
       }))();
     }
   }

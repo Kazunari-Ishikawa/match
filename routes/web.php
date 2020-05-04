@@ -37,7 +37,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/works/registered', 'WorksController@showRegisteredWorks')->name('works.registered');
     Route::get('/api/works/registered', 'WorksController@getRegisteredWorks');
     Route::get('/api/works/commented', 'WorksController@getCommentedWorks');
-
+    Route::get('/works/applied', 'WorksController@showAppliedWorks')->name('works.applied');
+    Route::get('/api/works/applied', 'WorksController@getAppliedWorks');
     Route::post('/works/{id}/apply', 'WorksController@apply')->name('works.apply');
     Route::get('/api/works/{id}/apply', 'WorksController@getApplyCount');
 
