@@ -20,7 +20,7 @@
       </form>
     </div>
 
-    <form method="POST" action="{{ route('works.edit', $work->id) }}" class="c-form">
+    <form method="POST" action="{{ route('works.update', $work->id) }}" class="c-form">
       @csrf
 
       <div class="c-form__group">
@@ -45,19 +45,19 @@
       </div>
 
       <div class="c-form__group">
-        <label for="category" class="c-form__label">カテゴリ</label>
-        @error('category')
+        <label for="category_id" class="c-form__label">カテゴリ</label>
+        @error('category_id')
         <span class="c-form__error">{{ $message }}</span>
         @enderror
-        <select name="category" id="category" class="c-form__select">
+        <select name="category_id" id="category_id" class="c-form__select">
           <option value="0">選択してください</option>
-          <option value="1" {{old('category', $work->category_id) == 1 ? 'selected' : ''}}>ホームページ制作</option>
-          <option value="2" {{old('category', $work->category_id) == 2 ? 'selected' : ''}}>WEBシステム開発</option>
-          <option value="3" {{old('category', $work->category_id) == 3 ? 'selected' : ''}}>業務システム開発</option>
-          <option value="4" {{old('category', $work->category_id) == 4 ? 'selected' : ''}}>アプリ開発</option>
-          <option value="5" {{old('category', $work->category_id) == 5 ? 'selected' : ''}}>ECサイト構築</option>
-          <option value="6" {{old('category', $work->category_id) == 6 ? 'selected' : ''}}>サーバー・クラウド</option>
-          <option value="7" {{old('category', $work->category_id) == 7 ? 'selected' : ''}}>WEBマーケティング</option>
+          <option value="1" {{old('category_id', $work->category_id) == 1 ? 'selected' : ''}}>ホームページ制作</option>
+          <option value="2" {{old('category_id', $work->category_id) == 2 ? 'selected' : ''}}>WEBシステム開発</option>
+          <option value="3" {{old('category_id', $work->category_id) == 3 ? 'selected' : ''}}>業務システム開発</option>
+          <option value="4" {{old('category_id', $work->category_id) == 4 ? 'selected' : ''}}>アプリ開発</option>
+          <option value="5" {{old('category_id', $work->category_id) == 5 ? 'selected' : ''}}>ECサイト構築</option>
+          <option value="6" {{old('category_id', $work->category_id) == 6 ? 'selected' : ''}}>サーバー・クラウド</option>
+          <option value="7" {{old('category_id', $work->category_id) == 7 ? 'selected' : ''}}>WEBマーケティング</option>
         </select>
       </div>
 

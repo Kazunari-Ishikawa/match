@@ -31,7 +31,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/works/new', 'WorksController@new')->name('works.new');
     Route::post('/works/new', 'WorksController@create');
     Route::get('/works/{id}/edit', 'WorksController@edit')->name('works.edit');
-    Route::post('/works/{id}/edit', 'WorksController@update');
+    Route::post('/works/{id}/edit', 'WorksController@update')->name('works.update');
     Route::post('/works/{id}/delete', 'WorksController@destroy')->name('works.destroy');
     Route::post('/works/{id}/close', 'WorksController@close')->name('works.close');
     Route::get('/works/registered', 'WorksController@showRegisteredWorks')->name('works.registered');
@@ -39,6 +39,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/api/works/commented', 'WorksController@getCommentedWorks');
     Route::get('/works/applied', 'WorksController@showAppliedWorks')->name('works.applied');
     Route::get('/api/works/applied', 'WorksController@getAppliedWorks');
+    Route::get('/works/closed', 'WorksController@showClosedWorks')->name('works.closed');
+    Route::get('/api/works/closed', 'WorksController@getClosedWorks');
     Route::post('/works/{id}/apply', 'WorksController@apply')->name('works.apply');
     Route::get('/api/works/{id}/apply', 'WorksController@getApplyCount');
     Route::post('/works/{id}/cancel', 'WorksController@cancel')->name('works.cancel');

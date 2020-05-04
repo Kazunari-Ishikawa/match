@@ -1,13 +1,7 @@
 <template>
   <div class="c-workList">
     <Loader v-if="isLoading" />
-    <Work
-      v-for="work in works"
-      :key="work.id"
-      :work="work"
-      :with-comment="withComment"
-      :is-registered="isRegistered"
-    />
+    <Work v-for="work in works" :key="work.id" :work="work" :with-comment="withComment" />
   </div>
 </template>
 
@@ -23,7 +17,8 @@ export default {
   props: {
     isRegistered: Boolean,
     isApplied: Boolean,
-    withComment: Boolean
+    withComment: Boolean,
+    isClosed: Boolean
   },
   data() {
     return {
@@ -36,7 +31,9 @@ export default {
   },
   methods: {
     selectList() {
-      if (this.withComment) {
+      if (this.isClosed) {
+        this.getClosedWorks();
+      } else if (this.withComment) {
         this.getCommentedWorks();
       } else if (this.isApplied) {
         this.getAppliedWorks();
@@ -85,6 +82,18 @@ export default {
     async getAppliedWorks() {
       this.isLoading = true;
       const response = await axios.get("/api/works/applied");
+      console.log(response);
+      this.works = response.data.works;
+
+      const len = response.data.works.length;
+      for (let i = 0; i < len; i++) {
+        this.works[i].apply = response.data.counts[i];
+      }
+      this.isLoading = false;
+    },
+    async getClosedWorks() {
+      this.isLoading = true;
+      const response = await axios.get("/api/works/closed");
       console.log(response);
       this.works = response.data.works;
 
