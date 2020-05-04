@@ -38,9 +38,9 @@ class BoardsController extends Controller
     // ログインユーザーのメッセージボードを取得する
     public function getBoards()
     {
-        $boards = Board::with('work:id,title')->where('from_user_id', Auth::id())->orWhere('to_user_id', Auth::id())->get();
+        $boards = Board::with(['work:id,title', 'fromUser'])->where('from_user_id', Auth::id())->orWhere('to_user_id', Auth::id())->get();
         \Log::debug($boards);
-        return response($boards);
+        return response()->json($boards);
     }
 
     // メッセージ詳細ページ表示
@@ -52,11 +52,4 @@ class BoardsController extends Controller
         return view('messages.show', compact('board', 'request_user_id'));
     }
 
-    public function destroy($id)
-    {
-        $board = Board::find($id);
-        \Log::debug($board);
-
-        return response(200);
-    }
 }

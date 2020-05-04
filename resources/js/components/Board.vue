@@ -1,10 +1,10 @@
 <template>
-  <div class="c-messageBoard">
+  <a :href="`/messages/${board.id}`" class="c-messageBoard">
     <div class="c-messageBoard__header">
-      <a :href="`/messages/${board.id}`" class="c-messageBoard__title">
+      <div class="c-messageBoard__title">
         <h3 class>{{ board.work.title }}</h3>
-      </a>
-      <i class="far fa-trash-alt fa-lg u-icon" @click="clickDelete"></i>
+      </div>
+      <p class="c-messageBoard__subtitle">{{board.from_user.name}}の応募</p>
     </div>
     <template v-if="getMessageFinished && message !== '' ">
       <div class="c-messageBoard__body">
@@ -23,7 +23,7 @@
         </div>
       </div>
     </template>
-  </div>
+  </a>
 </template>
 
 <script>
@@ -48,9 +48,6 @@ export default {
       console.log(response);
       this.message = response.data;
       this.getMessageFinished = true;
-    },
-    clickDelete() {
-      this.$emit('click-delete', this.board.id)
     }
   }
 };
