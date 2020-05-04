@@ -41,14 +41,14 @@
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('users.mypage')}}">マイページ</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('works.new') }}">案件を登録する</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('works.registered') }}">登録した案件一覧</a></li>
-        <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('works.applied') }}">応募した案件一覧</a></li>
-        <li class="c-spMenu__item"><a class="c-spMenu__link" href="closedProjects.html">成約済み案件一覧</a></li>
-        <li class="c-spMenu__item"><a class="c-spMenu__link" href="likeProjects.html">気になるリスト</a></li>
+        <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('works.applied') }}">応募している案件一覧</a></li>
+        <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('works.closed') }}">成約済み案件一覧</a></li>
+        <li class="c-spMenu__item"><a class="c-spMenu__link" href="">気になるリスト</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('comments.index') }}">コメントした案件一覧</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('messages.index') }}">ダイレクトメッセージ一覧</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('users.edit') }}">プロフィール編集</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('users.editPassword')}}">パスワード変更</a></li>
-        <li class="c-spMenu__item"><a class="c-spMenu__link" href="help.html">ヘルプ</a></li>
+        <li class="c-spMenu__item"><a class="c-spMenu__link" href="">ヘルプ</a></li>
         <li class="c-menu__item c-menu__item--side">
           <a href="{{'logout'}}" class="c-menu__link c-menu__link--side" onclick="event.preventDefault();
             document.getElementById('logoutForm').submit();">ログアウト</a>
