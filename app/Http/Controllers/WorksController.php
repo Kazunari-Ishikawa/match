@@ -171,10 +171,10 @@ class WorksController extends Controller
     public function getAppliedWorks()
     {
         // ユーザーが応募しているWorkのIDを取得する
-        $applied_work_id = Apply::select('work_id')->where(['user_id' => Auth::id(), 'is_closed' => false])->get();
+        $applied_work_id = Apply::select('work_id')->where('user_id', Auth::id())->get();
 
         // 該当するWorkを取得
-        $works = Work::with(['user', 'category'])->find($applied_work_id);
+        $works = Work::with(['user', 'category'])->where('is_closed', false)->find($applied_work_id);
 
         // 各Workに対して応募数を取得する
         $counts = $works->map(function($work) {
@@ -189,10 +189,10 @@ class WorksController extends Controller
     public function getCommentedWorks()
     {
         // ユーザーがコメントしたWorkのIDを取得する
-        $commented_work_id = Comment::select('work_id')->where(['user_id' => Auth::id(), 'is_closed' => false])->groupBy('work_id')->get();
+        $commented_work_id = Comment::select('work_id')->where('user_id', Auth::id())->groupBy('work_id')->get();
 
         // 該当するWorkを取得
-        $works = Work::with(['user', 'category'])->find($commented_work_id);
+        $works = Work::with(['user', 'category'])->where('is_closed', false)->find($commented_work_id);
 
         // 各Workに対して応募数を取得する
         $counts = $works->map(function($work) {
