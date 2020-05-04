@@ -46,7 +46,7 @@
             @if ($is_registered)
             <a href="{{ route('works.edit', $work->id) }}" class="c-btn">編集する</a>
             @elseif($is_applied)
-            <form action="" method="POST">
+            <form action="{{ route('works.cancel', $work->id) }}" method="POST">
               @csrf
               <input type="submit" class="c-btn c-btn--em" value="応募を取り消す">
             </form>

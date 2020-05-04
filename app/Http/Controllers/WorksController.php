@@ -195,4 +195,18 @@ class WorksController extends Controller
         // return redirect()->action('BoardsController@create', ['id' => $id]);
         return redirect('/messages');
     }
+
+    // Workへの応募を取り消す
+    public function cancel($id)
+    {
+        Apply::where(['work_id' => $id, 'user_id' => Auth::id()])->delete();
+
+        $work = Work::find($id);
+
+        // BoardsControllerを呼び出して、cancelメソッドを行う
+        $board = app()->make('App\Http\Controllers\BoardsController');
+        $board->cancel($id, Auth::id(), $work->user_id);
+
+        return redirect('/works/applied');
+    }
 }

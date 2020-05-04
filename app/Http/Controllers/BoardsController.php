@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Board;
+use App\Message;
 
 class BoardsController extends Controller
 {
@@ -22,6 +23,16 @@ class BoardsController extends Controller
         $board->from_user_id = $from_user_id;
         $board->to_user_id = $to_user_id;
         $board->save();
+    }
+
+    // 受け取った各種IDをもとにBoardを削除する
+    public function cancel($work_id, $from_user_id, $to_user_id)
+    {
+        $board = Board::where(['work_id' => $work_id, 'from_user_id' => $from_user_id, 'to_user_id' => $to_user_id])->first();
+
+        // はじめに関連するMessageを削除する
+        Message::where('board_id', $board->id)->delete();
+        $board->delete();
     }
 
     // ログインユーザーのメッセージボードを取得する
