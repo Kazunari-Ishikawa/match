@@ -33,8 +33,7 @@
       <ul class="c-menu">
         <li class="c-menu__item"><a class="c-menu__link" href="{{ route('works.index') }}">案件を探す</a>
         </li>
-        <li class="c-menu__item"><a class="c-menu__link" href="likeProjects.html">気になるリスト</a></li>
-        <li class="c-menu__item"><a class="c-menu__link" href="history.html">閲覧履歴</a></li>
+        <li class="c-menu__item"><a class="c-menu__link" href="">気になるリスト</a></li>
         <li class="c-menu__item"><a class="c-menu__link" href="{{route('users.mypage')}}">マイページ</a></li>
       </ul>
       <!-- スマホ向けメニュー -->
@@ -45,9 +44,8 @@
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="appliedProjects.html">応募した案件一覧</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="closedProjects.html">成約済み案件一覧</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="likeProjects.html">気になるリスト</a></li>
-        <li class="c-spMenu__item"><a class="c-spMenu__link" href="history.html">閲覧履歴</a></li>
-        <li class="c-spMenu__item"><a class="c-spMenu__link" href="">投稿したコメント一覧</a></li>
-        <li class="c-spMenu__item"><a class="c-spMenu__link" href="">ダイレクトメッセージ一覧</a></li>
+        <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('comments.index') }}">コメントした案件一覧</a></li>
+        <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('messages.index') }}">ダイレクトメッセージ一覧</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('users.edit') }}">プロフィール編集</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('users.editPassword')}}">パスワード変更</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="help.html">ヘルプ</a></li>

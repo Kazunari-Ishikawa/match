@@ -45,7 +45,6 @@
           <option value="5">ECサイト構築</option>
           <option value="6">サーバー・クラウド</option>
           <option value="7">WEBマーケティング</option>
-          <option value="8">その他</option>
         </select>
       </div>
 

@@ -58,7 +58,6 @@
           <option value="5" {{old('category', $work->category) == 5 ? 'selected' : ''}}>ECサイト構築</option>
           <option value="6" {{old('category', $work->category) == 6 ? 'selected' : ''}}>サーバー・クラウド</option>
           <option value="7" {{old('category', $work->category) == 7 ? 'selected' : ''}}>WEBマーケティング</option>
-          <option value="8" {{old('category', $work->category) == 8 ? 'selected' : ''}}>その他</option>
         </select>
       </div>
 

@@ -3,12 +3,9 @@
     <li class="c-menu__item c-menu__item--side"><a href="{{ route('works.new') }}" class="c-menu__link c-menu__link--side">案件を登録する</a></li>
     <li class="c-menu__item c-menu__item--side"><a href="{{ route('works.registered') }}" class="c-menu__link c-menu__link--side">登録した案件一覧</a></li>
     <li class="c-menu__item c-menu__item--side"><a href="appliedProjects.html" class="c-menu__link c-menu__link--side">応募した案件一覧</a></li>
-    <li class="c-menu__item c-menu__item--side"><a href="closedProjects.html" class="c-menu__link c-menu__link--side">成約済み案件一覧</a></li>
-    <li class="c-menu__item c-menu__item--side"><a href="likeProjects.html" class="c-menu__link c-menu__link--side">気になるリスト</a></li>
-    <li class="c-menu__item c-menu__item--side"><a href="history.html" class="c-menu__link c-menu__link--side">閲覧履歴</a></li>
-  </ul>
-  <ul class="c-menu--side">
-    <li class="c-menu__item c-menu__item--side"><a href="{{ route('comments.index')}}" class="c-menu__link c-menu__link--side">投稿したコメント一覧</a></li>
+    <li class="c-menu__item c-menu__item--side"><a href="{{ route('comments.index')}}" class="c-menu__link c-menu__link--side">コメントした案件一覧</a></li>
+    <li class="c-menu__item c-menu__item--side"><a href="" class="c-menu__link c-menu__link--side">成約済み案件一覧</a></li>
+    <li class="c-menu__item c-menu__item--side"><a href="" class="c-menu__link c-menu__link--side">気になるリスト</a></li>
     <li class="c-menu__item c-menu__item--side"><a href="{{ route('messages.index') }}" class="c-menu__link c-menu__link--side">ダイレクトメッセージ一覧</a></li>
   </ul>
   <ul class="c-menu--side">
