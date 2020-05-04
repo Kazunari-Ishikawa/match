@@ -137,19 +137,22 @@ class WorksController extends Controller
     // Work詳細表示
     public function show($id)
     {
-        $work = Work::with(['user', 'category'])->find($id);
         // 該当のWorkに対して、ユーザーがWorkの登録者であるか判定
-        $is_registered = ($work->user_id === Auth::id() ) ? true : false;
+        $work = Work::with(['user', 'category'])->find($id);
+        $is_registered = ($work->user_id === Auth::id()) ? true : false;
 
-        $apply = Apply::where('work_id', $id)->get();
         // 該当のWorkに対して、ユーザーが応募済みであるか判定
-        if (!$apply) {
-            $is_applied = ($apply->user_id === Auth::id()) ? true : false;
-        } else {
-            $is_applied = false;
+        $applies = Apply::where('work_id', $id)->get();
+        $is_applied = false;
+        foreach( $applies as $apply) {
+            if($apply->user_id === Auth::id()) {
+                $is_applied = true;
+                break;
+            };
         }
+
         // 該当のWorkの応募数をカウント
-        $count = $apply->count();
+        $count = $applies->count();
 
         return view('works.show', compact('work', 'is_registered','is_applied','count'));
     }
