@@ -25,7 +25,7 @@ class StrNumHalfRule implements Rule
      */
     public function passes($attribute, $value)
     {
-        preg_match('/^[a-zA-Z0-9]+$/', $value);
+        return preg_match('/^[a-zA-Z0-9]+$/', $value);
     }
 
     /**
