@@ -51,13 +51,13 @@
         @enderror
         <select name="category" id="category" class="c-form__select">
           <option value="0">選択してください</option>
-          <option value="1" {{old('category', $work->category) == 1 ? 'selected' : ''}}>ホームページ制作</option>
-          <option value="2" {{old('category', $work->category) == 2 ? 'selected' : ''}}>WEBシステム開発</option>
-          <option value="3" {{old('category', $work->category) == 3 ? 'selected' : ''}}>業務システム開発</option>
-          <option value="4" {{old('category', $work->category) == 4 ? 'selected' : ''}}>アプリ開発</option>
-          <option value="5" {{old('category', $work->category) == 5 ? 'selected' : ''}}>ECサイト構築</option>
-          <option value="6" {{old('category', $work->category) == 6 ? 'selected' : ''}}>サーバー・クラウド</option>
-          <option value="7" {{old('category', $work->category) == 7 ? 'selected' : ''}}>WEBマーケティング</option>
+          <option value="1" {{old('category', $work->category_id) == 1 ? 'selected' : ''}}>ホームページ制作</option>
+          <option value="2" {{old('category', $work->category_id) == 2 ? 'selected' : ''}}>WEBシステム開発</option>
+          <option value="3" {{old('category', $work->category_id) == 3 ? 'selected' : ''}}>業務システム開発</option>
+          <option value="4" {{old('category', $work->category_id) == 4 ? 'selected' : ''}}>アプリ開発</option>
+          <option value="5" {{old('category', $work->category_id) == 5 ? 'selected' : ''}}>ECサイト構築</option>
+          <option value="6" {{old('category', $work->category_id) == 6 ? 'selected' : ''}}>サーバー・クラウド</option>
+          <option value="7" {{old('category', $work->category_id) == 7 ? 'selected' : ''}}>WEBマーケティング</option>
         </select>
       </div>
 
