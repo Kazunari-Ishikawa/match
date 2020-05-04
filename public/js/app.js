@@ -2480,7 +2480,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   props: {
     work: Object,
-    isRegistered: Boolean,
     withComment: Boolean
   },
   data: function data() {
@@ -2552,12 +2551,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2568,7 +2561,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   props: {
     isRegistered: Boolean,
     isApplied: Boolean,
-    withComment: Boolean
+    withComment: Boolean,
+    isClosed: Boolean
   },
   data: function data() {
     return {
@@ -2581,7 +2575,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   methods: {
     selectList: function selectList() {
-      if (this.withComment) {
+      if (this.isClosed) {
+        this.getClosedWorks();
+      } else if (this.withComment) {
         this.getCommentedWorks();
       } else if (this.isApplied) {
         this.getAppliedWorks();
@@ -2721,6 +2717,39 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee4);
+      }))();
+    },
+    getClosedWorks: function getClosedWorks() {
+      var _this5 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee5() {
+        var response, len, i;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _this5.isLoading = true;
+                _context5.next = 3;
+                return axios.get("/api/works/closed");
+
+              case 3:
+                response = _context5.sent;
+                console.log(response);
+                _this5.works = response.data.works;
+                len = response.data.works.length;
+
+                for (i = 0; i < len; i++) {
+                  _this5.works[i].apply = response.data.counts[i];
+                }
+
+                _this5.isLoading = false;
+
+              case 9:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5);
       }))();
     }
   }
@@ -39652,11 +39681,7 @@ var render = function() {
       _vm._l(_vm.works, function(work) {
         return _c("Work", {
           key: work.id,
-          attrs: {
-            work: work,
-            "with-comment": _vm.withComment,
-            "is-registered": _vm.isRegistered
-          }
+          attrs: { work: work, "with-comment": _vm.withComment }
         })
       })
     ],

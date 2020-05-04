@@ -208,4 +208,25 @@ class WorksController extends Controller
 
         return redirect('/works/applied');
     }
+
+    // 成約した案件一覧画面表示
+    public function showClosedWorks()
+    {
+        return view('works.closedWorks');
+    }
+
+    // 成約したWork一覧を取得する
+    public function getClosedWorks()
+    {
+        // ユーザーがコメントしたWorkのIDを取得する
+        $works = Work::with(['user', 'category'])->where(['user_id' => Auth::id(), 'is_closed' => true])->get();
+
+        // 各Workに対して応募数を取得する
+        $counts = $works->map(function($work) {
+            $count = Apply::where('work_id', $work->id)->count();
+            return $count;
+        });
+
+        return response()->json(compact('works', 'counts'));
+    }
 }

@@ -39,6 +39,8 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/api/works/commented', 'WorksController@getCommentedWorks');
     Route::get('/works/applied', 'WorksController@showAppliedWorks')->name('works.applied');
     Route::get('/api/works/applied', 'WorksController@getAppliedWorks');
+    Route::get('/works/closed', 'WorksController@showClosedWorks')->name('works.closed');
+    Route::get('/api/works/closed', 'WorksController@getClosedWorks');
     Route::post('/works/{id}/apply', 'WorksController@apply')->name('works.apply');
     Route::get('/api/works/{id}/apply', 'WorksController@getApplyCount');
     Route::post('/works/{id}/cancel', 'WorksController@cancel')->name('works.cancel');
