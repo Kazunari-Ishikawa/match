@@ -10,7 +10,7 @@ class MessagesController extends Controller
     // パラメータで指定されたBoardのMessagesを取得する
     public function getMessages($id)
     {
-        $messages = Message::where('board_id', $id)->with('user')->get();
+        $messages = Message::where('board_id', $id)->with(['user', 'board'])->get();
 
         return response($messages);
     }

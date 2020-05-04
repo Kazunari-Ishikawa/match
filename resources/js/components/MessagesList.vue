@@ -2,7 +2,7 @@
   <div class="p-messageDetail">
     <div class="p-messageDetail__header">
       <h2 class="p-messageDetail__title">
-        かず
+        {{ this.sendUserName }}
         <span>さん</span>
       </h2>
     </div>
@@ -37,7 +37,8 @@ export default {
   },
   props: {
     boardId: Number,
-    requestUserId: Number
+    requestUserId: Number,
+    sendUserName: String
   },
   data() {
     return {

@@ -2327,7 +2327,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   props: {
     boardId: Number,
-    requestUserId: Number
+    requestUserId: Number,
+    sendUserName: String
   },
   data: function data() {
     return {
@@ -39426,7 +39427,12 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "p-messageDetail" }, [
-    _vm._m(0),
+    _c("div", { staticClass: "p-messageDetail__header" }, [
+      _c("h2", { staticClass: "p-messageDetail__title" }, [
+        _vm._v("\n      " + _vm._s(this.sendUserName) + "\n      "),
+        _c("span", [_vm._v("さん")])
+      ])
+    ]),
     _vm._v(" "),
     _c(
       "div",
@@ -39479,24 +39485,13 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _vm._m(1)
+          _vm._m(0)
         ]
       )
     ])
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "p-messageDetail__header" }, [
-      _c("h2", { staticClass: "p-messageDetail__title" }, [
-        _vm._v("\n      かず\n      "),
-        _c("span", [_vm._v("さん")])
-      ])
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
