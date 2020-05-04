@@ -2013,6 +2013,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Board__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Board */ "./resources/js/components/Board.vue");
+/* harmony import */ var _Loader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Loader */ "./resources/js/components/Loader.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2025,14 +2026,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
-    Board: _Board__WEBPACK_IMPORTED_MODULE_1__["default"]
+    Board: _Board__WEBPACK_IMPORTED_MODULE_1__["default"],
+    Loader: _Loader__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   data: function data() {
     return {
-      boards: null
+      boards: null,
+      isLoading: Boolean
     };
   },
   created: function created() {
@@ -2048,15 +2053,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                _context.next = 2;
+                _this.isLoading = true;
+                _context.next = 3;
                 return axios.get("/api/boards");
 
-              case 2:
+              case 3:
                 response = _context.sent;
                 console.log(response);
                 _this.boards = response.data;
+                _this.isLoading = false;
 
-              case 5:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -39187,10 +39194,14 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "c-messageBoard__list" },
-    _vm._l(_vm.boards, function(board) {
-      return _c("Board", { key: board.id, attrs: { board: board } })
-    }),
-    1
+    [
+      _vm.isLoading ? _c("Loader") : _vm._e(),
+      _vm._v(" "),
+      _vm._l(_vm.boards, function(board) {
+        return _c("Board", { key: board.id, attrs: { board: board } })
+      })
+    ],
+    2
   )
 }
 var staticRenderFns = []

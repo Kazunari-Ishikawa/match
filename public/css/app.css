@@ -1523,6 +1523,7 @@ textarea {
 .c-messageBoard__header {
   margin-bottom: 10px;
   overflow: hidden;
+  border-bottom: 1px solid #51a1a2;
 }
 
 .c-messageBoard__body {
@@ -1531,7 +1532,6 @@ textarea {
 
 .c-messageBoard__title {
   overflow: hidden;
-  margin-right: 10px;
 }
 
 .c-messageBoard__title > h3 {
@@ -1548,6 +1548,7 @@ textarea {
 
 .c-messageBoard__subtitle {
   font-size: 12px;
+  margin-bottom: 10px;
 }
 
 .c-messageBoard__icon {
