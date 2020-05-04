@@ -1508,6 +1508,7 @@ textarea {
 
 .c-messageBoard {
   background: white;
+  display: block;
   margin-bottom: 20px;
   padding: 20px;
   transition: 0.3s;
@@ -1521,10 +1522,8 @@ textarea {
 
 .c-messageBoard__header {
   margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   overflow: hidden;
+  border-bottom: 1px solid #51a1a2;
 }
 
 .c-messageBoard__body {
@@ -1533,7 +1532,6 @@ textarea {
 
 .c-messageBoard__title {
   overflow: hidden;
-  margin-right: 10px;
 }
 
 .c-messageBoard__title > h3 {
@@ -1546,6 +1544,11 @@ textarea {
   .c-messageBoard__title {
     font-size: 14px;
   }
+}
+
+.c-messageBoard__subtitle {
+  font-size: 12px;
+  margin-bottom: 10px;
 }
 
 .c-messageBoard__icon {
@@ -1576,11 +1579,12 @@ textarea {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  font-size: 14px;
 }
 
 @media screen and (max-width: 425px) {
   .c-messageBoard__content {
-    font-size: 14px;
+    font-size: 12px;
   }
 }
 

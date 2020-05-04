@@ -1,5 +1,6 @@
 .c-messageBoard {
   background: white;
+  display: block;
   margin-bottom: $space_default;
   padding: $space_default;
   transition: $time_s;
@@ -8,17 +9,14 @@
   }
   &__header {
     margin-bottom: $space_s;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     overflow: hidden;
+    border-bottom: 1px solid $color_main;
   }
   &__body {
     display: flex;
   }
   &__title {
     overflow: hidden;
-    margin-right: $space_s;
     & > h3 {
       overflow: hidden;
       white-space: nowrap;
@@ -27,6 +25,10 @@
     @include mq() {
       font-size: $font-size_m;
     }
+  }
+  &__subtitle {
+    font-size: $font-size_s;
+    margin-bottom: $space_s;
   }
   &__icon {
     display: block;
@@ -50,8 +52,9 @@
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+    font-size: $font-size_m;
     @include mq() {
-      font-size: $font-size_m;
+    font-size: $font-size_s;
     }
   }
   &__date {
