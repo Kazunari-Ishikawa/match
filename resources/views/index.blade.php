@@ -66,8 +66,11 @@
 </section>
 
 <section id="cardList" class="l-container">
-  <div class="l-container__body">
+  <div class="l-container__header">
+    <h2 class="l-container__title">案件を探す</h2>
+  </div>
 
+  <div class="l-container__body">
     {{-- <div class="c-cardList">
       <div class="c-cardList__header">
         <h3 class="c-cardList__title">単発案件から探す</h3>
@@ -149,6 +152,29 @@
 
     <div class="c-cardList">
       <div class="c-cardList__header">
+        <h3 class="c-cardList__title">種類から探す</h3>
+      </div>
+
+      <div class="c-cardList__body">
+        <div class="c-category">
+          <div class="c-category__body">
+            <img src="{{asset('/images/category_1.png')}}" alt="" class="c-category__img">
+            <h4 class="c-category__title">ホームページ制作</h4>
+          </div>
+        </div>
+        <div class="c-category">
+          <div class="c-category__body">
+            <img src="{{asset('/images/category_2.png')}}" alt="" class="c-category__img">
+            <h4 class="c-category__title">WEBシステム開発</h4>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div id="categoryList" class="c-cardList">
+      <div class="c-cardList__header">
         <h3 class="c-cardList__title">カテゴリから探す</h3>
       </div>
 
@@ -181,6 +207,18 @@
           <div class="c-category__body">
             <img src="{{asset('/images/category_5.png')}}" alt="" class="c-category__img">
             <h4 class="c-category__title">ECサイト制作</h4>
+          </div>
+        </div>
+        <div class="c-category">
+          <div class="c-category__body">
+            <img src="{{asset('/images/category_6.png')}}" alt="" class="c-category__img">
+            <h4 class="c-category__title">サーバー・クラウド</h4>
+          </div>
+        </div>
+        <div class="c-category">
+          <div class="c-category__body">
+            <img src="{{asset('/images/category_7.png')}}" alt="" class="c-category__img">
+            <h4 class="c-category__title">WEBマーケティング</h4>
           </div>
         </div>
       </div>
