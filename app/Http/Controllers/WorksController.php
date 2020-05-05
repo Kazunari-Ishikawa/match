@@ -139,6 +139,12 @@ class WorksController extends Controller
         return view('works.closedWorks');
     }
 
+    // 成約した案件一覧画面表示
+    public function showBookmarksWorks()
+    {
+        return view('works.bookmarks');
+    }
+
     // Work一覧を取得する
     public function getworks()
     {

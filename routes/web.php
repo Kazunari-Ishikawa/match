@@ -44,6 +44,7 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/works/{id}/apply', 'WorksController@apply')->name('works.apply');
     Route::get('/api/works/{id}/apply', 'WorksController@getApplyCount');
     Route::post('/works/{id}/cancel', 'WorksController@cancel')->name('works.cancel');
+    Route::get('/works/bookmarks', 'WorksController@showBookmarksWorks')->name('works.bookmarks');
 
     // Comments
     Route::get('/comments', 'CommentsController@index')->name('comments.index');
