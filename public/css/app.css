@@ -426,6 +426,75 @@ textarea {
   opacity: 1;
 }
 
+.c-category {
+  background: white;
+  border-radius: 4px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+  cursor: pointer;
+  margin-bottom: 40px;
+  margin-right: 40px;
+  padding: 20px;
+  transition: 0.3s;
+  width: calc(25% - 40px);
+}
+
+.c-category:nth-child(4n) {
+  margin-right: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .c-category {
+    width: calc(50% - 40px);
+  }
+
+  .c-category:nth-child(even) {
+    margin-right: 0;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .c-category {
+    padding: 10px;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    width: calc(50% - 20px);
+  }
+
+  .c-category:nth-child(even) {
+    margin-right: 0;
+  }
+}
+
+.c-category:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-5px);
+}
+
+.c-category__img {
+  display: block;
+  width: 60px;
+  margin: 0 auto 20px auto;
+}
+
+@media screen and (max-width: 425px) {
+  .c-category__img {
+    width: 40px;
+    margin: 0 auto 10px auto;
+  }
+}
+
+.c-category__title {
+  font-size: 14px;
+  text-align: center;
+}
+
+@media screen and (max-width: 425px) {
+  .c-category__title {
+    font-size: 12px;
+  }
+}
+
 .c-card {
   background: white;
   border-radius: 4px;
@@ -547,7 +616,6 @@ textarea {
 
 .c-cardList__title {
   font-size: 24px;
-  max-width: 70%;
 }
 
 @media screen and (max-width: 425px) {
@@ -572,15 +640,9 @@ textarea {
   margin-right: -40px;
 }
 
-@media screen and (max-width: 768px) {
-  .c-cardList__body {
-    margin-right: -20px;
-  }
-}
-
 @media screen and (max-width: 425px) {
   .c-cardList__body {
-    margin-right: 0;
+    margin-right: -20px;
   }
 }
 

@@ -67,7 +67,8 @@
 
 <section id="cardList" class="l-container">
   <div class="l-container__body">
-    <div class="c-cardList">
+
+    {{-- <div class="c-cardList">
       <div class="c-cardList__header">
         <h3 class="c-cardList__title">単発案件から探す</h3>
         <p class="c-cardList__link"><a href="">もっと見る&gt;</a></p>
@@ -144,8 +145,47 @@
         </div>
 
       </div>
-    </div>
+    </div> --}}
 
+    <div class="c-cardList">
+      <div class="c-cardList__header">
+        <h3 class="c-cardList__title">カテゴリから探す</h3>
+      </div>
+
+      <div class="c-cardList__body">
+        <div class="c-category">
+          <div class="c-category__body">
+            <img src="{{asset('/images/category_1.png')}}" alt="" class="c-category__img">
+            <h4 class="c-category__title">ホームページ制作</h4>
+          </div>
+        </div>
+        <div class="c-category">
+          <div class="c-category__body">
+            <img src="{{asset('/images/category_2.png')}}" alt="" class="c-category__img">
+            <h4 class="c-category__title">WEBシステム開発</h4>
+          </div>
+        </div>
+        <div class="c-category">
+          <div class="c-category__body">
+            <img src="{{asset('/images/category_3.png')}}" alt="" class="c-category__img">
+            <h4 class="c-category__title">業務システム開発</h4>
+          </div>
+        </div>
+        <div class="c-category">
+          <div class="c-category__body">
+            <img src="{{asset('/images/category_4.png')}}" alt="" class="c-category__img">
+            <h4 class="c-category__title">アプリ開発</h4>
+          </div>
+        </div>
+        <div class="c-category">
+          <div class="c-category__body">
+            <img src="{{asset('/images/category_5.png')}}" alt="" class="c-category__img">
+            <h4 class="c-category__title">ECサイト制作</h4>
+          </div>
+        </div>
+      </div>
+
+    </div>
   </div>
 </section>
 

@@ -14,7 +14,6 @@
   }
   &__title {
     font-size: $font-size_2l;
-    max-width: 70%;
     @include mq() {
       font-size: $font-size_l;
     }
@@ -29,11 +28,8 @@
     display: flex;
     flex-wrap: wrap;
     margin-right: -$space_3l;
-    @include mq('md') {
+    @include mq() {
       margin-right: -$space_default;
-    }
-    @include mq('sm') {
-      margin-right: 0;
     }
   }
 }
