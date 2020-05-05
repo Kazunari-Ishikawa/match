@@ -120,7 +120,16 @@
         border: 1px solid $color_main;
       }
     }
-    &--like {
+    &--isBookmarked {
+      color: white;
+      background: $orange;
+      border: 1px solid $orange;
+      &:hover {
+        background: $orange;
+        border: 1px solid $orange;
+      }
+    }
+    &--bookmark {
       &:hover {
         background: $orange;
         border: 1px solid $orange;

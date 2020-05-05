@@ -55,4 +55,9 @@ class Work extends Model
     {
         return $this->hasMany('App\Apply');
     }
+
+    public function bookmarks()
+    {
+        return $this->hasMany('App\Bookmark');
+    }
 }

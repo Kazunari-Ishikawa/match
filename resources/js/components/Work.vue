@@ -23,7 +23,18 @@
       <div class="c-work__right">
         <div class="c-work__right--inner">
           <a :href="`/works/${work.id}`" class="c-work__tag c-work__tag--more">くわしく!</a>
-          <a class="c-work__tag c-work__tag--like" @click="addToBookmarks">気になる!</a>
+          <a
+            v-if="work.isBookmarked"
+            class="c-work__tag"
+            :class="{ 'c-work__tag--isBookmarked': work.isBookmarked }"
+            @click="addToBookmarks"
+          >解除!</a>
+          <a
+            v-else
+            class="c-work__tag"
+            :class="{ 'c-work__tag--bookmark': !work.isBookmarked }"
+            @click="deleteBookmarks"
+          >気になる!</a>
           <a class="c-work__tag c-work__tag--twitter">シェア</a>
         </div>
       </div>
@@ -54,8 +65,7 @@ export default {
   data() {
     return {
       comment: null,
-      getCommentFinished: false,
-      bookmarksByUser: false
+      getCommentFinished: false
     };
   },
   created() {
@@ -76,6 +86,12 @@ export default {
       const response = await axios.post(`/api/bookmarks/add`, {
         id: this.work.id
       });
+      console.log(response);
+    },
+    async deleteBookmarks() {
+      const response = await axios.post(
+        `/api/bookmarks/${this.work.id}/delete`
+      );
       console.log(response);
     }
   }

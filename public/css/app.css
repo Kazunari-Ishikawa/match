@@ -1288,7 +1288,18 @@ textarea {
   border: 1px solid #51a1a2;
 }
 
-.c-work__tag--like:hover {
+.c-work__tag--isBookmarked {
+  color: white;
+  background: #f6993f;
+  border: 1px solid #f6993f;
+}
+
+.c-work__tag--isBookmarked:hover {
+  background: #f6993f;
+  border: 1px solid #f6993f;
+}
+
+.c-work__tag--bookmark:hover {
   background: #f6993f;
   border: 1px solid #f6993f;
 }
