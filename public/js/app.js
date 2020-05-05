@@ -2519,6 +2519,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee);
       }))();
+    },
+    addToBookmarks: function addToBookmarks() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return axios.post("/api/bookmarks/add", {
+                  id: _this2.work.id
+                });
+
+              case 2:
+                response = _context2.sent;
+                console.log(response);
+
+              case 4:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
     }
   }
 });
@@ -39616,9 +39642,14 @@ var render = function() {
               [_vm._v("くわしく!")]
             ),
             _vm._v(" "),
-            _c("a", { staticClass: "c-work__tag c-work__tag--like" }, [
-              _vm._v("気になる!")
-            ]),
+            _c(
+              "a",
+              {
+                staticClass: "c-work__tag c-work__tag--like",
+                on: { click: _vm.addToBookmarks }
+              },
+              [_vm._v("気になる!")]
+            ),
             _vm._v(" "),
             _c("a", { staticClass: "c-work__tag c-work__tag--twitter" }, [
               _vm._v("シェア")

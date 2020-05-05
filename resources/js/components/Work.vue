@@ -23,7 +23,7 @@
       <div class="c-work__right">
         <div class="c-work__right--inner">
           <a :href="`/works/${work.id}`" class="c-work__tag c-work__tag--more">くわしく!</a>
-          <a class="c-work__tag c-work__tag--like">気になる!</a>
+          <a class="c-work__tag c-work__tag--like" @click="addToBookmarks">気になる!</a>
           <a class="c-work__tag c-work__tag--twitter">シェア</a>
         </div>
       </div>
@@ -35,7 +35,6 @@
 
     <template v-if="getCommentFinished">
       <p class="c-work__comment">最新コメント</p>
-
       <Comment :comment="comment" />
     </template>
   </div>
@@ -55,7 +54,8 @@ export default {
   data() {
     return {
       comment: null,
-      getCommentFinished: false
+      getCommentFinished: false,
+      bookmarksByUser: false
     };
   },
   created() {
@@ -71,6 +71,12 @@ export default {
       console.log(response);
       this.comment = response.data;
       this.getCommentFinished = true;
+    },
+    async addToBookmarks() {
+      const response = await axios.post(`/api/bookmarks/add`, {
+        id: this.work.id
+      });
+      console.log(response);
     }
   }
 };
