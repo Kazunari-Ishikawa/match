@@ -177,7 +177,14 @@ class WorksController extends Controller
             return $count;
         });
 
-        return response()->json(compact('works', 'counts'));
+        // 各Workに対して、ユーザーがbookmarkしているか判定する
+        $is_bookmarked = $works->map(function($work){
+            return $work->bookmarks->contains(function($bookmark) {
+                return $bookmark->user_id === Auth::id();
+            });
+        });
+
+        return response()->json(compact('works', 'counts', 'is_bookmarked'));
     }
 
     // ユーザーが応募しているWork一覧を取得する
@@ -195,7 +202,14 @@ class WorksController extends Controller
             return $count;
         });
 
-        return response()->json(compact('works', 'counts'));
+        // 各Workに対して、ユーザーがbookmarkしているか判定する
+        $is_bookmarked = $works->map(function($work){
+            return $work->bookmarks->contains(function($bookmark) {
+                return $bookmark->user_id === Auth::id();
+            });
+        });
+
+        return response()->json(compact('works', 'counts', 'is_bookmarked'));
     }
 
     // ユーザーがコメントしたWork一覧を取得する
@@ -213,13 +227,20 @@ class WorksController extends Controller
             return $count;
         });
 
-        return response()->json(compact('works', 'counts'));
+        // 各Workに対して、ユーザーがbookmarkしているか判定する
+        $is_bookmarked = $works->map(function($work){
+            return $work->bookmarks->contains(function($bookmark) {
+                return $bookmark->user_id === Auth::id();
+            });
+        });
+
+        return response()->json(compact('works', 'counts', 'is_bookmarked'));
     }
 
     // 成約したWork一覧を取得する
     public function getClosedWorks()
     {
-        // 成約したWorkのIDを取得する
+        // 成約したWorkを取得する
         $works = Work::with(['user', 'category'])->where(['user_id' => Auth::id(), 'is_closed' => true])->get();
 
         // 各Workに対して応募数を取得する
@@ -228,7 +249,14 @@ class WorksController extends Controller
             return $count;
         });
 
-        return response()->json(compact('works', 'counts'));
+        // 各Workに対して、ユーザーがbookmarkしているか判定する
+        $is_bookmarked = $works->map(function($work){
+            return $work->bookmarks->contains(function($bookmark) {
+                return $bookmark->user_id === Auth::id();
+            });
+        });
+
+        return response()->json(compact('works', 'counts', 'is_bookmarked'));
     }
 
     // Workへの応募処理
@@ -263,6 +291,4 @@ class WorksController extends Controller
 
         return redirect('/works/applied');
     }
-
-
 }

@@ -2623,7 +2623,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     isRegistered: Boolean,
     isApplied: Boolean,
     withComment: Boolean,
-    isClosed: Boolean
+    isClosed: Boolean,
+    isBookmarked: Boolean
   },
   data: function data() {
     return {
@@ -2638,6 +2639,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     selectList: function selectList() {
       if (this.isClosed) {
         this.getClosedWorks();
+      } else if (this.isBookmarked) {
+        this.getBookmarksWorks();
       } else if (this.withComment) {
         this.getCommentedWorks();
       } else if (this.isApplied) {
@@ -2703,6 +2706,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (i = 0; i < len; i++) {
                   _this2.works[i].apply = response.data.counts[i];
+                  _this2.works[i].isBookmarked = response.data.is_bookmarked[i];
                 }
 
                 _this2.isLoading = false;
@@ -2736,6 +2740,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (i = 0; i < len; i++) {
                   _this3.works[i].apply = response.data.counts[i];
+                  _this3.works[i].isBookmarked = response.data.is_bookmarked[i];
                 }
 
                 _this3.isLoading = false;
@@ -2769,6 +2774,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (i = 0; i < len; i++) {
                   _this4.works[i].apply = response.data.counts[i];
+                  _this4.works[i].isBookmarked = response.data.is_bookmarked[i];
                 }
 
                 _this4.isLoading = false;
@@ -2802,6 +2808,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (i = 0; i < len; i++) {
                   _this5.works[i].apply = response.data.counts[i];
+                  _this5.works[i].isBookmarked = response.data.is_bookmarked[i];
                 }
 
                 _this5.isLoading = false;
@@ -2812,6 +2819,40 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee5);
+      }))();
+    },
+    getBookmarksWorks: function getBookmarksWorks() {
+      var _this6 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
+        var response, len, i;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _this6.isLoading = true;
+                _context6.next = 3;
+                return axios.get("/api/works/bookmarks");
+
+              case 3:
+                response = _context6.sent;
+                console.log(response);
+                _this6.works = response.data.works;
+                len = response.data.works.length;
+
+                for (i = 0; i < len; i++) {
+                  _this6.works[i].apply = response.data.counts[i];
+                  _this6.works[i].isBookmarked = response.data.is_bookmarked[i];
+                }
+
+                _this6.isLoading = false;
+
+              case 9:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6);
       }))();
     }
   }

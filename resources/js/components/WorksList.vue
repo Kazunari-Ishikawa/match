@@ -18,7 +18,8 @@ export default {
     isRegistered: Boolean,
     isApplied: Boolean,
     withComment: Boolean,
-    isClosed: Boolean
+    isClosed: Boolean,
+    isBookmarked: Boolean
   },
   data() {
     return {
@@ -33,6 +34,8 @@ export default {
     selectList() {
       if (this.isClosed) {
         this.getClosedWorks();
+      } else if (this.isBookmarked) {
+        this.getBookmarksWorks();
       } else if (this.withComment) {
         this.getCommentedWorks();
       } else if (this.isApplied) {
@@ -65,6 +68,7 @@ export default {
       const len = response.data.works.length;
       for (let i = 0; i < len; i++) {
         this.works[i].apply = response.data.counts[i];
+        this.works[i].isBookmarked = response.data.is_bookmarked[i];
       }
       this.isLoading = false;
     },
@@ -77,6 +81,7 @@ export default {
       const len = response.data.works.length;
       for (let i = 0; i < len; i++) {
         this.works[i].apply = response.data.counts[i];
+        this.works[i].isBookmarked = response.data.is_bookmarked[i];
       }
       this.isLoading = false;
     },
@@ -89,6 +94,7 @@ export default {
       const len = response.data.works.length;
       for (let i = 0; i < len; i++) {
         this.works[i].apply = response.data.counts[i];
+        this.works[i].isBookmarked = response.data.is_bookmarked[i];
       }
       this.isLoading = false;
     },
@@ -101,6 +107,20 @@ export default {
       const len = response.data.works.length;
       for (let i = 0; i < len; i++) {
         this.works[i].apply = response.data.counts[i];
+        this.works[i].isBookmarked = response.data.is_bookmarked[i];
+      }
+      this.isLoading = false;
+    },
+    async getBookmarksWorks() {
+      this.isLoading = true;
+      const response = await axios.get("/api/works/bookmarks");
+      console.log(response);
+      this.works = response.data.works;
+
+      const len = response.data.works.length;
+      for (let i = 0; i < len; i++) {
+        this.works[i].apply = response.data.counts[i];
+        this.works[i].isBookmarked = response.data.is_bookmarked[i];
       }
       this.isLoading = false;
     }
