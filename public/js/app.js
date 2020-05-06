@@ -39382,7 +39382,7 @@ var render = function() {
           attrs: {
             src: _vm.comment.user.icon
               ? _vm.comment.user.icon
-              : "/images/18445.png",
+              : "/images/icon_sample.png",
             alt: ""
           }
         }),

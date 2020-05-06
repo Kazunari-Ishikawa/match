@@ -7,7 +7,7 @@
     <div class="c-comment__body">
       <div class="c-comment__icon">
         <img
-          :src="comment.user.icon ? comment.user.icon :'/images/18445.png'"
+          :src="comment.user.icon ? comment.user.icon :'/images/icon_sample.png'"
           alt
           class="c-comment__img"
         />
