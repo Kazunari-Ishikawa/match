@@ -20,6 +20,14 @@ class BookmarksController extends Controller
 
     \Log::debug($bookmark);
 
-    return response($request);
+    return response($bookmark);
+  }
+  public function delete(Request $request)
+  {
+    \Log::debug($request);
+
+    $bookmark = Bookmark::where(['work_id' => $request->id, 'user_id' => Auth::id()])->delete();
+
+    return response($bookmark);
   }
 }
