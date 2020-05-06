@@ -692,11 +692,17 @@ textarea {
   text-align: center;
 }
 
+@media screen and (max-width: 425px) {
+  .c-comment__icon {
+    margin-right: 10px;
+  }
+}
+
 .c-comment__img {
   display: block;
-  width: 60px;
-  height: 60px;
-  margin: 0 auto;
+  width: 40px;
+  height: 40px;
+  margin: 0 10px 10px 10px;
 }
 
 .c-comment__tag {

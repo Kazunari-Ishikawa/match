@@ -6,7 +6,11 @@
     </div>
     <div class="c-comment__body">
       <div class="c-comment__icon">
-        <img src alt class="c-comment__img" />
+        <img
+          :src="comment.user.icon ? comment.user.icon :'/images/18445.png'"
+          alt
+          class="c-comment__img"
+        />
         <div v-show="comment.user_id === comment.work.user_id" class="c-comment__tag">依頼者</div>
       </div>
       <div class="c-comment__main">
