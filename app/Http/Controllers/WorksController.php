@@ -139,18 +139,31 @@ class WorksController extends Controller
         return view('works.closedWorks');
     }
 
+    // 成約した案件一覧画面表示
+    public function showBookmarksWorks()
+    {
+        return view('works.bookmarks');
+    }
+
     // Work一覧を取得する
     public function getworks()
     {
         $works = Work::with(['user', 'category'])->where('is_closed', false)->get();
 
-        // 各Workに対して応募数を取得する
+        // 各Workに対する応募数を取得する
         $counts = $works->map(function($work) {
             $count = Apply::where('work_id', $work->id)->count();
             return $count;
         });
 
-        return response()->json(compact('works', 'counts'));
+        // 各Workに対して、ユーザーがbookmarkしているか判定する
+        $is_bookmarked = $works->map(function($work){
+            return $work->bookmarks->contains(function($bookmark) {
+                return $bookmark->user_id === Auth::id();
+            });
+        });
+
+        return response()->json(compact('works', 'counts', 'is_bookmarked'));
     }
 
     // ユーザーが登録したWork一覧を取得する
@@ -158,7 +171,7 @@ class WorksController extends Controller
     {
         $works = Work::where(['user_id' => Auth::id(), 'is_closed' => false])->with(['user', 'category'])->get();
 
-        // 各Workに対して応募数を取得する
+        // 各Workに対する応募数を取得する
         $counts = $works->map(function($work) {
             $count = Apply::where('work_id', $work->id)->count();
             return $count;
@@ -176,7 +189,7 @@ class WorksController extends Controller
         // 該当するWorkを取得
         $works = Work::with(['user', 'category'])->where('is_closed', false)->find($applied_work_id);
 
-        // 各Workに対して応募数を取得する
+        // 各Workに対する応募数を取得する
         $counts = $works->map(function($work) {
             $count = Apply::where('work_id', $work->id)->count();
             return $count;
@@ -206,7 +219,7 @@ class WorksController extends Controller
     // 成約したWork一覧を取得する
     public function getClosedWorks()
     {
-        // ユーザーがコメントしたWorkのIDを取得する
+        // 成約したWorkのIDを取得する
         $works = Work::with(['user', 'category'])->where(['user_id' => Auth::id(), 'is_closed' => true])->get();
 
         // 各Workに対して応募数を取得する

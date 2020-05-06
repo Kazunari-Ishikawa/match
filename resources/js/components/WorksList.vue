@@ -52,6 +52,7 @@ export default {
       const len = response.data.works.length;
       for (let i = 0; i < len; i++) {
         this.works[i].apply = response.data.counts[i];
+        this.works[i].isBookmarked = response.data.is_bookmarked[i];
       }
       this.isLoading = false;
     },

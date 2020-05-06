@@ -2473,6 +2473,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2485,7 +2495,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       comment: null,
-      getCommentFinished: false
+      getCommentFinished: false,
+      bookmarked: this.work.isBookmarked
     };
   },
   created: function created() {
@@ -2518,6 +2529,56 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee);
+      }))();
+    },
+    addToBookmarks: function addToBookmarks() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return axios.post("/api/bookmarks/".concat(_this2.work.id, "/add"));
+
+              case 2:
+                response = _context2.sent;
+                console.log(response);
+                _this2.bookmarked = true;
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    },
+    deleteBookmarks: function deleteBookmarks() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return axios.post("/api/bookmarks/".concat(_this3.work.id, "/delete"));
+
+              case 2:
+                response = _context3.sent;
+                console.log(response);
+                _this3.bookmarked = false;
+
+              case 5:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
       }))();
     }
   }
@@ -2608,6 +2669,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 for (i = 0; i < len; i++) {
                   _this.works[i].apply = response.data.counts[i];
+                  _this.works[i].isBookmarked = response.data.is_bookmarked[i];
                 }
 
                 _this.isLoading = false;
@@ -39616,9 +39678,25 @@ var render = function() {
               [_vm._v("くわしく!")]
             ),
             _vm._v(" "),
-            _c("a", { staticClass: "c-work__tag c-work__tag--like" }, [
-              _vm._v("気になる!")
-            ]),
+            _vm.bookmarked
+              ? _c(
+                  "a",
+                  {
+                    staticClass: "c-work__tag",
+                    class: { "c-work__tag--isBookmarked": _vm.bookmarked },
+                    on: { click: _vm.deleteBookmarks }
+                  },
+                  [_vm._v("解除!")]
+                )
+              : _c(
+                  "a",
+                  {
+                    staticClass: "c-work__tag",
+                    class: { "c-work__tag--bookmark": !_vm.work.isBookmarked },
+                    on: { click: _vm.addToBookmarks }
+                  },
+                  [_vm._v("気になる!")]
+                ),
             _vm._v(" "),
             _c("a", { staticClass: "c-work__tag c-work__tag--twitter" }, [
               _vm._v("シェア")
