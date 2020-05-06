@@ -2104,6 +2104,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     comment: {
@@ -39375,7 +39379,12 @@ var render = function() {
       _c("div", { staticClass: "c-comment__icon" }, [
         _c("img", {
           staticClass: "c-comment__img",
-          attrs: { src: "", alt: "" }
+          attrs: {
+            src: _vm.comment.user.icon
+              ? _vm.comment.user.icon
+              : "/images/icon_sample.png",
+            alt: ""
+          }
         }),
         _vm._v(" "),
         _c(
