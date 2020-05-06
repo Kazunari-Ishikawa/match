@@ -7,9 +7,33 @@
   }
   &--side {
     display: block;
-    margin-bottom: $space_3l;
-    &:last-child {
-      margin-bottom: 0;
+  }
+  &__tab {
+    cursor: pointer;
+    background: #ddd;
+    font-size: $font-size_m;
+    border-bottom: 1px solid white;
+    padding: 5px $space_m;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%);
+      width: 15px;
+      height: 2px;
+      background: $color_sub2;
+    }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      transform: translateY(-50%) rotate(90deg);
+      width: 15px;
+      height: 2px;
+      background: $color_sub2;
     }
   }
   &__item {
