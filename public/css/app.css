@@ -1727,7 +1727,6 @@ textarea {
 .p-hero__text--em > span {
   font-size: 40px;
   font-weight: bold;
-  border-bottom: 5px solid #333;
 }
 
 .p-hero__br {
@@ -1861,12 +1860,7 @@ textarea {
 }
 
 .p-profile__icon {
-  background-image: url(/images/DSC_2123.jpg?d0c0b3a48bc282a2b55ad0e3ddac012f);
-  background-position: center;
-  background-size: cover;
-  border: 2px solid #707070;
-  border-radius: 50%;
-  margin: 0 auto;
+  margin: 0 auto 15px auto;
   height: 120px;
   width: 120px;
 }
@@ -1878,9 +1872,14 @@ textarea {
   }
 }
 
+.p-profile__img {
+  display: block;
+  border: 2px solid #707070;
+  border-radius: 50%;
+}
+
 .p-profile__name {
   font-size: 14px;
-  margin-top: 15px;
   text-align: center;
 }
 

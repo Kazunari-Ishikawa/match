@@ -4,6 +4,7 @@
 
 <section id="hero" class="l-hero">
   <div class="p-hero">
+    <p class="p-hero__text">ITの仕事を探したいけど</p>
     <p class="p-hero__text">もっと気軽にやり取りしたい…</p>
     <p class="p-hero__text">大手の案件サイトは分かりにくい…</p>
     <p class="p-hero__text p-hero__text--em">matchなら<span>3</span>ステップで<br class="p-hero__br">解決します！</p>
