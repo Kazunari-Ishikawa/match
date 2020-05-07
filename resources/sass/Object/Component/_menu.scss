@@ -12,8 +12,9 @@
     cursor: pointer;
     background: #ddd;
     font-size: $font-size_m;
+    font-weight: bold;
     border-bottom: 1px solid white;
-    padding: 5px $space_m;
+    padding: $space_m;
     position: relative;
     &::before {
       content: '';

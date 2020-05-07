@@ -998,8 +998,9 @@ textarea {
   cursor: pointer;
   background: #ddd;
   font-size: 14px;
+  font-weight: bold;
   border-bottom: 1px solid white;
-  padding: 5px 15px;
+  padding: 15px;
   position: relative;
 }
 
