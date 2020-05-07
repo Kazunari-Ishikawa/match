@@ -2481,12 +2481,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2496,11 +2490,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     work: Object,
     withComment: Boolean
   },
+  computed: {
+    bookmarkState: function bookmarkState() {
+      return this.work.isBookmarked;
+    }
+  },
   data: function data() {
     return {
       comment: null,
-      getCommentFinished: false,
-      bookmarked: this.work.isBookmarked
+      getCommentFinished: false
     };
   },
   created: function created() {
@@ -2535,24 +2533,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    addToBookmarks: function addToBookmarks() {
+    bookmarks: function bookmarks() {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.next = 2;
-                return axios.post("/api/bookmarks/".concat(_this2.work.id, "/add"));
+                _this2.$emit("bookmarks", {
+                  id: _this2.work.id,
+                  bookmarked: _this2.work.isBookmarked
+                }); // const response = await axios.post(`/api/bookmarks/${this.work.id}/add`);
+                // console.log(response);
+                // this.bookmarked = true;
 
-              case 2:
-                response = _context2.sent;
-                console.log(response);
-                _this2.bookmarked = true;
 
-              case 5:
+              case 1:
               case "end":
                 return _context2.stop();
             }
@@ -2560,24 +2557,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
-    deleteBookmarks: function deleteBookmarks() {
-      var _this3 = this;
+    deleteBookmarks: function deleteBookmarks() {// const response = await axios.post(`/api/bookmarks/${this.work.id}/delete`);
+      // console.log(response);
+      // this.bookmarked = false;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
-        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                _context3.next = 2;
-                return axios.post("/api/bookmarks/".concat(_this3.work.id, "/delete"));
-
-              case 2:
-                response = _context3.sent;
-                console.log(response);
-                _this3.bookmarked = false;
-
-              case 5:
               case "end":
                 return _context3.stop();
             }
@@ -2609,6 +2597,12 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2857,6 +2851,81 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee6);
+      }))();
+    },
+    clickBookmarks: function clickBookmarks(_ref) {
+      var id = _ref.id,
+          bookmarked = _ref.bookmarked;
+      console.log(id);
+      console.log(bookmarked);
+      console.log("OK");
+
+      if (bookmarked) {
+        this.deleteBookmarks(id);
+      } else {
+        this.addBookmarks(id);
+      }
+    },
+    addBookmarks: function addBookmarks(id) {
+      var _this7 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee7() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                _context7.next = 2;
+                return axios.post("/api/bookmarks/".concat(id, "/add"))["catch"]();
+
+              case 2:
+                response = _context7.sent;
+                console.log(response);
+                _this7.works = _this7.works.map(function (work) {
+                  if (work.id === response.data) {
+                    work.isBookmarked = true;
+                  }
+
+                  return work;
+                });
+
+              case 5:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7);
+      }))();
+    },
+    deleteBookmarks: function deleteBookmarks(id) {
+      var _this8 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee8() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                _context8.next = 2;
+                return axios.post("/api/bookmarks/".concat(id, "/delete"))["catch"]();
+
+              case 2:
+                response = _context8.sent;
+                console.log(response);
+                _this8.works = _this8.works.map(function (work) {
+                  if (work.id === response.data.work_id) {
+                    work.isBookmarked = false;
+                  }
+
+                  return work;
+                });
+
+              case 5:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8);
       }))();
     }
   }
@@ -39728,25 +39797,15 @@ var render = function() {
               [_vm._v("くわしく!")]
             ),
             _vm._v(" "),
-            _vm.bookmarked
-              ? _c(
-                  "a",
-                  {
-                    staticClass: "c-work__tag",
-                    class: { "c-work__tag--isBookmarked": _vm.bookmarked },
-                    on: { click: _vm.deleteBookmarks }
-                  },
-                  [_vm._v("解除!")]
-                )
-              : _c(
-                  "a",
-                  {
-                    staticClass: "c-work__tag",
-                    class: { "c-work__tag--bookmark": !_vm.work.isBookmarked },
-                    on: { click: _vm.addToBookmarks }
-                  },
-                  [_vm._v("気になる!")]
-                ),
+            _c(
+              "a",
+              {
+                staticClass: "c-work__tag c-work__tag--bookmark",
+                class: { "c-work__tag--isBookmarked": _vm.work.isBookmarked },
+                on: { click: _vm.bookmarks }
+              },
+              [_vm._v("気になる!")]
+            ),
             _vm._v(" "),
             _c("a", { staticClass: "c-work__tag c-work__tag--twitter" }, [
               _vm._v("シェア")
@@ -39809,7 +39868,8 @@ var render = function() {
       _vm._l(_vm.works, function(work) {
         return _c("Work", {
           key: work.id,
-          attrs: { work: work, "with-comment": _vm.withComment }
+          attrs: { work: work, "with-comment": _vm.withComment },
+          on: { bookmarks: _vm.clickBookmarks }
         })
       })
     ],

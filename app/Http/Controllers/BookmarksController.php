@@ -35,26 +35,26 @@ class BookmarksController extends Controller
     return response()->json(compact('works', 'counts', 'is_bookmarked'));
   }
 
-  public function add(Request $request)
+  public function add($id)
   {
-    \Log::debug($request);
+    \Log::debug($id);
 
     $bookmark = new Bookmark;
-    $bookmark->work_id = $request->id;
+    $bookmark->work_id = $id;
     $bookmark->user_id = Auth::id();
     $bookmark->save();
 
     \Log::debug($bookmark);
 
-    return response($bookmark);
+    return response($id);
   }
 
-  public function delete(Request $request)
+  public function delete($id)
   {
-    \Log::debug($request);
+    \Log::debug($id);
 
-    $bookmark = Bookmark::where(['work_id' => $request->id, 'user_id' => Auth::id()])->delete();
+    $bookmark = Bookmark::where(['work_id' => $id, 'user_id' => Auth::id()])->delete();
 
-    return response($bookmark);
+    return response($id);
   }
 }

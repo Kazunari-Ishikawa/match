@@ -24,17 +24,11 @@
         <div class="c-work__right--inner">
           <a :href="`/works/${work.id}`" class="c-work__tag c-work__tag--more">くわしく!</a>
           <a
-            v-if="bookmarked"
-            class="c-work__tag"
-            :class="{ 'c-work__tag--isBookmarked': bookmarked }"
-            @click="deleteBookmarks"
-          >解除!</a>
-          <a
-            v-else
-            class="c-work__tag"
-            :class="{ 'c-work__tag--bookmark': !work.isBookmarked }"
-            @click="addToBookmarks"
+            class="c-work__tag c-work__tag--bookmark"
+            :class="{ 'c-work__tag--isBookmarked': work.isBookmarked }"
+            @click="bookmarks"
           >気になる!</a>
+
           <a class="c-work__tag c-work__tag--twitter">シェア</a>
         </div>
       </div>
@@ -62,11 +56,15 @@ export default {
     work: Object,
     withComment: Boolean
   },
+  computed: {
+    bookmarkState() {
+      return this.work.isBookmarked;
+    }
+  },
   data() {
     return {
       comment: null,
-      getCommentFinished: false,
-      bookmarked: this.work.isBookmarked
+      getCommentFinished: false
     };
   },
   created() {
@@ -83,17 +81,19 @@ export default {
       this.comment = response.data;
       this.getCommentFinished = true;
     },
-    async addToBookmarks() {
-      const response = await axios.post(`/api/bookmarks/${this.work.id}/add`);
-      console.log(response);
-      this.bookmarked = true;
+    async bookmarks() {
+      this.$emit("bookmarks", {
+        id: this.work.id,
+        bookmarked: this.work.isBookmarked
+      });
+      // const response = await axios.post(`/api/bookmarks/${this.work.id}/add`);
+      // console.log(response);
+      // this.bookmarked = true;
     },
     async deleteBookmarks() {
-      const response = await axios.post(
-        `/api/bookmarks/${this.work.id}/delete`
-      );
-      console.log(response);
-      this.bookmarked = false;
+      // const response = await axios.post(`/api/bookmarks/${this.work.id}/delete`);
+      // console.log(response);
+      // this.bookmarked = false;
     }
   }
 };
