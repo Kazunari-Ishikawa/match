@@ -4,10 +4,9 @@
 
 <section id="hero" class="l-hero">
   <div class="p-hero">
-    <p class="p-hero__text">ITの仕事を探したいけど</p>
-    <p class="p-hero__text">もっと気軽にやり取りしたい…</p>
-    <p class="p-hero__text">大手の案件サイトは分かりにくい…</p>
-    <p class="p-hero__text p-hero__text--em">matchなら<span>3</span>ステップで<br class="p-hero__br">解決します！</p>
+    <p class="p-hero__text">IT系の仕事、大手のクラウドソーシングは分かりにくい…</p>
+    <p class="p-hero__text"></p>
+    <p class="p-hero__text p-hero__text--em">matchなら<span>3</span>ステップで<br class="p-hero__br">繋ぎます！</p>
     <a class="c-btn c-btn--hero" href="{{ route('works.index') }}">案件を探す</a>
   </div>
 </section>
@@ -61,7 +60,7 @@
 
 <section class="l-band">
   <div class="p-band">
-    <p class="p-band__text">まずは無料登録から！</p>
+    <p class="p-band__text">登録はかんたん無料で可能！</p>
     <a class="c-btn c-btn--band" href="{{ route('register') }}">登録する</a>
   </div>
 </section>
@@ -72,106 +71,29 @@
   </div>
 
   <div class="l-container__body">
-    {{-- <div class="c-cardList">
-      <div class="c-cardList__header">
-        <h3 class="c-cardList__title">単発案件から探す</h3>
-        <p class="c-cardList__link"><a href="">もっと見る&gt;</a></p>
-      </div>
-      <div class="c-cardList__body">
-        <div class="c-card">
-          <h4 class="c-card__title">タイトルタイイトルタイトルタイトルタイイトルタイトル</h4>
-          <div class="c-card__body">
-            <p class="c-card__category">ホームページ制作</p>
-            <p class="c-card__price"><span class="c_card__price--lower">10,000</span> ~ <span class="c-card__price--upper">50,000</span>円</p>
-            <p class="c-card__text">テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト</p>
-          </div>
-        </div>
-        <div class="c-card">
-          <h4 class="c-card__title">タイトル</h4>
-          <div class="c-card__body">
-            <p class="c-card__category">ホームページ制作</p>
-            <p class="c-card__price"><span class="c_card__price--lower">10,000</span> ~ <span class="c-card__price--upper">50,000</span>円</p>
-            <p class="c-card__text">テキストテキストテキストテキストテキストテキストテキストテキスト</p>
-          </div>
-        </div>
-        <div class="c-card">
-          <h4 class="c-card__title">タイトル</h4>
-          <div class="c-card__body">
-            <p class="c-card__category">ホームページ制作</p>
-            <p class="c-card__price"><span class="c_card__price--lower">10,000</span> ~ <span class="c-card__price--upper">50,000</span>円</p>
-            <p class="c-card__text">テキストテキストテキストテキストテキストテキストテキストテキスト</p>
-          </div>
-        </div>
-        <div class="c-card">
-          <h4 class="c-card__title">タイトル</h4>
-          <div class="c-card__body">
-            <p class="c-card__category">ホームページ制作</p>
-            <p class="c-card__price"><span class="c_card__price--lower">10,000</span> ~ <span class="c-card__price--upper">50,000</span>円</p>
-            <p class="c-card__text">テキストテキストテキストテキストテキストテキストテキストテキスト</p>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <div class="c-cardList">
-      <div class="c-cardList__header">
-        <h3 class="c-cardList__title">レベニューシェア案件から探す</h3>
-        <p class="c-cardList__link"><a href="">もっと見る&gt;</a></p>
-      </div>
-      <div class="c-cardList__body">
-        <div class="c-card">
-          <h4 class="c-card__title">タイトル</h4>
-          <div class="c-card__body">
-            <p class="c-card__category">ウェブシステム開発</p>
-            <p class="c-card__text">テキストテキストテキストテキストテキストテキストテキストテキスト</p>
-          </div>
-        </div>
-        <div class="c-card">
-          <h4 class="c-card__title">タイトル</h4>
-          <div class="c-card__body">
-            <p class="c-card__category">業務システム開発</p>
-            <p class="c-card__text">テキストテキストテキストテキストテキストテキストテキストテキスト</p>
-          </div>
-        </div>
-        <div class="c-card">
-          <h4 class="c-card__title">タイトル</h4>
-          <div class="c-card__body">
-            <p class="c-card__category">ウェブシステム開発</p>
-            <p class="c-card__text">テキストテキストテキストテキストテキストテキストテキストテキスト</p>
-          </div>
-        </div>
-        <div class="c-card">
-          <h4 class="c-card__title">タイトル</h4>
-          <div class="c-card__body">
-            <p class="c-card__category">ウェブシステム開発</p>
-            <p class="c-card__text">テキストテキストテキストテキストテキストテキストテキストテキスト</p>
-          </div>
-        </div>
-
-      </div>
-    </div> --}}
-
-    <div class="c-cardList">
+    <div id="typeList" class="c-cardList">
       <div class="c-cardList__header">
         <h3 class="c-cardList__title">種類から探す</h3>
       </div>
 
-      <div class="c-cardList__body">
-        <div class="c-category">
-          <div class="c-category__body">
-            <img src="{{asset('/images/category_1.png')}}" alt="" class="c-category__img">
-            <h4 class="c-category__title">ホームページ制作</h4>
+      <div class="c-cardList__body c-cardList__body--lg">
+        <div class="c-card c-card--lg">
+          <div class="c-card__body">
+            <h4 class="c-card__title c-card__title--lg">単発案件</h4>
+            <p class="c-card__text">単発案件とは、「仕事一件当たり◯◯円」という形で報酬が支払われます。</p>
+            <p class="c-card__text">要求スキルが易しいものから高レベルのものまで、<span>豊富な案件から選ぶ</span>ことができます。</p>
           </div>
         </div>
-        <div class="c-category">
-          <div class="c-category__body">
-            <img src="{{asset('/images/category_2.png')}}" alt="" class="c-category__img">
-            <h4 class="c-category__title">WEBシステム開発</h4>
+        <div class="c-card c-card--lg">
+          <div class="c-card__body">
+            <h4 class="c-card__title c-card__title--lg">レベニューシェア</h4>
+            <p class="c-card__text">レベニューシェアとは、開発したサービスの収益をあらかじめ決めておいた配分で分け合う方式です。</p>
+            <p class="c-card__text">依頼者にとっては<span>初期費用を抑える</span>ことができ、請負者にとっては<span>継続的に収益を得る</span>ことができます。</p>
           </div>
         </div>
-
-
       </div>
+
     </div>
 
     <div id="categoryList" class="c-cardList">
@@ -180,51 +102,52 @@
       </div>
 
       <div class="c-cardList__body">
-        <div class="c-category">
-          <div class="c-category__body">
-            <img src="{{asset('/images/category_1.png')}}" alt="" class="c-category__img">
-            <h4 class="c-category__title">ホームページ制作</h4>
+        <div class="c-card">
+          <div class="c-card__body">
+            <img src="{{asset('/images/category_1.png')}}" alt="カテゴリ1" class="c-card__img">
+            <h4 class="c-card__title">ホームページ制作</h4>
           </div>
         </div>
-        <div class="c-category">
-          <div class="c-category__body">
-            <img src="{{asset('/images/category_2.png')}}" alt="" class="c-category__img">
-            <h4 class="c-category__title">WEBシステム開発</h4>
+        <div class="c-card">
+          <div class="c-card__body">
+            <img src="{{asset('/images/category_2.png')}}" alt="カテゴリ2" class="c-card__img">
+            <h4 class="c-card__title">WEBシステム開発</h4>
           </div>
         </div>
-        <div class="c-category">
-          <div class="c-category__body">
-            <img src="{{asset('/images/category_3.png')}}" alt="" class="c-category__img">
-            <h4 class="c-category__title">業務システム開発</h4>
+        <div class="c-card">
+          <div class="c-card__body">
+            <img src="{{asset('/images/category_3.png')}}" alt="カテゴリ3" class="c-card__img">
+            <h4 class="c-card__title">業務システム開発</h4>
           </div>
         </div>
-        <div class="c-category">
-          <div class="c-category__body">
-            <img src="{{asset('/images/category_4.png')}}" alt="" class="c-category__img">
-            <h4 class="c-category__title">アプリ開発</h4>
+        <div class="c-card">
+          <div class="c-card__body">
+            <img src="{{asset('/images/category_4.png')}}" alt="カテゴリ4" class="c-card__img">
+            <h4 class="c-card__title">アプリ開発</h4>
           </div>
         </div>
-        <div class="c-category">
-          <div class="c-category__body">
-            <img src="{{asset('/images/category_5.png')}}" alt="" class="c-category__img">
-            <h4 class="c-category__title">ECサイト制作</h4>
+        <div class="c-card">
+          <div class="c-card__body">
+            <img src="{{asset('/images/category_5.png')}}" alt="カテゴリ5" class="c-card__img">
+            <h4 class="c-card__title">ECサイト制作</h4>
           </div>
         </div>
-        <div class="c-category">
-          <div class="c-category__body">
-            <img src="{{asset('/images/category_6.png')}}" alt="" class="c-category__img">
-            <h4 class="c-category__title">サーバー・クラウド</h4>
+        <div class="c-card">
+          <div class="c-card__body">
+            <img src="{{asset('/images/category_6.png')}}" alt="カテゴリ6" class="c-card__img">
+            <h4 class="c-card__title">サーバー・クラウド</h4>
           </div>
         </div>
-        <div class="c-category">
-          <div class="c-category__body">
-            <img src="{{asset('/images/category_7.png')}}" alt="" class="c-category__img">
-            <h4 class="c-category__title">WEBマーケティング</h4>
+        <div class="c-card">
+          <div class="c-card__body">
+            <img src="{{asset('/images/category_7.png')}}" alt="カテゴリ7" class="c-card__img">
+            <h4 class="c-card__title">WEBマーケティング</h4>
           </div>
         </div>
       </div>
 
     </div>
+
   </div>
 </section>
 

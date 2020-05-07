@@ -1,67 +1,78 @@
 .c-card {
   background: white;
   border-radius: $radius_s;
-  box-shadow: 0 0 8px rgba($color: #000000, $alpha: 0.25);
+  box-shadow: 0 0 10px rgba($color: #000000, $alpha: 0.3);
   box-sizing: border-box;
   cursor: pointer;
-  height: 280px;
+  margin-bottom: $space_3l;
   margin-right: $space_3l;
-  &:last-child {
+  &:nth-child(4n) {
     margin-right: 0;
   }
   padding: $space_default;
   transition: $time_s;
   width: calc(25% - #{$space_3l});
   @include mq('md') {
+    &:nth-child(even) {
+      margin-right: 0;
+    }
+    width: calc(50% - #{$space_3l});
+  }
+  @include mq('sm') {
+    padding: $space_s;
+    margin-bottom: $space_default;
     margin-right: $space_default;
     &:nth-child(even) {
       margin-right: 0;
     }
-    margin-bottom: $space_default;
-    &:nth-child(3), &:nth-child(4) {
-      margin-bottom: 0;
-    }
     width: calc(50% - #{$space_default});
   }
-  @include mq('sm') {
-    height: 230px;
-    margin-bottom: $space_default;
-    &:nth-child(3), &:nth-child(4) {
-      margin-bottom: $space_default;
-    }
-    &:last-child {
-      margin-bottom: 0;
-    }
-    margin-right: 0;
-    width: 100%;
-  }
   &:hover {
-    box-shadow: 0 0 15px rgba($color: #000000, $alpha: 0.25);
+    box-shadow: 0 0 20px rgba($color: #000000, $alpha: 0.3);
+    transform: translateY(-5px);
+  }
+  &--lg {
+    width: calc(50% - #{$space_3l});
+    margin-right: $space_3l;
+    &:last-child {
+      margin-right: 0;
+    }
+    @include mq('md') {
+      width: 100%;
+      margin-right: 0;
+    }
+  }
+  &__img {
+    display: block;
+    width: 60px;
+    margin: 0 auto $space_default auto;
+    @include mq() {
+      width: 40px;
+    margin: 0 auto $space_s auto;
+    }
   }
   &__title {
-    font-size: $font-size_l;
-    margin-bottom: $space_l;
-    height: 60px;
-    overflow: hidden;
+    text-align: center;
     @include mq() {
-      font-size: $font-size_default;
-      margin-bottom: $space_default;
-      height: 50px;
+      font-size: $font-size_m;
+    }
+    &--lg {
+      border-bottom: 2px solid $color_main;
+      font-size: $font-size_l;
+      margin-bottom: $space_l;
+      @include mq() {
+        font-size: $font-size_default;
+        margin-bottom: $space_default;
+      }
     }
   }
-  &__body {
+  &__text {
     font-size: $font-size_m;
-    height: 160px;
-    overflow: hidden;
-    @include mq() {
-      font-size: $font-size_s;
-      height: 110px;
-    }
-  }
-  &__category, &__price {
     margin-bottom: $space_m;
-    @include mq() {
-      margin-bottom: $space_s;
+    & > span {
+      color: $color_sub1;
+      font-weight: bold;
+      font-size: $font-size_l;
     }
   }
 }
