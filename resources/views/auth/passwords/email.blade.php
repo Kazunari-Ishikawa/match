@@ -4,7 +4,7 @@
 
 <section class="l-container">
   <div class="l-container__header">
-    <h2 class="l-container__title">パスワードの再発行</h2>
+    <h2 class="l-container__title">パスワードのリセット</h2>
   </div>
 
   <div class="l-container__body l-container__body--form">
