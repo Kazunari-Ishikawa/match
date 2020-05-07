@@ -118,4 +118,12 @@
     font-size: $font-size_m;
     margin-bottom: $space_m;
   }
+  &__text {
+    font-size: $font-size_m;
+    margin-bottom: $space_m;
+    @include mq() {
+      font-size: $font-size_s;
+      margin-bottom: $space_s;
+    }
+  }
 }
