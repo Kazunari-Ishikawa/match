@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class Work extends Model
 {
@@ -26,6 +27,24 @@ class Work extends Model
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['created_at'])->format('Y/n/j');
     }
+
+    // Workの応募数をカウントする
+    public function getCountsAttribute()
+    {
+        return $this->applies()->where('work_id', $this->id)->count();
+    }
+
+    // 該当のWorkがユーザーにbookmarkされているか判定する
+    public function getBookmarkedAttribute()
+    {
+        return $this->bookmarks->contains(function($bookmark) {
+            return $bookmark->user_id === Auth::id();
+        });
+    }
+
+    protected $appends = [
+        'counts', 'bookmarked'
+    ];
 
     protected $fillable = [
         'title', 'type', 'category_id', 'max_price', 'min_price', 'content', 'user_id', 'is_closed'

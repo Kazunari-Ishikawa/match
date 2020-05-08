@@ -17,24 +17,18 @@
           </template>
         </p>
         <p class="c-work__count">
-          <span>{{work.apply}}</span>人が応募中です
+          <span>{{work.counts}}</span>人が応募中です
         </p>
       </div>
       <div class="c-work__right">
         <div class="c-work__right--inner">
           <a :href="`/works/${work.id}`" class="c-work__tag c-work__tag--more">くわしく!</a>
           <a
-            v-if="bookmarked"
-            class="c-work__tag"
-            :class="{ 'c-work__tag--isBookmarked': bookmarked }"
-            @click="deleteBookmarks"
-          >解除!</a>
-          <a
-            v-else
-            class="c-work__tag"
-            :class="{ 'c-work__tag--bookmark': !work.isBookmarked }"
-            @click="addToBookmarks"
+            class="c-work__tag c-work__tag--bookmark"
+            :class="{ 'c-work__tag--isBookmarked': work.bookmarked }"
+            @click="bookmarks"
           >気になる!</a>
+
           <a class="c-work__tag c-work__tag--twitter">シェア</a>
         </div>
       </div>
@@ -62,11 +56,15 @@ export default {
     work: Object,
     withComment: Boolean
   },
+  computed: {
+    bookmarkState() {
+      return this.work.bookmarked;
+    }
+  },
   data() {
     return {
       comment: null,
-      getCommentFinished: false,
-      bookmarked: this.work.isBookmarked
+      getCommentFinished: false
     };
   },
   created() {
@@ -83,17 +81,19 @@ export default {
       this.comment = response.data;
       this.getCommentFinished = true;
     },
-    async addToBookmarks() {
-      const response = await axios.post(`/api/bookmarks/${this.work.id}/add`);
-      console.log(response);
-      this.bookmarked = true;
+    async bookmarks() {
+      this.$emit("bookmarks", {
+        id: this.work.id,
+        bookmarked: this.work.bookmarked
+      });
+      // const response = await axios.post(`/api/bookmarks/${this.work.id}/add`);
+      // console.log(response);
+      // this.bookmarked = true;
     },
     async deleteBookmarks() {
-      const response = await axios.post(
-        `/api/bookmarks/${this.work.id}/delete`
-      );
-      console.log(response);
-      this.bookmarked = false;
+      // const response = await axios.post(`/api/bookmarks/${this.work.id}/delete`);
+      // console.log(response);
+      // this.bookmarked = false;
     }
   }
 };
