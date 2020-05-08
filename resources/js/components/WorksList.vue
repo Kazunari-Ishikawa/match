@@ -19,7 +19,9 @@ export default {
     isApplied: Boolean,
     withComment: Boolean,
     isClosed: Boolean,
-    isBookmarked: Boolean
+    isBookmarked: Boolean,
+    isSearched: Boolean,
+    searchForm: Object
   },
   data() {
     return {
@@ -29,6 +31,12 @@ export default {
   },
   created() {
     this.selectList();
+  },
+  beforeUpdate() {
+    console.log("before update.");
+    if (this.isSearched) {
+      console.log(this.searchForm);
+    }
   },
   methods: {
     selectList() {

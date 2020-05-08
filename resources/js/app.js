@@ -19,6 +19,7 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
+Vue.component('index-works', require('./components/IndexWorks.vue').default);
 Vue.component('works-list', require('./components/WorksList.vue').default);
 Vue.component('comments-list', require('./components/CommentsList.vue').default);
 Vue.component('boards-list', require('./components/BoardsList.vue').default);
