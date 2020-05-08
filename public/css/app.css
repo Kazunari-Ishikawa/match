@@ -1145,12 +1145,12 @@ textarea {
 }
 
 .c-work__left {
-  flex: 1 1 60%;
+  flex: 1 1 40%;
   box-sizing: border-box;
 }
 
 .c-work__center {
-  flex: 1 1 25%;
+  flex: 1 1 40%;
   box-sizing: border-box;
   border-left: 1px dashed #707070;
   border-right: 1px dashed #707070;
@@ -1171,7 +1171,7 @@ textarea {
 }
 
 .c-work__right {
-  flex: 1 1 15%;
+  flex: 1 1 20%;
   box-sizing: border-box;
   display: flex;
   align-items: center;
