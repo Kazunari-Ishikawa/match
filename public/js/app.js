@@ -2388,7 +2388,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var response, len, i;
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -2400,17 +2400,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 3:
                 response = _context.sent;
                 console.log(response);
-                _this.works = response.data.works;
-                len = response.data.works.length;
-
-                for (i = 0; i < len; i++) {
-                  _this.works[i].apply = response.data.counts[i];
-                  _this.works[i].isBookmarked = response.data.is_bookmarked[i];
-                }
-
+                _this.works = response.data;
                 _this.isLoading = false;
 
-              case 9:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -2422,36 +2415,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var response, len, i;
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 console.log("OK");
                 console.log(_this2.form);
-                _this2.isLoading = true;
-                _context2.next = 5;
+                _context2.next = 4;
                 return axios.post("/api/works/search", {
                   form: _this2.form
                 });
 
-              case 5:
+              case 4:
                 response = _context2.sent;
                 console.log(response);
 
-                if (response.data.works !== []) {
-                  _this2.works = response.data.works;
-                  len = response.data.works.length;
-
-                  for (i = 0; i < len; i++) {
-                    _this2.works[i].apply = response.data.counts[i];
-                    _this2.works[i].isBookmarked = response.data.is_bookmarked[i];
-                  }
-                }
-
-                _this2.isLoading = false;
-
-              case 9:
+              case 6:
               case "end":
                 return _context2.stop();
             }

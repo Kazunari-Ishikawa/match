@@ -128,31 +128,15 @@ export default {
       this.isLoading = true;
       const response = await axios.get("/api/works");
       console.log(response);
-      this.works = response.data.works;
-
-      const len = response.data.works.length;
-      for (let i = 0; i < len; i++) {
-        this.works[i].apply = response.data.counts[i];
-        this.works[i].isBookmarked = response.data.is_bookmarked[i];
-      }
+      this.works = response.data;
       this.isLoading = false;
     },
     async searchWorks() {
-      console.log("OK");
       console.log(this.form);
       const response = await axios.post("/api/works/search", {
         form: this.form
       });
       console.log(response);
-      if (response.data.works !== []) {
-        this.works = response.data.works;
-
-        const len = response.data.works.length;
-        for (let i = 0; i < len; i++) {
-          this.works[i].apply = response.data.counts[i];
-          this.works[i].isBookmarked = response.data.is_bookmarked[i];
-        }
-      }
     }
   }
 };
