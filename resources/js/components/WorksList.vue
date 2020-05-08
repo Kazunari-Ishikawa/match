@@ -56,13 +56,7 @@ export default {
       this.isLoading = true;
       const response = await axios.get("/api/works");
       console.log(response);
-      this.works = response.data.works;
-
-      const len = response.data.works.length;
-      for (let i = 0; i < len; i++) {
-        this.works[i].apply = response.data.counts[i];
-        this.works[i].isBookmarked = response.data.is_bookmarked[i];
-      }
+      this.works = response.data;
       this.isLoading = false;
     },
     async getRegisteredWorks() {
@@ -143,19 +137,21 @@ export default {
     async addBookmarks(id) {
       const response = await axios.post(`/api/bookmarks/${id}/add`).catch();
       console.log(response);
-      this.works = this.works.map(work => {
-        if (work.id === response.data) {
-          work.isBookmarked = true;
-        }
-        return work;
-      });
+      if (response.status === 200) {
+        this.works = this.works.map(work => {
+          if (work.id === response.data) {
+            work.bookmarked = true;
+          }
+          return work;
+        });
+      }
     },
     async deleteBookmarks(id) {
       const response = await axios.post(`/api/bookmarks/${id}/delete`).catch();
       console.log(response);
       this.works = this.works.map(work => {
-        if (work.id === response.data.work_id) {
-          work.isBookmarked = false;
+        if (work.id === response.data) {
+          work.bookmarked = false;
         }
         return work;
       });

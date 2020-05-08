@@ -17,7 +17,7 @@
           </template>
         </p>
         <p class="c-work__count">
-          <span>{{work.apply}}</span>人が応募中です
+          <span>{{work.counts}}</span>人が応募中です
         </p>
       </div>
       <div class="c-work__right">
@@ -25,7 +25,7 @@
           <a :href="`/works/${work.id}`" class="c-work__tag c-work__tag--more">くわしく!</a>
           <a
             class="c-work__tag c-work__tag--bookmark"
-            :class="{ 'c-work__tag--isBookmarked': work.isBookmarked }"
+            :class="{ 'c-work__tag--isBookmarked': work.bookmarked }"
             @click="bookmarks"
           >気になる!</a>
 
@@ -58,7 +58,7 @@ export default {
   },
   computed: {
     bookmarkState() {
-      return this.work.isBookmarked;
+      return this.work.bookmarked;
     }
   },
   data() {
@@ -84,7 +84,7 @@ export default {
     async bookmarks() {
       this.$emit("bookmarks", {
         id: this.work.id,
-        bookmarked: this.work.isBookmarked
+        bookmarked: this.work.bookmarked
       });
       // const response = await axios.post(`/api/bookmarks/${this.work.id}/add`);
       // console.log(response);

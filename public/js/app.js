@@ -2492,7 +2492,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   computed: {
     bookmarkState: function bookmarkState() {
-      return this.work.isBookmarked;
+      return this.work.bookmarked;
     }
   },
   data: function data() {
@@ -2543,7 +2543,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _this2.$emit("bookmarks", {
                   id: _this2.work.id,
-                  bookmarked: _this2.work.isBookmarked
+                  bookmarked: _this2.work.bookmarked
                 }); // const response = await axios.post(`/api/bookmarks/${this.work.id}/add`);
                 // console.log(response);
                 // this.bookmarked = true;
@@ -2653,7 +2653,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var response, len, i;
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
@@ -2665,17 +2665,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 3:
                 response = _context.sent;
                 console.log(response);
-                _this.works = response.data.works;
-                len = response.data.works.length;
-
-                for (i = 0; i < len; i++) {
-                  _this.works[i].apply = response.data.counts[i];
-                  _this.works[i].isBookmarked = response.data.is_bookmarked[i];
-                }
-
+                _this.works = response.data;
                 _this.isLoading = false;
 
-              case 9:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -2881,13 +2874,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 response = _context7.sent;
                 console.log(response);
-                _this7.works = _this7.works.map(function (work) {
-                  if (work.id === response.data) {
-                    work.isBookmarked = true;
-                  }
 
-                  return work;
-                });
+                if (response.status === 200) {
+                  _this7.works = _this7.works.map(function (work) {
+                    if (work.id === response.data) {
+                      work.bookmarked = true;
+                    }
+
+                    return work;
+                  });
+                }
 
               case 5:
               case "end":
@@ -2913,8 +2909,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 response = _context8.sent;
                 console.log(response);
                 _this8.works = _this8.works.map(function (work) {
-                  if (work.id === response.data.work_id) {
-                    work.isBookmarked = false;
+                  if (work.id === response.data) {
+                    work.bookmarked = false;
                   }
 
                   return work;
@@ -39781,7 +39777,7 @@ var render = function() {
           ),
           _vm._v(" "),
           _c("p", { staticClass: "c-work__count" }, [
-            _c("span", [_vm._v(_vm._s(_vm.work.apply))]),
+            _c("span", [_vm._v(_vm._s(_vm.work.counts))]),
             _vm._v("人が応募中です\n      ")
           ])
         ]),
@@ -39801,7 +39797,7 @@ var render = function() {
               "a",
               {
                 staticClass: "c-work__tag c-work__tag--bookmark",
-                class: { "c-work__tag--isBookmarked": _vm.work.isBookmarked },
+                class: { "c-work__tag--isBookmarked": _vm.work.bookmarked },
                 on: { click: _vm.bookmarks }
               },
               [_vm._v("気になる!")]
