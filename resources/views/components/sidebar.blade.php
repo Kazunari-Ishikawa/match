@@ -1,6 +1,6 @@
 <section class="l-sidebar">
-  <p class="c-menu__tab">依頼者向け</p>
-  <ul class="c-menu--side">
+  <p class="c-menu__tab js-menu__tab">依頼者向け</p>
+  <ul class="c-menu--side js-menu__target">
     <li class="c-menu__item c-menu__item--side"><a href="{{ route('works.new') }}" class="c-menu__link c-menu__link--side">案件を登録する</a></li>
     <li class="c-menu__item c-menu__item--side"><a href="{{ route('works.registered') }}" class="c-menu__link c-menu__link--side">登録した案件</a></li>
     <li class="c-menu__item c-menu__item--side"><a href="{{ route('works.closed') }}" class="c-menu__link c-menu__link--side">成約済み案件</a></li>
@@ -9,8 +9,8 @@
     <li class="c-menu__item c-menu__item--side"><a href="{{ route('messages.index') }}" class="c-menu__link c-menu__link--side">ダイレクトメッセージ</a></li>
   </ul>
 
-  <p class="c-menu__tab">応募者向け</p>
-  <ul class="c-menu--side">
+  <p class="c-menu__tab js-menu__tab">応募者向け</p>
+  <ul class="c-menu--side js-menu__target">
     <li class="c-menu__item c-menu__item--side"><a href="{{ route('works.index') }}" class="c-menu__link c-menu__link--side">案件を探す</a></li>
     <li class="c-menu__item c-menu__item--side"><a href="{{ route('works.applied') }}" class="c-menu__link c-menu__link--side">応募している案件</a></li>
     <li class="c-menu__item c-menu__item--side"><a href="{{ route('works.closed') }}" class="c-menu__link c-menu__link--side">成約済み案件</a></li>
@@ -19,8 +19,8 @@
     <li class="c-menu__item c-menu__item--side"><a href="{{ route('messages.index') }}" class="c-menu__link c-menu__link--side">ダイレクトメッセージ</a></li>
   </ul>
 
-  <p class="c-menu__tab">設定</p>
-  <ul class="c-menu--side">
+  <p class="c-menu__tab js-menu__tab">設定</p>
+  <ul class="c-menu--side js-menu__target">
     <li class="c-menu__item c-menu__item--side"><a href="{{ route('users.edit')}}" class="c-menu__link c-menu__link--side">プロフィール編集</a></li>
     <li class="c-menu__item c-menu__item--side"><a href="{{ route('users.editPassword')}}" class="c-menu__link c-menu__link--side">パスワード変更</a></li>
     <li class="c-menu__item c-menu__item--side"><a href="help.html" class="c-menu__link c-menu__link--side">ヘルプ</a></li>

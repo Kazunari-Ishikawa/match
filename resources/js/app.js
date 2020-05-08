@@ -5,6 +5,7 @@
  */
 
 require('./bootstrap');
+require('./togglemenu');
 
 window.Vue = require('vue');
 
