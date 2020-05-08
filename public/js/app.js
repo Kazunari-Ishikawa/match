@@ -2816,7 +2816,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this6 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee6() {
-        var response, len, i;
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee6$(_context6) {
           while (1) {
             switch (_context6.prev = _context6.next) {
@@ -2828,17 +2828,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 3:
                 response = _context6.sent;
                 console.log(response);
-                _this6.works = response.data.works;
-                len = response.data.works.length;
-
-                for (i = 0; i < len; i++) {
-                  _this6.works[i].apply = response.data.counts[i];
-                  _this6.works[i].isBookmarked = response.data.is_bookmarked[i];
-                }
-
+                _this6.works = response.data;
                 _this6.isLoading = false;
 
-              case 9:
+              case 7:
               case "end":
                 return _context6.stop();
             }
@@ -2849,9 +2842,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     clickBookmarks: function clickBookmarks(_ref) {
       var id = _ref.id,
           bookmarked = _ref.bookmarked;
-      console.log(id);
-      console.log(bookmarked);
-      console.log("OK");
 
       if (bookmarked) {
         this.deleteBookmarks(id);
@@ -2908,15 +2898,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 2:
                 response = _context8.sent;
                 console.log(response);
-                _this8.works = _this8.works.map(function (work) {
-                  if (work.id === response.data) {
-                    work.bookmarked = false;
-                  }
 
-                  return work;
-                });
+                if (response.status === 200) {
+                  _this8.works = _this8.works.map(function (work) {
+                    if (work.id === response.data) {
+                      work.bookmarked = false;
+                    }
 
-              case 5:
+                    return work;
+                  });
+                }
+
+                console.log(location.pathname);
+
+                if (location.pathname === "/works/bookmarks") {
+                  _this8.getBookmarksWorks();
+                }
+
+              case 7:
               case "end":
                 return _context8.stop();
             }

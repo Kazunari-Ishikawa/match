@@ -149,22 +149,8 @@ class WorksController extends Controller
     public function getworks()
     {
         $works = Work::with(['user', 'category'])->where('is_closed', false)->get();
-        // \Log::debug($works);
 
-        // 各Workに対する応募数を取得する
-        // $works->counts = $works->map(function($work) {
-        //     $count = Apply::where('work_id', $work->id)->count();
-        //     return $count;
-        // });
-
-        // 各Workに対して、ユーザーがbookmarkしているか判定する
-        // $is_bookmarked = $works->map(function($work){
-        //     return $work->bookmarks->contains(function($bookmark) {
-        //         return $bookmark->user_id === Auth::id();
-        //     });
-        // });
-
-        return response()->json($works);
+        return $works;
     }
 
     // ユーザーが登録したWork一覧を取得する

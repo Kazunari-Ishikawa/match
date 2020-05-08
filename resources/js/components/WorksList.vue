@@ -115,19 +115,11 @@ export default {
       this.isLoading = true;
       const response = await axios.get("/api/works/bookmarks");
       console.log(response);
-      this.works = response.data.works;
+      this.works = response.data;
 
-      const len = response.data.works.length;
-      for (let i = 0; i < len; i++) {
-        this.works[i].apply = response.data.counts[i];
-        this.works[i].isBookmarked = response.data.is_bookmarked[i];
-      }
       this.isLoading = false;
     },
     clickBookmarks({ id, bookmarked }) {
-      console.log(id);
-      console.log(bookmarked);
-      console.log("OK");
       if (bookmarked) {
         this.deleteBookmarks(id);
       } else {
@@ -149,12 +141,18 @@ export default {
     async deleteBookmarks(id) {
       const response = await axios.post(`/api/bookmarks/${id}/delete`).catch();
       console.log(response);
-      this.works = this.works.map(work => {
-        if (work.id === response.data) {
-          work.bookmarked = false;
-        }
-        return work;
-      });
+      if (response.status === 200) {
+        this.works = this.works.map(work => {
+          if (work.id === response.data) {
+            work.bookmarked = false;
+          }
+          return work;
+        });
+      }
+      console.log(location.pathname);
+      if (location.pathname === "/works/bookmarks") {
+        this.getBookmarksWorks();
+      }
     }
   }
 };
