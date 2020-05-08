@@ -1,16 +1,14 @@
 .l-nav {
   @include mq('md') {
-    display: none;
     background: rgba($color: #fff, $alpha: 0.9);
-    height: 100vh;
     width: 70vw;
+    height: 100vh;
     position: absolute;
     top: 80px;
     right: -70vw;
     z-index: 2;
     transition: $time_m;
     &.active {
-      display: block;
       transform: translateX(-100%);
     }
   }

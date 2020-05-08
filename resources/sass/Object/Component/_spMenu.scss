@@ -1,5 +1,6 @@
 .c-spMenu {
   display: none;
+  transition: $time_m;
   @include mq('md') {
     display: block;
   }

@@ -12,7 +12,7 @@
   </div>
 
   <div class="l-header--right">
-    <nav class="l-nav">
+    <nav class="l-nav js-header-toggle-target">
       <!-- PC向けメニュー -->
       <!-- 未ログイン時 -->
       @guest
@@ -62,7 +62,7 @@
   </div>
 
   <!-- ハンバーガーメニュー -->
-  <div class="c-menuTrigger">
+  <div class="c-menuTrigger js-header-trigger">
     <span class="c-menuTrigger__bar"></span>
     <span class="c-menuTrigger__bar"></span>
     <span class="c-menuTrigger__bar"></span>
