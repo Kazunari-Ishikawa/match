@@ -148,7 +148,7 @@ class WorksController extends Controller
     // Work一覧を取得する
     public function getworks()
     {
-        $works = Work::with(['user', 'category'])->where('is_closed', false)->get();
+        $works = Work::with(['user', 'category'])->where('is_closed', false)->orderBy('created_at', 'desc')->paginate(5);
 
         return $works;
     }

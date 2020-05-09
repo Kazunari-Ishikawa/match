@@ -2400,7 +2400,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 3:
                 response = _context.sent;
                 console.log(response);
-                _this.works = response.data;
+                _this.works = response.data.data;
                 _this.isLoading = false;
 
               case 7:
@@ -2876,7 +2876,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 3:
                 response = _context.sent;
                 console.log(response);
-                _this.works = response.data;
+                _this.works = response.data.data;
                 _this.isLoading = false;
 
               case 7:
