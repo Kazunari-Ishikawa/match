@@ -1351,6 +1351,13 @@ textarea {
   }
 }
 
+.c-work__comment {
+  border-top: 1px dashed #707070;
+  font-size: 14px;
+  padding-top: 15px;
+  margin: 15px 0;
+}
+
 .c-workList {
   width: 100%;
   margin-bottom: 80px;

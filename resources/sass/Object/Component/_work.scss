@@ -161,4 +161,10 @@
       margin-bottom: $space_s;
     }
   }
+  &__comment {
+    border-top: 1px dashed $color_sub2;
+    font-size: $font-size_m;
+    padding-top: $space_m;
+    margin: $space_m 0;
+  }
 }
