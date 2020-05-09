@@ -1704,19 +1704,16 @@ textarea {
 
 .c-pagination {
   margin: 20px;
+  text-align: center;
 }
 
 .c-pagination__item {
   display: inline-block;
   background: white;
   padding: 5px;
+  margin: 0;
   color: #51a1a2;
-  border: 1px solid #707070;
-}
-
-.c-pagination__item.active {
-  color: white;
-  background: #51a1a2;
+  border: 1px solid #eee;
 }
 
 .c-pagination__link {

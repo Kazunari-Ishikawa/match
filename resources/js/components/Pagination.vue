@@ -1,19 +1,19 @@
 <template>
   <ul class="c-pagination">
     <li v-if="!isFirst" class="c-pagination__item">
-      <a href class="c-pagination__link" @click.prevent="movePage(data.current_page-1)">前へ</a>
+      <a href class="c-pagination__link" @click.prevent="movePage(currentPage-1)">前へ</a>
     </li>
     <li
-      v-for="page in pages"
-      :key="page.id"
+      v-for="(page, index) in pages"
+      :key="index"
       class="c-pagination__item"
-      :class="{'isActive': page === data.current_page}"
+      :class="{'isActive': page === currentPage}"
       @click.prevent="movePage(page)"
     >
       <a href class="c-pagination__link">{{ page }}</a>
     </li>
     <li v-if="!isLast" class="c-pagination__item">
-      <a href class="c-pagination__link" @click.prevent="movePage(data.current_page+1)">次へ</a>
+      <a href class="c-pagination__link" @click.prevent="movePage(currentPage+1)">次へ</a>
     </li>
   </ul>
 </template>
@@ -21,23 +21,25 @@
 <script>
 export default {
   props: {
-    data: Object
+    currentPage: Number,
+    lastPage: Number
   },
   computed: {
     // 最初のページであるか判定
     isFirst() {
-      return this.data.prev_page_url !== null;
+      return this.currentPage === 1;
     },
     // 最後のページであるか判定
     isLast() {
-      return this.data.next_page_url !== null;
+      return this.currentPage === this.lastPage;
     },
     // ページ数のオブジェクトを生成
     pages() {
       let pages = [];
-      for (let i = 1; i <= this.data.last_page; i++) {
-        pages.id = i;
-        pages.num = i;
+      for (let i = 1; i <= this.lastPage; i++) {
+        // pages.id = i;
+        // pages.num = i;
+        pages.push(i);
       }
       return pages;
     }
@@ -45,7 +47,7 @@ export default {
   methods: {
     // 現在ページ以外のリンクの場合、move-pageを通知する
     movePage(page) {
-      if (page !== this.data.current_page) {
+      if (page !== this.currentPage) {
         this.$emit("move-page", page);
       }
     }
