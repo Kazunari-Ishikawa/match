@@ -899,6 +899,20 @@ textarea {
   }
 }
 
+.c-form__sample {
+  border-radius: 4px;
+  background: rgba(81, 161, 162, 0.15);
+  font-size: 14px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+@media screen and (max-width: 425px) {
+  .c-form__sample {
+    font-size: 12px;
+  }
+}
+
 .c-mypage__title {
   color: #51a1a2;
   background: white;

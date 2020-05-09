@@ -2420,18 +2420,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                console.log("OK");
                 console.log(_this2.form);
-                _context2.next = 4;
+                _context2.next = 3;
                 return axios.post("/api/works/search", {
                   form: _this2.form
                 });
 
-              case 4:
+              case 3:
                 response = _context2.sent;
                 console.log(response);
 
-              case 6:
+              case 5:
               case "end":
                 return _context2.stop();
             }

@@ -126,4 +126,14 @@
       margin-bottom: $space_s;
     }
   }
+  &__sample {
+    border-radius: $radius_s;
+    background: rgba($color: $color_main, $alpha: 0.15);
+    font-size: $font-size_m;
+    padding: $space_s;
+    margin-bottom: $space_default;
+    @include mq() {
+      font-size: $font-size_s;
+    }
+  }
 }
