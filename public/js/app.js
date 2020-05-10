@@ -2382,7 +2382,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       },
       works: null,
       isLoading: false,
-      page: 1,
+      pageNum: 1,
       currentPage: 0,
       lastPage: 0
     };
@@ -2402,7 +2402,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _this.isLoading = true;
                 _context.next = 3;
-                return axios.get("/api/works?page=".concat(_this.page));
+                return axios.get("/api/works?page=".concat(_this.pageNum));
 
               case 3:
                 response = _context.sent;
@@ -2448,10 +2448,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     movePage: function movePage(page) {
-      this.page = page;
+      this.pageNum = page;
       this.getWorks();
-      var app = document.getElementById("app");
-      app.scrollTop = 0;
     }
   }
 });
@@ -2483,10 +2481,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     message: Object,
     requestUserId: Number
+  },
+  methods: {
+    clickDelete: function clickDelete() {
+      this.$emit("click-delete", this.message.id);
+    }
   }
 });
 
@@ -2510,6 +2514,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -2622,6 +2627,48 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         }, _callee2);
+      }))();
+    },
+    deleteMessage: function deleteMessage(id) {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                if (!confirm("削除します。よろしいですか？")) {
+                  _context3.next = 7;
+                  break;
+                }
+
+                _context3.next = 3;
+                return axios.post("/api/messages/".concat(id, "/delete"))["catch"](function (error) {
+                  console.log(error);
+                  return error.response;
+                });
+
+              case 3:
+                response = _context3.sent;
+                console.log(response);
+
+                if (response.status !== 200) {
+                  alert("あなたのメッセージではないので削除できません。");
+                }
+
+                if (response.status === 200) {
+                  alert("削除しました。");
+
+                  _this3.getMessages();
+                }
+
+              case 7:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
       }))();
     },
     scroll: function scroll() {
@@ -40223,7 +40270,8 @@ var render = function() {
             _vm.requestUserId == _vm.message.user_id
               ? "c-message__content--myself"
               : "c-message__content--other"
-          ]
+          ],
+          on: { click: _vm.clickDelete }
         },
         [_vm._v(_vm._s(_vm.message.content))]
       ),
@@ -40275,21 +40323,18 @@ var render = function() {
     _vm._v(" "),
     _c(
       "div",
-      {
-        staticClass: "p-messageDetail__body",
-        attrs: { id: "messageBox" },
-        on: { click: _vm.scroll }
-      },
+      { staticClass: "p-messageDetail__body", attrs: { id: "messageBox" } },
       _vm._l(_vm.messages, function(message) {
         return _c("Message", {
           key: message.id,
-          attrs: { message: message, "request-user-id": _vm.requestUserId }
+          attrs: { message: message, "request-user-id": _vm.requestUserId },
+          on: { "click-delete": _vm.deleteMessage }
         })
       }),
       1
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "p-messageDetail__post" }, [
+    _c("div", { staticClass: "p-messageDetail__send" }, [
       _c(
         "form",
         {
