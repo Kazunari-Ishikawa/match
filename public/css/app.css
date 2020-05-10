@@ -1567,6 +1567,10 @@ textarea {
   text-align: left;
 }
 
+.c-message__content:hover {
+  opacity: 0.8;
+}
+
 .c-message__content--other {
   background: rgba(81, 161, 162, 0.3);
   border-radius: 20px 20px 20px 0;

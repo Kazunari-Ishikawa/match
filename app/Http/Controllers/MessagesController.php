@@ -33,4 +33,12 @@ class MessagesController extends Controller
 
         return response($message);
     }
+
+    public function deleteMessage($id)
+    {
+        \Log::debug($id);
+        $message = Message::find($id)->delete();
+
+        return $id;
+    }
 }

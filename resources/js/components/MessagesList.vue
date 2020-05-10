@@ -7,16 +7,17 @@
       </h2>
     </div>
 
-    <div id="messageBox" class="p-messageDetail__body" @click="scroll">
+    <div id="messageBox" class="p-messageDetail__body">
       <Message
         v-for="message in messages"
         :key="message.id"
         :message="message"
         :request-user-id="requestUserId"
+        @click-delete="deleteMessage"
       />
     </div>
 
-    <div class="p-messageDetail__post">
+    <div class="p-messageDetail__send">
       <form @submit.prevent="sendMessage">
         <div class="c-form__group--sm">
           <textarea class="c-form__textarea c-form__textarea--message" v-model="messageText"></textarea>
@@ -69,6 +70,12 @@ export default {
       });
       console.log(response);
       this.reset();
+      this.getMessages();
+    },
+    async deleteMessage(id) {
+      const response = await axios.post(`/api/messages/${id}/delete`);
+      console.log(response);
+      alert("削除しました。");
       this.getMessages();
     },
     scroll() {
