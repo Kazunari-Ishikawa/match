@@ -23,9 +23,7 @@ export default {
   },
   methods: {
     clickDelete() {
-      if (confirm("このメッセージを削除しますか？")) {
-        this.$emit("click-delete", this.message.id);
-      }
+      this.$emit("click-delete", this.message.id);
     }
   }
 };

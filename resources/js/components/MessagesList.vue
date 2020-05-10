@@ -73,10 +73,23 @@ export default {
       this.getMessages();
     },
     async deleteMessage(id) {
-      const response = await axios.post(`/api/messages/${id}/delete`);
-      console.log(response);
-      alert("削除しました。");
-      this.getMessages();
+      if (confirm("削除します。よろしいですか？")) {
+        const response = await axios
+          .post(`/api/messages/${id}/delete`)
+          .catch(error => {
+            console.log(error);
+            return error.response;
+          });
+
+        console.log(response);
+        if (response.status !== 200) {
+          alert("あなたのメッセージではないので削除できません。");
+        }
+        if (response.status === 200) {
+          alert("削除しました。");
+          this.getMessages();
+        }
+      }
     },
     scroll() {
       const meesageBox = document.getElementById("messageBox");

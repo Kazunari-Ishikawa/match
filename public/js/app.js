@@ -2489,9 +2489,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     clickDelete: function clickDelete() {
-      if (confirm("このメッセージを削除しますか？")) {
-        this.$emit("click-delete", this.message.id);
-      }
+      this.$emit("click-delete", this.message.id);
     }
   }
 });
@@ -2640,17 +2638,32 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context3.prev = _context3.next) {
               case 0:
-                _context3.next = 2;
-                return axios.post("/api/messages/".concat(id, "/delete"));
+                if (!confirm("削除します。よろしいですか？")) {
+                  _context3.next = 7;
+                  break;
+                }
 
-              case 2:
+                _context3.next = 3;
+                return axios.post("/api/messages/".concat(id, "/delete"))["catch"](function (error) {
+                  console.log(error);
+                  return error.response;
+                });
+
+              case 3:
                 response = _context3.sent;
                 console.log(response);
-                alert("削除しました。");
 
-                _this3.getMessages();
+                if (response.status !== 200) {
+                  alert("あなたのメッセージではないので削除できません。");
+                }
 
-              case 6:
+                if (response.status === 200) {
+                  alert("削除しました。");
+
+                  _this3.getMessages();
+                }
+
+              case 7:
               case "end":
                 return _context3.stop();
             }
