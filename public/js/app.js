@@ -2027,6 +2027,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2037,6 +2041,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       boards: null,
+      userId: 0,
+      requestedBoards: null,
+      appliedBoards: null,
       isLoading: Boolean
     };
   },
@@ -2060,10 +2067,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 3:
                 response = _context.sent;
                 console.log(response);
-                _this.boards = response.data;
+                _this.boards = response.data.boards;
+                _this.userId = response.data.user_id; // 依頼した案件に対するmessageBoardを取得
+
+                _this.requestedBoards = _this.boards.filter(function (board) {
+                  return board.to_user_id === _this.userId;
+                }); // 応募した案件に対するmessageBoardを取得
+
+                _this.appliedBoards = _this.boards.filter(function (board) {
+                  return board.from_user_id === _this.userId;
+                });
                 _this.isLoading = false;
 
-              case 7:
+              case 10:
               case "end":
                 return _context.stop();
             }
@@ -39739,7 +39755,23 @@ var render = function() {
     [
       _vm.isLoading ? _c("Loader") : _vm._e(),
       _vm._v(" "),
-      _vm._l(_vm.boards, function(board) {
+      !_vm.isLoading
+        ? _c("div", { staticClass: "c-messageBoard__type" }, [
+            _vm._v("依頼した案件")
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm._l(_vm.requestedBoards, function(board) {
+        return _c("Board", { key: board.id, attrs: { board: board } })
+      }),
+      _vm._v(" "),
+      !_vm.isLoading
+        ? _c("div", { staticClass: "c-messageBoard__type" }, [
+            _vm._v("応募した案件")
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm._l(_vm.appliedBoards, function(board) {
         return _c("Board", { key: board.id, attrs: { board: board } })
       })
     ],
