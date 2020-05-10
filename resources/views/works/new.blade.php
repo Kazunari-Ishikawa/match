@@ -4,7 +4,7 @@
 <section class="l-container">
   <!-- 案件登録 -->
   <div class="l-container__header">
-    <h2 class="l-container__title">案件登録</h2>
+    <h2 class="l-container__title">案件を依頼する</h2>
   </div>
 
   <div class="l-container__body l-container__body--1column">

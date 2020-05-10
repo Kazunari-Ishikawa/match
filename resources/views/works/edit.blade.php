@@ -2,9 +2,9 @@
 
 @section('content')
 <section class="l-container">
-  <!-- 案件登録 -->
+  <!-- 案件編集 -->
   <div class="l-container__header">
-    <h2 class="l-container__title">案件編集</h2>
+    <h2 class="l-container__title">案件を編集する</h2>
   </div>
 
   <div class="l-container__body l-container__body--1column">
