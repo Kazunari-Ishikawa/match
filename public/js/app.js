@@ -2027,6 +2027,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2037,6 +2040,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       boards: null,
+      userId: 0,
       isLoading: Boolean
     };
   },
@@ -2060,10 +2064,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 3:
                 response = _context.sent;
                 console.log(response);
-                _this.boards = response.data;
+                _this.boards = response.data.boards;
+                _this.userId = response.data.user_id;
                 _this.isLoading = false;
 
-              case 7:
+              case 8:
               case "end":
                 return _context.stop();
             }
@@ -39739,9 +39744,21 @@ var render = function() {
     [
       _vm.isLoading ? _c("Loader") : _vm._e(),
       _vm._v(" "),
+      !_vm.isLoading
+        ? _c("div", { staticClass: "c-messageBoard__type" }, [
+            _vm._v("依頼した案件")
+          ])
+        : _vm._e(),
+      _vm._v(" "),
       _vm._l(_vm.boards, function(board) {
         return _c("Board", { key: board.id, attrs: { board: board } })
-      })
+      }),
+      _vm._v(" "),
+      !_vm.isLoading
+        ? _c("div", { staticClass: "c-messageBoard__type" }, [
+            _vm._v("応募した案件")
+          ])
+        : _vm._e()
     ],
     2
   )
