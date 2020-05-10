@@ -64,7 +64,7 @@ export default {
       this.isLoading = true;
       const response = await axios.get("/api/works");
       console.log(response);
-      this.works = response.data;
+      this.works = response.data.data;
       this.isLoading = false;
     },
     async getRegisteredWorks() {

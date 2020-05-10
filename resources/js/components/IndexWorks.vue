@@ -95,6 +95,7 @@
         <Loader v-if="isLoading" />
         <Work v-for="work in works" :key="work.id" :work="work" />
       </div>
+      <Pagination :current-page="currentPage" :last-page="lastPage" @move-page="movePage" />
     </section>
   </div>
 </template>
@@ -102,11 +103,13 @@
 <script>
 import Work from "./Work";
 import Loader from "./Loader";
+import Pagination from "./Pagination";
 
 export default {
   components: {
     Work,
-    Loader
+    Loader,
+    Pagination
   },
   data() {
     return {
@@ -117,7 +120,10 @@ export default {
         maxPrice: 0
       },
       works: null,
-      isLoading: false
+      isLoading: false,
+      pageNum: 1,
+      currentPage: 0,
+      lastPage: 0
     };
   },
   created() {
@@ -126,9 +132,11 @@ export default {
   methods: {
     async getWorks() {
       this.isLoading = true;
-      const response = await axios.get("/api/works");
+      const response = await axios.get(`/api/works?page=${this.pageNum}`);
       console.log(response);
-      this.works = response.data;
+      this.works = response.data.data;
+      this.currentPage = response.data.current_page;
+      this.lastPage = response.data.last_page;
       this.isLoading = false;
     },
     async searchWorks() {
@@ -137,6 +145,10 @@ export default {
         form: this.form
       });
       console.log(response);
+    },
+    movePage(page) {
+      this.pageNum = page;
+      this.getWorks();
     }
   }
 };

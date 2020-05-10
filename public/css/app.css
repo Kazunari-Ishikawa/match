@@ -1702,6 +1702,24 @@ textarea {
   display: inline-block;
 }
 
+.c-pagination {
+  margin: 20px;
+  text-align: center;
+}
+
+.c-pagination__item {
+  display: inline-block;
+  background: white;
+  padding: 5px;
+  margin: 0;
+  color: #51a1a2;
+  border: 1px solid #eee;
+}
+
+.c-pagination__link {
+  display: block;
+}
+
 .p-hero {
   box-sizing: border-box;
   background-image: url(/images/top-img-2.jpg?bd340779fbbd1aa662693220c9774ef0);
