@@ -7,6 +7,9 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 $space_3l;
+  position: fixed;
+  top: 0;
+  right: 0;
   @include mq() {
     padding: 0 $space_default;
   }
