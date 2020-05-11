@@ -2977,6 +2977,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Work__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Work */ "./resources/js/components/Work.vue");
 /* harmony import */ var _Loader__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Loader */ "./resources/js/components/Loader.vue");
+/* harmony import */ var _Pagination__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./Pagination */ "./resources/js/components/Pagination.vue");
 
 
 function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -2996,14 +2997,35 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     Work: _Work__WEBPACK_IMPORTED_MODULE_1__["default"],
-    Loader: _Loader__WEBPACK_IMPORTED_MODULE_2__["default"]
+    Loader: _Loader__WEBPACK_IMPORTED_MODULE_2__["default"],
+    Pagination: _Pagination__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   props: {
+    listTitle: String,
     isRegistered: Boolean,
     isApplied: Boolean,
     withComment: Boolean,
@@ -3015,7 +3037,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       works: null,
-      isLoading: false
+      isLoading: false,
+      pageNum: 1,
+      currentPage: 0,
+      lastPage: 0,
+      totalNum: 0,
+      fromNum: 0,
+      toNum: 0
     };
   },
   created: function created() {
@@ -3075,35 +3103,36 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
-        var response, len, i;
+        var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _this2.isLoading = true;
                 _context2.next = 3;
-                return axios.get("/api/works/registered");
+                return axios.get("/api/works/registered?page=".concat(_this2.pageNum));
 
               case 3:
                 response = _context2.sent;
                 console.log(response);
-                _this2.works = response.data.works;
-                len = response.data.works.length;
-
-                for (i = 0; i < len; i++) {
-                  _this2.works[i].apply = response.data.counts[i];
-                  _this2.works[i].isBookmarked = response.data.is_bookmarked[i];
-                }
-
+                _this2.works = response.data.data;
+                _this2.currentPage = response.data.current_page;
+                _this2.lastPage = response.data.last_page;
+                _this2.totalNum = response.data.total;
+                _this2.fromNum = response.data.from;
+                _this2.toNum = response.data.to;
                 _this2.isLoading = false;
 
-              case 9:
+              case 12:
               case "end":
                 return _context2.stop();
             }
           }
         }, _callee2);
       }))();
+    },
+    movePage: function movePage(page) {
+      this.pageNum = page;
     },
     getCommentedWorks: function getCommentedWorks() {
       var _this3 = this;
@@ -40736,20 +40765,51 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
-    { staticClass: "c-workList" },
+    "section",
+    { staticClass: "l-container__body--withSide" },
     [
-      _vm.isLoading ? _c("Loader") : _vm._e(),
+      _c(
+        "div",
+        { staticClass: "c-workList" },
+        [
+          _c("div", { staticClass: "c-workList__header" }, [
+            _c("h2", { staticClass: "c-workList__title" }, [
+              _vm._v(_vm._s(_vm.listTitle))
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "c-workList__info" }, [
+              _vm._v("\n        " + _vm._s(_vm.totalNum) + "件中\n        "),
+              _c("span", [_vm._v(_vm._s(_vm.fromNum))]),
+              _vm._v(" -\n        "),
+              _c("span", [_vm._v(_vm._s(_vm.toNum))]),
+              _vm._v("件表示\n      ")
+            ])
+          ]),
+          _vm._v(" "),
+          _vm.isLoading ? _c("Loader") : _vm._e(),
+          _vm._v(" "),
+          _vm._l(_vm.works, function(work) {
+            return _c("Work", {
+              key: work.id,
+              attrs: { work: work, "with-comment": _vm.withComment },
+              on: { bookmarks: _vm.clickBookmarks }
+            })
+          })
+        ],
+        2
+      ),
       _vm._v(" "),
-      _vm._l(_vm.works, function(work) {
-        return _c("Work", {
-          key: work.id,
-          attrs: { work: work, "with-comment": _vm.withComment },
-          on: { bookmarks: _vm.clickBookmarks }
-        })
-      })
+      !_vm.isLoading
+        ? _c("Pagination", {
+            attrs: {
+              "current-page": _vm.currentPage,
+              "last-page": _vm.lastPage
+            },
+            on: { "move-page": _vm.movePage }
+          })
+        : _vm._e()
     ],
-    2
+    1
   )
 }
 var staticRenderFns = []
