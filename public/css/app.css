@@ -176,6 +176,12 @@ textarea {
   padding: 0;
 }
 
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .l-header {
   box-sizing: border-box;
   background: white;
@@ -338,6 +344,7 @@ textarea {
 .l-footer {
   background: #707070;
   color: white;
+  margin-top: auto;
   min-height: 100px;
 }
 
