@@ -14,8 +14,9 @@
         </p>
       </div>
 
-      <div class="c-workList">
-        <Loader v-if="isLoading" />
+      <Loader v-if="isLoading" />
+
+      <div v-if="!isLoading" class="c-workList">
         <Work v-for="work in works" :key="work.id" :work="work" @bookmarks="clickBookmarks" />
       </div>
       <Pagination

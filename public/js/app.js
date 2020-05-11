@@ -2721,6 +2721,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
 
 
 
@@ -40516,22 +40517,22 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "c-workList" },
-            [
-              _vm.isLoading ? _c("Loader") : _vm._e(),
-              _vm._v(" "),
-              _vm._l(_vm.works, function(work) {
-                return _c("Work", {
-                  key: work.id,
-                  attrs: { work: work },
-                  on: { bookmarks: _vm.clickBookmarks }
-                })
-              })
-            ],
-            2
-          ),
+          _vm.isLoading ? _c("Loader") : _vm._e(),
+          _vm._v(" "),
+          !_vm.isLoading
+            ? _c(
+                "div",
+                { staticClass: "c-workList" },
+                _vm._l(_vm.works, function(work) {
+                  return _c("Work", {
+                    key: work.id,
+                    attrs: { work: work },
+                    on: { bookmarks: _vm.clickBookmarks }
+                  })
+                }),
+                1
+              )
+            : _vm._e(),
           _vm._v(" "),
           !_vm.isLoading
             ? _c("Pagination", {
