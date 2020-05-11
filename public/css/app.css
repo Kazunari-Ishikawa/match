@@ -1349,12 +1349,12 @@ textarea {
 
 .c-workList {
   width: 100%;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
 }
 
 @media screen and (max-width: 425px) {
   .c-workList {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
 }
 
@@ -1697,8 +1697,14 @@ textarea {
 }
 
 .c-pagination {
-  margin: 20px;
+  margin-bottom: 40px;
   text-align: center;
+}
+
+@media screen and (max-width: 425px) {
+  .c-pagination {
+    margin-bottom: 20px;
+  }
 }
 
 .c-pagination__item {

@@ -3030,9 +3030,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     isApplied: Boolean,
     withComment: Boolean,
     isClosed: Boolean,
-    isBookmarked: Boolean,
-    isSearched: Boolean,
-    searchForm: Object
+    isBookmarked: Boolean
   },
   data: function data() {
     return {
@@ -3048,13 +3046,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   created: function created() {
     this.selectList();
-  },
-  beforeUpdate: function beforeUpdate() {
-    console.log("before update.");
-
-    if (this.isSearched) {
-      console.log(this.searchForm);
-    }
   },
   methods: {
     selectList: function selectList() {
