@@ -7,7 +7,7 @@
   @include('components.sidebar')
 
   <!-- メインコンテンツ -->
-  <works-list :is-registered="true" :list-title='@json("依頼した案件")'></works-list>
+  <works-list :list-title='@json("依頼した案件")'></works-list>
 
 </div>
 

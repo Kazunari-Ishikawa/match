@@ -16,7 +16,7 @@
 
       <div class="c-workList">
         <Loader v-if="isLoading" />
-        <Work v-for="work in works" :key="work.id" :work="work" />
+        <Work v-for="work in works" :key="work.id" :work="work" @bookmarks="clickBookmarks" />
       </div>
       <Pagination
         v-if="!isLoading"
@@ -86,6 +86,40 @@ export default {
     movePage(page) {
       this.pageNum = page;
       this.searchWorks();
+    },
+    clickBookmarks({ id, bookmarked }) {
+      if (bookmarked) {
+        this.deleteBookmarks(id);
+      } else {
+        this.addBookmarks(id);
+      }
+    },
+    async addBookmarks(id) {
+      const response = await axios.post(`/api/bookmarks/${id}/add`).catch();
+      console.log(response);
+      if (response.status === 200) {
+        this.works = this.works.map(work => {
+          if (work.id === response.data) {
+            work.bookmarked = true;
+          }
+          return work;
+        });
+      }
+    },
+    async deleteBookmarks(id) {
+      const response = await axios.post(`/api/bookmarks/${id}/delete`).catch();
+      console.log(response);
+      if (response.status === 200) {
+        this.works = this.works.map(work => {
+          if (work.id === response.data) {
+            work.bookmarked = false;
+          }
+          return work;
+        });
+      }
+      if (location.pathname === "/works/bookmarks") {
+        this.getBookmarksWorks();
+      }
     }
   }
 };

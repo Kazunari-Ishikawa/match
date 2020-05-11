@@ -42,14 +42,11 @@ export default {
   },
   props: {
     listTitle: String,
-    isRegistered: Boolean,
-    isApplied: Boolean,
-    withComment: Boolean,
-    isClosed: Boolean,
-    isBookmarked: Boolean
+    withComment: Boolean
   },
   data() {
     return {
+      listUrl: null,
       works: null,
       isLoading: false,
       pageNum: 1,
@@ -65,32 +62,33 @@ export default {
   },
   methods: {
     selectList() {
-      if (this.isClosed) {
-        this.getClosedWorks();
-      } else if (this.isBookmarked) {
-        this.getBookmarksWorks();
-      } else if (this.withComment) {
-        this.getCommentedWorks();
-      } else if (this.isApplied) {
-        this.getAppliedWorks();
-      } else if (this.isRegistered) {
-        this.getRegisteredWorks();
-      } else {
-        this.getWorks();
+      switch (this.listTitle) {
+        case "依頼した案件":
+          this.listUrl = "registered";
+          break;
+        case "成約済み案件":
+          this.listUrl = "closed";
+          break;
+        case "応募中の案件":
+          this.listUrl = "applied";
+          break;
+        case "気になる案件":
+          this.listUrl = "bookmarks";
+          break;
+        case "コメントした案件":
+          this.listUrl = "commented";
+          break;
+        default:
+          this.listUrl = "";
+          break;
       }
+      this.getWorks();
     },
     async getWorks() {
       this.isLoading = true;
-      const response = await axios.get("/api/works");
-      console.log(response);
-      this.works = response.data.data;
-      this.isLoading = false;
-    },
-    async getRegisteredWorks() {
-      this.isLoading = true;
-      const response = await axios.get(
-        `/api/works/registered?page=${this.pageNum}`
-      );
+      const response = await axios
+        .get(`/api/works/${this.listUrl}?page=${this.pageNum}`)
+        .catch();
       console.log(response);
       this.works = response.data.data;
       this.currentPage = response.data.current_page;
@@ -102,53 +100,7 @@ export default {
     },
     movePage(page) {
       this.pageNum = page;
-    },
-    async getCommentedWorks() {
-      this.isLoading = true;
-      const response = await axios.get("/api/works/commented");
-      console.log(response);
-      this.works = response.data.works;
-
-      const len = response.data.works.length;
-      for (let i = 0; i < len; i++) {
-        this.works[i].apply = response.data.counts[i];
-        this.works[i].isBookmarked = response.data.is_bookmarked[i];
-      }
-      this.isLoading = false;
-    },
-    async getAppliedWorks() {
-      this.isLoading = true;
-      const response = await axios.get("/api/works/applied");
-      console.log(response);
-      this.works = response.data.works;
-
-      const len = response.data.works.length;
-      for (let i = 0; i < len; i++) {
-        this.works[i].apply = response.data.counts[i];
-        this.works[i].isBookmarked = response.data.is_bookmarked[i];
-      }
-      this.isLoading = false;
-    },
-    async getClosedWorks() {
-      this.isLoading = true;
-      const response = await axios.get("/api/works/closed");
-      console.log(response);
-      this.works = response.data.works;
-
-      const len = response.data.works.length;
-      for (let i = 0; i < len; i++) {
-        this.works[i].apply = response.data.counts[i];
-        this.works[i].isBookmarked = response.data.is_bookmarked[i];
-      }
-      this.isLoading = false;
-    },
-    async getBookmarksWorks() {
-      this.isLoading = true;
-      const response = await axios.get("/api/works/bookmarks");
-      console.log(response);
-      this.works = response.data;
-
-      this.isLoading = false;
+      this.getWorks();
     },
     clickBookmarks({ id, bookmarked }) {
       if (bookmarked) {
@@ -180,7 +132,6 @@ export default {
           return work;
         });
       }
-      console.log(location.pathname);
       if (location.pathname === "/works/bookmarks") {
         this.getBookmarksWorks();
       }
