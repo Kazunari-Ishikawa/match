@@ -27,6 +27,14 @@
     @include('components.header')
 
     <main id="main" class="l-main">
+
+      <!-- フラッシュメッセージ -->
+      @if (session('flash_message'))
+      <div class="c-flash">
+        {{ session('flash_message') }}
+      </div>
+      @endif
+
       @yield('content')
     </main>
 
