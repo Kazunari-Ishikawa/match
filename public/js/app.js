@@ -52851,8 +52851,6 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! ./togglemenu */ "./resources/js/togglemenu.js");
-
 __webpack_require__(/*! ./toggleheader */ "./resources/js/toggleheader.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
@@ -53685,21 +53683,6 @@ $(function () {
   });
   $('.c-menu__link').on('click', function () {
     $('.js-header-toggle-target').removeClass('active');
-  });
-});
-
-/***/ }),
-
-/***/ "./resources/js/togglemenu.js":
-/*!************************************!*\
-  !*** ./resources/js/togglemenu.js ***!
-  \************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-$(function () {
-  $('.js-menu__tab').on('click', function () {
-    $(this).next('.js-menu__target').slideToggle();
   });
 });
 
