@@ -2792,11 +2792,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       form: {
-        type: null,
+        type: 0,
         category: 0,
         minPrice: 0,
         maxPrice: 0
@@ -40386,6 +40396,32 @@ var render = function() {
                 }
               }),
               _vm._v("レベニューシェア\n      ")
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "label",
+            { staticClass: "c-form__label--radio", attrs: { for: "type0" } },
+            [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.type,
+                    expression: "form.type"
+                  }
+                ],
+                staticClass: "c-form__radio",
+                attrs: { type: "radio", name: "type", id: "type0", value: "0" },
+                domProps: { checked: _vm._q(_vm.form.type, "0") },
+                on: {
+                  change: function($event) {
+                    return _vm.$set(_vm.form, "type", "0")
+                  }
+                }
+              }),
+              _vm._v("指定しない\n      ")
             ]
           )
         ]),
