@@ -3,7 +3,7 @@
   align-items: center;
   width: 100%;
   @include mq('md') {
-    display: none;
+    display: block;
   }
   &--side {
     display: block;
@@ -55,6 +55,9 @@
     font-size: $font-size_m;
     padding: $space_s 0;
     transition: $time_s;
+    @include mq() {
+      font-size: $font-size_s;
+    }
     &:hover {
       border-bottom: 2px solid $color_main;
     }
