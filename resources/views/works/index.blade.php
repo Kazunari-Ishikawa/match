@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-<index-works></index-works>
+<search-work-list></search-work-list>
 
 @endsection
