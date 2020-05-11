@@ -24,10 +24,10 @@
         <span class="c-form__error">{{ $message }}</span>
         @enderror
         <label for="type1" class="c-form__label--radio">
-          <input type="radio" name="type" id="type1" class="c-form__radio" value="0" {{ old('type') == 0 ? 'checked' : '' }}>単発
+          <input type="radio" name="type" id="type1" class="c-form__radio" value="1" {{ old('type') == 1 ? 'checked' : '' }}>単発
         </label>
         <label for="type2" class="c-form__label--radio">
-          <input type="radio" name="type" id="type2" class="c-form__radio" value="1" {{ old('type') == 1 ? 'checked' : '' }}>レベニューシェア
+          <input type="radio" name="type" id="type2" class="c-form__radio" value="2" {{ old('type') == 2 ? 'checked' : '' }}>レベニューシェア
         </label>
       </div>
 
