@@ -13,8 +13,8 @@ class MessagesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Board::class)->create();
-        factory(App\Message::class,5)->create();
+        // factory(App\Board::class)->create();
+        // factory(App\Message::class,5)->create();
 
         DB::table('messages')->insert([
             'board_id' => 1,

@@ -13,7 +13,6 @@ class WorksTableSeeder extends Seeder
      */
     public function run()
     {
-        // factory(App\Work::class,5)->create();
         DB::table('works')->insert([
             'title' => 'パン屋さんのホームページ作成依頼',
             'category_id' => 1,
