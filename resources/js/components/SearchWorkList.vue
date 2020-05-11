@@ -1,6 +1,6 @@
 <template>
   <div class="l-container l-container--withSide">
-    <!-- サイドバー -->
+    <!-- 検索バー -->
     <SearchComponent @click-search="searchWorks" />
 
     <!-- メインコンテンツ -->
@@ -8,15 +8,16 @@
       <div class="c-workList__header">
         <h2 class="c-workList__title">案件一覧</h2>
         <p class="c-workList__info">
-          20件中
-          <span>1</span> -
-          <span>10</span>件表示
+          {{ totalNum }}件中
+          <span>{{fromNum}}</span> -
+          <span>{{toNum}}</span>件表示
         </p>
       </div>
 
-      <div class="c-workList">
-        <Loader v-if="isLoading" />
-        <Work v-for="work in works" :key="work.id" :work="work" />
+      <Loader v-if="isLoading" />
+
+      <div v-if="!isLoading" class="c-workList">
+        <Work v-for="work in works" :key="work.id" :work="work" @bookmarks="clickBookmarks" />
       </div>
       <Pagination
         v-if="!isLoading"
@@ -41,6 +42,9 @@ export default {
     Loader,
     Pagination
   },
+  props: {
+    isSearched: Boolean
+  },
   data() {
     return {
       form: null,
@@ -48,22 +52,16 @@ export default {
       isLoading: false,
       pageNum: 1,
       currentPage: 0,
-      lastPage: 0
+      lastPage: 0,
+      totalNum: 0,
+      fromNum: 0,
+      toNum: 0
     };
   },
   created() {
     this.searchWorks();
   },
   methods: {
-    async getWorks() {
-      this.isLoading = true;
-      const response = await axios.get(`/api/works?page=${this.pageNum}`);
-      console.log(response);
-      this.works = response.data.data;
-      this.currentPage = response.data.current_page;
-      this.lastPage = response.data.last_page;
-      this.isLoading = false;
-    },
     async searchWorks(form) {
       this.isLoading = true;
       console.log(form);
@@ -81,11 +79,48 @@ export default {
       this.works = response.data.data;
       this.currentPage = response.data.current_page;
       this.lastPage = response.data.last_page;
+      this.totalNum = response.data.total;
+      this.fromNum = response.data.from;
+      this.toNum = response.data.to;
       this.isLoading = false;
     },
     movePage(page) {
       this.pageNum = page;
       this.searchWorks();
+    },
+    clickBookmarks({ id, bookmarked }) {
+      if (bookmarked) {
+        this.deleteBookmarks(id);
+      } else {
+        this.addBookmarks(id);
+      }
+    },
+    async addBookmarks(id) {
+      const response = await axios.post(`/api/bookmarks/${id}/add`).catch();
+      console.log(response);
+      if (response.status === 200) {
+        this.works = this.works.map(work => {
+          if (work.id === response.data) {
+            work.bookmarked = true;
+          }
+          return work;
+        });
+      }
+    },
+    async deleteBookmarks(id) {
+      const response = await axios.post(`/api/bookmarks/${id}/delete`).catch();
+      console.log(response);
+      if (response.status === 200) {
+        this.works = this.works.map(work => {
+          if (work.id === response.data) {
+            work.bookmarked = false;
+          }
+          return work;
+        });
+      }
+      if (location.pathname === "/works/bookmarks") {
+        this.getBookmarksWorks();
+      }
     }
   }
 };
