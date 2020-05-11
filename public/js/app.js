@@ -3263,7 +3263,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 }
 
                 if (location.pathname === "/works/bookmarks") {
-                  _this3.getBookmarksWorks();
+                  _this3.getWorks();
                 }
 
               case 6:

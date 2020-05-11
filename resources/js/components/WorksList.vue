@@ -133,7 +133,7 @@ export default {
         });
       }
       if (location.pathname === "/works/bookmarks") {
-        this.getBookmarksWorks();
+        this.getWorks();
       }
     }
   }

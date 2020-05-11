@@ -168,22 +168,9 @@ class WorksController extends Controller
         $applied_work_id = Apply::select('work_id')->where('user_id', Auth::id())->get();
 
         // 該当するWorkを取得
-        $works = Work::with(['user', 'category'])->where('is_closed', false)->find($applied_work_id);
+        $works = Work::with(['user', 'category'])->where('is_closed', false)->whereIn('id', $applied_work_id)->paginate(5);
 
-        // 各Workに対する応募数を取得する
-        $counts = $works->map(function($work) {
-            $count = Apply::where('work_id', $work->id)->count();
-            return $count;
-        });
-
-        // 各Workに対して、ユーザーがbookmarkしているか判定する
-        $is_bookmarked = $works->map(function($work){
-            return $work->bookmarks->contains(function($bookmark) {
-                return $bookmark->user_id === Auth::id();
-            });
-        });
-
-        return response()->json(compact('works', 'counts', 'is_bookmarked'));
+        return $works;
     }
 
     // ユーザーがコメントしたWork一覧を取得する
@@ -193,22 +180,9 @@ class WorksController extends Controller
         $commented_work_id = Comment::select('work_id')->where('user_id', Auth::id())->groupBy('work_id')->get();
 
         // 該当するWorkを取得
-        $works = Work::with(['user', 'category'])->where('is_closed', false)->find($commented_work_id);
+        $works = Work::with(['user', 'category'])->where('is_closed', false)->whereIn('id', $commented_work_id)->paginate(5);
 
-        // 各Workに対して応募数を取得する
-        $counts = $works->map(function($work) {
-            $count = Apply::where('work_id', $work->id)->count();
-            return $count;
-        });
-
-        // 各Workに対して、ユーザーがbookmarkしているか判定する
-        $is_bookmarked = $works->map(function($work){
-            return $work->bookmarks->contains(function($bookmark) {
-                return $bookmark->user_id === Auth::id();
-            });
-        });
-
-        return response()->json(compact('works', 'counts', 'is_bookmarked'));
+        return $works;
     }
 
     // 成約したWork一覧を取得する
