@@ -255,11 +255,13 @@ class WorksController extends Controller
 
         if ($request->form) {
             // 案件種別が入力されていれば入力値を代入
+            // 0は指定無しなのでwhere句不要
             if ($request->form['type'] !== 0) {
                 $type = $request->form['type'];
             }
 
             // カテゴリが入力されていれば入力値を代入
+            // 0は指定無しなのでwhere句不要
             if ($request->form['category'] !== 0) {
                 $category = $request->form['category'];
             }

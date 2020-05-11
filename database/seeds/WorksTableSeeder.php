@@ -16,7 +16,7 @@ class WorksTableSeeder extends Seeder
         DB::table('works')->insert([
             'title' => 'パン屋さんのホームページ作成依頼',
             'category_id' => 1,
-            'type' => 0,
+            'type' => 1,
             'max_price' => 50000,
             'min_price' => 10000,
             'content' => 'パン屋さんのホームページの作成をお願いします。',

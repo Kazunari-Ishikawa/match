@@ -9,7 +9,7 @@
             type="radio"
             name="type"
             id="type1"
-            value="0"
+            value="1"
             class="c-form__radio"
             v-model="form.type"
           />単発
@@ -19,10 +19,20 @@
             type="radio"
             name="type"
             id="type2"
-            value="1"
+            value="2"
             class="c-form__radio"
             v-model="form.type"
           />レベニューシェア
+        </label>
+        <label for="type0" class="c-form__label--radio">
+          <input
+            type="radio"
+            name="type"
+            id="type0"
+            value="0"
+            class="c-form__radio"
+            v-model="form.type"
+          />指定しない
         </label>
       </div>
       <div class="c-form__group">

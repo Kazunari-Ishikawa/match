@@ -2796,7 +2796,7 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       form: {
-        type: 0,
+        type: null,
         category: 0,
         minPrice: 0,
         maxPrice: 0
@@ -40351,11 +40351,11 @@ var render = function() {
                   }
                 ],
                 staticClass: "c-form__radio",
-                attrs: { type: "radio", name: "type", id: "type1", value: "0" },
-                domProps: { checked: _vm._q(_vm.form.type, "0") },
+                attrs: { type: "radio", name: "type", id: "type1", value: "1" },
+                domProps: { checked: _vm._q(_vm.form.type, "1") },
                 on: {
                   change: function($event) {
-                    return _vm.$set(_vm.form, "type", "0")
+                    return _vm.$set(_vm.form, "type", "1")
                   }
                 }
               }),
@@ -40377,11 +40377,11 @@ var render = function() {
                   }
                 ],
                 staticClass: "c-form__radio",
-                attrs: { type: "radio", name: "type", id: "type2", value: "1" },
-                domProps: { checked: _vm._q(_vm.form.type, "1") },
+                attrs: { type: "radio", name: "type", id: "type2", value: "2" },
+                domProps: { checked: _vm._q(_vm.form.type, "2") },
                 on: {
                   change: function($event) {
-                    return _vm.$set(_vm.form, "type", "1")
+                    return _vm.$set(_vm.form, "type", "2")
                   }
                 }
               }),
