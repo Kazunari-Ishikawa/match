@@ -248,7 +248,7 @@ textarea {
     display: block;
     background: rgba(255, 255, 255, 0.9);
     position: absolute;
-    top: 80px;
+    top: 60px;
     right: -70vw;
     height: 100vh;
     width: 70vw;
@@ -1704,14 +1704,25 @@ textarea {
 .c-pagination__item {
   display: inline-block;
   background: white;
-  padding: 5px;
   margin: 0;
   color: #51a1a2;
   border: 1px solid #eee;
 }
 
+.c-pagination__item.isActive {
+  color: white;
+  background: #51a1a2;
+}
+
+.c-pagination__item.isActive:hover {
+  color: white;
+  background: #51a1a2;
+  opacity: 0.8;
+}
+
 .c-pagination__link {
   display: block;
+  padding: 10px;
 }
 
 .p-hero {

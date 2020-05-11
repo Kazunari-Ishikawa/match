@@ -248,31 +248,33 @@ class WorksController extends Controller
 
     public function searchWorks(Request $request)
     {
-        \Log::debug($request->form);
-        if ($request->form['type'] !== 0) {
-            $type = $request->form['type'];
-        }
-        if ($request->form['category'] !== 0) {
-            $category = $request->form['category'];
-        }
-        if ($request->form['category'] !== 0) {
-            $works = Work::with(['user', 'category'])->where('category_id', $request->form['category'])->get();
+        \Log::debug($request);
+
+        $type = null;
+        $category = null;
+
+        if ($request->form) {
+            // 案件種別が入力されていれば入力値を代入
+            if ($request->form['type'] !== 0) {
+                $type = $request->form['type'];
+            }
+
+            // カテゴリが入力されていれば入力値を代入
+            if ($request->form['category'] !== 0) {
+                $category = $request->form['category'];
+            }
         }
 
-        // 各Workに対して応募数を取得する
-        $counts = $works->map(function($work) {
-            $count = Apply::where('work_id', $work->id)->count();
-            return $count;
-        });
+        $works = Work::with(['user', 'category'])
+                    ->when($type, function($query, $type){
+                        return $query->where('type', $type);
+                    })
+                    ->when($category, function($query, $category) {
+                        return $query->where('category_id', $category);
+                    })
+                    ->where('is_closed', false)->orderBy('created_at', 'desc')->paginate(5);
 
-        // 各Workに対して、ユーザーがbookmarkしているか判定する
-        $is_bookmarked = $works->map(function($work){
-            return $work->bookmarks->contains(function($bookmark) {
-                return $bookmark->user_id === Auth::id();
-            });
-        });
-
-        return response()->json(compact('works', 'counts', 'is_bookmarked'));
+        return $works;
     }
 
     // Workへの応募処理
