@@ -2308,80 +2308,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2395,12 +2321,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
-      form: {
-        type: 0,
-        category: 0,
-        minPrice: 0,
-        maxPrice: 0
-      },
+      form: null,
       works: null,
       isLoading: false,
       pageNum: 1,
@@ -2409,7 +2330,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   created: function created() {
-    this.getWorks();
+    this.searchWorks();
   },
   methods: {
     getWorks: function getWorks() {
@@ -2442,23 +2363,36 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }))();
     },
     searchWorks: function searchWorks(form) {
+      var _this2 = this;
+
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
         var response;
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
+                _this2.isLoading = true;
                 console.log(form);
-                _context2.next = 3;
-                return axios.post("/api/works/search", {
-                  form: form
+
+                if (form) {
+                  console.log("form OK.");
+                  _this2.form = form;
+                }
+
+                _context2.next = 5;
+                return axios.post("/api/works/search?page=".concat(_this2.pageNum), {
+                  form: _this2.form
                 });
 
-              case 3:
+              case 5:
                 response = _context2.sent;
                 console.log(response);
+                _this2.works = response.data.data;
+                _this2.currentPage = response.data.current_page;
+                _this2.lastPage = response.data.last_page;
+                _this2.isLoading = false;
 
-              case 5:
+              case 11:
               case "end":
                 return _context2.stop();
             }
@@ -2468,7 +2402,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     movePage: function movePage(page) {
       this.pageNum = page;
-      this.getWorks();
+      this.searchWorks();
     }
   }
 });
@@ -40049,13 +39983,15 @@ var render = function() {
             2
           ),
           _vm._v(" "),
-          _c("Pagination", {
-            attrs: {
-              "current-page": _vm.currentPage,
-              "last-page": _vm.lastPage
-            },
-            on: { "move-page": _vm.movePage }
-          })
+          !_vm.isLoading
+            ? _c("Pagination", {
+                attrs: {
+                  "current-page": _vm.currentPage,
+                  "last-page": _vm.lastPage
+                },
+                on: { "move-page": _vm.movePage }
+              })
+            : _vm._e()
         ],
         1
       )

@@ -250,18 +250,19 @@ class WorksController extends Controller
     {
         \Log::debug($request);
 
-        // 案件種別が入力されていれば入力値を、そうでなければ0を代入
-        if ($request->form['type'] !== 0) {
-            $type = $request->form['type'];
-        } else {
-            $type = 0;
-        }
+        $type = null;
+        $category = null;
 
-        // カテゴリが入力されていれば入力値を、そうでなければ0を代入
-        if ($request->form['category'] !== 0) {
-            $category = $request->form['category'];
-        } else {
-            $category = 0;
+        if ($request->form) {
+            // 案件種別が入力されていれば入力値を代入
+            if ($request->form['type'] !== 0) {
+                $type = $request->form['type'];
+            }
+
+            // カテゴリが入力されていれば入力値を代入
+            if ($request->form['category'] !== 0) {
+                $category = $request->form['category'];
+            }
         }
 
         $works = Work::with(['user', 'category'])
@@ -273,7 +274,6 @@ class WorksController extends Controller
                     })
                     ->where('is_closed', false)->orderBy('created_at', 'desc')->paginate(5);
 
-        \Log::debug($works);
         return $works;
     }
 

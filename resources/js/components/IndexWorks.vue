@@ -18,7 +18,12 @@
         <Loader v-if="isLoading" />
         <Work v-for="work in works" :key="work.id" :work="work" />
       </div>
-      <Pagination :current-page="currentPage" :last-page="lastPage" @move-page="movePage" />
+      <Pagination
+        v-if="!isLoading"
+        :current-page="currentPage"
+        :last-page="lastPage"
+        @move-page="movePage"
+      />
     </section>
   </div>
 </template>
@@ -38,12 +43,7 @@ export default {
   },
   data() {
     return {
-      form: {
-        type: 0,
-        category: 0,
-        minPrice: 0,
-        maxPrice: 0
-      },
+      form: null,
       works: null,
       isLoading: false,
       pageNum: 1,
@@ -52,7 +52,7 @@ export default {
     };
   },
   created() {
-    this.getWorks();
+    this.searchWorks();
   },
   methods: {
     async getWorks() {
@@ -65,15 +65,27 @@ export default {
       this.isLoading = false;
     },
     async searchWorks(form) {
+      this.isLoading = true;
       console.log(form);
-      const response = await axios.post("/api/works/search", {
-        form
-      });
+      if (form) {
+        console.log("form OK.");
+        this.form = form;
+      }
+      const response = await axios.post(
+        `/api/works/search?page=${this.pageNum}`,
+        {
+          form: this.form
+        }
+      );
       console.log(response);
+      this.works = response.data.data;
+      this.currentPage = response.data.current_page;
+      this.lastPage = response.data.last_page;
+      this.isLoading = false;
     },
     movePage(page) {
       this.pageNum = page;
-      this.getWorks();
+      this.searchWorks();
     }
   }
 };
