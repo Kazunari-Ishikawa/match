@@ -103,12 +103,35 @@ export default {
         category: this.category,
         minPrice: 0,
         maxPrice: 0
-      }
+      },
+      message: ""
     };
   },
   methods: {
     clickSearch() {
-      this.$emit("click-search", this.form);
+      if (this.validSearch()) {
+        this.$emit("click-search", this.form);
+      } else {
+        alert(this.message);
+        this.message = "";
+      }
+    },
+    validSearch() {
+      if (this.form.type < 0 || 2 < this.form.type) {
+        this.message = "不正な値です。やり直してください。";
+        return false;
+      } else if (this.form.category < 0 || 7 < this.form.category) {
+        this.message = "不正な値です。やり直してください。";
+        return false;
+      } else if (
+        this.form.minPrice > this.form.maxPrice &&
+        this.form.maxPrice != 0
+      ) {
+        this.message = "最大金額は最小金額よりも大きくしてください。";
+        return false;
+      } else {
+        return true;
+      }
     }
   }
 };

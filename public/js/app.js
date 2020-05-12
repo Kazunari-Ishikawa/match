@@ -2672,12 +2672,36 @@ __webpack_require__.r(__webpack_exports__);
         category: this.category,
         minPrice: 0,
         maxPrice: 0
-      }
+      },
+      message: ""
     };
   },
   methods: {
     clickSearch: function clickSearch() {
-      this.$emit("click-search", this.form);
+      if (this.validSearch()) {
+        this.$emit("click-search", this.form);
+      } else {
+        alert(this.message);
+        this.message = "";
+      }
+    },
+    validSearch: function validSearch() {
+      if (this.form.type < 0 || 2 < this.form.type) {
+        this.message = "不正な値です。やり直してください。";
+        console.log(this.message);
+        return false;
+      } else if (this.form.category < 0 || 7 < this.form.category) {
+        this.message = "不正な値です。やり直してください。";
+        console.log(this.message);
+        return false;
+      } else if (this.form.minPrice > this.form.maxPrice && this.form.maxPrice != 0) {
+        this.message = "最大金額は最小金額よりも大きくしてください。";
+        console.log(this.message);
+        return false;
+      } else {
+        console.log(this.message);
+        return true;
+      }
     }
   }
 });
