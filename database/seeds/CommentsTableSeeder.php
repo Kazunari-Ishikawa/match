@@ -11,9 +11,9 @@ class CommentsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\User::class,2)->create()->each(function($user) {
+        factory(App\User::class,15)->create()->each(function($user) {
             $user->works()->saveMany(
-                factory(App\Work::class,5)->make()
+                factory(App\Work::class,2)->make()
             )->each(function($work) {
                 $work->comments()->saveMany(
                     factory(App\Comment::class,2)->make(['user_id' => $work->user_id])

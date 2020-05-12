@@ -1,10 +1,10 @@
 <template>
   <div class="c-messageBoard__list">
     <Loader v-if="isLoading" />
-    <div v-if="!isLoading" class="c-messageBoard__type">依頼した案件</div>
+    <div v-if="!isLoading" class="c-messageBoard__type">応募がきた案件</div>
     <Board v-for="board in requestedBoards" :key="board.id" :board="board" />
 
-    <div v-if="!isLoading" class="c-messageBoard__type">応募した案件</div>
+    <div v-if="!isLoading" class="c-messageBoard__type">応募をした案件</div>
     <Board v-for="board in appliedBoards" :key="board.id" :board="board" />
   </div>
 </template>

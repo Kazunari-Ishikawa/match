@@ -38,10 +38,9 @@ class BoardsController extends Controller
     // ログインユーザーのメッセージボードを取得する
     public function getBoards()
     {
-        $boards = Board::with(['work:id,title', 'fromUser', 'toUser'])->where('from_user_id', Auth::id())->orWhere('to_user_id', Auth::id())->get();
-        \Log::debug($boards);
-
         $user_id = Auth::id();
+        $boards = Board::with(['work:id,title', 'fromUser', 'toUser'])->where('from_user_id', $user_id)->orWhere('to_user_id', $user_id)->get();
+        \Log::debug($boards);
 
         return response(compact('boards', 'user_id'));
     }

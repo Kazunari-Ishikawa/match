@@ -39752,7 +39752,7 @@ var render = function() {
       _vm._v(" "),
       !_vm.isLoading
         ? _c("div", { staticClass: "c-messageBoard__type" }, [
-            _vm._v("依頼した案件")
+            _vm._v("応募がきた案件")
           ])
         : _vm._e(),
       _vm._v(" "),
@@ -39762,7 +39762,7 @@ var render = function() {
       _vm._v(" "),
       !_vm.isLoading
         ? _c("div", { staticClass: "c-messageBoard__type" }, [
-            _vm._v("応募した案件")
+            _vm._v("応募をした案件")
           ])
         : _vm._e(),
       _vm._v(" "),
