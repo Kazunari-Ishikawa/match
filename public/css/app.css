@@ -896,9 +896,9 @@ textarea {
 }
 
 .c-form__error {
+  display: block;
   color: red;
   font-size: 14px;
-  margin-bottom: 15px;
 }
 
 .c-form__text {

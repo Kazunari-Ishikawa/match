@@ -51,7 +51,7 @@
 
       <div class="c-form__group">
         <p for="price" class="c-form__label">金額（1,000円〜）</p>
-
+        <p class="c-form__text">※レベニューシェアの場合、相談により配分率を決めていだたくだめ、入力は不要です。</p>
         <span class="c-form__error">{{ $errors->first('min_price') }}</span>
         <span class="c-form__error">{{ $errors->first('max_price') }}</span>
 

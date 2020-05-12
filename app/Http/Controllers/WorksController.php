@@ -30,7 +30,16 @@ class WorksController extends Controller
     {
         $work = new Work;
         $work->user_id = Auth::id();
-        $work->fill($request->all())->save();
+
+        // レベニューシェアの場合、最小、最大金額を0に上書きして登録する
+        if ($request->type === 1) {
+            $work->fill($request->all())->save();
+        } else {
+            $work->fill($request->except(['min_price', 'max_price']));
+            $work->max_price = 0;
+            $work->min_price = 0;
+            $work->save();
+        }
 
         return redirect('/mypage')->with('flash_message', '新しく登録しました！');
     }
