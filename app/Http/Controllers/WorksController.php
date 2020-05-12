@@ -16,16 +16,24 @@ class WorksController extends Controller
     // Work一覧表示
     public function index(Request $request)
     {
-        // クエリパラメータが存在する場合代入する
+        $category = 0;
+        $type = 0;
+
+        // URLパラメータが存在する場合代入する
+        // category, type以外の場合、category=0, type=0とする
         if ($request->category) {
             $category = ((int)$request->category);
-        } else {
-            $category = 0;
+            // 存在しないカテゴリの場合、0を代入
+            if( $category < 1 || 7 < $category) {
+                $category = 0;
+            }
         }
         if ($request->type) {
             $type = ((int)$request->type);
-        } else {
-            $type = 0;
+            // 存在しない案件種別の場合、0を代入
+            if ($type !== 1 && $type !== 2) {
+                $type = 0;
+            }
         }
 
         return view('works.index', compact('category', 'type'));
