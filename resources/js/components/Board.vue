@@ -8,7 +8,11 @@
     </div>
     <template v-if="getMessageFinished && message !== '' ">
       <div class="c-messageBoard__body">
-        <img alt="アイコン" class="c-messageBoard__icon" />
+        <img
+          :src="message.user.icon ? `/storage/img/icons/${message.user.icon}` :'/images/icon_sample.png'"
+          alt="アイコン"
+          class="c-messageBoard__icon"
+        />
         <div class="c-messageBoard__main">
           <p class="c-messageBoard__name">{{ message.user.name }}</p>
           <p class="c-messageBoard__content">{{ message.content }}</p>

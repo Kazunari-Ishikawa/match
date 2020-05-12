@@ -1956,6 +1956,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     board: Object
@@ -39692,7 +39696,12 @@ var render = function() {
             _c("div", { staticClass: "c-messageBoard__body" }, [
               _c("img", {
                 staticClass: "c-messageBoard__icon",
-                attrs: { alt: "アイコン" }
+                attrs: {
+                  src: _vm.message.user.icon
+                    ? "/storage/img/icons/" + _vm.message.user.icon
+                    : "/images/icon_sample.png",
+                  alt: "アイコン"
+                }
               }),
               _vm._v(" "),
               _c("div", { staticClass: "c-messageBoard__main" }, [
@@ -39852,7 +39861,7 @@ var render = function() {
           staticClass: "c-comment__img",
           attrs: {
             src: _vm.comment.user.icon
-              ? _vm.comment.user.icon
+              ? "/storage/img/icons/" + _vm.comment.user.icon
               : "/images/icon_sample.png",
             alt: ""
           }
