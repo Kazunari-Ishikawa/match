@@ -32,7 +32,7 @@ class WorksController extends Controller
         $work->user_id = Auth::id();
 
         // レベニューシェアの場合金額不要のため、最小、最大金額を0に上書きして登録する
-        if ($request->type === 1) {
+        if ($request->type === '1') {
             $work->fill($request->all())->save();
         } else {
             $work->fill($request->except(['min_price', 'max_price']));
@@ -102,9 +102,10 @@ class WorksController extends Controller
         $work = Work::find($id);
 
         // レベニューシェアの場合金額不要のため、最小、最大金額を0に上書きして登録する
-        if ($request->type === 1) {
+        if ($request->type === '1') {
             $work->fill($request->all())->save();
         } else {
+            \Log::debug('レベニュー');
             $work->fill($request->except(['min_price', 'max_price']));
             $work->max_price = 0;
             $work->min_price = 0;

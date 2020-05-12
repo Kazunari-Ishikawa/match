@@ -27,8 +27,8 @@ class CreateWorkRequest extends FormRequest
             'title' => 'required|string|max:30',
             'type' => 'required|numeric|between:1,2',
             'category_id' => 'required|numeric|between:1,7',
-            'max_price' => 'required_if:type,1|nullable|numeric|min:1000|gt:min_price',
-            'min_price' => 'required_if:type,1|nullable|numeric|min:1000',
+            'max_price' => 'required_if:type,1|nullable|numeric|min:1|gt:min_price',
+            'min_price' => 'required_if:type,1|nullable|numeric|min:1',
             'content' => 'required|string',
         ];
     }

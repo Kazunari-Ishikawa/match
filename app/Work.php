@@ -22,6 +22,18 @@ class Work extends Model
         return self::TYPE[$type];
     }
 
+    // 最小金額を千円単位に変換
+    public function getMinPriceAttribute()
+    {
+        return $this->attributes['min_price'] * 1000;
+    }
+
+    // 最大金額を千円単位に変換
+    public function getMaxPriceAttribute()
+    {
+        return $this->attributes['max_price'] * 1000;
+    }
+
     // 日付フォーマットの変換
     public function getCreatedAtAttribute()
     {

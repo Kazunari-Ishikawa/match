@@ -764,13 +764,19 @@ textarea {
 
 @media screen and (max-width: 425px) {
   .c-form__group {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
   }
 }
 
 .c-form__group--price {
   display: flex;
   align-items: flex-end;
+}
+
+@media screen and (max-width: 425px) {
+  .c-form__group--price {
+    flex-wrap: wrap;
+  }
 }
 
 .c-form__group--drop {
@@ -838,7 +844,14 @@ textarea {
 }
 
 .c-form__input--price {
-  width: 30%;
+  width: 20%;
+}
+
+@media screen and (max-width: 425px) {
+  .c-form__input--price {
+    width: 50%;
+    margin-bottom: 15px;
+  }
 }
 
 .c-form__textarea {
@@ -883,6 +896,12 @@ textarea {
 .c-form__price {
   margin: 0 10px;
   font-size: 14px;
+}
+
+@media screen and (max-width: 425px) {
+  .c-form__price {
+    margin-bottom: 10px;
+  }
 }
 
 .c-form__link {

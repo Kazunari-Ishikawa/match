@@ -38,10 +38,10 @@
         <span class="c-form__error">{{ $message }}</span>
         @enderror
         <label for="type1" class="c-form__label--radio">
-          <input type="radio" name="type" id="type1" class="c-form__radio" value="0" {{ old('type', $work->type) == 1 ? 'checked' : '' }}>単発
+          <input type="radio" name="type" id="type1" class="c-form__radio" value="1" {{ old('type', $work->type) == '単発案件' ? 'checked' : '' }}>単発
         </label>
         <label for="type2" class="c-form__label--radio">
-          <input type="radio" name="type" id="type2" class="c-form__radio" value="1" {{ old('type', $work->type) == 2 ? 'checked' : '' }}>レベニューシェア
+          <input type="radio" name="type" id="type2" class="c-form__radio" value="2" {{ old('type', $work->type) == 'レベニューシェア' ? 'checked' : '' }}>レベニューシェア
         </label>
       </div>
 
@@ -68,10 +68,10 @@
         <span class="c-form__error">{{ $errors->first('min_price') }}</span>
         <span class="c-form__error">{{ $errors->first('max_price') }}</span>
         <div class="c-form__group--price">
-          <input type="number" class="c-form__input c-form__input--price" name="min_price" id="lower" placeholder="1000" value="{{ old('min_price', $work->min_price) }}">
-          <span class="c-form__price">〜</span>
-          <input type="number" class="c-form__input c-form__input--price" name="max_price" id="upper" value="{{ old('max_price', $work->max_price) }}">
-          <span class="c-form__price">円</span>
+          <input type="number" class="c-form__input c-form__input--price" name="min_price" id="lower" placeholder="1" value="{{ old('min_price', $work->min_price/1000) }}">
+          <span class="c-form__price">,000〜</span>
+          <input type="number" class="c-form__input c-form__input--price" name="max_price" id="upper" value="{{ old('max_price', $work->max_price/1000) }}">
+          <span class="c-form__price">,000円</span>
         </div>
       </div>
 
