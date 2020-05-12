@@ -2688,18 +2688,14 @@ __webpack_require__.r(__webpack_exports__);
     validSearch: function validSearch() {
       if (this.form.type < 0 || 2 < this.form.type) {
         this.message = "不正な値です。やり直してください。";
-        console.log(this.message);
         return false;
       } else if (this.form.category < 0 || 7 < this.form.category) {
         this.message = "不正な値です。やり直してください。";
-        console.log(this.message);
         return false;
       } else if (this.form.minPrice > this.form.maxPrice && this.form.maxPrice != 0) {
         this.message = "最大金額は最小金額よりも大きくしてください。";
-        console.log(this.message);
         return false;
       } else {
-        console.log(this.message);
         return true;
       }
     }
@@ -2794,6 +2790,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     };
   },
   created: function created() {
+    if (this.category) {
+      console.log("category set.");
+      this.form.category = this.category;
+    }
+
+    if (this.type) {
+      console.log("type set.");
+      this.form.type = this.type;
+    }
+
     this.searchWorks();
   },
   methods: {
@@ -2809,27 +2815,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this.isLoading = true;
                 console.log(form);
 
-                if (_this.category) {
-                  console.log("category set.");
-                  _this.form.category = _this.category;
-                }
-
-                if (_this.type) {
-                  console.log("type set.");
-                  _this.form.type = _this.type;
-                }
-
                 if (form) {
                   console.log("form OK.");
+                  _this.pageNum = 1;
                   _this.form = form;
                 }
 
-                _context.next = 7;
+                _context.next = 5;
                 return axios.post("/api/works/search?page=".concat(_this.pageNum), {
                   form: _this.form
                 });
 
-              case 7:
+              case 5:
                 response = _context.sent;
                 console.log(response);
                 _this.works = response.data.data;
@@ -2840,7 +2837,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this.toNum = response.data.to;
                 _this.isLoading = false;
 
-              case 16:
+              case 14:
               case "end":
                 return _context.stop();
             }

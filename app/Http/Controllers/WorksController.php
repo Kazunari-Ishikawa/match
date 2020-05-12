@@ -248,20 +248,82 @@ class WorksController extends Controller
     {
         \Log::debug($request);
 
-        $type = null;
-        $category = null;
+        $type = 0;
+        $category = 0;
+        $min_price = 0;
+        $max_price = 0;
 
-        if ($request->form) {
-            // 案件種別が入力されていれば入力値を代入
-            // 0は指定無しなのでwhere句不要
-            if ($request->form['type'] !== 0) {
-                $type = $request->form['type'];
+        // 案件種別が入力されていれば入力値を代入
+        // 0は指定無しなのでwhere句不要
+        if ($request->form['type'] !== 0) {
+            $type = $request->form['type'];
+        }
+
+        // カテゴリが入力されていれば入力値を代入
+        // 0は指定無しなのでwhere句不要
+        if ($request->form['category'] !== 0) {
+            $category = $request->form['category'];
+        }
+
+        if ($request->form['minPrice'] !== 0) {
+            $min_price = $request->form['minPrice'];
+            switch ($min_price) {
+                case 1:
+                    $min_price = 1;
+                break;
+                case 2:
+                    $min_price = 3;
+                break;
+                case 3:
+                    $min_price = 5;
+                break;
+                case 4:
+                    $min_price = 10;
+                break;
+                case 5:
+                    $min_price = 50;
+                break;
+                case 6:
+                    $min_price = 100;
+                break;
+                case 7:
+                    $min_price = 500;
+                break;
+                case 8:
+                    $min_price = 1000;
+                default:
+                break;
             }
+        }
 
-            // カテゴリが入力されていれば入力値を代入
-            // 0は指定無しなのでwhere句不要
-            if ($request->form['category'] !== 0) {
-                $category = $request->form['category'];
+        if ($request->form['maxPrice'] !== 0) {
+            $max_price = $request->form['maxPrice'];
+            switch ($max_price) {
+                case 1:
+                    $max_price = 1;
+                break;
+                case 2:
+                    $max_price = 3;
+                break;
+                case 3:
+                    $max_price = 5;
+                break;
+                case 4:
+                    $max_price = 10;
+                break;
+                case 5:
+                    $max_price = 50;
+                break;
+                case 6:
+                    $max_price = 100;
+                break;
+                case 7:
+                    $max_price = 500;
+                break;
+                case 8:
+                    $max_price = 1000;
+                default:
+                break;
             }
         }
 
@@ -271,6 +333,12 @@ class WorksController extends Controller
                     })
                     ->when($category, function($query, $category) {
                         return $query->where('category_id', $category);
+                    })
+                    ->when($min_price, function($query, $min_price) {
+                        return $query->where('min_price', '>=', $min_price);
+                    })
+                    ->when($max_price, function($query, $max_price) {
+                        return $query->where('max_price', '<=', $max_price);
                     })
                     ->where('is_closed', false)->orderBy('created_at', 'desc')->paginate(5);
 

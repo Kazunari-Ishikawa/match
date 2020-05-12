@@ -65,22 +65,23 @@ export default {
     };
   },
   created() {
+    if (this.category) {
+      console.log("category set.");
+      this.form.category = this.category;
+    }
+    if (this.type) {
+      console.log("type set.");
+      this.form.type = this.type;
+    }
     this.searchWorks();
   },
   methods: {
     async searchWorks(form) {
       this.isLoading = true;
       console.log(form);
-      if (this.category) {
-        console.log("category set.");
-        this.form.category = this.category;
-      }
-      if (this.type) {
-        console.log("type set.");
-        this.form.type = this.type;
-      }
       if (form) {
         console.log("form OK.");
+        this.pageNum = 1;
         this.form = form;
       }
       const response = await axios.post(
