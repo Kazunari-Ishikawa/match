@@ -31,7 +31,7 @@ class WorksController extends Controller
         $work = new Work;
         $work->user_id = Auth::id();
 
-        // レベニューシェアの場合、最小、最大金額を0に上書きして登録する
+        // レベニューシェアの場合金額不要のため、最小、最大金額を0に上書きして登録する
         if ($request->type === 1) {
             $work->fill($request->all())->save();
         } else {
@@ -41,7 +41,7 @@ class WorksController extends Controller
             $work->save();
         }
 
-        return redirect('/mypage')->with('flash_message', '新しく登録しました！');
+        return redirect('/mypage')->with('flash_message', '新しく登録しました。');
     }
 
     // Work詳細表示
@@ -100,9 +100,18 @@ class WorksController extends Controller
     public function update(CreateWorkRequest $request, $id)
     {
         $work = Work::find($id);
-        $work->fill($request->all())->save();
 
-        return redirect('/mypage');
+        // レベニューシェアの場合金額不要のため、最小、最大金額を0に上書きして登録する
+        if ($request->type === 1) {
+            $work->fill($request->all())->save();
+        } else {
+            $work->fill($request->except(['min_price', 'max_price']));
+            $work->max_price = 0;
+            $work->min_price = 0;
+            $work->save();
+        }
+
+        return redirect('/mypage')->with('flash_message', '案件を編集しました。');
     }
 
     // Workの削除

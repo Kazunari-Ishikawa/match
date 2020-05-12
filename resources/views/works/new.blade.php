@@ -69,7 +69,7 @@
         <span class="c-form__error">{{ $message }}</span>
         @enderror
         <p class="c-form__sample">内容には下記の項目を含めて、案件を分かりやすく説明しましょう。<br>・サービス、案件のコンセプト<br>・期限（単発案件なら納期、レベニューシェアなら期間）<br>・デザイン素材（写真やイラストなど）の準備はどちらが行うか</p>
-        <textarea name="content" id="content" class="c-form__textarea"></textarea>
+        <textarea name="content" id="content" class="c-form__textarea">{{ old('content') }}</textarea>
       </div>
 
       <div class="c-btn__container">

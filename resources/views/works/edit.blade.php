@@ -8,6 +8,7 @@
   </div>
 
   <div class="l-container__body l-container__body--1column">
+    <p class="c-form__text"><a href="{{ url()->previous('/') }}">前ページへ戻る</a></p>
 
     <div class="c-flatBtn__container--right">
       <form action="{{ route('works.destroy', $work->id) }}" method="POST" class="c-form--btn">
@@ -37,10 +38,10 @@
         <span class="c-form__error">{{ $message }}</span>
         @enderror
         <label for="type1" class="c-form__label--radio">
-          <input type="radio" name="type" id="type1" class="c-form__radio" value="0" {{ old('type', $work->type) == 0 ? 'checked' : '' }}>単発
+          <input type="radio" name="type" id="type1" class="c-form__radio" value="0" {{ old('type', $work->type) == 1 ? 'checked' : '' }}>単発
         </label>
         <label for="type2" class="c-form__label--radio">
-          <input type="radio" name="type" id="type2" class="c-form__radio" value="1" {{ old('type', $work->type) == 1 ? 'checked' : '' }}>レベニューシェア
+          <input type="radio" name="type" id="type2" class="c-form__radio" value="1" {{ old('type', $work->type) == 2 ? 'checked' : '' }}>レベニューシェア
         </label>
       </div>
 
@@ -63,6 +64,7 @@
 
       <div class="c-form__group">
         <p for="price" class="c-form__label">金額（1,000円〜）</p>
+        <p class="c-form__text">※レベニューシェアの場合、相談により配分率を決めていだたくだめ、入力は不要です。</p>
         <span class="c-form__error">{{ $errors->first('min_price') }}</span>
         <span class="c-form__error">{{ $errors->first('max_price') }}</span>
         <div class="c-form__group--price">
