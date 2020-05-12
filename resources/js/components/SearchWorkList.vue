@@ -1,7 +1,7 @@
 <template>
   <div class="l-container l-container--withSide">
     <!-- 検索バー -->
-    <SearchComponent @click-search="searchWorks" />
+    <SearchComponent :category="category" :type="type" @click-search="searchWorks" />
 
     <!-- メインコンテンツ -->
     <section class="l-container__body--withSide">

@@ -92,11 +92,15 @@
 
 <script>
 export default {
+  props: {
+    category: Number,
+    type: Number
+  },
   data() {
     return {
       form: {
-        type: 0,
-        category: 0,
+        type: this.type,
+        category: this.category,
         minPrice: 0,
         maxPrice: 0
       }

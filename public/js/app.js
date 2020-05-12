@@ -2661,11 +2661,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    category: Number,
+    type: Number
+  },
   data: function data() {
     return {
       form: {
-        type: 0,
-        category: 0,
+        type: this.type,
+        category: this.category,
         minPrice: 0,
         maxPrice: 0
       }
@@ -40561,7 +40565,10 @@ var render = function() {
     "div",
     { staticClass: "l-container l-container--withSide" },
     [
-      _c("SearchComponent", { on: { "click-search": _vm.searchWorks } }),
+      _c("SearchComponent", {
+        attrs: { category: _vm.category, type: _vm.type },
+        on: { "click-search": _vm.searchWorks }
+      }),
       _vm._v(" "),
       _c(
         "section",
