@@ -14,9 +14,21 @@ use App\Apply;
 class WorksController extends Controller
 {
     // Work一覧表示
-    public function index()
+    public function index(Request $request)
     {
-        return view('works.index');
+        // クエリパラメータが存在する場合代入する
+        if ($request->category) {
+            $category = ((int)$request->category);
+        } else {
+            $category = 0;
+        }
+        if ($request->type) {
+            $type = ((int)$request->type);
+        } else {
+            $type = 0;
+        }
+
+        return view('works.index', compact('category', 'type'));
     }
 
     // Work新規登録画面表示

@@ -2744,11 +2744,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     Pagination: _Pagination__WEBPACK_IMPORTED_MODULE_4__["default"]
   },
   props: {
-    isSearched: Boolean
+    category: Number,
+    type: Number
   },
   data: function data() {
     return {
-      form: null,
+      form: {
+        type: 0,
+        category: 0,
+        minPrice: 0,
+        maxPrice: 0
+      },
       works: null,
       isLoading: false,
       pageNum: 1,
@@ -2775,17 +2781,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this.isLoading = true;
                 console.log(form);
 
+                if (_this.category) {
+                  console.log("category set.");
+                  _this.form.category = _this.category;
+                }
+
+                if (_this.type) {
+                  console.log("type set.");
+                  _this.form.type = _this.type;
+                }
+
                 if (form) {
                   console.log("form OK.");
                   _this.form = form;
                 }
 
-                _context.next = 5;
+                _context.next = 7;
                 return axios.post("/api/works/search?page=".concat(_this.pageNum), {
                   form: _this.form
                 });
 
-              case 5:
+              case 7:
                 response = _context.sent;
                 console.log(response);
                 _this.works = response.data.data;
@@ -2796,7 +2812,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this.toNum = response.data.to;
                 _this.isLoading = false;
 
-              case 14:
+              case 16:
               case "end":
                 return _context.stop();
             }
