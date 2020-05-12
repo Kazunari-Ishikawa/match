@@ -1,0 +1,23 @@
+.c-boardList {
+
+  &__tab {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  &__type {
+    cursor: pointer;
+    font-weight: bold;
+    background: #ddd;
+    padding: $space_default;
+    text-align: center;
+    width: 50%;
+    &.isActive {
+      background: white;
+    }
+    @include mq() {
+      font-size: $font-size_m;
+      padding: $space_m;
+    }
+  }
+}

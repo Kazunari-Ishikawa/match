@@ -1,11 +1,22 @@
 <template>
-  <div class="c-messageBoard__list">
-    <Loader v-if="isLoading" />
-    <div v-if="!isLoading" class="c-messageBoard__type">応募がきた案件</div>
-    <Board v-for="board in requestedBoards" :key="board.id" :board="board" />
+  <div class="c-boardList">
+    <div class="c-workList__header">
+      <h2 class="c-workList__title">メッセージ</h2>
+    </div>
 
-    <div v-if="!isLoading" class="c-messageBoard__type">応募をした案件</div>
-    <Board v-for="board in appliedBoards" :key="board.id" :board="board" />
+    <div class="c-boardList__tab">
+      <p class="c-boardList__type" :class="{isActive: listType === 1}" @click="listType = 1">依頼した案件</p>
+      <p class="c-boardList__type" :class="{isActive: listType === 2}" @click="listType = 2">応募中の案件</p>
+    </div>
+
+    <Loader v-if="isLoading" />
+
+    <template v-if="listType === 1">
+      <Board v-for="board in requestedBoards" :key="board.id" :board="board" />
+    </template>
+    <template v-if="listType === 2">
+      <Board v-for="board in appliedBoards" :key="board.id" :board="board" />
+    </template>
   </div>
 </template>
 
@@ -19,11 +30,10 @@ export default {
   },
   data() {
     return {
-      boards: null,
-      userId: 0,
+      isLoading: false,
       requestedBoards: null,
       appliedBoards: null,
-      isLoading: Boolean
+      listType: 1
     };
   },
   created() {
@@ -32,19 +42,12 @@ export default {
   methods: {
     async getBoards() {
       this.isLoading = true;
-      const response = await axios.get("/api/boards");
+      const response = await axios.get("/api/boards").catch();
       console.log(response);
-      this.boards = response.data.boards;
-      this.userId = response.data.user_id;
-
-      // 依頼した案件に対するmessageBoardを取得
-      this.requestedBoards = this.boards.filter(board => {
-        return board.to_user_id === this.userId;
-      });
-      // 応募した案件に対するmessageBoardを取得
-      this.appliedBoards = this.boards.filter(board => {
-        return board.from_user_id === this.userId;
-      });
+      if (response.status === 200) {
+        this.requestedBoards = response.data.requested_boards;
+        this.appliedBoards = response.data.applied_boards;
+      }
 
       this.isLoading = false;
     }

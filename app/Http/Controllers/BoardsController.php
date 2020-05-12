@@ -39,10 +39,14 @@ class BoardsController extends Controller
     public function getBoards()
     {
         $user_id = Auth::id();
-        $boards = Board::with(['work:id,title', 'fromUser', 'toUser'])->where('from_user_id', $user_id)->orWhere('to_user_id', $user_id)->get();
-        \Log::debug($boards);
 
-        return response(compact('boards', 'user_id'));
+        // 応募のあった案件に対するBoardsを取得する
+        $requested_boards = Board::with(['work:id,title', 'fromUser', 'toUser'])->where('to_user_id', $user_id)->get();
+
+        // 自身が応募した案件に対するBoardsを取得する
+        $applied_boards = Board::with(['work:id,title', 'fromUser', 'toUser'])->where('from_user_id', $user_id)->get();
+
+        return response(compact('requested_boards', 'applied_boards'));
     }
 
     // メッセージ詳細ページ表示
