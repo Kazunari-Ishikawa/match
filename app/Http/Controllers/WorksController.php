@@ -40,12 +40,14 @@ class WorksController extends Controller
     {
         // パラメータが数字でない場合リダイレクト
         if (!ctype_digit($id)){
-            return redirect('/mypage')->with('flash_message', '不正な処理がされました。');
+            return redirect('/')->with('flash_message', '不正な処理がされました。時間を置いてやり直してください。');
         }
 
         $work = Work::with(['user', 'category'])->find($id);
+
+        // 存在しないworkのIDの場合リダイレクト
         if (!$work) {
-            return redirect('/')->with('flash_message', '不正な処理がされました。');
+            return redirect('/')->with('flash_message', '不正な処理がされました。時間を置いてやり直してください。');
         }
 
         // 該当のWorkに対して、ユーザーがWorkの登録者であるか判定

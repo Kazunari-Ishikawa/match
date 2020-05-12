@@ -194,6 +194,7 @@ textarea {
   position: fixed;
   top: 0;
   right: 0;
+  z-index: 1;
 }
 
 @media screen and (max-width: 425px) {
@@ -1736,6 +1737,15 @@ textarea {
 .c-pagination__link {
   display: block;
   padding: 10px;
+}
+
+.c-flash {
+  background: #fa5858;
+  color: white;
+  height: 60px;
+  line-height: 60px;
+  width: 100%;
+  text-align: center;
 }
 
 .p-hero {
