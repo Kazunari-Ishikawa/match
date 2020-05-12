@@ -4,6 +4,8 @@
 <section class="l-container">
 
   <div class="l-container__body l-container__body--1column">
+    <p class="c-form__text"><a href="{{ url()->previous('/') }}">前ページへ戻る</a></p>
+
     <!-- 案件詳細 -->
     <div class="p-projectDetail">
       <h2 class="p-projectDetail__title">{{ $work->title }}</h2>

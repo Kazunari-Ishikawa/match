@@ -14,11 +14,14 @@
   &__group {
     margin-bottom: $space_3l;
     @include mq() {
-      margin-bottom: $space_l;
+      margin-bottom: $space_default;
     }
     &--price {
       display: flex;
       align-items: flex-end;
+      @include mq() {
+        flex-wrap: wrap;
+      }
     }
     &--drop {
       box-sizing: border-box;
@@ -69,7 +72,11 @@
     }
   }
   &__input--price {
-    width: 30%;
+    width: 20%;
+    @include mq() {
+      width: 50%;
+      margin-bottom: $space_m;
+    }
   }
   &__textarea {
     height: 200px;
@@ -104,6 +111,9 @@
   &__price {
     margin: 0 $space_s;
     font-size: $font-size_m;
+    @include mq() {
+      margin-bottom: $space_s;
+    }
   }
   &__link {
     font-size: $font-size_s;
@@ -114,9 +124,9 @@
     }
   }
   &__error {
+    display: block;
     color: red;
     font-size: $font-size_m;
-    margin-bottom: $space_m;
   }
   &__text {
     font-size: $font-size_m;

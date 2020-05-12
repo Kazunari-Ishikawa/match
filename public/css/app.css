@@ -339,7 +339,6 @@ textarea {
 .l-container__body--1column {
   max-width: 720px;
   margin: 0 auto;
-  background: white;
 }
 
 .l-footer {
@@ -765,13 +764,19 @@ textarea {
 
 @media screen and (max-width: 425px) {
   .c-form__group {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
   }
 }
 
 .c-form__group--price {
   display: flex;
   align-items: flex-end;
+}
+
+@media screen and (max-width: 425px) {
+  .c-form__group--price {
+    flex-wrap: wrap;
+  }
 }
 
 .c-form__group--drop {
@@ -839,7 +844,14 @@ textarea {
 }
 
 .c-form__input--price {
-  width: 30%;
+  width: 20%;
+}
+
+@media screen and (max-width: 425px) {
+  .c-form__input--price {
+    width: 50%;
+    margin-bottom: 15px;
+  }
 }
 
 .c-form__textarea {
@@ -886,6 +898,12 @@ textarea {
   font-size: 14px;
 }
 
+@media screen and (max-width: 425px) {
+  .c-form__price {
+    margin-bottom: 10px;
+  }
+}
+
 .c-form__link {
   font-size: 12px;
   margin-bottom: 10px;
@@ -897,9 +915,9 @@ textarea {
 }
 
 .c-form__error {
+  display: block;
   color: red;
   font-size: 14px;
-  margin-bottom: 15px;
 }
 
 .c-form__text {

@@ -8,6 +8,7 @@
   </div>
 
   <div class="l-container__body l-container__body--1column">
+    <p class="c-form__text"><a href="{{ url()->previous('/') }}">前ページへ戻る</a></p>
     <form method="POST" action="{{ route('works.new') }}" class="c-form">
       @csrf
       <div class="c-form__group">
@@ -50,15 +51,15 @@
 
       <div class="c-form__group">
         <p for="price" class="c-form__label">金額（1,000円〜）</p>
-
+        <p class="c-form__text">※レベニューシェアの場合、相談により配分率を決めていだたくだめ、入力は不要です。</p>
         <span class="c-form__error">{{ $errors->first('min_price') }}</span>
         <span class="c-form__error">{{ $errors->first('max_price') }}</span>
 
         <div class="c-form__group--price">
-          <input type="number" class="c-form__input c-form__input--price" name="min_price" id="lower" placeholder="1000" value="{{ old('min_price') }}">
-          <span class="c-form__price">〜</span>
+          <input type="number" class="c-form__input c-form__input--price" name="min_price" id="lower" placeholder="1" value="{{ old('min_price') }}">
+          <span class="c-form__price">,000〜</span>
           <input type="number" class="c-form__input c-form__input--price" name="max_price" id="upper" value="{{ old('max_price') }}">
-          <span class="c-form__price">円</span>
+          <span class="c-form__price">,000円</span>
         </div>
       </div>
 
@@ -68,10 +69,7 @@
         <span class="c-form__error">{{ $message }}</span>
         @enderror
         <p class="c-form__sample">内容には下記の項目を含めて、案件を分かりやすく説明しましょう。<br>・サービス、案件のコンセプト<br>・期限（単発案件なら納期、レベニューシェアなら期間）<br>・デザイン素材（写真やイラストなど）の準備はどちらが行うか</p>
-        <textarea name="content" id="content" class="c-form__textarea"></textarea>
-      </div>
-
-      <div class="c-form__group">
+        <textarea name="content" id="content" class="c-form__textarea">{{ old('content') }}</textarea>
       </div>
 
       <div class="c-btn__container">
