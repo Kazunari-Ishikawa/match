@@ -12,7 +12,11 @@
     <!-- プロフィール -->
     <div class="p-profile">
       <div class="p-profile__icon">
-        <img src="@if($user->icon) $user->icon @else {{asset('/images/icon_sample.png')}} @endif" alt="アイコン" class="p-profile__img">
+        @if ($user->icon)
+        <img src="/storage/img/icons/{{$user->icon}}" alt="アイコン" class="p-profile__img">
+        @else
+        <img src="{{asset('/images/icon_sample.png')}}" alt="アイコン" class="p-profile__img">
+        @endif
       </div>
       <p class="p-profile__name">{{ $user->name }}</p>
     </div>

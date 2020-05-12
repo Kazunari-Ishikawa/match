@@ -38,8 +38,9 @@
           @enderror
           <label class="c-form__group--drop">
             <input type="hidden" name="MAX_FILE_SIZE" value="1048576">
-            <input type="file" class="c-form__file" name="icon" id="icon" accept="image/*" />
-            ドラッグ＆ドロップ
+            <input type="file" class="c-form__file js-preview-input" name="icon" id="icon" accept="image/*" />
+            <img src="/storage/img/icons/{{ $user->icon }}" alt="" class="c-form__preview js-preview">
+            ファイルを選択
           </label>
         </div>
 
