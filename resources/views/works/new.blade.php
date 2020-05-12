@@ -8,6 +8,7 @@
   </div>
 
   <div class="l-container__body l-container__body--1column">
+    <p class="c-form__text"><a href="{{ url()->previous('/') }}">前ページへ戻る</a></p>
     <form method="POST" action="{{ route('works.new') }}" class="c-form">
       @csrf
       <div class="c-form__group">
@@ -69,9 +70,6 @@
         @enderror
         <p class="c-form__sample">内容には下記の項目を含めて、案件を分かりやすく説明しましょう。<br>・サービス、案件のコンセプト<br>・期限（単発案件なら納期、レベニューシェアなら期間）<br>・デザイン素材（写真やイラストなど）の準備はどちらが行うか</p>
         <textarea name="content" id="content" class="c-form__textarea"></textarea>
-      </div>
-
-      <div class="c-form__group">
       </div>
 
       <div class="c-btn__container">
