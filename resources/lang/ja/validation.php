@@ -148,7 +148,13 @@ return [
         'email' =>  'メールアドレス',
         'password'  => 'パスワード',
         'current_password' => '現在のパスワード',
-        'icon' => 'アイコン画像'
+        'icon' => 'アイコン画像',
+        'title' => 'タイトル',
+        'type' => '案件種別',
+        'category_id' => 'カテゴリ',
+        'min_price' => '最小金額',
+        'max_price' => '最大金額',
+        'content' => '内容'
     ],
 
 ];
