@@ -2031,6 +2031,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2040,11 +2051,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
-      boards: null,
-      userId: 0,
+      isLoading: false,
       requestedBoards: null,
       appliedBoards: null,
-      isLoading: Boolean
+      listType: 1
     };
   },
   created: function created() {
@@ -2062,24 +2072,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _this.isLoading = true;
                 _context.next = 3;
-                return axios.get("/api/boards");
+                return axios.get("/api/boards")["catch"]();
 
               case 3:
                 response = _context.sent;
                 console.log(response);
-                _this.boards = response.data.boards;
-                _this.userId = response.data.user_id; // 依頼した案件に対するmessageBoardを取得
 
-                _this.requestedBoards = _this.boards.filter(function (board) {
-                  return board.to_user_id === _this.userId;
-                }); // 応募した案件に対するmessageBoardを取得
+                if (response.status === 200) {
+                  _this.requestedBoards = response.data.requested_boards;
+                  _this.appliedBoards = response.data.applied_boards;
+                }
 
-                _this.appliedBoards = _this.boards.filter(function (board) {
-                  return board.from_user_id === _this.userId;
-                });
                 _this.isLoading = false;
 
-              case 10:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -39746,34 +39752,67 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "c-messageBoard__list" },
+    { staticClass: "c-boardList" },
     [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "c-boardList__tab" }, [
+        _c(
+          "p",
+          {
+            staticClass: "c-boardList__type",
+            class: { isActive: _vm.listType === 1 },
+            on: {
+              click: function($event) {
+                _vm.listType = 1
+              }
+            }
+          },
+          [_vm._v("依頼した案件")]
+        ),
+        _vm._v(" "),
+        _c(
+          "p",
+          {
+            staticClass: "c-boardList__type",
+            class: { isActive: _vm.listType === 2 },
+            on: {
+              click: function($event) {
+                _vm.listType = 2
+              }
+            }
+          },
+          [_vm._v("応募中の案件")]
+        )
+      ]),
+      _vm._v(" "),
       _vm.isLoading ? _c("Loader") : _vm._e(),
       _vm._v(" "),
-      !_vm.isLoading
-        ? _c("div", { staticClass: "c-messageBoard__type" }, [
-            _vm._v("依頼した案件")
-          ])
+      _vm.listType === 1
+        ? _vm._l(_vm.requestedBoards, function(board) {
+            return _c("Board", { key: board.id, attrs: { board: board } })
+          })
         : _vm._e(),
       _vm._v(" "),
-      _vm._l(_vm.requestedBoards, function(board) {
-        return _c("Board", { key: board.id, attrs: { board: board } })
-      }),
-      _vm._v(" "),
-      !_vm.isLoading
-        ? _c("div", { staticClass: "c-messageBoard__type" }, [
-            _vm._v("応募した案件")
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm._l(_vm.appliedBoards, function(board) {
-        return _c("Board", { key: board.id, attrs: { board: board } })
-      })
+      _vm.listType === 2
+        ? _vm._l(_vm.appliedBoards, function(board) {
+            return _c("Board", { key: board.id, attrs: { board: board } })
+          })
+        : _vm._e()
     ],
     2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "c-workList__header" }, [
+      _c("h2", { staticClass: "c-workList__title" }, [_vm._v("メッセージ")])
+    ])
+  }
+]
 render._withStripped = true
 
 

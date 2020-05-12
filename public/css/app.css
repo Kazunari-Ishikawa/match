@@ -1697,6 +1697,32 @@ textarea {
   margin-bottom: 40px;
 }
 
+.c-boardList__tab {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.c-boardList__type {
+  cursor: pointer;
+  font-weight: bold;
+  background: #ddd;
+  padding: 20px;
+  text-align: center;
+  width: 50%;
+}
+
+.c-boardList__type.isActive {
+  background: white;
+}
+
+@media screen and (max-width: 425px) {
+  .c-boardList__type {
+    font-size: 14px;
+    padding: 15px;
+  }
+}
+
 .c-loader {
   transition: 0.6s;
   text-align: center;
