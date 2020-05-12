@@ -6,6 +6,7 @@
 
 require('./bootstrap');
 require('./toggleheader');
+require('./preview');
 
 window.Vue = require('vue');
 

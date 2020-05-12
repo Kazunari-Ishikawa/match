@@ -108,6 +108,12 @@
     left: 0;
     z-index: 1;
   }
+  &__preview {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
   &__price {
     margin: 0 $space_s;
     font-size: $font-size_m;

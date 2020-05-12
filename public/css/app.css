@@ -893,6 +893,13 @@ textarea {
   z-index: 1;
 }
 
+.c-form__preview {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .c-form__price {
   margin: 0 10px;
   font-size: 14px;
