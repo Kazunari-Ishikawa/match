@@ -78,20 +78,20 @@
       </div>
 
       <div class="c-cardList__body c-cardList__body--lg">
-        <div class="c-card c-card--lg">
+        <a href="/works?type=1" class="c-card c-card--lg">
           <div class="c-card__body">
             <h4 class="c-card__title c-card__title--lg">単発案件</h4>
             <p class="c-card__text">単発案件とは、「仕事一件当たり◯◯円」という形で報酬が支払われます。</p>
             <p class="c-card__text">要求スキルが易しいものから高レベルのものまで、<span>豊富な案件から選ぶ</span>ことができます。</p>
           </div>
-        </div>
-        <div class="c-card c-card--lg">
+        </a>
+        <a href="/works?type=2" class="c-card c-card--lg">
           <div class="c-card__body">
             <h4 class="c-card__title c-card__title--lg">レベニューシェア</h4>
             <p class="c-card__text">レベニューシェアとは、開発したサービスの収益をあらかじめ決めておいた配分で分け合う方式です。</p>
             <p class="c-card__text">依頼者にとっては<span>初期費用を抑える</span>ことができ、請負者にとっては<span>継続的に収益を得る</span>ことができます。</p>
           </div>
-        </div>
+        </a>
       </div>
 
     </div>
@@ -102,48 +102,48 @@
       </div>
 
       <div class="c-cardList__body">
-        <div class="c-card">
+        <a class="c-card" href="/works?category=1">
           <div class="c-card__body">
             <img src="{{asset('/images/category_1.png')}}" alt="カテゴリ1" class="c-card__img">
             <h4 class="c-card__title">ホームページ制作</h4>
           </div>
-        </div>
-        <div class="c-card">
+        </a>
+        <a class="c-card" href="/works?category=2">
           <div class="c-card__body">
             <img src="{{asset('/images/category_2.png')}}" alt="カテゴリ2" class="c-card__img">
             <h4 class="c-card__title">WEBシステム開発</h4>
           </div>
-        </div>
-        <div class="c-card">
+        </a>
+        <a class="c-card" href="/works?category=3">
           <div class="c-card__body">
             <img src="{{asset('/images/category_3.png')}}" alt="カテゴリ3" class="c-card__img">
             <h4 class="c-card__title">業務システム開発</h4>
           </div>
-        </div>
-        <div class="c-card">
+        </a>
+        <a class="c-card" href="/works?category=4">
           <div class="c-card__body">
             <img src="{{asset('/images/category_4.png')}}" alt="カテゴリ4" class="c-card__img">
             <h4 class="c-card__title">アプリ開発</h4>
           </div>
-        </div>
-        <div class="c-card">
+        </a>
+        <a class="c-card" href="/works?category=5">
           <div class="c-card__body">
             <img src="{{asset('/images/category_5.png')}}" alt="カテゴリ5" class="c-card__img">
             <h4 class="c-card__title">ECサイト制作</h4>
           </div>
-        </div>
-        <div class="c-card">
+        </a>
+        <a class="c-card" href="/works?category=6">
           <div class="c-card__body">
             <img src="{{asset('/images/category_6.png')}}" alt="カテゴリ6" class="c-card__img">
             <h4 class="c-card__title">サーバー・クラウド</h4>
           </div>
-        </div>
-        <div class="c-card">
+        </a>
+        <a class="c-card" href="/works?category=7">
           <div class="c-card__body">
             <img src="{{asset('/images/category_7.png')}}" alt="カテゴリ7" class="c-card__img">
             <h4 class="c-card__title">WEBマーケティング</h4>
           </div>
-        </div>
+        </a>
       </div>
 
     </div>

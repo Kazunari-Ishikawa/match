@@ -1,7 +1,7 @@
 <template>
   <div class="l-container l-container--withSide">
     <!-- 検索バー -->
-    <SearchComponent @click-search="searchWorks" />
+    <SearchComponent :category="category" :type="type" @click-search="searchWorks" />
 
     <!-- メインコンテンツ -->
     <section class="l-container__body--withSide">
@@ -43,11 +43,17 @@ export default {
     Pagination
   },
   props: {
-    isSearched: Boolean
+    category: Number,
+    type: Number
   },
   data() {
     return {
-      form: null,
+      form: {
+        type: 0,
+        category: 0,
+        minPrice: 0,
+        maxPrice: 0
+      },
       works: null,
       isLoading: false,
       pageNum: 1,
@@ -65,6 +71,14 @@ export default {
     async searchWorks(form) {
       this.isLoading = true;
       console.log(form);
+      if (this.category) {
+        console.log("category set.");
+        this.form.category = this.category;
+      }
+      if (this.type) {
+        console.log("type set.");
+        this.form.type = this.type;
+      }
       if (form) {
         console.log("form OK.");
         this.form = form;
