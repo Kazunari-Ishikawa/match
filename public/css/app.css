@@ -1627,8 +1627,8 @@ textarea {
 
 .c-messageBoard {
   background: white;
+  border-bottom: 1px solid #f5f5f5;
   display: block;
-  margin-bottom: 20px;
   padding: 20px;
   transition: 0.3s;
 }
@@ -1722,6 +1722,17 @@ textarea {
   margin-bottom: 40px;
 }
 
+.c-boardList__header {
+  padding: 20px;
+  background: white;
+}
+
+.c-boardList__title {
+  color: #51a1a2;
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .c-boardList__tab {
   width: 100%;
   display: flex;
@@ -1732,12 +1743,14 @@ textarea {
   cursor: pointer;
   font-weight: bold;
   background: #ddd;
+  border-top: 2px solid white;
   padding: 20px;
   text-align: center;
   width: 50%;
 }
 
 .c-boardList__type.isActive {
+  border-top: 2px solid #fa5858;
   background: white;
 }
 

@@ -1,5 +1,13 @@
 .c-boardList {
-
+  &__header {
+    padding: $space_default;
+    background: white;
+  }
+  &__title {
+    color: $color_main;
+    font-size: $font-size_l;
+    font-weight: bold;
+  }
   &__tab {
     width: 100%;
     display: flex;
@@ -9,10 +17,12 @@
     cursor: pointer;
     font-weight: bold;
     background: #ddd;
+    border-top: 2px solid white;
     padding: $space_default;
     text-align: center;
     width: 50%;
     &.isActive {
+      border-top: 2px solid $color_sub1;
       background: white;
     }
     @include mq() {

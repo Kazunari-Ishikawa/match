@@ -39858,8 +39858,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "c-workList__header" }, [
-      _c("h2", { staticClass: "c-workList__title" }, [_vm._v("メッセージ")])
+    return _c("div", { staticClass: "c-boardList__header" }, [
+      _c("h2", { staticClass: "c-boardList__title" }, [_vm._v("メッセージ")])
     ])
   }
 ]

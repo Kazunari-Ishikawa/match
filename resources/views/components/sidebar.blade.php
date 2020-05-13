@@ -10,11 +10,11 @@
   <ul class="c-menu--side js-menu__target">
     <li class="c-menu__item c-menu__item--side"><a href="{{ route('works.index') }}" class="c-menu__link c-menu__link--side">案件を探す</a></li>
     <li class="c-menu__item c-menu__item--side"><a href="{{ route('works.applied') }}" class="c-menu__link c-menu__link--side">応募中の案件</a></li>
-    <li class="c-menu__item c-menu__item--side"><a href="{{ route('works.bookmarks') }}" class="c-menu__link c-menu__link--side">気になる案件</a></li>
   </ul>
 
   <p class="c-menu__tab">共通</p>
   <ul class="c-menu--side">
+    <li class="c-menu__item c-menu__item--side"><a href="{{ route('works.bookmarks') }}" class="c-menu__link c-menu__link--side">気になる案件</a></li>
     <li class="c-menu__item c-menu__item--side"><a href="{{ route('comments.index')}}" class="c-menu__link c-menu__link--side">コメントした案件</a></li>
     <li class="c-menu__item c-menu__item--side"><a href="{{ route('messages.index') }}" class="c-menu__link c-menu__link--side">メッセージ</a></li>
   </ul>

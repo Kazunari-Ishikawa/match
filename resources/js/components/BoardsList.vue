@@ -1,7 +1,7 @@
 <template>
   <div class="c-boardList">
-    <div class="c-workList__header">
-      <h2 class="c-workList__title">メッセージ</h2>
+    <div class="c-boardList__header">
+      <h2 class="c-boardList__title">メッセージ</h2>
     </div>
 
     <div class="c-boardList__tab">
