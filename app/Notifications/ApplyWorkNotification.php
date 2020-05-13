@@ -7,20 +7,21 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class PasswordResetNotification extends Notification
+class ApplyWorkNotification extends Notification
 {
     use Queueable;
-    public $token;
-    protected $title = 'パスワードリセット通知';
+    public $work;
+    public $user;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($token)
+    public function __construct($work, $user)
     {
-        $this->token = $token;
+        $this->work = $work;
+        $this->user = $user;
     }
 
     /**
@@ -43,12 +44,12 @@ class PasswordResetNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject($this->title)
-            ->greeting('パスワードリセット')
-            ->line('以下のボタンを押して、パスワードリセットの手続きを行ってください。')
-            ->action('パスワードリセット', url('password/reset', $this->token));
-            // ->view('mail.html.passwordReset', ['reset_url' => url('password/reset', $this->token)]);
-    }
+        ->subject('案件への応募通知')
+        ->greeting('応募がありました')
+        ->line('あなたが登録した下記の案件について、応募がありましたので連絡します。')
+        ->line('案件名：'.$this->work->title)
+        ->line('応募者：'.$this->user->name);
+}
 
     /**
      * Get the array representation of the notification.
