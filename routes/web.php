@@ -71,3 +71,4 @@ Route::get('/api/works', 'WorksController@getworks');
 Route::get('/works/{id}', 'WorksController@show')->name('works.show');
 Route::get('/api/works/{id}/comments', 'CommentsController@getComments');
 Route::post('/api/works/search', 'WorksController@searchWorks');
+Route::get('/users/{id}', 'UsersController@show')->name('users.show');

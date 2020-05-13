@@ -17,6 +17,25 @@ class UsersController extends Controller
 
         return view('users.mypage', ['user' => $user]);
     }
+
+    // ユーザー詳細画面表示
+    public function show($id)
+    {
+        // パラメータが数字でない場合リダイレクト
+        if (!ctype_digit($id)){
+            return redirect('/')->with('flash_message', '不正な処理がされました。時間を置いてやり直してください。');
+        }
+
+        $user = User::with(['works'])->find($id);
+
+        // 存在しないuserのIDの場合リダイレクト
+        if (!$user) {
+            return redirect('/')->with('flash_message', '不正な処理がされました。時間を置いてやり直してください。');
+        }
+
+        return view('users.show', compact('user'));
+    }
+
     // プロフィール編集画面表示
     public function edit()
     {
