@@ -61,6 +61,16 @@ class User extends Authenticatable
         return $this->hasMany('App\Comment');
     }
 
+    public function requestedBoards()
+    {
+        return $this->hasMany('App\Board', 'from_user_id', 'id');
+    }
+
+    public function appliedBoards()
+    {
+        return $this->hasMany('App\Board', 'to_user_id', 'id');
+    }
+
     public function messages()
     {
         return $this->hasMany('App\Message');

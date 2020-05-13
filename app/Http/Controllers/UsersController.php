@@ -43,6 +43,7 @@ class UsersController extends Controller
 
         return view('users.edit', ['user' => $user]);
     }
+
     // プロフィールを変更する
     public function update(UpdateUserRequest $request)
     {
@@ -60,11 +61,13 @@ class UsersController extends Controller
 
         return redirect('/mypage');
     }
+
     // パスワード変更画面表示
     public function editPassword()
     {
         return view('users.editPassword');
     }
+
     // パスワードを変更する
     public function updatePassword(UpdatePasswordRequest $request)
     {
@@ -82,14 +85,40 @@ class UsersController extends Controller
     // 退会する
     public function withdraw()
     {
-        $user_id = Auth::id();
-        $works = User::find($user_id)->works;
-        foreach ($works as $work) {
+        $user = Auth::user();
+        $works = $user->works;
+
+        // 投稿したコメント削除
+        $user->comments()->delete();
+
+        // Bookmarksを削除
+        $user->bookmarks()->delete();
+
+        // Applyを削除
+        $user->applies()->delete();
+
+        // Messageを削除
+        $user->messages()->delete();
+
+        // Workと、それに紐づくBoard、Messageを削除
+        foreach($works as $work) {
+            $boards = $work->boards;
+            foreach($boards as $board) {
+                $board->messages()->delete();
+                $board->delete();
+            }
             $work->delete();
         }
-        \Log::debug($works);
-        User::find($user_id)->delete();
+
+        // 応募したBoard、応募のあったBoardを削除
+        $user->requestedBoards()->delete();
+        $user->appliedBoards()->delete();
+
+        // Userを削除
+        $user->delete();
+
         Auth::logout();
+
         return redirect('/');
     }
 }
