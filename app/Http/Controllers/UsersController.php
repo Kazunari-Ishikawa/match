@@ -110,9 +110,12 @@ class UsersController extends Controller
             $work->delete();
         }
 
-        // 応募したBoard、応募のあったBoardを削除
-        $user->requestedBoards()->delete();
-        $user->appliedBoards()->delete();
+        // 応募したBoardと、それに紐づくMessageを削除
+        $boards = $user->appliedBoards;
+        foreach($boards as $board) {
+            $board->messages()->delete();
+            $board->delete();
+        }
 
         // Userを削除
         $user->delete();

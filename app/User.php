@@ -63,12 +63,12 @@ class User extends Authenticatable
 
     public function requestedBoards()
     {
-        return $this->hasMany('App\Board', 'from_user_id', 'id');
+        return $this->hasMany('App\Board', 'to_user_id', 'id');
     }
 
     public function appliedBoards()
     {
-        return $this->hasMany('App\Board', 'to_user_id', 'id');
+        return $this->hasMany('App\Board', 'from_user_id', 'id');
     }
 
     public function messages()
