@@ -67,7 +67,7 @@
     </div>
 
     <!-- コメント一覧 -->
-    <comments-list :work-id='@json($work->id)'></comments-list>
+    <comment-list :work-id='@json($work->id)'></comment-list>
 
     <!-- コメント入力フォーム -->
     <form action="{{ route('comments.new', $work->id) }}" method="POST" class="c-form">

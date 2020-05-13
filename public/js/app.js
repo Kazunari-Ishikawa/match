@@ -53020,6 +53020,21 @@ module.exports = function(module) {
 
 /***/ }),
 
+/***/ "./resources/js/accordionMenu.js":
+/*!***************************************!*\
+  !*** ./resources/js/accordionMenu.js ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+$(function () {
+  $('.js-spMenu-tab').click(function () {
+    $(this).next().slideToggle();
+  });
+});
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -53034,7 +53049,9 @@ module.exports = function(module) {
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! ./toggleheader */ "./resources/js/toggleheader.js");
+__webpack_require__(/*! ./toggleMenu */ "./resources/js/toggleMenu.js");
+
+__webpack_require__(/*! ./accordionMenu */ "./resources/js/accordionMenu.js");
 
 __webpack_require__(/*! ./preview */ "./resources/js/preview.js");
 
@@ -53988,10 +54005,10 @@ $(function () {
 
 /***/ }),
 
-/***/ "./resources/js/toggleheader.js":
-/*!**************************************!*\
-  !*** ./resources/js/toggleheader.js ***!
-  \**************************************/
+/***/ "./resources/js/toggleMenu.js":
+/*!************************************!*\
+  !*** ./resources/js/toggleMenu.js ***!
+  \************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -53999,10 +54016,9 @@ $(function () {
   $('.js-header-trigger').on('click', function () {
     $(this).toggleClass('active');
     $('.js-header-toggle-target').toggleClass('active');
-  });
-  $('.c-menu__link').on('click', function () {
-    $('.js-header-toggle-target').removeClass('active');
-  });
+  }); // $('.c-spMenu__link').on('click', function () {
+  //   $('.js-header-toggle-target').removeClass('active');
+  // })
 });
 
 /***/ }),

@@ -1,7 +1,13 @@
 .c-spMenu {
   display: none;
-  @include mq('md') {
+  &--display {
     display: block;
+  }
+  &__container {
+    display: none;
+    @include mq('md') {
+      display: block;
+    }
   }
   &__tab {
     display: none;

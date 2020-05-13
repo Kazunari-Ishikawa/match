@@ -1389,8 +1389,16 @@ textarea {
   display: none;
 }
 
+.c-spMenu--display {
+  display: block;
+}
+
+.c-spMenu__container {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
-  .c-spMenu {
+  .c-spMenu__container {
     display: block;
   }
 }

@@ -3,7 +3,7 @@ $(function () {
     $(this).toggleClass('active');
     $('.js-header-toggle-target').toggleClass('active');
   });
-  $('.c-menu__link').on('click', function () {
-    $('.js-header-toggle-target').removeClass('active');
-  })
+  // $('.c-spMenu__link').on('click', function () {
+  //   $('.js-header-toggle-target').removeClass('active');
+  // })
 });

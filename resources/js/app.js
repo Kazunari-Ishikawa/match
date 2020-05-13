@@ -5,7 +5,8 @@
  */
 
 require('./bootstrap');
-require('./toggleheader');
+require('./toggleMenu');
+require('./accordionMenu');
 require('./preview');
 require('./confirm');
 
