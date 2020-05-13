@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CreateWorkRequest;
 use App\Notifications\ApplyWorkNotification;
 use App\Notifications\CancelApplyNotification;
+use App\Notifications\DeleteWorkNotification;
 use App\Work;
 use App\Category;
 use App\User;
@@ -150,9 +151,29 @@ class WorksController extends Controller
             return redirect('/mypage')->with('flash_message',__('This is not yours! DO NOT EDIT!'));
         }
 
-        $work = Auth::user()->works()->find($id)->delete();
+        $work = Auth::user()->works()->find($id);
 
-        return redirect('/mypage');
+        // Workに紐づくBoardとMessageを削除
+        $boards = $work->boards;
+        foreach($boards as $board) {
+            $board->messages()->delete();
+            $board->delete();
+        }
+
+        // Workに紐づくBookmarkを削除
+        $work->bookmarks()->delete();
+
+        // Workへの応募者へ削除の通知をし、Applyを削除
+        $applies = $work->applies;
+        foreach($applies as $apply) {
+            $applied_user = $apply->user;
+            $applied_user->notify(new DeleteWorkNotification($work, Auth::user()));
+            $apply->delete();
+        }
+
+        $work->delete();
+
+        return redirect('/mypage')->with('flash_message', '削除しました。');
     }
 
     // Workの完了処理
