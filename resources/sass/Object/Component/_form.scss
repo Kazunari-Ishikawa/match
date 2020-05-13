@@ -25,15 +25,16 @@
     }
     &--drop {
       box-sizing: border-box;
+      border: 2px dashed $color_sub2;
       display: block;
       font-size: $font-size_s;
       background: $color_bg;
       height: 150px;
       line-height: 150px;
+      width: 150px;
       overflow: hidden;
       text-align: center;
       position: relative;
-      width: 150px;
     }
     &--sm {
       margin-bottom: $space_default;
