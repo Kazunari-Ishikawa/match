@@ -7,6 +7,7 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Http\Requests\UpdatePasswordRequest;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Work;
 
 class UsersController extends Controller
 {
@@ -26,8 +27,7 @@ class UsersController extends Controller
             return redirect('/')->with('flash_message', '不正な処理がされました。時間を置いてやり直してください。');
         }
 
-        $user = User::with(['works'])->find($id);
-
+        $user = User::with('works')->find($id);
         // 存在しないuserのIDの場合リダイレクト
         if (!$user) {
             return redirect('/')->with('flash_message', '不正な処理がされました。時間を置いてやり直してください。');
