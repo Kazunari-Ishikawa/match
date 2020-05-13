@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class DeleteWorkNotification extends Notification
+class CloseWorkNotification extends Notification
 {
     use Queueable;
     public $work;
@@ -44,14 +44,14 @@ class DeleteWorkNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-        ->subject('案件の削除通知')
-        ->greeting('案件が削除されました')
-        ->line('あなたが応募していた下記の案件について、依頼者によって案件が削除されたので連絡します。')
-        ->line('この案件への応募は取り消されます。')
-        ->line('また、これまでのメッセージのやりとりも削除されました。')
-        ->line('案件名：'.$this->work->title)
-        ->line('依頼者：'.$this->user->name);
-}
+            ->subject('案件の成約通知')
+            ->greeting('案件が成約済みとなりました')
+            ->line('あなたが応募していた下記の案件について、依頼者によって案件が成約済みとなったので連絡します。')
+            ->line('この案件への応募は取り消されます。')
+            ->line('また、これまでのメッセージのやりとりも削除されました。')
+            ->line('案件名：'.$this->work->title)
+            ->line('依頼者：'.$this->user->name);
+        }
 
     /**
      * Get the array representation of the notification.

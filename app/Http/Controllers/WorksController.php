@@ -8,6 +8,7 @@ use App\Http\Requests\CreateWorkRequest;
 use App\Notifications\ApplyWorkNotification;
 use App\Notifications\CancelApplyNotification;
 use App\Notifications\DeleteWorkNotification;
+use App\Notifications\CloseWorkNotification;
 use App\Work;
 use App\Category;
 use App\User;
@@ -143,17 +144,59 @@ class WorksController extends Controller
     {
         // パラメータが数字でない場合リダイレクト
         if(!ctype_digit($id)){
-            return redirect('/mypage')->with('flash_message',__('Invalid operation was performed.'));
+            return redirect('/mypage')->with('flash_message', '不正な処理がされました。時間を置いてやり直してください。');
         }
 
         // 登録者以外が対象のworkを編集しようとした場合リダイレクト
         if (!Auth::user()->works()->find($id)) {
-            return redirect('/mypage')->with('flash_message',__('This is not yours! DO NOT EDIT!'));
+            return redirect('/mypage')->with('flash_message', '不正な処理がされました。時間を置いてやり直してください。');
         }
 
         $work = Auth::user()->works()->find($id);
 
-        // Workに紐づくBoardとMessageを削除
+        // workのis_closedがtrueの場合、削除処理がすでに行われているため以下の処理は実行しない
+        if (!$work->is_closed) {
+            // Workに紐づくBoardとMessageを削除
+            $boards = $work->boards;
+            foreach($boards as $board) {
+                $board->messages()->delete();
+                $board->delete();
+            }
+
+            // Workに紐づくBookmarkを削除
+            $work->bookmarks()->delete();
+
+            // Workへの応募者へ削除の通知をし、Applyを削除
+            $applies = $work->applies;
+            foreach($applies as $apply) {
+                $applied_user = $apply->user;
+                $applied_user->notify(new DeleteWorkNotification($work, Auth::user()));
+                $apply->delete();
+            }
+        }
+
+        $work->delete();
+
+        return redirect('/mypage')->with('flash_message', '削除しました。');
+    }
+
+    // Workの成約処理
+    public function close($id)
+    {
+        if (!ctype_digit($id)) {
+            return redirect('/mypage')->with('flash_message', '不正な処理がされました。時間を置いてやり直してください。');
+        }
+
+        if (!Auth::user()->works()->find($id)) {
+            return redirect('/mypage')->with('flash_message', '不正な処理がされました。時間を置いてやり直してください。');
+        }
+
+        // workの成約処理
+        $work = Auth::user()->works()->find($id);
+        $work->is_closed = true;
+        $work->save();
+
+        // 成約時には、Workに紐づくBoardとMessageを削除する
         $boards = $work->boards;
         foreach($boards as $board) {
             $board->messages()->delete();
@@ -163,35 +206,15 @@ class WorksController extends Controller
         // Workに紐づくBookmarkを削除
         $work->bookmarks()->delete();
 
-        // Workへの応募者へ削除の通知をし、Applyを削除
+        // Workの応募者へ案件が成約済みとなったことを通知し、Applyを削除する
         $applies = $work->applies;
         foreach($applies as $apply) {
             $applied_user = $apply->user;
-            $applied_user->notify(new DeleteWorkNotification($work, Auth::user()));
+            $applied_user->notify(new CloseWorkNotification($work, Auth::user()));
             $apply->delete();
         }
 
-        $work->delete();
-
-        return redirect('/mypage')->with('flash_message', '削除しました。');
-    }
-
-    // Workの完了処理
-    public function close($id)
-    {
-        if (!ctype_digit($id)) {
-            return redirect('/mypage');
-        }
-
-        if (!Auth::user()->works()->find($id)) {
-            return redirect('/mypage');
-        }
-
-        $work = Auth::user()->works()->find($id);
-        $work->is_closed = true;
-        $work->save();
-
-        return redirect('/mypage');
+        return redirect('/mypage')->with('flash_message', '成約済みに変更しました。');;
     }
 
     // 登録した案件一覧画面表示
