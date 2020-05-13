@@ -9,7 +9,7 @@
     width: 70vw;
     transition: $time_m;
     z-index: 2;
-    &.active {
+    &.isActive {
       transform: translateX(-100%);
     }
   }

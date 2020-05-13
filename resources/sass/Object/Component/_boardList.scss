@@ -1,4 +1,8 @@
 .c-boardList {
+  margin-bottom: $space_3l;
+  @include mq() {
+    margin-bottom: $space_default;
+  }
   &__header {
     padding: $space_default;
     background: white;

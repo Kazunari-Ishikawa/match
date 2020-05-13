@@ -5,7 +5,8 @@
  */
 
 require('./bootstrap');
-require('./toggleheader');
+require('./toggleMenu');
+require('./accordionMenu');
 require('./preview');
 require('./confirm');
 
@@ -23,10 +24,10 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 Vue.component('search-work-list', require('./components/SearchWorkList.vue').default);
-Vue.component('works-list', require('./components/WorksList.vue').default);
-Vue.component('comments-list', require('./components/CommentsList.vue').default);
-Vue.component('boards-list', require('./components/BoardsList.vue').default);
-Vue.component('messages-list', require('./components/MessagesList.vue').default);
+Vue.component('work-list', require('./components/WorkList.vue').default);
+Vue.component('comment-list', require('./components/CommentList.vue').default);
+Vue.component('board-list', require('./components/BoardList.vue').default);
+Vue.component('message-list', require('./components/MessageList.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

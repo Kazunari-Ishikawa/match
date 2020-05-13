@@ -11,7 +11,7 @@
 @import 'Layout/nav';
 @import 'Layout/container';
 @import 'Layout/footer';
-@import 'Layout/sideBar';
+@import 'Layout/sidebar';
 
 // Component
 @import 'Object/Component/btn';
@@ -23,14 +23,12 @@
 @import 'Object/Component/mypage';
 @import 'Object/Component/menu';
 @import 'Object/Component/nav';
-@import 'Object/Component/search';
 @import 'Object/Component/work';
 @import 'Object/Component/workList';
-@import 'Object/Component/projectTab';
 @import 'Object/Component/spMenu';
 @import 'Object/Component/menuTrigger';
 @import 'Object/Component/message';
-@import 'Object/Component/messageBoard';
+@import 'Object/Component/board';
 @import 'Object/Component/boardList';
 @import 'Object/Component/loader';
 @import 'Object/Component/pagination';
@@ -40,8 +38,8 @@
 @import 'Object/Project/hero';
 @import 'Object/Project/band';
 @import 'Object/Project/desc';
+@import 'Object/Project/workDetail';
 @import 'Object/Project/userDetail';
-@import 'Object/Project/projectDetail';
 @import 'Object/Project/messageDetail';
 
 // Utility

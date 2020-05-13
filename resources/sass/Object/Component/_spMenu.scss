@@ -1,23 +1,71 @@
 .c-spMenu {
   display: none;
-  transition: $time_m;
-  @include mq('md') {
+  &--display {
     display: block;
   }
-  &__item {
-    border-bottom: 1px solid $color_bg;
-    display: block;
-    margin-bottom: $space_default;
-    padding: 0 $space_3l;
-    text-align: right;
+  &__container {
+    display: none;
+    @include mq('md') {
+      display: block;
+    }
+  }
+  &__tab {
+    display: none;
+    @include mq('md') {
+      display: block;
+      cursor: pointer;
+      background: #ddd;
+      font-size: $font-size_m;
+      font-weight: bold;
+      text-align: center;
+      padding: $space_s $space_3l;
+      position: relative;
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 40px;
+        @include mq() {
+          right: 20px;
+        }
+        transform: translateY(-50%);
+        width: 15px;
+        height: 2px;
+        background: $color_sub2;
+      }
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        right: 40px;
+        @include mq() {
+          right: 20px;
+        }
+        transform: translateY(-50%) rotate(90deg);
+        width: 15px;
+        height: 2px;
+        background: $color_sub2;
+      }
+    }
     @include mq() {
-      margin-bottom: $space_m;
-      padding: 0 $space_default;
+      font-size: $font-size_s;
+      padding: $space_s $space_default;
+    }
+  }
+  &__item {
+    display: block;
+    margin: 0 $space_3l;
+    text-align: center;
+    @include mq() {
+      margin: 0 $space_default;
     }
   }
   &__link {
+    display: inline-block;
+    padding: $space_s 0;
+    transition: $time_s;
     @include mq() {
-      font-size: $font-size_m;
+      font-size: $font-size_s;
     }
   }
 }

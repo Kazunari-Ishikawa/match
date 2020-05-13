@@ -9,7 +9,7 @@
   <!-- メインコンテンツ -->
   <section class="l-container__body--withSide">
 
-    <boards-list></boards-list>
+    <board-list></board-list>
 
   </section>
 </div>
