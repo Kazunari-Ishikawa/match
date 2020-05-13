@@ -86,14 +86,6 @@ export default {
         id: this.work.id,
         bookmarked: this.work.bookmarked
       });
-      // const response = await axios.post(`/api/bookmarks/${this.work.id}/add`);
-      // console.log(response);
-      // this.bookmarked = true;
-    },
-    async deleteBookmarks() {
-      // const response = await axios.post(`/api/bookmarks/${this.work.id}/delete`);
-      // console.log(response);
-      // this.bookmarked = false;
     }
   }
 };

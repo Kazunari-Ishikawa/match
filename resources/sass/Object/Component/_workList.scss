@@ -13,6 +13,7 @@
     padding: $space_default;
     @include mq() {
       display: block;
+      margin-bottom: $space_default;
     }
   }
   &__title {
@@ -20,7 +21,7 @@
     font-size: $font-size_2l;
     font-weight: bold;
     @include mq() {
-      font-size: $font-size_l;
+      font-size: $font-size_default;
       margin-bottom: $space_default;
     }
   }
