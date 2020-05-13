@@ -50,7 +50,7 @@
             @elseif($is_applied)
             <form action="{{ route('works.cancel', $work->id) }}" method="POST">
               @csrf
-              <input type="submit" class="c-btn c-btn--em" value="応募を取り消す">
+              <input type="submit" class="c-btn c-btn--em" id="js-cancel-apply" value="応募を取り消す">
             </form>
             @else
             <form action="{{ route('works.apply', $work->id) }}" method="POST">

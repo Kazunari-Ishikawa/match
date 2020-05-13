@@ -69,14 +69,14 @@ class WorksController extends Controller
     {
         // パラメータが数字でない場合リダイレクト
         if (!ctype_digit($id)){
-            return redirect('/')->with('flash_message', '不正な処理がされました。時間を置いてやり直してください。');
+            return redirect('/works')->with('flash_message', '不正な処理がされました。時間を置いてやり直してください。');
         }
 
         $work = Work::with(['user', 'category'])->find($id);
 
         // 存在しないworkのIDの場合リダイレクト
         if (!$work) {
-            return redirect('/')->with('flash_message', '不正な処理がされました。時間を置いてやり直してください。');
+            return redirect('/works')->with('flash_message', '不正な処理がされました。時間を置いてやり直してください。');
         }
 
         // 該当のWorkに対して、ユーザーがWorkの登録者であるか判定
@@ -367,14 +367,14 @@ class WorksController extends Controller
     // Workへの応募を取り消す
     public function cancel($id)
     {
-        Apply::where(['work_id' => $id, 'user_id' => Auth::id()])->delete();
-
         $work = Work::find($id);
 
         // BoardsControllerを呼び出して、cancelメソッドを行う
         $board = app()->make('App\Http\Controllers\BoardsController');
         $board->cancel($id, Auth::id(), $work->user_id);
 
-        return redirect('/works/applied');
+        Apply::where(['work_id' => $id, 'user_id' => Auth::id()])->delete();
+
+        return redirect('/works/applied')->with('flash_message','応募を取り消しました。メッセージも削除されました。');
     }
 }
