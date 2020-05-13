@@ -10,7 +10,7 @@
   <!-- メインコンテンツ -->
   <section class="l-container__body--withSide">
     <!-- プロフィール -->
-    <div class="p-userDetail">
+    <a class="p-userDetail" href="{{ route('users.show', $user->id) }}">
       <div class="p-userDetail__icon">
         @if ($user->icon)
         <img src="/storage/img/icons/{{$user->icon}}" alt="アイコン" class="p-userDetail__img">
@@ -19,7 +19,7 @@
         @endif
       </div>
       <p class="p-userDetail__name">{{ $user->name }}</p>
-    </div>
+    </a>
 
     <!-- タブ -->
     <ul class="c-projectTab">

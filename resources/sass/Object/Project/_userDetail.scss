@@ -1,4 +1,5 @@
 .p-userDetail {
+  display: block;
   background: white;
   box-sizing: border-box;
   margin-bottom: $space_3l;
@@ -24,6 +25,13 @@
     text-align: center;
   }
   &__profile {
+    background: $color_sub2;
+    border-radius: 10px;
     font-size: $font-size_m;
+    min-height: 60px;
+    padding: $space_default;
+    @include mq() {
+      font-size: $font-size_s;
+    }
   }
 }

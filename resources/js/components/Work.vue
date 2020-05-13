@@ -34,7 +34,7 @@
       </div>
     </div>
     <div class="c-work__sub">
-      <p class="c-work__name">依頼者:{{work.user.name}}</p>
+      <a :href="`/users/${work.user_id}`" class="c-work__name">依頼者:{{work.user.name}}</a>
       <p class="c-work__date">登録日:{{work.created_at}}</p>
     </div>
 

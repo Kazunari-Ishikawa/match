@@ -1997,6 +1997,7 @@ textarea {
 }
 
 .p-userDetail {
+  display: block;
   background: white;
   box-sizing: border-box;
   margin-bottom: 40px;
@@ -2030,7 +2031,17 @@ textarea {
 }
 
 .p-userDetail__profile {
+  background: #707070;
+  border-radius: 10px;
   font-size: 14px;
+  min-height: 60px;
+  padding: 20px;
+}
+
+@media screen and (max-width: 425px) {
+  .p-userDetail__profile {
+    font-size: 12px;
+  }
 }
 
 .p-projectDetail {
