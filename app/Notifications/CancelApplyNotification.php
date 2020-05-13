@@ -45,8 +45,9 @@ class CancelApplyNotification extends Notification
     {
         return (new MailMessage)
                     ->subject('応募の取り消し通知')
-                    ->greeting('応募が取り消されました。')
+                    ->greeting('応募が取り消されました')
                     ->line('あなたが登録した下記の案件について、応募が取り消されましたので連絡します。')
+                    ->line('同時にメッセージのやりとりも削除されました。')
                     ->line('案件名：'.$this->work->title)
                     ->line('取り消した応募者：'.$this->user->name);
     }
