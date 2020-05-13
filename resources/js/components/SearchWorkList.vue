@@ -111,8 +111,26 @@ export default {
       }
     },
     async addBookmarks(id) {
-      const response = await axios.post(`/api/bookmarks/${id}/add`).catch();
+      const response = await axios
+        .post(`/api/bookmarks/${id}/add`)
+        .catch(error => {
+          console.log(error);
+          if (error.response.status === 401) {
+            alert("気になる機能を使うにはログインしてください。");
+            // return error.response;
+            return false;
+          }
+        });
       console.log(response);
+
+      // if (response.status === 401) {
+      //   return false;
+      // }
+      if (response.status === 401) {
+        alert("気になる機能を使うにはログインしてください。");
+        return false;
+      }
+
       if (response.status === 200) {
         this.works = this.works.map(work => {
           if (work.id === response.data) {
@@ -123,7 +141,12 @@ export default {
       }
     },
     async deleteBookmarks(id) {
-      const response = await axios.post(`/api/bookmarks/${id}/delete`).catch();
+      const response = await axios
+        .post(`/api/bookmarks/${id}/delete`)
+        .catch(error => {
+          console.log(error);
+          return error.response;
+        });
       console.log(response);
       if (response.status === 200) {
         this.works = this.works.map(work => {

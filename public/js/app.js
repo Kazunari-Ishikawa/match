@@ -2869,12 +2869,31 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return axios.post("/api/bookmarks/".concat(id, "/add"))["catch"]();
+                return axios.post("/api/bookmarks/".concat(id, "/add"))["catch"](function (error) {
+                  console.log(error);
+
+                  if (error.response.status === 401) {
+                    alert("気になる機能を使うにはログインしてください。"); // return error.response;
+
+                    return false;
+                  }
+                });
 
               case 2:
                 response = _context2.sent;
-                console.log(response);
+                console.log(response); // if (response.status === 401) {
+                //   return false;
+                // }
 
+                if (!(response.status === 401)) {
+                  _context2.next = 7;
+                  break;
+                }
+
+                alert("気になる機能を使うにはログインしてください。");
+                return _context2.abrupt("return", false);
+
+              case 7:
                 if (response.status === 200) {
                   _this2.works = _this2.works.map(function (work) {
                     if (work.id === response.data) {
@@ -2885,7 +2904,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   });
                 }
 
-              case 5:
+              case 8:
               case "end":
                 return _context2.stop();
             }
@@ -2903,7 +2922,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.next = 2;
-                return axios.post("/api/bookmarks/".concat(id, "/delete"))["catch"]();
+                return axios.post("/api/bookmarks/".concat(id, "/delete"))["catch"](function (error) {
+                  console.log(error);
+                  return error.response;
+                });
 
               case 2:
                 response = _context3.sent;
@@ -3264,11 +3286,21 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return axios.post("/api/bookmarks/".concat(id, "/add"))["catch"]();
+                return axios.post("/api/bookmarks/".concat(id, "/add"))["catch"](function (error) {
+                  console.log(error);
+
+                  if (error.response.status === 401) {
+                    alert("気になる機能を使うにはログインしてください。"); // return error.response;
+
+                    return false;
+                  }
+                });
 
               case 2:
                 response = _context2.sent;
-                console.log(response);
+                console.log(response); // if (response.status === 401) {
+                //   return false;
+                // }
 
                 if (response.status === 200) {
                   _this2.works = _this2.works.map(function (work) {

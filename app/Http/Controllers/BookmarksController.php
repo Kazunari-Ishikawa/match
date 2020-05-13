@@ -23,7 +23,10 @@ class BookmarksController extends Controller
 
   public function add($id)
   {
-    \Log::debug($id);
+    // 未ログインユーザーの場合
+    if (Auth::check()) {
+      return response(401);
+    }
 
     $bookmark = new Bookmark;
     $bookmark->work_id = $id;
