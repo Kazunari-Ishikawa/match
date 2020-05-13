@@ -21,7 +21,7 @@
       <p class="p-userDetail__name">{{ $user->name }}</p>
     </a>
 
-    <boards-list></boards-list>
+    <board-list></board-list>
 
   </section>
 
