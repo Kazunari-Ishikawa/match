@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\CreateWorkRequest;
+use App\Notifications\ApplyWorkNotification;
+use App\Notifications\CancelApplyNotification;
 use App\Work;
 use App\Category;
 use App\User;
@@ -349,31 +351,43 @@ class WorksController extends Controller
     public function apply($id)
     {
         $work = Work::with('user')->find($id);
+        $applied_user = Auth::user();
 
-        // 応募テーブルにレコードを保存
+        // Applyを保存
         $apply = new Apply;
         $apply->work_id = $work->id;
-        $apply->user_id = Auth::id();
+        $apply->user_id = $applied_user->id;
         $apply->save();
 
         // BoardsControllerを呼び出して、createメソッドを行う
+        // create(work_id, from_user_id, to_user_id)
         $board = app()->make('App\Http\Controllers\BoardsController');
-        $board->create($id, Auth::id(), $work->user_id);
+        $board->create($id, $applied_user->id, $work->user_id);
 
-        // return redirect()->action('BoardsController@create', ['id' => $id]);
-        return redirect('/messages');
+        // Workの登録者へ、応募をメール通知する
+        $registered_user = User::find($work->user_id);
+        $registered_user->notify(new ApplyWorkNotification($work, $applied_user));
+
+        return redirect('/messages')->with('flash_message','応募しました。メッセージで連絡しましょう。');
     }
 
     // Workへの応募を取り消す
     public function cancel($id)
     {
         $work = Work::find($id);
+        $cancel_user = Auth::user();
 
         // BoardsControllerを呼び出して、cancelメソッドを行う
+        // cancel(work_id, from_user_id, to_user_id)
         $board = app()->make('App\Http\Controllers\BoardsController');
-        $board->cancel($id, Auth::id(), $work->user_id);
+        $board->cancel($id, $cancel_user->id, $work->user_id);
 
-        Apply::where(['work_id' => $id, 'user_id' => Auth::id()])->delete();
+        // 該当するApplyを削除する
+        Apply::where(['work_id' => $id, 'user_id' => $cancel_user->id])->delete();
+
+        // Workの登録者へ、応募を取り消したことをメール通知する
+        $registered_user = User::find($work->user_id);
+        $registered_user->notify(new CancelApplyNotification($work, $cancel_user));
 
         return redirect('/works/applied')->with('flash_message','応募を取り消しました。メッセージも削除されました。');
     }
