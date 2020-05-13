@@ -13,11 +13,11 @@
     <div class="c-flatBtn__container--right">
       <form action="{{ route('works.destroy', $work->id) }}" method="POST" class="c-form--btn">
         @csrf
-        <input type="submit" id="deleteBtn" class="c-flatBtn" value="削除する">
+        <input type="submit" id="js-delete-work" class="c-flatBtn" value="削除する">
       </form>
       <form action="{{ route('works.close', $work->id) }}" method="POST" class="c-form--btn">
         @csrf
-        <input type="submit" id="closeBtn" class="c-flatBtn" value="完了する">
+        <input type="submit" id="js-close-work" class="c-flatBtn" value="完了する">
       </form>
     </div>
 
