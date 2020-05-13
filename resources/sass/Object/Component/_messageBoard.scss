@@ -1,7 +1,7 @@
 .c-messageBoard {
   background: white;
+  border-bottom: 1px solid $color_bg;
   display: block;
-  margin-bottom: $space_default;
   padding: $space_default;
   transition: $time_s;
   @include mq() {
