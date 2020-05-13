@@ -39886,9 +39886,14 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "c-comment" }, [
     _c("div", { staticClass: "c-comment__header" }, [
-      _c("p", { staticClass: "c-comment__name" }, [
-        _vm._v(_vm._s(_vm.comment.user.name))
-      ]),
+      _c(
+        "a",
+        {
+          staticClass: "c-comment__name",
+          attrs: { href: "/users/" + _vm.comment.user_id }
+        },
+        [_vm._v(_vm._s(_vm.comment.user.name))]
+      ),
       _vm._v(" "),
       _c("i", {
         staticClass: "far fa-trash-alt fa-lg u-icon",
@@ -40744,9 +40749,14 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "c-work__sub" }, [
-        _c("p", { staticClass: "c-work__name" }, [
-          _vm._v("依頼者:" + _vm._s(_vm.work.user.name))
-        ]),
+        _c(
+          "a",
+          {
+            staticClass: "c-work__name",
+            attrs: { href: "/users/" + _vm.work.user_id }
+          },
+          [_vm._v("依頼者:" + _vm._s(_vm.work.user.name))]
+        ),
         _vm._v(" "),
         _c("p", { staticClass: "c-work__date" }, [
           _vm._v("登録日:" + _vm._s(_vm.work.created_at))

@@ -1,11 +1,11 @@
-.p-profile {
+.p-userDetail {
+  display: block;
+  background: white;
   box-sizing: border-box;
-  width: 100%;
   margin-bottom: $space_3l;
+  padding: $space_default;
+  width: 100%;
   &__icon {
-    // background-image: url('../img/DSC_2123.jpg');
-    // background-position: center;
-    // background-size: cover;
     margin: 0 auto $space_m auto;
     height: 120px;
     width: 120px;
@@ -21,6 +21,17 @@
   }
   &__name {
     font-size: $font-size_m;
+    margin-bottom: $space_m;
     text-align: center;
+  }
+  &__profile {
+    background: $color_bg;
+    border-radius: 10px;
+    font-size: $font-size_m;
+    min-height: 60px;
+    padding: $space_default;
+    @include mq() {
+      font-size: $font-size_s;
+    }
   }
 }

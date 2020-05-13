@@ -10,7 +10,7 @@
     <div class="p-projectDetail">
       <h2 class="p-projectDetail__title">{{ $work->title }}</h2>
       <div class="p-projectDetail__meta">
-        <div class="p-projectDetail__name">{{ $work->user->name}}</div>
+        <a href="{{ route('users.show', $work->user->id) }}" class="p-projectDetail__name">{{ $work->user->name}}</a>
         <div class="p-projectDetail__date">登録日:{{ $work->created_at }}</div>
       </div>
 

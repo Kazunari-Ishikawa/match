@@ -1996,34 +1996,52 @@ textarea {
   }
 }
 
-.p-profile {
+.p-userDetail {
+  display: block;
+  background: white;
   box-sizing: border-box;
-  width: 100%;
   margin-bottom: 40px;
+  padding: 20px;
+  width: 100%;
 }
 
-.p-profile__icon {
+.p-userDetail__icon {
   margin: 0 auto 15px auto;
   height: 120px;
   width: 120px;
 }
 
 @media screen and (max-width: 768px) {
-  .p-profile__icon {
+  .p-userDetail__icon {
     height: 90px;
     width: 90px;
   }
 }
 
-.p-profile__img {
+.p-userDetail__img {
   display: block;
   border: 2px solid #707070;
   border-radius: 50%;
 }
 
-.p-profile__name {
+.p-userDetail__name {
   font-size: 14px;
+  margin-bottom: 15px;
   text-align: center;
+}
+
+.p-userDetail__profile {
+  background: #f5f5f5;
+  border-radius: 10px;
+  font-size: 14px;
+  min-height: 60px;
+  padding: 20px;
+}
+
+@media screen and (max-width: 425px) {
+  .p-userDetail__profile {
+    font-size: 12px;
+  }
 }
 
 .p-projectDetail {
