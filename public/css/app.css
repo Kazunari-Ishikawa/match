@@ -263,7 +263,7 @@ textarea {
     z-index: 2;
   }
 
-  .l-nav.active {
+  .l-nav.isActive {
     transform: translateX(-100%);
   }
 }
@@ -1488,12 +1488,12 @@ textarea {
 }
 
 .c-menuTrigger {
+  cursor: pointer;
   box-sizing: border-box;
   display: none;
   height: 28px;
   width: 36px;
   position: relative;
-  transition: 1s;
   z-index: 3;
 }
 
@@ -1505,13 +1505,14 @@ textarea {
 
 .c-menuTrigger__bar {
   background: #707070;
-  border-radius: 5px;
+  border-radius: 4px;
   box-sizing: border-box;
   display: inline-block;
   height: 4px;
   position: absolute;
   left: 0;
   width: 100%;
+  transition: 0.6s;
 }
 
 .c-menuTrigger__bar:nth-of-type(1) {
@@ -1524,6 +1525,20 @@ textarea {
 
 .c-menuTrigger__bar:nth-of-type(3) {
   bottom: 0;
+}
+
+.c-menuTrigger__bar.isActive:nth-of-type(1) {
+  transform: translateY(12px) rotate(-45deg);
+}
+
+.c-menuTrigger__bar.isActive:nth-of-type(2) {
+  left: 70%;
+  height: 0;
+  opacity: 0;
+}
+
+.c-menuTrigger__bar.isActive:nth-of-type(3) {
+  transform: translateY(-12px) rotate(45deg);
 }
 
 .c-message {
