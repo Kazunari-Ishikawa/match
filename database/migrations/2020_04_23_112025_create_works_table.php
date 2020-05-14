@@ -17,7 +17,8 @@ class CreateWorksTable extends Migration
             $table->bigIncrements('id');
             $table->string('title');
             $table->unsignedTinyInteger('type');
-            $table->unsignedTinyInteger('category');
+            $table->unsignedTinyInteger('category_id');
+            // $table->unsignedTinyInteger('category');
             $table->unsignedInteger('max_price');
             $table->unsignedInteger('min_price');
             $table->text('content');
@@ -26,6 +27,7 @@ class CreateWorksTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
+            $table->foreign('category_id')->references('id')->on('categories');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

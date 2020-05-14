@@ -15,7 +15,10 @@ class UserTest extends TestCase
     {
         $user = factory(User::class)->create();
 
-        $this->assertTrue($user);
+        $readUser = User::where('name',  $user->name)->first();
+        $this->assertNotNull($readUser);
+        $this->assertTrue(\Hash::check('password', $readUser->password));
+
     }
 
 }
