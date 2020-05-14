@@ -11,13 +11,23 @@ class UserTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_ユーザー登録()
-    {
-        $user = factory(User::class)->create();
+    private $attributes;
 
-        $readUser = User::where('name',  $user->name)->first();
-        $this->assertNotNull($readUser);
-        $this->assertTrue(\Hash::check('password', $readUser->password));
+    public function setUp() :void
+    {
+        parent::setUp();
+
+        $this->attributes = [
+            'email' => 'test taro',
+            'password' => bcrypt('password'),
+        ];
+    }
+
+    public function test_ユーザーを登録できる()
+    {
+        User::create($this->attributes);
+
+        $this->assertDataBaseHas('users', $this->attributes);
 
     }
 
