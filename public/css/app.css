@@ -377,7 +377,77 @@ textarea {
 @media screen and (max-width: 768px) {
   .l-searchbar {
     width: 100%;
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .l-searchbar {
     margin-bottom: 20px;
+  }
+}
+
+.c-accordion__body {
+  display: none;
+}
+
+.c-accordion__btn {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .c-accordion__btn {
+    display: block;
+    cursor: pointer;
+    background: #ddd;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px 40px;
+    position: relative;
+  }
+
+  .c-accordion__btn::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 2px;
+    background: #707070;
+  }
+}
+
+@media screen and (max-width: 768px) and (max-width: 425px) {
+  .c-accordion__btn::before {
+    right: 20px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .c-accordion__btn::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 40px;
+    transform: translateY(-50%) rotate(90deg);
+    width: 15px;
+    height: 2px;
+    background: #707070;
+  }
+}
+
+@media screen and (max-width: 768px) and (max-width: 425px) {
+  .c-accordion__btn::after {
+    right: 20px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .c-accordion__btn {
+    font-size: 12px;
+    padding: 10px 20px;
   }
 }
 
@@ -1406,10 +1476,6 @@ textarea {
   }
 }
 
-.c-spMenu--accordion {
-  display: none;
-}
-
 .c-spMenu__container {
   display: none;
 }
@@ -2244,6 +2310,16 @@ textarea {
   .p-messageDetail__body {
     padding: 10px;
     max-height: 200px;
+  }
+}
+
+.p-search {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .p-search {
+    display: block;
   }
 }
 
