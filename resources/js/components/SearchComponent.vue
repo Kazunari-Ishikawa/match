@@ -106,7 +106,7 @@ export default {
   },
   data() {
     return {
-      active: false,
+      active: true,
       form: {
         type: this.type,
         category: this.category,

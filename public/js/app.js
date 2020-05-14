@@ -2675,7 +2675,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      active: false,
+      active: true,
       form: {
         type: this.type,
         category: this.category,

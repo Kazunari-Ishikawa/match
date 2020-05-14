@@ -1484,66 +1484,6 @@ textarea {
   }
 }
 
-.c-spMenu__tab {
-  display: none;
-}
-
-@media screen and (max-width: 768px) {
-  .c-spMenu__tab {
-    display: block;
-    cursor: pointer;
-    background: #ddd;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    padding: 10px 40px;
-    position: relative;
-  }
-
-  .c-spMenu__tab::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 40px;
-    transform: translateY(-50%);
-    width: 15px;
-    height: 2px;
-    background: #707070;
-  }
-}
-
-@media screen and (max-width: 768px) and (max-width: 425px) {
-  .c-spMenu__tab::before {
-    right: 20px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .c-spMenu__tab::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 40px;
-    transform: translateY(-50%) rotate(90deg);
-    width: 15px;
-    height: 2px;
-    background: #707070;
-  }
-}
-
-@media screen and (max-width: 768px) and (max-width: 425px) {
-  .c-spMenu__tab::after {
-    right: 20px;
-  }
-}
-
-@media screen and (max-width: 425px) {
-  .c-spMenu__tab {
-    font-size: 12px;
-    padding: 10px 20px;
-  }
-}
-
 .c-spMenu__item {
   display: block;
   margin: 0 40px;
@@ -2348,16 +2288,6 @@ textarea {
   .p-messageDetail__body {
     padding: 10px;
     max-height: 200px;
-  }
-}
-
-.p-search {
-  display: none;
-}
-
-@media screen and (max-width: 768px) {
-  .p-search {
-    display: block;
   }
 }
 
