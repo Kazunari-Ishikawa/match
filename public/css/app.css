@@ -287,6 +287,7 @@ textarea {
 @media screen and (max-width: 768px) {
   .l-container--withSide {
     display: block;
+    position: relative;
   }
 }
 
@@ -365,6 +366,18 @@ textarea {
   .l-sidebar {
     width: 100%;
     display: none;
+  }
+}
+
+.l-searchbar {
+  display: block;
+  width: 25%;
+}
+
+@media screen and (max-width: 768px) {
+  .l-searchbar {
+    width: 100%;
+    margin-bottom: 20px;
   }
 }
 
@@ -804,6 +817,7 @@ textarea {
 .c-form__label--radio {
   display: flex;
   font-size: 14px;
+  margin-bottom: 5px;
 }
 
 .c-form__label--back {
@@ -1360,7 +1374,6 @@ textarea {
 
 @media screen and (max-width: 425px) {
   .c-workList__header {
-    display: block;
     margin-bottom: 20px;
   }
 }
@@ -1374,14 +1387,12 @@ textarea {
 @media screen and (max-width: 425px) {
   .c-workList__title {
     font-size: 16px;
-    margin-bottom: 20px;
   }
 }
 
 @media screen and (max-width: 425px) {
   .c-workList__info {
     font-size: 12px;
-    text-align: right;
   }
 }
 

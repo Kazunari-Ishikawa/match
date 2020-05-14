@@ -1,6 +1,6 @@
 <template>
   <!-- サイドバー -->
-  <section class="l-sidebar">
+  <section class="l-searchbar">
     <form action class="c-form--side" @submit.prevent="clickSearch">
       <div class="c-form__group">
         <p class="c-form__label">案件種別</p>
