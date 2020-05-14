@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  @include mq('md') {
+  @include mq() {
     display: block;
     margin: $space_default 0;
   }
@@ -11,9 +11,12 @@
     color: white;
     margin-right: $space_m;
     @include mq('md') {
-      font-size: $font-size_l;
+      font-size: $font-size_default;
+      margin-right: $space_s;
+    }
+    @include mq() {
       margin-right: 0;
-      margin-bottom: $space_l;
+      margin-bottom: $space_default;
     }
   }
   &__btn {
@@ -23,6 +26,9 @@
     &:hover {
       background: white;
       color: $color_main;
+    }
+    @include mq() {
+      font-size: $font-size_default;
     }
   }
 }

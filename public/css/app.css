@@ -443,10 +443,6 @@ textarea {
 .c-btn--hero {
   box-shadow: none;
   font-size: 20px;
-  position: absolute;
-  top: 60%;
-  left: 0;
-  right: 0;
   margin: auto;
   width: 200px;
 }
@@ -1835,12 +1831,12 @@ textarea {
 .p-hero {
   box-sizing: border-box;
   background-image: url(/images/top-img-2.jpg?bd340779fbbd1aa662693220c9774ef0);
-  background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: rgba(255, 255, 255, 0.3);
-  background-blend-mode: lighten;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 500px;
   position: relative;
@@ -1860,19 +1856,52 @@ textarea {
   }
 }
 
+.p-hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+  height: 60%;
+  padding: 40px;
+  background: rgba(245, 245, 245, 0.7);
+}
+
+@media screen and (max-width: 768px) {
+  .p-hero__inner {
+    width: 80%;
+    height: 80%;
+    padding: 20px;
+  }
+}
+
 .p-hero__text {
   text-align: center;
+  font-size: 14px;
   margin-bottom: 15px;
 }
 
 .p-hero__text--em {
-  font-size: 24px;
   font-family: "Oswald", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 425px) {
+  .p-hero__text--em {
+    font-size: 20px;
+    margin-bottom: 25px;
+  }
 }
 
 .p-hero__text--em > span {
   font-size: 40px;
   font-weight: bold;
+}
+
+@media screen and (max-width: 425px) {
+  .p-hero__text--em > span {
+    font-size: 32px;
+  }
 }
 
 .p-hero__text--right {
@@ -1922,7 +1951,7 @@ textarea {
   justify-content: center;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 425px) {
   .p-band {
     display: block;
     margin: 20px 0;
@@ -1937,9 +1966,15 @@ textarea {
 
 @media screen and (max-width: 768px) {
   .p-band__text {
-    font-size: 20px;
+    font-size: 16px;
+    margin-right: 10px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .p-band__text {
     margin-right: 0;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
   }
 }
 
@@ -1952,6 +1987,12 @@ textarea {
 .p-band__btn:hover {
   background: white;
   color: #51a1a2;
+}
+
+@media screen and (max-width: 425px) {
+  .p-band__btn {
+    font-size: 16px;
+  }
 }
 
 .p-desc {
@@ -1981,12 +2022,6 @@ textarea {
     margin-bottom: 20px;
     width: 100%;
   }
-}
-
-.p-desc__img {
-  width: 100%;
-  height: 60px;
-  background: #fff;
 }
 
 .p-desc__title {

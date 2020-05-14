@@ -1,12 +1,15 @@
 .p-hero {
   box-sizing: border-box;
   background-image: url('../img/top-img-2.jpg');
-  background-attachment: fixed;
+  // background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-color:rgba(255,255,255,0.3);
-  background-blend-mode: lighten;
+  // background-color:rgba(255,255,255,0.3);
+  // background-blend-mode: lighten;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 500px;
   position: relative;
@@ -18,15 +21,38 @@
     height: 400px;
     padding: $space_s;
   }
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    height: 60%;
+    padding: $space_3l;
+    background: rgba($color: $color_bg, $alpha: 0.7);
+    @include mq('md') {
+      width: 80%;
+      height: 80%;
+      padding: $space_default;
+    }
+  }
   &__text {
     text-align: center;
+    font-size: $font-size_m;
     margin-bottom: $space_m;
     &--em {
-      font-size: $font-size_2l;
       font-family: $font-family_em;
+      font-size: $font-size_2l;
+      margin-bottom: $space_2l;
+      @include mq() {
+        font-size: $font-size_l;
+        margin-bottom: $space_l;
+      }
       & > span {
         font-size: 40px;
         font-weight: bold;
+        @include mq() {
+          font-size: $font-size_3l;
+        }
       }
     }
     &--right {
