@@ -1,7 +1,10 @@
 .c-spMenu {
   display: none;
-  &--display {
+  @include mq('md') {
     display: block;
+  }
+  &--accordion {
+    display: none;
   }
   &__container {
     display: none;

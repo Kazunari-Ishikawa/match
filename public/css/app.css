@@ -1389,8 +1389,14 @@ textarea {
   display: none;
 }
 
-.c-spMenu--display {
-  display: block;
+@media screen and (max-width: 768px) {
+  .c-spMenu {
+    display: block;
+  }
+}
+
+.c-spMenu--accordion {
+  display: none;
 }
 
 .c-spMenu__container {
