@@ -22,7 +22,7 @@
       <li class="c-menu__item"><a class="c-menu__link" href="{{ route('login') }}">ログイン</a></li>
     </ul>
     <!-- スマホ向けメニュー -->
-    <ul class="c-spMenu">
+    <ul class="c-spMenu--display">
       <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('works.index') }}">案件を探す</a></li>
       <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('register') }}">会員登録</a></li>
       <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('login') }}">ログイン</a></li>
