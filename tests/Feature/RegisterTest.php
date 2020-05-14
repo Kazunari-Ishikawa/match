@@ -10,15 +10,13 @@ use App\User;
 class RegisterTest extends TestCase
 {
     use RefreshDatabase;
-    private $attributes;
 
-    public function setUp() :void
+    public function test_会員登録画面表示()
     {
-        parent::setUp();
-        $this->attributes = [
-            'email' => 'test@example.com',
-            'password' => bcrypt('password'),
-        ];
+        $response = $this->get('/register')
+            ->assertStatus(200)
+            ->assertViewIs('auth.register')
+            ->assertSee('会員登録');
     }
 
     /**
@@ -27,13 +25,11 @@ class RegisterTest extends TestCase
      * @dataProvider trueData
      * @return void
      */
-    public function test_ユーザーを登録できる($params)
+    public function test_会員登録できる($params)
     {
-        $response = $this->get('/register');
-        $response->assertViewIs('auth.register');
-
         $response = $this->post('/register', $params);
         $this->assertDataBaseHas('users', ['email' => $params['email']]);
+        $response->assertRedirect('/mypage');
     }
 
     /**
@@ -42,10 +38,10 @@ class RegisterTest extends TestCase
      * @dataProvider errorData
      * @return void
      */
-    public function test_ユーザーを登録できない($params)
+    public function test_会員登録できない($params)
     {
-        $response = $this->get('/register');
-        $response->assertViewIs('auth.register');
+        $response = $this->get('/register')
+            ->assertViewIs('auth.register');
 
         $response = $this->post('/register', $params);
         $this->assertDataBaseMissing('users', ['email' => $params['email']]);
@@ -58,11 +54,13 @@ class RegisterTest extends TestCase
      */
     public function test_メールアドレスの重複エラー()
     {
-        $response = $this->get('/register');
-        $response->assertViewIs('auth.register');
-
-        $user = User::create($this->attributes);
-        $response = $this->post('/register', $this->attributes);
+        // 重複用データの用意
+        $data = [
+            'email' => 'test@example.com',
+            'password' => bcrypt('password')
+        ];
+        $user = User::create($data);
+        $response = $this->post('/register', $data);
         $this->assertDataBaseMissing('users', ['id' => 2]);
     }
 
