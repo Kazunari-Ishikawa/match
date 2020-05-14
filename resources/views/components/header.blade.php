@@ -49,25 +49,25 @@
       <ul class="c-spMenu">
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('users.mypage')}}">マイページ</a></li>
       </ul>
-      <p class="c-spMenu__tab js-spMenu-tab">依頼者向け</p>
-      <ul class="c-spMenu--accordion">
+      <p class="c-accordion__btn js-spMenu-tab">依頼者向け</p>
+      <ul class="c-accordion__body">
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('works.new') }}">依頼する</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('works.registered') }}">依頼した案件</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('works.closed') }}">成約済み案件</a></li>
       </ul>
-      <p class="c-spMenu__tab js-spMenu-tab">応募者向け</p>
-      <ul class="c-spMenu--accordion">
+      <p class="c-accordion__btn js-spMenu-tab">応募者向け</p>
+      <ul class="c-accordion__body">
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('works.index') }}">案件を探す</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('works.applied') }}">応募中の案件</a></li>
       </ul>
-      <p class="c-spMenu__tab js-spMenu-tab">共通</p>
-      <ul class="c-spMenu--accordion">
+      <p class="c-accordion__btn js-spMenu-tab">共通</p>
+      <ul class="c-accordion__body">
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('works.bookmarks') }}">気になる案件</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('comments.index') }}">コメントした案件</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('messages.index') }}">メッセージ</a></li>
       </ul>
-      <p class="c-spMenu__tab js-spMenu-tab">設定</p>
-      <ul class="c-spMenu--accordion">
+      <p class="c-accordion__btn js-spMenu-tab">設定</p>
+      <ul class="c-accordion__body">
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('users.edit') }}">プロフィール編集</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('users.editPassword')}}">パスワード変更</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="">ヘルプ</a></li>
