@@ -12,7 +12,6 @@
     margin-bottom: $space_3l;
     padding: $space_default;
     @include mq() {
-      display: block;
       margin-bottom: $space_default;
     }
   }
@@ -22,13 +21,11 @@
     font-weight: bold;
     @include mq() {
       font-size: $font-size_default;
-      margin-bottom: $space_default;
     }
   }
   &__info {
     @include mq() {
       font-size: $font-size_s;
-      text-align: right;
     }
   }
 }
