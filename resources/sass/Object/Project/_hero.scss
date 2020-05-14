@@ -23,6 +23,7 @@
     margin-bottom: $space_m;
     &--em {
       font-size: $font-size_2l;
+      font-family: $font-family_em;
       & > span {
         font-size: 40px;
         font-weight: bold;

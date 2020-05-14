@@ -23,6 +23,7 @@
   }
   &__title {
     font-size: 40px;
+    font-family: $font-family_em;
     margin-right: $space_default;
     &:hover {
       color: $color_default;
