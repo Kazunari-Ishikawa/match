@@ -540,12 +540,13 @@ textarea {
 }
 
 .c-btn__container {
-  margin-bottom: 20px;
-  margin-right: 20px;
+  margin-bottom: 40px;
 }
 
-.c-btn__container:last-child {
-  margin-right: 0;
+@media screen and (max-width: 576px) {
+  .c-btn__container {
+    margin-bottom: 20px;
+  }
 }
 
 .c-btn__container--right {

@@ -43,7 +43,7 @@ class WorksController extends Controller
         return view('works.index', compact('category', 'type'));
     }
 
-    // Work新規登録画面表示
+    // Work新規登録画面を表示する
     public function new()
     {
         return view('works.new');
