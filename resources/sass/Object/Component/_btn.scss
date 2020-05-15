@@ -50,7 +50,13 @@
     }
   }
   &__container {
-    display: flex;
-    justify-content: flex-end;
+    margin-bottom: $space_3l;
+    @include mq() {
+      margin-bottom: $space_default;
+    }
+    &--right {
+      display: flex;
+      justify-content: flex-end;
+    }
   }
 }

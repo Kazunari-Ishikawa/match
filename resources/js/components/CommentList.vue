@@ -1,5 +1,5 @@
 <template>
-  <div class="c-comment__list">
+  <div class="c-commentList">
     <Comment
       v-for="comment in comments"
       :key="comment.id"
@@ -39,7 +39,6 @@ export default {
           .post(`/api/comments/${id}/delete`)
           .catch(error => {
             console.log(error);
-            console.log("ERROR!");
             alert("あなたのコメントではないので削除できません。");
             return error.response;
           });

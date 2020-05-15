@@ -26,7 +26,7 @@
           <a
             class="c-work__tag c-work__tag--bookmark"
             :class="{ 'c-work__tag--isBookmarked': work.bookmarked }"
-            @click="bookmarks"
+            @click="bookmark"
           >気になる!</a>
 
           <a class="c-work__tag c-work__tag--twitter">シェア</a>
@@ -81,8 +81,8 @@ export default {
       this.comment = response.data;
       this.getCommentFinished = true;
     },
-    async bookmarks() {
-      this.$emit("bookmarks", {
+    async bookmark() {
+      this.$emit("bookmark", {
         id: this.work.id,
         bookmarked: this.work.bookmarked
       });
