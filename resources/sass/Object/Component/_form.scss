@@ -4,10 +4,6 @@
   @include mq() {
     padding: $space_default;
   }
-  &--side {
-    background: white;
-    padding: $space_default;
-  }
   &--message {
     padding: 0;
   }
@@ -46,11 +42,6 @@
       display: flex;
       font-size: $font-size_m;
       margin-bottom: 5px;
-    }
-    &--back {
-      display: block;
-      font-size: $font-size_m;
-      // margin-bottom: $space_m;
     }
     @include mq() {
       font-size: $font-size_m;
@@ -92,13 +83,17 @@
   &__radio {
     width: 20px;
     height: 20px;
+    margin-right: 5px;
   }
   &__select {
     color: $color_default;
     background: $color_bg;
     font-size: $font-size_m;
     &--price {
-      margin-bottom: $space_s;
+      width: auto;
+      font-size: $font-size_m;
+      margin-bottom: $space_m;
+      margin-right: $space_m;
     }
   }
   &__file {

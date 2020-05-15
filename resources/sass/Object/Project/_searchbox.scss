@@ -1,0 +1,31 @@
+.p-searchbox {
+  margin-bottom: $space_3l;
+  @include mq() {
+    margin-bottom: $space_default;
+  }
+  &__form {
+    background: white;
+    padding: $space_default;
+  }
+  &__group {
+    margin-bottom: $space_default;
+    display: flex;
+    @include mq() {
+      display: block;
+      margin-bottom: 0;
+    }
+  }
+  &__item {
+    margin-right: $space_default;
+    &:last-child {
+      margin-right: 0;
+    }
+    @include mq() {
+      margin-bottom: $space_default;
+      margin-right: 0;
+    }
+    &--price {
+      margin-bottom: $space_default;
+    }
+  }
+}

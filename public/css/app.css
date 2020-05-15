@@ -333,7 +333,7 @@ textarea {
 }
 
 .l-container__body--1column {
-  max-width: 720px;
+  max-width: 690px;
   margin: 0 auto;
 }
 
@@ -388,54 +388,52 @@ textarea {
 
 .c-accordion__btn {
   display: none;
+  cursor: pointer;
+  background: #ddd;
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px 40px;
+  position: relative;
+}
+
+.c-accordion__btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 40px;
+  transform: translateY(-50%);
+  width: 15px;
+  height: 2px;
+  background: #707070;
+}
+
+@media screen and (max-width: 576px) {
+  .c-accordion__btn::before {
+    right: 20px;
+  }
+}
+
+.c-accordion__btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 40px;
+  transform: translateY(-50%) rotate(90deg);
+  width: 15px;
+  height: 2px;
+  background: #707070;
+}
+
+@media screen and (max-width: 576px) {
+  .c-accordion__btn::after {
+    right: 20px;
+  }
 }
 
 @media screen and (max-width: 768px) {
   .c-accordion__btn {
     display: block;
-    cursor: pointer;
-    background: #ddd;
-    font-size: 14px;
-    font-weight: bold;
-    text-align: center;
-    padding: 10px 40px;
-    position: relative;
-  }
-
-  .c-accordion__btn::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 40px;
-    transform: translateY(-50%);
-    width: 15px;
-    height: 2px;
-    background: #707070;
-  }
-}
-
-@media screen and (max-width: 768px) and (max-width: 576px) {
-  .c-accordion__btn::before {
-    right: 20px;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .c-accordion__btn::after {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 40px;
-    transform: translateY(-50%) rotate(90deg);
-    width: 15px;
-    height: 2px;
-    background: #707070;
-  }
-}
-
-@media screen and (max-width: 768px) and (max-width: 576px) {
-  .c-accordion__btn::after {
-    right: 20px;
   }
 }
 
@@ -444,6 +442,10 @@ textarea {
     font-size: 12px;
     padding: 10px 20px;
   }
+}
+
+.c-accordion__btn--search {
+  display: block;
 }
 
 .c-btn {
@@ -806,11 +808,6 @@ textarea {
   }
 }
 
-.c-form--side {
-  background: white;
-  padding: 20px;
-}
-
 .c-form--message {
   padding: 0;
 }
@@ -862,11 +859,6 @@ textarea {
   display: flex;
   font-size: 14px;
   margin-bottom: 5px;
-}
-
-.c-form__label--back {
-  display: block;
-  font-size: 14px;
 }
 
 @media screen and (max-width: 576px) {
@@ -931,6 +923,7 @@ textarea {
 .c-form__radio {
   width: 20px;
   height: 20px;
+  margin-right: 5px;
 }
 
 .c-form__select {
@@ -940,7 +933,10 @@ textarea {
 }
 
 .c-form__select--price {
-  margin-bottom: 10px;
+  width: auto;
+  font-size: 14px;
+  margin-bottom: 15px;
+  margin-right: 15px;
 }
 
 .c-form__file {
@@ -1425,7 +1421,7 @@ textarea {
 
 @media screen and (max-width: 576px) {
   .c-workList__title {
-    font-size: 16px;
+    font-size: 20px;
   }
 }
 
@@ -2187,6 +2183,52 @@ textarea {
     padding: 10px;
     max-height: 200px;
   }
+}
+
+.p-searchbox {
+  margin-bottom: 40px;
+}
+
+@media screen and (max-width: 576px) {
+  .p-searchbox {
+    margin-bottom: 20px;
+  }
+}
+
+.p-searchbox__form {
+  background: white;
+  padding: 20px;
+}
+
+.p-searchbox__group {
+  margin-bottom: 20px;
+  display: flex;
+}
+
+@media screen and (max-width: 576px) {
+  .p-searchbox__group {
+    display: block;
+    margin-bottom: 0;
+  }
+}
+
+.p-searchbox__item {
+  margin-right: 20px;
+}
+
+.p-searchbox__item:last-child {
+  margin-right: 0;
+}
+
+@media screen and (max-width: 576px) {
+  .p-searchbox__item {
+    margin-bottom: 20px;
+    margin-right: 0;
+  }
+}
+
+.p-searchbox__item--price {
+  margin-bottom: 20px;
 }
 
 .u-mb0 {

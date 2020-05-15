@@ -1,10 +1,5 @@
 <template>
-  <div class="l-container l-container--withSide">
-    <!-- 検索バー -->
-    <SearchComponent :category="category" :type="type" @click-search="searchWorks" />
-
-    <!-- メインコンテンツ -->
-    <section class="l-container__body--withSide">
+    <div class="c-workList">
       <div class="c-workList__header">
         <h2 class="c-workList__title">案件一覧</h2>
         <p class="c-workList__info">
@@ -14,19 +9,23 @@
         </p>
       </div>
 
+      <!-- 検索ボックス -->
+      <SearchComponent :category="category" :type="type" @click-search="searchWorks" />
+
       <Loader v-if="isLoading" />
 
-      <div v-if="!isLoading" class="c-workList">
+      <template v-if="!isLoading">
         <Work v-for="work in works" :key="work.id" :work="work" @bookmarks="clickBookmarks" />
-      </div>
+      </template>
+
       <Pagination
         v-if="!isLoading"
         :current-page="currentPage"
         :last-page="lastPage"
         @move-page="movePage"
       />
-    </section>
-  </div>
+    </div>
+
 </template>
 
 <script>
