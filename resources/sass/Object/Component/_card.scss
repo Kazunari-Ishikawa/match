@@ -47,7 +47,7 @@
     width: 60px;
     margin: 0 auto $space_default auto;
     @include mq() {
-      width: 40px;
+    width: 40px;
     margin: 0 auto $space_s auto;
     }
   }
@@ -58,11 +58,11 @@
     }
     &--lg {
       border-bottom: 2px solid $color_main;
-      font-size: $font-size_l;
-      margin-bottom: $space_l;
+      font-size: $font-size_default;
+      margin-bottom: $space_default;
       @include mq() {
-        font-size: $font-size_default;
-        margin-bottom: $space_default;
+        font-size: $font-size_m;
+        margin-bottom: $space_m;
       }
     }
   }

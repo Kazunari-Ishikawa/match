@@ -1,27 +1,14 @@
 .c-cardList {
-  margin: $space_3l 0;
-  @include mq() {
-    margin: $space_default 0;
-  }
   &__header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin-bottom: $space_2l;
+    margin-bottom: $space_l;
     @include mq() {
-      margin-bottom: $space_l;
+      margin-bottom: $space_default;
     }
   }
   &__title {
-    font-size: $font-size_2l;
+    font-size: $font-size_l;
     @include mq() {
-      font-size: $font-size_l;
-    }
-  }
-  &__link {
-    font-size: $font-size_m;
-    @include mq() {
-      font-size: $font-size_s;
+      font-size: $font-size_default;
     }
   }
   &__body {

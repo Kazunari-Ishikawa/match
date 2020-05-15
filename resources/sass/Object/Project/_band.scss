@@ -7,28 +7,13 @@
     margin: $space_default 0;
   }
   &__text {
-    font-size: $font-size_2l;
+    font-size: $font-size_l;
     color: white;
     margin-right: $space_m;
-    @include mq('md') {
-      font-size: $font-size_default;
-      margin-right: $space_s;
-    }
     @include mq() {
+      font-size: $font-size_default;
       margin-right: 0;
       margin-bottom: $space_default;
-    }
-  }
-  &__btn {
-    border: 2px solid white;
-    font-size: $font-size_l;
-    padding: $space_s;
-    &:hover {
-      background: white;
-      color: $color_main;
-    }
-    @include mq() {
-      font-size: $font-size_default;
     }
   }
 }

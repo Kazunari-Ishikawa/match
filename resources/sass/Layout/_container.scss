@@ -13,18 +13,18 @@
     }
   }
   &__header {
-    margin-bottom: $space_3l;
+    margin-bottom: $space_2l;
     text-align: center;
     @include mq() {
-      margin-bottom: $space_2l;
+      margin-bottom: $space_l;
     }
   }
   &__title {
     color: $color_main;
-    font-size: $font-size_3l;
+    font-size: 28px;
     font-weight: bold;
     @include mq() {
-      font-size: $font-size_2l;
+      font-size: $font-size_l;
     }
   }
   &__body {

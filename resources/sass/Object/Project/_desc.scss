@@ -1,28 +1,31 @@
 .p-desc {
-  &__container {
-    display: flex;
-    @include mq('md') {
-      display: block;
-    }
-  }
   background: white;
   box-sizing: border-box;
-  margin-right: $space_default;
+  margin-right: $space_3l;
   &:last-child {
     margin-right: 0;
   }
   padding: $space_default;
   width: 33.3%;
   @include mq('md') {
-    margin-bottom: $space_default;
+    margin-bottom: $space_3l;
     width: 100%;
   }
+  @include mq() {
+    margin-bottom: $space_default;
+  }
+  &__container {
+    display: flex;
+    @include mq('md') {
+      display: block;
+    }
+  }
   &__title {
-    font-size: $font-size_2l;
-    margin-bottom: $space_2l;
+    font-size: $font-size_l;
+    margin-bottom: $space_l;
     @include mq(){
-      font-size: $font-size_l;
-      margin-bottom: $space_l
+      font-size: $font-size_default;
+      margin-bottom: $space_default;
     }
   }
   &__subtitle {
@@ -39,10 +42,6 @@
     margin-bottom: $space_3l;
     &:last-child {
       margin-bottom: 0;
-    }
-    @include mq() {
-      font-size: $font-size_s;
-      margin-bottom: $space_default;
     }
   }
 

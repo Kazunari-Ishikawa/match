@@ -2,12 +2,12 @@
 
 @section('content')
 
-<section id="hero" class="l-hero">
+<section id="hero">
   <div class="p-hero">
     <div class="p-hero__inner">
       <p class="p-hero__text">IT系の仕事を探しているけど、大手のクラウドソーシングは分かりにくい…</p>
       <p class="p-hero__text">業者に頼むと高いしもっと簡単に頼めないかな…</p>
-      <p class="p-hero__text p-hero__text--em">その悩み、matchなら<br class="p-hero__br"><span>3</span>ステップで繋ぎます！</p>
+      <p class="p-hero__text p-hero__text--em">そんなあなたをmatchは<br><span>3</span>ステップで繋ぎます！</p>
       <a class="c-btn c-btn--hero" href="{{ route('works.index') }}">案件を探す</a>
     </div>
   </div>
@@ -15,7 +15,7 @@
 
 <section class="l-band">
   <div class="p-band">
-    <p class="p-band__text">登録はかんたん無料で可能！</p>
+    <p class="p-band__text">登録はかんたん無料で！</p>
     <a class="c-btn c-btn--band" href="{{ route('register') }}">登録する</a>
   </div>
 </section>
@@ -23,7 +23,7 @@
 <!-- 説明 -->
 <section id="description" class="l-container">
   <div class="l-container__header">
-    <h2 class="l-container__title">matchの３ステップ</h2>
+    <h2 class="l-container__title">たったの３ステップでご利用できます。</h2>
   </div>
   <div class="l-container__body">
     <div class="p-desc__container">
@@ -38,7 +38,7 @@
         <div class="p-desc__body">
           <h3 class="p-desc__title">STEP2</h3>
           <h4 class="p-desc__subtitle">依頼したいなら</h4>
-          <p class="p-desc__text">依頼内容を記入して案件を登録。入力項目も少なく、お手軽に依頼できます。</p>
+          <p class="p-desc__text">依頼内容を記入して案件を登録。お手軽に依頼できるよう、要点を絞って登録できます。</p>
           <h4 class="p-desc__subtitle">応募したいなら</h4>
           <p class="p-desc__text">matchには単発案件、レベニューシェア案件が多数登録されています。興味のある案件に応募してみましょう。</p>
         </div>
@@ -47,10 +47,9 @@
         <div class="p-desc__body">
           <h3 class="p-desc__title">STEP3</h3>
           <h4 class="p-desc__subtitle">依頼に応募があると</h4>
-          <p class="p-desc__text">応募があると登録アドレスに通知がきます。メッセージ機能で詳細を詰めて依頼完了！ </p>
+          <p class="p-desc__text">応募があると登録したアドレスに通知がきます。メッセージ機能で詳細を詰めて依頼完了！ </p>
           <h4 class="p-desc__subtitle">案件に応募すると</h4>
-          <p class="p-desc__text">メッセージ機能で依頼者と直接やり取りができます。詳細を詰めれば成約完了。
-            早速案件に取り掛かりましょう！</p>
+          <p class="p-desc__text">メッセージ機能で依頼者と直接やり取りができます。詳細を詰めれば成約完了。早速案件に取り掛かりましょう！</p>
         </div>
       </div>
     </div>
@@ -59,7 +58,7 @@
 
 <section class="l-band">
   <div class="p-band">
-    <p class="p-band__text">登録はかんたん無料で可能！</p>
+    <p class="p-band__text">登録はかんたん無料で！</p>
     <a class="c-btn c-btn--band" href="{{ route('register') }}">登録する</a>
   </div>
 </section>
@@ -71,7 +70,7 @@
 
   <div class="l-container__body u-mb0">
 
-    <div id="typeList" class="c-cardList">
+    <div class="c-cardList">
       <div class="c-cardList__header">
         <h3 class="c-cardList__title">種類から探す</h3>
       </div>
@@ -92,7 +91,6 @@
           </div>
         </a>
       </div>
-
     </div>
 
     <div id="categoryList" class="c-cardList">

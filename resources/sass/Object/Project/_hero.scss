@@ -1,12 +1,9 @@
 .p-hero {
   box-sizing: border-box;
-  background-image: url('../img/top-img-2.jpg');
-  // background-attachment: fixed;
+  background-image: url('/images/top-img.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  // background-color:rgba(255,255,255,0.3);
-  // background-blend-mode: lighten;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -26,12 +23,10 @@
     flex-direction: column;
     align-items: center;
     width: 60%;
-    height: 60%;
     padding: $space_3l;
     background: rgba($color: $color_bg, $alpha: 0.7);
     @include mq('md') {
       width: 80%;
-      height: 80%;
       padding: $space_default;
     }
   }
@@ -41,53 +36,16 @@
     margin-bottom: $space_m;
     &--em {
       font-family: $font-family_em;
-      font-size: $font-size_2l;
-      margin-bottom: $space_2l;
+      font-size: 28px;
+      margin: $space_2l 0;
       @include mq() {
-        font-size: $font-size_l;
-        margin-bottom: $space_l;
+        font-size: 20px;
+        margin: $space_l 0;
       }
       & > span {
-        font-size: 40px;
+        font-size: $font-size_em;
         font-weight: bold;
-        @include mq() {
-          font-size: $font-size_3l;
-        }
       }
-    }
-    &--right {
-      position: relative;
-      display: inline-block;
-      margin: $space_m;
-      padding: 0 $space_s;
-      box-sizing: border-box;
-      border: 2px solid #555;
-      background: white;
-      &:before {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: -24px;
-        margin-top: -12px;
-        border: 12px solid transparent;
-        border-right: 12px solid white;
-        z-index: 2;
-      }
-      &:after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: -30px;
-        border: 14px solid transparent;
-        border-right: 14px solid #555;
-        z-index: 1;
-      }
-    }
-  }
-  &__br {
-    display: none;
-    @include mq() {
-      display: block;
     }
   }
 }

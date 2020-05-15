@@ -10,15 +10,14 @@
   text-align: center;
   width: 150px;
   transition: $time_s;
+  @include mq() {
+    line-height: 40px;
+  }
   &:hover {
     cursor: pointer;
     color: white;
     opacity: 0.8;
     transform: scale(1.05);
-  }
-  &__container {
-    display: flex;
-    justify-content: flex-end;
   }
   &--em {
     background: $color_sub1;
@@ -27,6 +26,17 @@
     width: 100%;
     &:hover {
       transform: scale(1.03);
+    }
+  }
+  &--hero {
+    box-shadow: none;
+    font-size: $font-size_l;
+    width: 200px;
+    &:hover {
+      opacity: 1;
+    }
+    @include mq() {
+      font-size: $font-size_default;
     }
   }
   &--band {
@@ -39,21 +49,13 @@
       color: $color_main;
       opacity: 1;
     }
-    @include mq('md') {
+    @include mq() {
       margin: 0 auto;
+      font-size: $font-size_default;
     }
   }
-  &--hero {
-    box-shadow: none;
-    font-size: $font-size_l;
-    // position: absolute;
-    // top: 60%;
-    // left: 0;
-    // right: 0;
-    margin: auto;
-    width: 200px;
-    &:hover {
-      opacity: 1;
-    }
+  &__container {
+    display: flex;
+    justify-content: flex-end;
   }
 }

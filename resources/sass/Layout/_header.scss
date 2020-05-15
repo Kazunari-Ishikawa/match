@@ -23,18 +23,14 @@
     }
   }
   &__title {
-    font-size: 40px;
+    font-size: $font-size_em;
     font-family: $font-family_em;
     margin-right: $space_default;
     &:hover {
       color: $color_default;
     }
-    @include mq('md') {
-      font-size: $font-size_3l;
-    }
     @include mq() {
-      font-size: $font-size_2l;
-      margin-right: $space_s;
+      font-size: $font-size_3l;
     }
   }
 }
