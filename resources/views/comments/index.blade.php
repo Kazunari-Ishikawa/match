@@ -7,7 +7,11 @@
   @include('components.sidebar')
 
   <!-- メインコンテンツ -->
-  <work-list :with-comment="true" :list-title='@json("コメントした案件")'></work-list>
+  <section class="l-container__body--withSide">
+
+    <work-list :with-comment="true" :list-title='@json("コメントした案件")'></work-list>
+
+  </section>
 
 </div>
 

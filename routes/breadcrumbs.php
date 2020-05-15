@@ -11,9 +11,15 @@ Breadcrumbs::for('works', function($trail) {
 });
 
 // 案件一覧 > 案件詳細
-Breadcrumbs::for('showWork', function($trail) {
+Breadcrumbs::for('showWork', function($trail, $work) {
   $trail->parent('works');
-  $trail->push('案件詳細', route('works.show'));
+  $trail->push('案件詳細', route('works.show', $work->id));
+});
+
+// 案件一覧 > 案件詳細 > 編集
+Breadcrumbs::for('editWork', function($trail, $work) {
+  $trail->parent('showWork', $work);
+  $trail->push('案件編集', route('works.edit', $work->id));
 });
 
 // マイページ
