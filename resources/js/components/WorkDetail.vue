@@ -42,12 +42,12 @@
             :class="{ 'c-flatBtn--isBookmarked': work.bookmarked }"
             @click="clickBookmark"
           >
-            <i class="far fa-bookmark u-icon"></i>気になる
+            <i class="far fa-bookmark fa-lg fa-fw u-icon"></i>気になる
           </div>
         </div>
         <div class="c-btn__container">
           <div class="c-flatBtn c-flatBtn--twitter">
-            <i class="fab fa-twitter u-icon"></i>でシェア
+            <i class="fab fa-twitter fa-lg fa-fw u-icon"></i>でシェア
           </div>
         </div>
       </div>

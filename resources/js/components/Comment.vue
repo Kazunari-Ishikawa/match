@@ -2,7 +2,7 @@
   <div class="c-comment">
     <div class="c-comment__header">
       <a :href="`/users/${comment.user_id}`" class="c-comment__name">{{ comment.user.name }}</a>
-      <i class="far fa-trash-alt fa-lg u-icon" @click="clickDelete"></i>
+      <i class="far fa-trash-alt fa-lg fa-fw u-icon" @click="clickDelete"></i>
     </div>
     <div class="c-comment__body">
       <div class="c-comment__icon">

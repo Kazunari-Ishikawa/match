@@ -1,16 +1,19 @@
 .c-comment {
   background: $color_bg;
   border-radius: 10px;
+  padding: $space_s;
   margin-bottom: $space_3l;
   &:last-child {
     margin-bottom: 0;
+  }
+  @include mq() {
+    margin-bottom: $space_default;
   }
   &__header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 5px;
-    padding: $space_s;
+    margin-bottom: $space_s;
   }
   &__name {
     @include mq() {
@@ -19,7 +22,6 @@
   }
   &__body {
     display: flex;
-    padding: $space_s;
   }
   &__icon {
     flex: 0 1 auto;

@@ -2249,7 +2249,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 if (response.status === 200) {
                   alert("削除しました。");
-                  window.location.href = "/works/".concat(_this2.workId); // this.getComments();
+                  window.location.href = "/works/".concat(_this2.workId);
                 }
 
               case 6:
@@ -40073,7 +40073,7 @@ var render = function() {
       ),
       _vm._v(" "),
       _c("i", {
-        staticClass: "far fa-trash-alt fa-lg u-icon",
+        staticClass: "far fa-trash-alt fa-lg fa-fw u-icon",
         on: { click: _vm.clickDelete }
       })
     ]),
@@ -41122,7 +41122,7 @@ var render = function() {
               on: { click: _vm.clickBookmark }
             },
             [
-              _c("i", { staticClass: "far fa-bookmark u-icon" }),
+              _c("i", { staticClass: "far fa-bookmark fa-lg fa-fw u-icon" }),
               _vm._v("気になる\n        ")
             ]
           )
@@ -41144,7 +41144,7 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "c-btn__container" }, [
       _c("div", { staticClass: "c-flatBtn c-flatBtn--twitter" }, [
-        _c("i", { staticClass: "fab fa-twitter u-icon" }),
+        _c("i", { staticClass: "fab fa-twitter fa-lg fa-fw u-icon" }),
         _vm._v("でシェア\n        ")
       ])
     ])
