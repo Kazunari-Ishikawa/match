@@ -65,11 +65,12 @@
     height: $height_input;
     padding: $space_s;
     width: 100%;
-    &.is-invalid {
+    &.isInvalid {
       border: 1px solid red;
     }
     @include mq() {
       font-size: $font-size_m;
+      height: 40px;
     }
   }
   &__input--price {
@@ -123,24 +124,21 @@
     }
   }
   &__link {
-    font-size: $font-size_s;
-    margin-bottom: $space_s;
+    font-size: $font-size_m;
+    margin-bottom: $space_m;
     text-align: right;
+    text-decoration: underline;
     &:last-child {
       margin-bottom: 0;
     }
   }
-  &__error {
-    display: block;
-    color: red;
-    font-size: $font-size_m;
-  }
   &__text {
+    display: block;
     font-size: $font-size_m;
     margin-bottom: $space_m;
-    @include mq() {
-      font-size: $font-size_s;
-      margin-bottom: $space_s;
+    &--error {
+      color: red;
+      margin-bottom: 0;
     }
   }
   &__sample {

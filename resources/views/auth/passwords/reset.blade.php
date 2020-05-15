@@ -4,7 +4,7 @@
 
 <section class="l-container">
   <div class="l-container__header">
-    <h2 class="l-container__title">パスワードのリセット</h2>
+    <h2 class="l-container__title">パスワードの再設定</h2>
   </div>
 
   <div class="l-container__body l-container__body--form">
@@ -14,21 +14,24 @@
       <input type="hidden" name="token" value="{{ $token }}">
 
       <div class="c-form__group">
+        <label for="email" class="c-form__label">メールアドレス</label>
         @error('email')
-        <span class="c-form__error">{{ $message }}</span>
+        <span class="c-form__text c-form__text--error">{{ $message }}</span>
         @enderror
-        <input class="c-form__input @error('email') is-invalid @enderror " type="email" id="email" name="email" value="{{ $email ?? old('email') }}" placeholder="メールアドレス">
+        <input class="c-form__input @error('email') isInvalid @enderror" type="email" id="email" name="email" value="{{ $email ?? old('email') }}">
       </div>
 
       <div class="c-form__group">
+        <label for="password" class="c-form__label">新しいパスワード</label>
         @error('password')
-        <span class="c-form__error">{{ $message }}</span>
+        <span class="c-form__text c-form__text--error">{{ $message }}</span>
         @enderror
-        <input class="c-form__input @error('password') is-invalid @enderror" type="password" id="password" name="password" placeholder="パスワード">
+        <input class="c-form__input @error('password') isInvalid @enderror" type="password" id="password" name="password" placeholder="8〜16文字の半角英数字">
       </div>
 
       <div class="c-form__group">
-        <input class="c-form__input" type="password" id="password_confirmation" name="password_confirmation" placeholder="パスワード（再入力）">
+        <label for="password_confirmation" class="c-form__label">パスワード（再入力）</label>
+        <input class="c-form__input" type="password" id="password_confirmation" name="password_confirmation">
       </div>
 
       <input class="c-btn c-btn--full" type="submit" value="変更する">
