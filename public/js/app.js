@@ -3094,7 +3094,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     },
-    bookmarks: function bookmarks() {
+    bookmark: function bookmark() {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
@@ -3102,7 +3102,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _this2.$emit("bookmarks", {
+                _this2.$emit("bookmark", {
                   id: _this2.work.id,
                   bookmarked: _this2.work.bookmarked
                 });
@@ -3129,6 +3129,18 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+//
+//
+//
+//
 //
 //
 //
@@ -3186,6 +3198,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     work: Object
+  },
+  methods: {
+    clickBookmark: function clickBookmark() {
+      if (this.work.bookmarked) {
+        this.deleteBookmark();
+      } else {
+        this.addBookmark();
+      }
+    },
+    addBookmark: function addBookmark() {
+      var _this = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return axios.post("/api/bookmarks/".concat(_this.work.id, "/add"))["catch"](function (error) {
+                  if (error.response.status === 401) {
+                    alert("気になる機能を使うにはログインしてください。");
+                    return false;
+                  }
+                });
+
+              case 2:
+                response = _context.sent;
+
+                if (response.status === 200) {
+                  _this.work.bookmarked = true;
+                }
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }))();
+    },
+    deleteBookmark: function deleteBookmark() {
+      var _this2 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return axios.post("/api/bookmarks/".concat(_this2.work.id, "/delete"))["catch"]();
+
+              case 2:
+                response = _context2.sent;
+                console.log(response);
+
+                if (response.status === 200) {
+                  work.bookmarked = false;
+                }
+
+              case 5:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }))();
+    }
   }
 });
 
@@ -3338,17 +3419,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.pageNum = page;
       this.getWorks();
     },
-    clickBookmarks: function clickBookmarks(_ref) {
+    clickBookmark: function clickBookmark(_ref) {
       var id = _ref.id,
           bookmarked = _ref.bookmarked;
 
       if (bookmarked) {
-        this.deleteBookmarks(id);
+        this.deleteBookmark(id);
       } else {
-        this.addBookmarks(id);
+        this.addBookmark(id);
       }
     },
-    addBookmarks: function addBookmarks(id) {
+    addBookmark: function addBookmark(id) {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
@@ -3392,7 +3473,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
-    deleteBookmarks: function deleteBookmarks(id) {
+    deleteBookmark: function deleteBookmark(id) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
@@ -40898,7 +40979,7 @@ var render = function() {
               {
                 staticClass: "c-work__tag c-work__tag--bookmark",
                 class: { "c-work__tag--isBookmarked": _vm.work.bookmarked },
-                on: { click: _vm.bookmarks }
+                on: { click: _vm.bookmark }
               },
               [_vm._v("気になる!")]
             ),
@@ -41036,7 +41117,24 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm._m(0)
+      _c("div", { staticClass: "p-workDetail__action" }, [
+        _c("div", { staticClass: "c-btn__container" }, [
+          _c(
+            "div",
+            {
+              staticClass: "c-flatBtn c-flatBtn--bookmark",
+              class: { "c-flatBtn--isBookmarked": _vm.work.bookmarked },
+              on: { click: _vm.clickBookmark }
+            },
+            [
+              _c("i", { staticClass: "far fa-bookmark u-icon" }),
+              _vm._v("気になる\n        ")
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ])
     ]),
     _vm._v(" "),
     _c("p", { staticClass: "p-workDetail__content" }, [
@@ -41049,23 +41147,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "p-workDetail__action" }, [
-      _c("div", { staticClass: "c-btn__container" }, [
-        _c("div", { staticClass: "c-btn c-btn--reverse c-btn--sm" }, [
-          _c("i", { staticClass: "far fa-bookmark" }),
-          _vm._v("気になる\n        ")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "c-btn__container" }, [
-        _c(
-          "div",
-          { staticClass: "c-btn c-btn--sm c-btn--reverse c-btn--twitter" },
-          [
-            _c("i", { staticClass: "fab fa-twitter" }),
-            _vm._v("でシェア\n        ")
-          ]
-        )
+    return _c("div", { staticClass: "c-btn__container" }, [
+      _c("div", { staticClass: "c-flatBtn c-flatBtn--twitter" }, [
+        _c("i", { staticClass: "fab fa-twitter u-icon" }),
+        _vm._v("でシェア\n        ")
       ])
     ])
   }
@@ -41116,7 +41201,7 @@ var render = function() {
             return _c("Work", {
               key: work.id,
               attrs: { work: work, "with-comment": _vm.withComment },
-              on: { bookmarks: _vm.clickBookmarks }
+              on: { bookmark: _vm.clickBookmark }
             })
           })
         : _vm._e(),

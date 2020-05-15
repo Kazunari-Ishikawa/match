@@ -27,9 +27,6 @@
       transform: scale(1.03);
     }
   }
-  &--sm {
-    width: 100px;
-  }
   &--hero {
     box-shadow: none;
     font-size: $font-size_l;
@@ -50,23 +47,6 @@
     @include mq() {
       margin: 0 auto;
       font-size: $font-size_default;
-    }
-  }
-  &--reverse {
-    background: white;
-    box-shadow: none;
-    border: 1px solid $color_sub2;
-    color: $color_default;
-    &:hover {
-      transform: none;
-      color: $color_default;
-    }
-  }
-  &--twitter {
-    &:hover {
-      color: white;
-      background: $twitter;
-      border: 1px solid $twitter;
     }
   }
   &__container {

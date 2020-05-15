@@ -37,13 +37,17 @@
       </table>
       <div class="p-workDetail__action">
         <div class="c-btn__container">
-          <div class="c-btn c-btn--reverse c-btn--sm">
-            <i class="far fa-bookmark"></i>気になる
+          <div
+            class="c-flatBtn c-flatBtn--bookmark"
+            :class="{ 'c-flatBtn--isBookmarked': work.bookmarked }"
+            @click="clickBookmark"
+          >
+            <i class="far fa-bookmark u-icon"></i>気になる
           </div>
         </div>
         <div class="c-btn__container">
-          <div class="c-btn c-btn--sm c-btn--reverse c-btn--twitter">
-            <i class="fab fa-twitter"></i>でシェア
+          <div class="c-flatBtn c-flatBtn--twitter">
+            <i class="fab fa-twitter u-icon"></i>でシェア
           </div>
         </div>
       </div>
@@ -56,6 +60,37 @@
 export default {
   props: {
     work: Object
+  },
+  methods: {
+    clickBookmark() {
+      if (this.work.bookmarked) {
+        this.deleteBookmark();
+      } else {
+        this.addBookmark();
+      }
+    },
+    async addBookmark() {
+      const response = await axios
+        .post(`/api/bookmarks/${this.work.id}/add`)
+        .catch(error => {
+          if (error.response.status === 401) {
+            alert("気になる機能を使うにはログインしてください。");
+            return false;
+          }
+        });
+      if (response.status === 200) {
+        this.work.bookmarked = true;
+      }
+    },
+    async deleteBookmark() {
+      const response = await axios
+        .post(`/api/bookmarks/${this.work.id}/delete`)
+        .catch();
+      console.log(response);
+      if (response.status === 200) {
+        work.bookmarked = false;
+      }
+    }
   }
 };
 </script>

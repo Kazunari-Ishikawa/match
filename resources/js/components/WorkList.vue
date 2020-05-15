@@ -17,7 +17,7 @@
         :key="work.id"
         :work="work"
         :with-comment="withComment"
-        @bookmarks="clickBookmarks"
+        @bookmark="clickBookmark"
       />
     </template>
 
@@ -103,14 +103,14 @@ export default {
       this.pageNum = page;
       this.getWorks();
     },
-    clickBookmarks({ id, bookmarked }) {
+    clickBookmark({ id, bookmarked }) {
       if (bookmarked) {
-        this.deleteBookmarks(id);
+        this.deleteBookmark(id);
       } else {
-        this.addBookmarks(id);
+        this.addBookmark(id);
       }
     },
-    async addBookmarks(id) {
+    async addBookmark(id) {
       const response = await axios
         .post(`/api/bookmarks/${id}/add`)
         .catch(error => {
@@ -135,7 +135,7 @@ export default {
         });
       }
     },
-    async deleteBookmarks(id) {
+    async deleteBookmark(id) {
       const response = await axios.post(`/api/bookmarks/${id}/delete`).catch();
       console.log(response);
       if (response.status === 200) {
