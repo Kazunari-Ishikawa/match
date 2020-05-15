@@ -1389,13 +1389,6 @@ textarea {
 
 .c-workList {
   width: 100%;
-  margin-bottom: 40px;
-}
-
-@media screen and (max-width: 576px) {
-  .c-workList {
-    margin-bottom: 20px;
-  }
 }
 
 .c-workList__header {
@@ -1758,13 +1751,13 @@ textarea {
 }
 
 .c-pagination {
-  margin-bottom: 40px;
+  margin-top: 40px;
   text-align: center;
 }
 
 @media screen and (max-width: 576px) {
   .c-pagination {
-    margin-bottom: 20px;
+    margin-top: 20px;
   }
 }
 
