@@ -12,7 +12,7 @@
       @csrf
 
       @foreach($errors->all() as $error)
-      <span class="c-form__error">{{ $error }}</span>
+      <span class="c-form__text c-form__text--error">{{ $error }}</span>
       @endforeach
 
       <div class="c-form__group">
@@ -28,10 +28,10 @@
       </div>
 
       <p class="c-form__link">
-        <a href="{{ route('password.request') }}">パスワードを忘れてしまった方はこちら</a>
+        <a href="{{ route('password.request') }}">パスワードを忘れた方はこちら</a>
       </p>
       <p class="c-form__link">
-        <a href="{{route('login')}}">会員登録をしていない方はこちら</a>
+        <a href="{{route('register')}}">会員登録をしていない方はこちら</a>
       </p>
     </form>
   </div>

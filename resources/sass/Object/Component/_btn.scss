@@ -1,4 +1,5 @@
 .c-btn {
+  cursor: pointer;
   display: block;
   background: $color_main;
   border-radius: $radius_s;
@@ -14,9 +15,7 @@
     line-height: 40px;
   }
   &:hover {
-    cursor: pointer;
     color: white;
-    opacity: 0.8;
     transform: scale(1.05);
   }
   &--em {
@@ -32,9 +31,6 @@
     box-shadow: none;
     font-size: $font-size_l;
     width: 200px;
-    &:hover {
-      opacity: 1;
-    }
     @include mq() {
       font-size: $font-size_default;
     }
@@ -47,7 +43,6 @@
       transform: none;
       background: white;
       color: $color_main;
-      opacity: 1;
     }
     @include mq() {
       margin: 0 auto;
