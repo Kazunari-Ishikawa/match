@@ -3183,9 +3183,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     work: Object
@@ -40968,23 +40965,26 @@ var render = function() {
       _vm._v(_vm._s(_vm.work.title))
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "p-workDetail__meta" }, [
-      _c(
-        "a",
-        {
-          staticClass: "p-workDetail__name",
-          attrs: { href: "/users/" + _vm.work.user.id }
-        },
-        [_vm._v(_vm._s(_vm.work.user.name))]
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "p-workDetail__date" }, [
-        _vm._v("登録日:" + _vm._s(_vm.work.created_at))
-      ])
-    ]),
-    _vm._v(" "),
     _c("div", { staticClass: "p-workDetail__body" }, [
       _c("table", { staticClass: "p-workDetail__table" }, [
+        _c("tr", { staticClass: "p-workDetail__row" }, [
+          _c("th", { staticClass: "p-workDetail__head" }, [_vm._v("登録日")]),
+          _vm._v(" "),
+          _c("td", { staticClass: "p-workDetail__data" }, [
+            _vm._v(_vm._s(_vm.work.created_at))
+          ])
+        ]),
+        _vm._v(" "),
+        _c("tr", { staticClass: "p-workDetail__row" }, [
+          _c("th", { staticClass: "p-workDetail__head" }, [_vm._v("依頼者")]),
+          _vm._v(" "),
+          _c("td", { staticClass: "p-workDetail__data" }, [
+            _c("a", { attrs: { href: "/users/" + _vm.work.user_id } }, [
+              _vm._v(_vm._s(_vm.work.user.name))
+            ])
+          ])
+        ]),
+        _vm._v(" "),
         _c("tr", { staticClass: "p-workDetail__row" }, [
           _c("th", { staticClass: "p-workDetail__head" }, [_vm._v("カテゴリ")]),
           _vm._v(" "),
@@ -41007,7 +41007,7 @@ var render = function() {
           [
             _c("th", { staticClass: "p-workDetail__head" }, [_vm._v("金額")]),
             _vm._v(" "),
-            _vm.work.type == "レベニューシェア"
+            _vm.work.type === "レベニューシェア"
               ? [
                   _c("td", { staticClass: "p-workDetail__data" }, [
                     _vm._v("依頼者との相談")
@@ -41050,17 +41050,21 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "p-workDetail__action" }, [
-      _c("div", { staticClass: "p-workDetail__tag--container" }, [
+      _c("div", { staticClass: "c-btn__container" }, [
+        _c("div", { staticClass: "c-btn c-btn--reverse c-btn--sm" }, [
+          _c("i", { staticClass: "far fa-bookmark" }),
+          _vm._v("気になる\n        ")
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "c-btn__container" }, [
         _c(
           "div",
-          { staticClass: "p-workDetail__tag p-workDetail__tag--like" },
-          [_vm._v("気になる!")]
-        ),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "p-workDetail__tag p-workDetail__tag--twitter" },
-          [_vm._v("シェア!")]
+          { staticClass: "c-btn c-btn--sm c-btn--reverse c-btn--twitter" },
+          [
+            _c("i", { staticClass: "fab fa-twitter" }),
+            _vm._v("でシェア\n        ")
+          ]
         )
       ])
     ])
