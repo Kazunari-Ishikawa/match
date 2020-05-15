@@ -41,7 +41,6 @@
             <td class="p-workDetail__data">{{ $count }}人が応募しています</td>
           </tr>
         </table>
-
         <div class="p-workDetail__action">
           <div class="c-btn__container">
             <div class="c-btn c-btn--reverse c-btn--sm"><i class="far fa-bookmark"></i>気になる</div>
@@ -51,7 +50,10 @@
           </div>
         </div>
       </div>
+      <p class="p-workDetail__content">{{ $work->content }}</p>
+    </div>
 
+    <div class="p-workDetail__apply">
       @if ($is_registered)
       <a href="{{ route('works.edit', $work->id) }}" class="c-btn c-btn--full">編集する</a>
       @elseif($is_applied)
@@ -65,8 +67,6 @@
         <input type="submit" class="c-btn c-btn--em c-btn--full" value="応募する">
       </form>
       @endif
-
-      <p class="p-workDetail__content">{{ $work->content }}</p>
     </div>
 
     <!-- コメント一覧 -->
@@ -78,9 +78,7 @@
       <div class="c-form__group">
         <textarea name="content" class="c-form__textarea c-form__textarea--message"></textarea>
       </div>
-      {{-- <div class="c-btn__container"> --}}
       <input type="submit" class="c-btn c-btn--em c-btn--full" value="コメントする" />
-      {{-- </div> --}}
     </form>
 
   </div>

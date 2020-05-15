@@ -1,0 +1,7 @@
+.c-commentList {
+  background: white;
+  padding: $space_3l $space_3l 0;
+  @include mq() {
+    padding: $space_default $space_default 0;
+  }
+}

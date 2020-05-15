@@ -2239,7 +2239,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context2.next = 3;
                 return axios.post("/api/comments/".concat(id, "/delete"))["catch"](function (error) {
                   console.log(error);
-                  console.log("ERROR!");
                   alert("あなたのコメントではないので削除できません。");
                   return error.response;
                 });
@@ -40071,7 +40070,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "c-comment__list" },
+    { staticClass: "c-commentList" },
     _vm._l(_vm.comments, function(comment) {
       return _c("Comment", {
         key: comment.id,

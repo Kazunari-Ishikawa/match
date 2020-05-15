@@ -40,17 +40,22 @@
     @include mq() {
       display: flex;
       align-items: center;
-      justify-content: flex-end;
+      justify-content: space-around;
     }
   }
   &__content {
     background: $color_bg;
     padding: $space_default;
-    margin-top: $space_3l;
     @include mq() {
       font-size: $font-size_m;
       padding: $space_s;
-      margin-top: $space_default;
+    }
+  }
+  &__apply {
+    background: white;
+    padding: 0 $space_3l $space_3l;
+    @include mq() {
+      padding: 0 $space_default $space_default;
     }
   }
 }

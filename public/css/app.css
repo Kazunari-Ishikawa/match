@@ -710,17 +710,6 @@ textarea {
   margin-bottom: 40px;
 }
 
-.c-comment__list {
-  background: white;
-  padding: 0 40px;
-}
-
-@media screen and (max-width: 576px) {
-  .c-comment__list {
-    padding: 20px;
-  }
-}
-
 .c-comment:last-child {
   margin-bottom: 0;
 }
@@ -787,6 +776,17 @@ textarea {
 .c-comment__date {
   font-size: 12px;
   text-align: right;
+}
+
+.c-commentList {
+  background: white;
+  padding: 40px 40px 0;
+}
+
+@media screen and (max-width: 576px) {
+  .c-commentList {
+    padding: 20px 20px 0;
+  }
 }
 
 .c-flatBtn {
@@ -2055,21 +2055,30 @@ textarea {
   .p-workDetail__action {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-around;
   }
 }
 
 .p-workDetail__content {
   background: #f5f5f5;
   padding: 20px;
-  margin-top: 40px;
 }
 
 @media screen and (max-width: 576px) {
   .p-workDetail__content {
     font-size: 14px;
     padding: 10px;
-    margin-top: 20px;
+  }
+}
+
+.p-workDetail__apply {
+  background: white;
+  padding: 0 40px 40px;
+}
+
+@media screen and (max-width: 576px) {
+  .p-workDetail__apply {
+    padding: 0 20px 20px;
   }
 }
 

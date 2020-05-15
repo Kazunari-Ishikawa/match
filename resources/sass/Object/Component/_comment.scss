@@ -1,12 +1,4 @@
 .c-comment {
-  &__list {
-    background: white;
-    padding: 0 $space_3l;
-    // margin-bottom: $space_3l;
-    @include mq() {
-      padding: $space_default;
-    }
-  }
   background: $color_bg;
   border-radius: 10px;
   margin-bottom: $space_3l;
