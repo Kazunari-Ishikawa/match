@@ -1,8 +1,8 @@
 .c-pagination {
-  margin-bottom: $space_3l;
+  margin-top: $space_3l;
   text-align: center;
   @include mq() {
-    margin-bottom: $space_default;
+    margin-top: $space_default;
   }
   &__item {
     display: inline-block;

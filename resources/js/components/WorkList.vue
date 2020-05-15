@@ -1,16 +1,17 @@
 <template>
-  <section class="l-container__body--withSide">
-    <div class="c-workList">
-      <div class="c-workList__header">
-        <h2 class="c-workList__title">{{ listTitle }}</h2>
-        <p class="c-workList__info">
-          {{totalNum}}件中
-          <span>{{ fromNum }}</span> -
-          <span>{{ toNum }}</span>件表示
-        </p>
-      </div>
+  <div class="c-workList">
+    <div class="c-workList__header">
+      <h2 class="c-workList__title">{{ listTitle }}</h2>
+      <p class="c-workList__info">
+        {{ totalNum }}件中
+        <span>{{ fromNum }}</span> -
+        <span>{{ toNum }}</span>件表示
+      </p>
+    </div>
 
-      <Loader v-if="isLoading" />
+    <Loader v-if="isLoading" />
+
+    <template v-if="!isLoading">
       <Work
         v-for="work in works"
         :key="work.id"
@@ -18,7 +19,7 @@
         :with-comment="withComment"
         @bookmarks="clickBookmarks"
       />
-    </div>
+    </template>
 
     <Pagination
       v-if="!isLoading"
@@ -26,7 +27,7 @@
       :last-page="lastPage"
       @move-page="movePage"
     />
-  </section>
+  </div>
 </template>
 
 <script>

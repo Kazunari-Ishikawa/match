@@ -2664,6 +2664,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2675,7 +2681,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      active: true,
+      active: false,
       form: {
         type: this.type,
         category: this.category,
@@ -2768,6 +2774,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 
 
@@ -2792,7 +2801,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         maxPrice: 0
       },
       works: null,
-      isLoading: false,
       pageNum: 1,
       currentPage: 0,
       lastPage: 0,
@@ -3133,6 +3141,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -40305,11 +40314,14 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "section",
-    { staticClass: "l-searchbar" },
+    { staticClass: "p-searchbox" },
     [
       _c(
         "p",
-        { staticClass: "c-accordion__btn", on: { click: _vm.openSearch } },
+        {
+          staticClass: "c-accordion__btn c-accordion__btn--search",
+          on: { click: _vm.openSearch }
+        },
         [_vm._v("絞り込み条件")]
       ),
       _vm._v(" "),
@@ -40317,7 +40329,7 @@ var render = function() {
         _c(
           "form",
           {
-            staticClass: "c-form--side",
+            staticClass: "p-searchbox__form",
             on: {
               submit: function($event) {
                 $event.preventDefault()
@@ -40326,309 +40338,325 @@ var render = function() {
             }
           },
           [
-            _c("div", { staticClass: "c-form__group" }, [
-              _c("p", { staticClass: "c-form__label" }, [_vm._v("案件種別")]),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "c-form__label--radio",
-                  attrs: { for: "type1" }
-                },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.type,
-                        expression: "form.type"
+            _c("div", { staticClass: "p-searchbox__group" }, [
+              _c("div", { staticClass: "p-searchbox__item" }, [
+                _c("p", { staticClass: "c-form__label" }, [_vm._v("案件種別")]),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "c-form__label--radio",
+                    attrs: { for: "type1" }
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.type,
+                          expression: "form.type"
+                        }
+                      ],
+                      staticClass: "c-form__radio",
+                      attrs: {
+                        type: "radio",
+                        name: "type",
+                        id: "type1",
+                        value: "1"
+                      },
+                      domProps: { checked: _vm._q(_vm.form.type, "1") },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "type", "1")
+                        }
                       }
-                    ],
-                    staticClass: "c-form__radio",
-                    attrs: {
-                      type: "radio",
-                      name: "type",
-                      id: "type1",
-                      value: "1"
-                    },
-                    domProps: { checked: _vm._q(_vm.form.type, "1") },
-                    on: {
-                      change: function($event) {
-                        return _vm.$set(_vm.form, "type", "1")
+                    }),
+                    _vm._v("単発案件\n          ")
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "c-form__label--radio",
+                    attrs: { for: "type2" }
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.type,
+                          expression: "form.type"
+                        }
+                      ],
+                      staticClass: "c-form__radio",
+                      attrs: {
+                        type: "radio",
+                        name: "type",
+                        id: "type2",
+                        value: "2"
+                      },
+                      domProps: { checked: _vm._q(_vm.form.type, "2") },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "type", "2")
+                        }
                       }
-                    }
-                  }),
-                  _vm._v("単発\n        ")
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "c-form__label--radio",
-                  attrs: { for: "type2" }
-                },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.type,
-                        expression: "form.type"
+                    }),
+                    _vm._v("レベニューシェア\n          ")
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "label",
+                  {
+                    staticClass: "c-form__label--radio",
+                    attrs: { for: "type0" }
+                  },
+                  [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.form.type,
+                          expression: "form.type"
+                        }
+                      ],
+                      staticClass: "c-form__radio",
+                      attrs: {
+                        type: "radio",
+                        name: "type",
+                        id: "type0",
+                        value: "0"
+                      },
+                      domProps: { checked: _vm._q(_vm.form.type, "0") },
+                      on: {
+                        change: function($event) {
+                          return _vm.$set(_vm.form, "type", "0")
+                        }
                       }
-                    ],
-                    staticClass: "c-form__radio",
-                    attrs: {
-                      type: "radio",
-                      name: "type",
-                      id: "type2",
-                      value: "2"
-                    },
-                    domProps: { checked: _vm._q(_vm.form.type, "2") },
-                    on: {
-                      change: function($event) {
-                        return _vm.$set(_vm.form, "type", "2")
-                      }
-                    }
-                  }),
-                  _vm._v("レベニューシェア\n        ")
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "label",
-                {
-                  staticClass: "c-form__label--radio",
-                  attrs: { for: "type0" }
-                },
-                [
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.form.type,
-                        expression: "form.type"
-                      }
-                    ],
-                    staticClass: "c-form__radio",
-                    attrs: {
-                      type: "radio",
-                      name: "type",
-                      id: "type0",
-                      value: "0"
-                    },
-                    domProps: { checked: _vm._q(_vm.form.type, "0") },
-                    on: {
-                      change: function($event) {
-                        return _vm.$set(_vm.form, "type", "0")
-                      }
-                    }
-                  }),
-                  _vm._v("指定しない\n        ")
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "c-form__group" }, [
-              _c(
-                "label",
-                { staticClass: "c-form__label", attrs: { for: "category" } },
-                [_vm._v("カテゴリ")]
-              ),
-              _vm._v(" "),
-              _c(
-                "select",
-                {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.form.category,
-                      expression: "form.category"
-                    }
-                  ],
-                  staticClass: "c-form__select",
-                  attrs: { name: "category", id: "category" },
-                  on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.form,
-                        "category",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
-                    }
-                  }
-                },
-                [
-                  _c("option", { attrs: { value: "0" } }, [
-                    _vm._v("指定しない")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "1" } }, [
-                    _vm._v("ホームページ制作")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "2" } }, [
-                    _vm._v("WEBシステム開発")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "3" } }, [
-                    _vm._v("業務システム開発")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "4" } }, [
-                    _vm._v("アプリ開発")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "5" } }, [
-                    _vm._v("ECサイト構築")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "6" } }, [
-                    _vm._v("サーバー・クラウド")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "7" } }, [
-                    _vm._v("WEBマーケティング")
-                  ])
-                ]
-              )
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "c-form__group" }, [
-              _c("p", { staticClass: "c-form__label" }, [_vm._v("金額")]),
-              _vm._v(" "),
-              _c(
-                "select",
-                {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.form.minPrice,
-                      expression: "form.minPrice"
-                    }
-                  ],
-                  staticClass: "c-form__select c-form__select--price",
-                  attrs: { name: "lower", id: "lower" },
-                  on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.form,
-                        "minPrice",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
-                    }
-                  }
-                },
-                [
-                  _c("option", { attrs: { value: "0" } }, [
-                    _vm._v("指定しない")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "1" } }, [_vm._v("1,000")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "2" } }, [_vm._v("3,000")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "3" } }, [_vm._v("5,000")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "4" } }, [_vm._v("10,000")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "5" } }, [_vm._v("50,000")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "6" } }, [_vm._v("100,000")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "7" } }, [_vm._v("500,000")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "8" } }, [_vm._v("1,000,000")])
-                ]
-              ),
-              _vm._v(" "),
-              _c("p", { staticClass: "c-form__label--back" }, [
-                _vm._v("円以上〜")
+                    }),
+                    _vm._v("指定しない\n          ")
+                  ]
+                )
               ]),
               _vm._v(" "),
-              _c(
-                "select",
-                {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.form.maxPrice,
-                      expression: "form.maxPrice"
+              _c("div", { staticClass: "p-searchbox__item" }, [
+                _c(
+                  "label",
+                  { staticClass: "c-form__label", attrs: { for: "category" } },
+                  [_vm._v("カテゴリ")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.category,
+                        expression: "form.category"
+                      }
+                    ],
+                    staticClass: "c-form__select",
+                    attrs: { name: "category", id: "category" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.form,
+                          "category",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
                     }
-                  ],
-                  staticClass: "c-form__select c-form__select--price",
-                  attrs: { name: "upper", id: "uppper" },
-                  on: {
-                    change: function($event) {
-                      var $$selectedVal = Array.prototype.filter
-                        .call($event.target.options, function(o) {
-                          return o.selected
-                        })
-                        .map(function(o) {
-                          var val = "_value" in o ? o._value : o.value
-                          return val
-                        })
-                      _vm.$set(
-                        _vm.form,
-                        "maxPrice",
-                        $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
-                      )
-                    }
-                  }
-                },
-                [
-                  _c("option", { attrs: { value: "0" } }, [
-                    _vm._v("指定しない")
-                  ]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "1" } }, [_vm._v("1,000")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "2" } }, [_vm._v("3,000")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "3" } }, [_vm._v("5,000")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "4" } }, [_vm._v("10,000")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "5" } }, [_vm._v("50,000")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "6" } }, [_vm._v("100,000")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "7" } }, [_vm._v("500,000")]),
-                  _vm._v(" "),
-                  _c("option", { attrs: { value: "8" } }, [_vm._v("1,000,000")])
-                ]
-              ),
+                  },
+                  [
+                    _c("option", { attrs: { value: "0" } }, [
+                      _vm._v("指定しない")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "1" } }, [
+                      _vm._v("ホームページ制作")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "2" } }, [
+                      _vm._v("WEBシステム開発")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "3" } }, [
+                      _vm._v("業務システム開発")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "4" } }, [
+                      _vm._v("アプリ開発")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "5" } }, [
+                      _vm._v("ECサイト構築")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "6" } }, [
+                      _vm._v("サーバー・クラウド")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "7" } }, [
+                      _vm._v("WEBマーケティング")
+                    ])
+                  ]
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "p-searchbox__item--price" }, [
+              _c("p", { staticClass: "c-form__label" }, [_vm._v("金額")]),
               _vm._v(" "),
-              _c("p", { staticClass: "c-form__label--back" }, [
-                _vm._v("円以下")
+              _c("div", { staticClass: "c-form__group--price" }, [
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.minPrice,
+                        expression: "form.minPrice"
+                      }
+                    ],
+                    staticClass: "c-form__select c-form__select--price",
+                    attrs: { name: "lower", id: "lower" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.form,
+                          "minPrice",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "0" } }, [
+                      _vm._v("指定しない")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "1" } }, [_vm._v("1,000")]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "2" } }, [_vm._v("3,000")]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "3" } }, [_vm._v("5,000")]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "4" } }, [_vm._v("10,000")]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "5" } }, [_vm._v("50,000")]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "6" } }, [
+                      _vm._v("100,000")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "7" } }, [
+                      _vm._v("500,000")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "8" } }, [
+                      _vm._v("1,000,000")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("p", { staticClass: "c-form__select--price" }, [
+                  _vm._v("円以上〜")
+                ]),
+                _vm._v(" "),
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.form.maxPrice,
+                        expression: "form.maxPrice"
+                      }
+                    ],
+                    staticClass: "c-form__select c-form__select--price",
+                    attrs: { name: "upper", id: "uppper" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.$set(
+                          _vm.form,
+                          "maxPrice",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
+                      }
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "0" } }, [
+                      _vm._v("指定しない")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "1" } }, [_vm._v("1,000")]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "2" } }, [_vm._v("3,000")]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "3" } }, [_vm._v("5,000")]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "4" } }, [_vm._v("10,000")]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "5" } }, [_vm._v("50,000")]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "6" } }, [
+                      _vm._v("100,000")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "7" } }, [
+                      _vm._v("500,000")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "8" } }, [
+                      _vm._v("1,000,000")
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c("p", { staticClass: "c-form__select--price" }, [
+                  _vm._v("円以下")
+                ])
               ])
             ]),
             _vm._v(" "),
@@ -40667,62 +40695,48 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "l-container l-container--withSide" },
+    { staticClass: "c-workList" },
     [
+      _c("div", { staticClass: "c-workList__header" }, [
+        _c("h2", { staticClass: "c-workList__title" }, [_vm._v("案件一覧")]),
+        _vm._v(" "),
+        _c("p", { staticClass: "c-workList__info" }, [
+          _vm._v("\n      " + _vm._s(_vm.totalNum) + "件中\n      "),
+          _c("span", [_vm._v(_vm._s(_vm.fromNum))]),
+          _vm._v(" -\n      "),
+          _c("span", [_vm._v(_vm._s(_vm.toNum))]),
+          _vm._v("件表示\n    ")
+        ])
+      ]),
+      _vm._v(" "),
       _c("SearchComponent", {
         attrs: { category: _vm.category, type: _vm.type },
         on: { "click-search": _vm.searchWorks }
       }),
       _vm._v(" "),
-      _c(
-        "section",
-        { staticClass: "l-container__body--withSide" },
-        [
-          _c("div", { staticClass: "c-workList__header" }, [
-            _c("h2", { staticClass: "c-workList__title" }, [
-              _vm._v("案件一覧")
-            ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "c-workList__info" }, [
-              _vm._v("\n        " + _vm._s(_vm.totalNum) + "件中\n        "),
-              _c("span", [_vm._v(_vm._s(_vm.fromNum))]),
-              _vm._v(" -\n        "),
-              _c("span", [_vm._v(_vm._s(_vm.toNum))]),
-              _vm._v("件表示\n      ")
-            ])
-          ]),
-          _vm._v(" "),
-          _vm.isLoading ? _c("Loader") : _vm._e(),
-          _vm._v(" "),
-          !_vm.isLoading
-            ? _c(
-                "div",
-                { staticClass: "c-workList" },
-                _vm._l(_vm.works, function(work) {
-                  return _c("Work", {
-                    key: work.id,
-                    attrs: { work: work },
-                    on: { bookmarks: _vm.clickBookmarks }
-                  })
-                }),
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          !_vm.isLoading
-            ? _c("Pagination", {
-                attrs: {
-                  "current-page": _vm.currentPage,
-                  "last-page": _vm.lastPage
-                },
-                on: { "move-page": _vm.movePage }
-              })
-            : _vm._e()
-        ],
-        1
-      )
+      _vm.isLoading ? _c("Loader") : _vm._e(),
+      _vm._v(" "),
+      !_vm.isLoading
+        ? _vm._l(_vm.works, function(work) {
+            return _c("Work", {
+              key: work.id,
+              attrs: { work: work },
+              on: { bookmarks: _vm.clickBookmarks }
+            })
+          })
+        : _vm._e(),
+      _vm._v(" "),
+      !_vm.isLoading
+        ? _c("Pagination", {
+            attrs: {
+              "current-page": _vm.currentPage,
+              "last-page": _vm.lastPage
+            },
+            on: { "move-page": _vm.movePage }
+          })
+        : _vm._e()
     ],
-    1
+    2
   )
 }
 var staticRenderFns = []
@@ -40877,39 +40891,34 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "section",
-    { staticClass: "l-container__body--withSide" },
+    "div",
+    { staticClass: "c-workList" },
     [
-      _c(
-        "div",
-        { staticClass: "c-workList" },
-        [
-          _c("div", { staticClass: "c-workList__header" }, [
-            _c("h2", { staticClass: "c-workList__title" }, [
-              _vm._v(_vm._s(_vm.listTitle))
-            ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "c-workList__info" }, [
-              _vm._v("\n        " + _vm._s(_vm.totalNum) + "件中\n        "),
-              _c("span", [_vm._v(_vm._s(_vm.fromNum))]),
-              _vm._v(" -\n        "),
-              _c("span", [_vm._v(_vm._s(_vm.toNum))]),
-              _vm._v("件表示\n      ")
-            ])
-          ]),
-          _vm._v(" "),
-          _vm.isLoading ? _c("Loader") : _vm._e(),
-          _vm._v(" "),
-          _vm._l(_vm.works, function(work) {
+      _c("div", { staticClass: "c-workList__header" }, [
+        _c("h2", { staticClass: "c-workList__title" }, [
+          _vm._v(_vm._s(_vm.listTitle))
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "c-workList__info" }, [
+          _vm._v("\n      " + _vm._s(_vm.totalNum) + "件中\n      "),
+          _c("span", [_vm._v(_vm._s(_vm.fromNum))]),
+          _vm._v(" -\n      "),
+          _c("span", [_vm._v(_vm._s(_vm.toNum))]),
+          _vm._v("件表示\n    ")
+        ])
+      ]),
+      _vm._v(" "),
+      _vm.isLoading ? _c("Loader") : _vm._e(),
+      _vm._v(" "),
+      !_vm.isLoading
+        ? _vm._l(_vm.works, function(work) {
             return _c("Work", {
               key: work.id,
               attrs: { work: work, "with-comment": _vm.withComment },
               on: { bookmarks: _vm.clickBookmarks }
             })
           })
-        ],
-        2
-      ),
+        : _vm._e(),
       _vm._v(" "),
       !_vm.isLoading
         ? _c("Pagination", {
@@ -40921,7 +40930,7 @@ var render = function() {
           })
         : _vm._e()
     ],
-    1
+    2
   )
 }
 var staticRenderFns = []

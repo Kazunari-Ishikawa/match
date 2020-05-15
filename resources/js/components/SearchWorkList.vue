@@ -1,31 +1,34 @@
 <template>
-  <div class="l-container l-container--withSide">
-    <!-- 検索バー -->
+  <div class="c-workList">
+    <div class="c-workList__header">
+      <h2 class="c-workList__title">案件一覧</h2>
+      <p class="c-workList__info">
+        {{ totalNum }}件中
+        <span>{{ fromNum }}</span> -
+        <span>{{ toNum }}</span>件表示
+      </p>
+    </div>
+
+    <!-- 検索ボックス -->
     <SearchComponent :category="category" :type="type" @click-search="searchWorks" />
 
-    <!-- メインコンテンツ -->
-    <section class="l-container__body--withSide">
-      <div class="c-workList__header">
-        <h2 class="c-workList__title">案件一覧</h2>
-        <p class="c-workList__info">
-          {{ totalNum }}件中
-          <span>{{fromNum}}</span> -
-          <span>{{toNum}}</span>件表示
-        </p>
-      </div>
+    <Loader v-if="isLoading" />
 
-      <Loader v-if="isLoading" />
-
-      <div v-if="!isLoading" class="c-workList">
-        <Work v-for="work in works" :key="work.id" :work="work" @bookmarks="clickBookmarks" />
-      </div>
-      <Pagination
-        v-if="!isLoading"
-        :current-page="currentPage"
-        :last-page="lastPage"
-        @move-page="movePage"
+    <template v-if="!isLoading">
+      <Work
+        v-for="work in works"
+        :key="work.id"
+        :work="work"
+        @bookmarks="clickBookmarks"
       />
-    </section>
+    </template>
+
+    <Pagination
+      v-if="!isLoading"
+      :current-page="currentPage"
+      :last-page="lastPage"
+      @move-page="movePage"
+    />
   </div>
 </template>
 
@@ -55,7 +58,6 @@ export default {
         maxPrice: 0
       },
       works: null,
-      isLoading: false,
       pageNum: 1,
       currentPage: 0,
       lastPage: 0,
