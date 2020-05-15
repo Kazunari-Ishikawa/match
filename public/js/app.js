@@ -2773,6 +2773,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -2797,7 +2801,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         maxPrice: 0
       },
       works: null,
-      isLoading: false,
       pageNum: 1,
       currentPage: 0,
       lastPage: 0,
@@ -3138,6 +3141,7 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
 //
 //
 //
@@ -40887,39 +40891,34 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "section",
-    { staticClass: "l-container__body--withSide" },
+    "div",
+    { staticClass: "c-workList" },
     [
-      _c(
-        "div",
-        { staticClass: "c-workList" },
-        [
-          _c("div", { staticClass: "c-workList__header" }, [
-            _c("h2", { staticClass: "c-workList__title" }, [
-              _vm._v(_vm._s(_vm.listTitle))
-            ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "c-workList__info" }, [
-              _vm._v("\n        " + _vm._s(_vm.totalNum) + "件中\n        "),
-              _c("span", [_vm._v(_vm._s(_vm.fromNum))]),
-              _vm._v(" -\n        "),
-              _c("span", [_vm._v(_vm._s(_vm.toNum))]),
-              _vm._v("件表示\n      ")
-            ])
-          ]),
-          _vm._v(" "),
-          _vm.isLoading ? _c("Loader") : _vm._e(),
-          _vm._v(" "),
-          _vm._l(_vm.works, function(work) {
+      _c("div", { staticClass: "c-workList__header" }, [
+        _c("h2", { staticClass: "c-workList__title" }, [
+          _vm._v(_vm._s(_vm.listTitle))
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "c-workList__info" }, [
+          _vm._v("\n      " + _vm._s(_vm.totalNum) + "件中\n      "),
+          _c("span", [_vm._v(_vm._s(_vm.fromNum))]),
+          _vm._v(" -\n      "),
+          _c("span", [_vm._v(_vm._s(_vm.toNum))]),
+          _vm._v("件表示\n    ")
+        ])
+      ]),
+      _vm._v(" "),
+      _vm.isLoading ? _c("Loader") : _vm._e(),
+      _vm._v(" "),
+      !_vm.isLoading
+        ? _vm._l(_vm.works, function(work) {
             return _c("Work", {
               key: work.id,
               attrs: { work: work, "with-comment": _vm.withComment },
               on: { bookmarks: _vm.clickBookmarks }
             })
           })
-        ],
-        2
-      ),
+        : _vm._e(),
       _vm._v(" "),
       !_vm.isLoading
         ? _c("Pagination", {
@@ -40931,7 +40930,7 @@ var render = function() {
           })
         : _vm._e()
     ],
-    1
+    2
   )
 }
 var staticRenderFns = []
