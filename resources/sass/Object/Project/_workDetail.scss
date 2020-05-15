@@ -12,16 +12,8 @@
       margin-bottom: $space_default;
     }
   }
-  &__meta {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-size: $font-size_s;
-    margin-bottom: $space_s;
-  }
   &__body {
     display: flex;
-    align-items: center;
     justify-content: space-between;
     @include mq() {
       display: block;
@@ -40,66 +32,25 @@
   &__head, &__data {
     border-bottom: 1px solid $color_sub2;
     padding: $space_s;
-  }
-  &__head {
     @include mq() {
-      padding-left: 0;
-      padding-right: 5px;
-    }
-  }
-  &__data {
-    @include mq() {
-      padding-left: 0;
-      padding-right: 0;
+      padding: 5px 0;
     }
   }
   &__action {
-    margin-bottom: $space_default;
-  }
-  &__tag {
-    display: inline-block;
-    font-size: $font-size_s;
-    border: 1px solid $color_sub2;
-    border-radius: $radius_s;
-    padding: 5px;
-    transition: $time_s;
-    margin-right: $space_s;
-    &:last-child {
-      margin-right: 0;
-    }
-    &:hover {
-      cursor: pointer;
-    }
-    &--container {
+    @include mq() {
       display: flex;
-      justify-content: space-between;
-      margin-bottom: $space_default;
-      @include mq() {
-        justify-content: start;
-      }
-    }
-    &--like {
-      &:hover {
-        background: $orange;
-        border: 1px solid $orange;
-        color: white;
-      }
-    }
-    &--twitter {
-      &:hover {
-        background: $twitter;
-        border: 1px solid $twitter;
-        color: white;
-      }
+      align-items: center;
+      justify-content: flex-end;
     }
   }
-
   &__content {
     background: $color_bg;
     padding: $space_default;
+    margin-top: $space_3l;
     @include mq() {
       font-size: $font-size_m;
       padding: $space_s;
+      margin-top: $space_default;
     }
   }
 }

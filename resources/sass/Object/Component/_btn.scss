@@ -27,6 +27,9 @@
       transform: scale(1.03);
     }
   }
+  &--sm {
+    width: 100px;
+  }
   &--hero {
     box-shadow: none;
     font-size: $font-size_l;
@@ -49,8 +52,31 @@
       font-size: $font-size_default;
     }
   }
+  &--reverse {
+    background: white;
+    box-shadow: none;
+    border: 1px solid $color_sub2;
+    color: $color_default;
+    &:hover {
+      transform: none;
+      color: $color_default;
+    }
+  }
+  &--twitter {
+    &:hover {
+      color: white;
+      background: $twitter;
+      border: 1px solid $twitter;
+    }
+  }
   &__container {
-    display: flex;
-    justify-content: flex-end;
+    margin-bottom: $space_3l;
+    @include mq() {
+      margin-bottom: $space_default;
+    }
+    &--right {
+      display: flex;
+      justify-content: flex-end;
+    }
   }
 }

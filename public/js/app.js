@@ -3167,6 +3167,26 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     work: Object
@@ -41015,7 +41035,9 @@ var render = function() {
             _vm._v(_vm._s(_vm.work.counts) + "人が応募しています")
           ])
         ])
-      ])
+      ]),
+      _vm._v(" "),
+      _vm._m(0)
     ]),
     _vm._v(" "),
     _c("p", { staticClass: "p-workDetail__content" }, [
@@ -41023,7 +41045,28 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "p-workDetail__action" }, [
+      _c("div", { staticClass: "p-workDetail__tag--container" }, [
+        _c(
+          "div",
+          { staticClass: "p-workDetail__tag p-workDetail__tag--like" },
+          [_vm._v("気になる!")]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "p-workDetail__tag p-workDetail__tag--twitter" },
+          [_vm._v("シェア!")]
+        )
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

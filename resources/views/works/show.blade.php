@@ -10,13 +10,16 @@
     {{-- <work-detail :work='@json($work)'></work-detail> --}}
     <div class="p-workDetail">
       <h2 class="p-workDetail__title">{{ $work->title }}</h2>
-      <div class="p-workDetail__meta">
-        <a href="{{ route('users.show', $work->user->id) }}" class="p-workDetail__name">{{ $work->user->name}}</a>
-        <div class="p-workDetail__date">登録日:{{ $work->created_at }}</div>
-      </div>
-
       <div class="p-workDetail__body">
         <table class="p-workDetail__table">
+          <tr class="p-workDetail__row">
+          <tr class="p-workDetail__row">
+            <th class="p-workDetail__head">登録日</th>
+            <td class="p-workDetail__data">{{ $work->created_at }}</td>
+          </tr>
+          <th class="p-workDetail__head">依頼者</th>
+          <td class="p-workDetail__data"><a href="{{ route('users.show', $work->user->id) }}">{{ $work->user->name}}</a></td>
+          </tr>
           <tr class="p-workDetail__row">
             <th class="p-workDetail__head">カテゴリ</th>
             <td class="p-workDetail__data">{{ $work->category->name }}</td>
@@ -40,30 +43,29 @@
         </table>
 
         <div class="p-workDetail__action">
-          <div class="p-workDetail__tag--container">
-            <div class="p-workDetail__tag p-workDetail__tag--like">気になる!</div>
-            <div class="p-workDetail__tag p-workDetail__tag--twitter">シェア!</div>
-          </div>
-
           <div class="c-btn__container">
-            @if ($is_registered)
-            <a href="{{ route('works.edit', $work->id) }}" class="c-btn">編集する</a>
-            @elseif($is_applied)
-            <form action="{{ route('works.cancel', $work->id) }}" method="POST">
-              @csrf
-              <input type="submit" class="c-btn c-btn--em" id="js-cancel-apply" value="応募を取り消す">
-            </form>
-            @else
-            <form action="{{ route('works.apply', $work->id) }}" method="POST">
-              @csrf
-              <input type="submit" class="c-btn c-btn--em" value="応募する">
-            </form>
-            @endif
+            <div class="c-btn c-btn--reverse c-btn--sm"><i class="far fa-bookmark"></i>気になる</div>
           </div>
-
+          <div class="c-btn__container">
+            <div class="c-btn c-btn--sm c-btn--reverse c-btn--twitter"><i class="fab fa-twitter"></i>でシェア</div>
+          </div>
         </div>
-
       </div>
+
+      @if ($is_registered)
+      <a href="{{ route('works.edit', $work->id) }}" class="c-btn c-btn--full">編集する</a>
+      @elseif($is_applied)
+      <form action="{{ route('works.cancel', $work->id) }}" method="POST">
+        @csrf
+        <input type="submit" class="c-btn c-btn--em c-btn--full" id="js-cancel-apply" value="応募を取り消す">
+      </form>
+      @else
+      <form action="{{ route('works.apply', $work->id) }}" method="POST">
+        @csrf
+        <input type="submit" class="c-btn c-btn--em c-btn--full" value="応募する">
+      </form>
+      @endif
+
       <p class="p-workDetail__content">{{ $work->content }}</p>
     </div>
 
@@ -76,9 +78,9 @@
       <div class="c-form__group">
         <textarea name="content" class="c-form__textarea c-form__textarea--message"></textarea>
       </div>
-      <div class="c-btn__container">
-        <input type="submit" class="c-btn c-btn--em" value="コメントする" />
-      </div>
+      {{-- <div class="c-btn__container"> --}}
+      <input type="submit" class="c-btn c-btn--em c-btn--full" value="コメントする" />
+      {{-- </div> --}}
     </form>
 
   </div>

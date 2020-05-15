@@ -1,13 +1,4 @@
 .c-flatBtn {
-  &__container--right {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding: $space_default $space_3l;
-    @include mq() {
-      padding: $space_m $space_default;
-    }
-  }
   display: block;
   font-size: $font-size_m;
   margin-right: $space_s;
@@ -26,5 +17,14 @@
   }
   @include mq() {
     font-size: $font-size_s;
+  }
+  &__container--right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: $space_default $space_3l;
+    @include mq() {
+      padding: $space_m $space_default;
+    }
   }
 }

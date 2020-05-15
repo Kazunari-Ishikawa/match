@@ -36,7 +36,7 @@
           <div class="p-workDetail__tag p-workDetail__tag--twitter">シェア!</div>
         </div>
 
-        <div class="c-btn__container">
+        <!-- <div class="c-btn__container">
           @if ($is_registered)
           <a href="{{ route('works.edit', $work->id) }}" class="c-btn">編集する</a>
           @elseif($is_applied)
@@ -48,7 +48,7 @@
             @csrf
             <input type="submit" class="c-btn c-btn--em" value="応募する" />
           </form>@endif
-        </div>
+        </div>-->
       </div>
     </div>
     <p class="p-workDetail__content">{{ work.content }}</p>
