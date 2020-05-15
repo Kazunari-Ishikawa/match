@@ -78,12 +78,13 @@ export default {
       const response = await axios
         .post(`/api/bookmarks/${this.work.id}/add`)
         .catch(error => {
-          console.log(error);
           if (error.response.status === 401) {
             alert("気になる機能を使うにはログインしてください。");
             return false;
           }
+          return error.response;
         });
+
       if (response.status === 200) {
         this.work.bookmarked = true;
       }
@@ -92,12 +93,13 @@ export default {
       const response = await axios
         .post(`/api/bookmarks/${this.work.id}/delete`)
         .catch(error => {
-          console.log(error);
           if (error.response.status === 401) {
             alert("気になる機能を使うにはログインしてください。");
             return false;
           }
+          return error.response;
         });
+
       if (response.status === 200) {
         this.work.bookmarked = false;
       }

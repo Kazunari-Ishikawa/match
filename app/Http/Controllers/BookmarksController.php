@@ -18,6 +18,7 @@ class BookmarksController extends Controller
 
     // 該当するWorkを取得
     $works = Work::with(['user', 'category'])->where(['is_closed' => false])->whereIn('id', $bookmarked_work_id)->paginate(5);
+
     return $works;
   }
 

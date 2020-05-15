@@ -2771,11 +2771,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
 
 
 
@@ -2868,17 +2863,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.pageNum = page;
       this.searchWorks();
     },
-    clickBookmarks: function clickBookmarks(_ref) {
+    clickBookmark: function clickBookmark(_ref) {
       var id = _ref.id,
           bookmarked = _ref.bookmarked;
 
       if (bookmarked) {
-        this.deleteBookmarks(id);
+        this.deleteBookmark(id);
       } else {
-        this.addBookmarks(id);
+        this.addBookmark(id);
       }
     },
-    addBookmarks: function addBookmarks(id) {
+    addBookmark: function addBookmark(id) {
       var _this2 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee2() {
@@ -2889,30 +2884,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.next = 2;
                 return axios.post("/api/bookmarks/".concat(id, "/add"))["catch"](function (error) {
-                  console.log(error);
-
                   if (error.response.status === 401) {
-                    alert("気になる機能を使うにはログインしてください。"); // return error.response;
-
+                    alert("気になる機能を使うにはログインしてください。");
                     return false;
                   }
+
+                  return error.response;
                 });
 
               case 2:
                 response = _context2.sent;
-                console.log(response); // if (response.status === 401) {
-                //   return false;
-                // }
 
-                if (!(response.status === 401)) {
-                  _context2.next = 7;
-                  break;
-                }
-
-                alert("気になる機能を使うにはログインしてください。");
-                return _context2.abrupt("return", false);
-
-              case 7:
                 if (response.status === 200) {
                   _this2.works = _this2.works.map(function (work) {
                     if (work.id === response.data) {
@@ -2923,7 +2905,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   });
                 }
 
-              case 8:
+              case 4:
               case "end":
                 return _context2.stop();
             }
@@ -2931,7 +2913,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee2);
       }))();
     },
-    deleteBookmarks: function deleteBookmarks(id) {
+    deleteBookmark: function deleteBookmark(id) {
       var _this3 = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
@@ -2942,13 +2924,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context3.next = 2;
                 return axios.post("/api/bookmarks/".concat(id, "/delete"))["catch"](function (error) {
-                  console.log(error);
+                  if (error.response.status === 401) {
+                    alert("気になる機能を使うにはログインしてください。");
+                    return false;
+                  }
+
                   return error.response;
                 });
 
               case 2:
                 response = _context3.sent;
-                console.log(response);
 
                 if (response.status === 200) {
                   _this3.works = _this3.works.map(function (work) {
@@ -2960,11 +2945,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   });
                 }
 
-                if (location.pathname === "/works/bookmarks") {
-                  _this3.getBookmarksWorks();
-                }
-
-              case 6:
+              case 4:
               case "end":
                 return _context3.stop();
             }
@@ -3223,12 +3204,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.next = 2;
                 return axios.post("/api/bookmarks/".concat(_this.work.id, "/add"))["catch"](function (error) {
-                  console.log(error);
-
                   if (error.response.status === 401) {
                     alert("気になる機能を使うにはログインしてください。");
                     return false;
                   }
+
+                  return error.response;
                 });
 
               case 2:
@@ -3257,12 +3238,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.next = 2;
                 return axios.post("/api/bookmarks/".concat(_this2.work.id, "/delete"))["catch"](function (error) {
-                  console.log(error);
-
                   if (error.response.status === 401) {
                     alert("気になる機能を使うにはログインしてください。");
                     return false;
                   }
+
+                  return error.response;
                 });
 
               case 2:
@@ -3453,20 +3434,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context2.next = 2;
                 return axios.post("/api/bookmarks/".concat(id, "/add"))["catch"](function (error) {
-                  console.log(error);
-
                   if (error.response.status === 401) {
-                    alert("気になる機能を使うにはログインしてください。"); // return error.response;
-
+                    alert("気になる機能を使うにはログインしてください。");
                     return false;
                   }
+
+                  return error.response;
                 });
 
               case 2:
                 response = _context2.sent;
-                console.log(response); // if (response.status === 401) {
-                //   return false;
-                // }
 
                 if (response.status === 200) {
                   _this2.works = _this2.works.map(function (work) {
@@ -3478,7 +3455,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   });
                 }
 
-              case 5:
+              case 4:
               case "end":
                 return _context2.stop();
             }
@@ -3496,11 +3473,17 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context3.prev = _context3.next) {
               case 0:
                 _context3.next = 2;
-                return axios.post("/api/bookmarks/".concat(id, "/delete"))["catch"]();
+                return axios.post("/api/bookmarks/".concat(id, "/delete"))["catch"](function (error) {
+                  if (error.response.status === 401) {
+                    alert("気になる機能を使うにはログインしてください。");
+                    return false;
+                  }
+
+                  return error.response;
+                });
 
               case 2:
                 response = _context3.sent;
-                console.log(response);
 
                 if (response.status === 200) {
                   _this3.works = _this3.works.map(function (work) {
@@ -3516,7 +3499,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this3.getWorks();
                 }
 
-              case 6:
+              case 5:
               case "end":
                 return _context3.stop();
             }
@@ -40885,7 +40868,7 @@ var render = function() {
             return _c("Work", {
               key: work.id,
               attrs: { work: work },
-              on: { bookmarks: _vm.clickBookmarks }
+              on: { bookmark: _vm.clickBookmark }
             })
           })
         : _vm._e(),

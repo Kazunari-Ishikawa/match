@@ -15,12 +15,7 @@
     <Loader v-if="isLoading" />
 
     <template v-if="!isLoading">
-      <Work
-        v-for="work in works"
-        :key="work.id"
-        :work="work"
-        @bookmarks="clickBookmarks"
-      />
+      <Work v-for="work in works" :key="work.id" :work="work" @bookmark="clickBookmark" />
     </template>
 
     <Pagination
@@ -105,33 +100,23 @@ export default {
       this.pageNum = page;
       this.searchWorks();
     },
-    clickBookmarks({ id, bookmarked }) {
+    clickBookmark({ id, bookmarked }) {
       if (bookmarked) {
-        this.deleteBookmarks(id);
+        this.deleteBookmark(id);
       } else {
-        this.addBookmarks(id);
+        this.addBookmark(id);
       }
     },
-    async addBookmarks(id) {
+    async addBookmark(id) {
       const response = await axios
         .post(`/api/bookmarks/${id}/add`)
         .catch(error => {
-          console.log(error);
           if (error.response.status === 401) {
             alert("気になる機能を使うにはログインしてください。");
-            // return error.response;
             return false;
           }
+          return error.response;
         });
-      console.log(response);
-
-      // if (response.status === 401) {
-      //   return false;
-      // }
-      if (response.status === 401) {
-        alert("気になる機能を使うにはログインしてください。");
-        return false;
-      }
 
       if (response.status === 200) {
         this.works = this.works.map(work => {
@@ -142,14 +127,17 @@ export default {
         });
       }
     },
-    async deleteBookmarks(id) {
+    async deleteBookmark(id) {
       const response = await axios
         .post(`/api/bookmarks/${id}/delete`)
         .catch(error => {
-          console.log(error);
+          if (error.response.status === 401) {
+            alert("気になる機能を使うにはログインしてください。");
+            return false;
+          }
           return error.response;
         });
-      console.log(response);
+
       if (response.status === 200) {
         this.works = this.works.map(work => {
           if (work.id === response.data) {
@@ -157,9 +145,6 @@ export default {
           }
           return work;
         });
-      }
-      if (location.pathname === "/works/bookmarks") {
-        this.getBookmarksWorks();
       }
     }
   }
