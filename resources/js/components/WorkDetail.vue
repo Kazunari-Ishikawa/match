@@ -59,7 +59,12 @@
 <script>
 export default {
   props: {
-    work: Object
+    data: Object
+  },
+  data() {
+    return {
+      work: this.data
+    };
   },
   methods: {
     clickBookmark() {
@@ -73,6 +78,7 @@ export default {
       const response = await axios
         .post(`/api/bookmarks/${this.work.id}/add`)
         .catch(error => {
+          console.log(error);
           if (error.response.status === 401) {
             alert("気になる機能を使うにはログインしてください。");
             return false;
@@ -85,10 +91,15 @@ export default {
     async deleteBookmark() {
       const response = await axios
         .post(`/api/bookmarks/${this.work.id}/delete`)
-        .catch();
-      console.log(response);
+        .catch(error => {
+          console.log(error);
+          if (error.response.status === 401) {
+            alert("気になる機能を使うにはログインしてください。");
+            return false;
+          }
+        });
       if (response.status === 200) {
-        work.bookmarked = false;
+        this.work.bookmarked = false;
       }
     }
   }

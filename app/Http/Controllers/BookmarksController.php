@@ -21,13 +21,9 @@ class BookmarksController extends Controller
     return $works;
   }
 
+  // BookmarkテーブルへWorkを追加する
   public function add($id)
   {
-    // 未ログインユーザーの場合
-    if (Auth::check()) {
-      return response(401);
-    }
-
     $bookmark = new Bookmark;
     $bookmark->work_id = $id;
     $bookmark->user_id = Auth::id();
@@ -38,6 +34,7 @@ class BookmarksController extends Controller
     return response($id);
   }
 
+  // Bookmarkテーブルから削除する
   public function delete($id)
   {
     \Log::debug($id);

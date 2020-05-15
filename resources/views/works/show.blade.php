@@ -7,7 +7,7 @@
     <p class="c-form__link"><a href="{{ route('works.index') }}">案件一覧へ戻る</a></p>
 
     <!-- 案件詳細 -->
-    <work-detail :work='@json($work)'></work-detail>
+    <work-detail :data='@json($work)'></work-detail>
 
     <!-- 応募ボタン -->
     <div class="p-workDetail__apply">

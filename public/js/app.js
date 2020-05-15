@@ -3197,7 +3197,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    work: Object
+    data: Object
+  },
+  data: function data() {
+    return {
+      work: this.data
+    };
   },
   methods: {
     clickBookmark: function clickBookmark() {
@@ -3218,6 +3223,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.next = 2;
                 return axios.post("/api/bookmarks/".concat(_this.work.id, "/add"))["catch"](function (error) {
+                  console.log(error);
+
                   if (error.response.status === 401) {
                     alert("気になる機能を使うにはログインしてください。");
                     return false;
@@ -3249,17 +3256,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return axios.post("/api/bookmarks/".concat(_this2.work.id, "/delete"))["catch"]();
+                return axios.post("/api/bookmarks/".concat(_this2.work.id, "/delete"))["catch"](function (error) {
+                  console.log(error);
+
+                  if (error.response.status === 401) {
+                    alert("気になる機能を使うにはログインしてください。");
+                    return false;
+                  }
+                });
 
               case 2:
                 response = _context2.sent;
-                console.log(response);
 
                 if (response.status === 200) {
-                  work.bookmarked = false;
+                  _this2.work.bookmarked = false;
                 }
 
-              case 5:
+              case 4:
               case "end":
                 return _context2.stop();
             }
