@@ -7,6 +7,7 @@
     <p class="c-form__text"><a href="{{ url()->previous('/') }}">前ページへ戻る</a></p>
 
     <!-- 案件詳細 -->
+    {{-- <work-detail :work='@json($work)'></work-detail> --}}
     <div class="p-workDetail">
       <h2 class="p-workDetail__title">{{ $work->title }}</h2>
       <div class="p-workDetail__meta">

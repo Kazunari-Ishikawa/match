@@ -25,6 +25,7 @@ window.Vue = require('vue');
 
 Vue.component('search-work-list', require('./components/SearchWorkList.vue').default);
 Vue.component('work-list', require('./components/WorkList.vue').default);
+Vue.component('work-detail', require('./components/WorkDetail.vue').default);
 Vue.component('comment-list', require('./components/CommentList.vue').default);
 Vue.component('board-list', require('./components/BoardList.vue').default);
 Vue.component('message-list', require('./components/MessageList.vue').default);
