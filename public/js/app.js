@@ -1920,14 +1920,6 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
-/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
-
-
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
 //
 //
 //
@@ -1963,43 +1955,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     board: Object
-  },
-  data: function data() {
-    return {
-      message: null,
-      getMessageFinished: false
-    };
-  },
-  created: function created() {
-    this.getLatestMessage();
-  },
-  methods: {
-    getLatestMessage: function getLatestMessage() {
-      var _this = this;
-
-      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var response;
-        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return axios.get("/api/boards/".concat(_this.board.id, "/messages/latest"));
-
-              case 2:
-                response = _context.sent;
-                console.log(response);
-                _this.message = response.data;
-                _this.getMessageFinished = true;
-
-              case 6:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }))();
-    }
   }
 });
 
@@ -39909,14 +39864,14 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _vm.getMessageFinished && _vm.message !== ""
+      _vm.board.message
         ? [
             _c("div", { staticClass: "c-board__body" }, [
               _c("img", {
                 staticClass: "c-board__icon",
                 attrs: {
-                  src: _vm.message.user.icon
-                    ? "/storage/img/icons/" + _vm.message.user.icon
+                  src: _vm.board.message.user.icon
+                    ? "/storage/img/icons/" + _vm.board.message.user.icon
                     : "/images/icon_sample.png",
                   alt: "アイコン"
                 }
@@ -39924,16 +39879,16 @@ var render = function() {
               _vm._v(" "),
               _c("div", { staticClass: "c-board__main" }, [
                 _c("p", { staticClass: "c-board__name" }, [
-                  _vm._v(_vm._s(_vm.message.user.name))
+                  _vm._v(_vm._s(_vm.board.message.user.name))
                 ]),
                 _vm._v(" "),
                 _c("p", { staticClass: "c-board__content" }, [
-                  _vm._v(_vm._s(_vm.message.content))
+                  _vm._v(_vm._s(_vm.board.message.content))
                 ])
               ]),
               _vm._v(" "),
               _c("p", { staticClass: "c-board__date" }, [
-                _vm._v(_vm._s(_vm.message.created_at))
+                _vm._v(_vm._s(_vm.board.message.created_at))
               ])
             ])
           ]
