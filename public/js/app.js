@@ -2249,8 +2249,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                 if (response.status === 200) {
                   alert("削除しました。");
-
-                  _this2.getComments();
+                  window.location.href = "/works/".concat(_this2.workId); // this.getComments();
                 }
 
               case 6:

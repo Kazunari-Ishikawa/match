@@ -46,7 +46,7 @@ export default {
         console.log(response);
         if (response.status === 200) {
           alert("削除しました。");
-          this.getComments();
+          window.location.href = `/works/${this.workId}`;
         }
       }
     }

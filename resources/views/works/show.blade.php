@@ -30,7 +30,7 @@
     <comment-list :work-id='@json($work->id)'></comment-list>
 
     <!-- コメント入力フォーム -->
-    <form action="{{ route('comments.new', $work->id) }}" method="POST" class="c-form">
+    <form action="{{ route('comments.create', $work->id) }}" method="POST" class="c-form">
       @csrf
       <div class="c-form__group">
         @error('content')
