@@ -28,6 +28,7 @@ class UsersController extends Controller
         }
 
         $user = User::with('works')->find($id);
+
         // 存在しないuserのIDの場合リダイレクト
         if (!$user) {
             return redirect('/')->with('flash_message', '不正な処理がされました。時間を置いてやり直してください。');
@@ -59,7 +60,7 @@ class UsersController extends Controller
         }
         $user->save();
 
-        return redirect('/mypage');
+        return redirect('/mypage')->with('flash_message', 'プロフィールを編集しました。');
     }
 
     // パスワード変更画面表示
@@ -75,7 +76,7 @@ class UsersController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
-        return redirect('/mypage');
+        return redirect('/mypage')->with('flash_message', 'パスワードをしました。');
     }
     // 退会画面表示
     public function showWithdrawForm()
