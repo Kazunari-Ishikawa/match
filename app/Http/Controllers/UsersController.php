@@ -11,15 +11,15 @@ use App\Work;
 
 class UsersController extends Controller
 {
-    // マイページ表示
+    // マイページ画面を表示する
     public function mypage()
     {
         $user = Auth::user();
 
-        return view('users.mypage', ['user' => $user]);
+        return view('users.mypage', compact('user'));
     }
 
-    // ユーザー詳細画面表示
+    // ユーザー詳細画面を表示する
     public function show($id)
     {
         // パラメータが数字でない場合リダイレクト
@@ -37,20 +37,22 @@ class UsersController extends Controller
         return view('users.show', compact('user'));
     }
 
-    // プロフィール編集画面表示
+    // プロフィール編集画面を表示する
     public function edit()
     {
         $user = Auth::user();
 
-        return view('users.edit', ['user' => $user]);
+        return view('users.edit', compact('user'));
     }
 
     // プロフィールを変更する
     public function update(UpdateUserRequest $request)
     {
         $user = Auth::user();
+
         // icon以外の入力を代入
         $user->fill($request->except('icon'));
+
         // リクエストにファイルが存在し、アップロードに成功した場合、ファイル名をモデルへ代入
         if ($request->hasFile('icon')) {
             if ($request->file('icon')->isValid()) {
@@ -63,7 +65,7 @@ class UsersController extends Controller
         return redirect('/mypage')->with('flash_message', 'プロフィールを編集しました。');
     }
 
-    // パスワード変更画面表示
+    // パスワード変更画面を表示する
     public function editPassword()
     {
         return view('users.editPassword');
@@ -78,11 +80,13 @@ class UsersController extends Controller
 
         return redirect('/mypage')->with('flash_message', 'パスワードをしました。');
     }
-    // 退会画面表示
+
+    // 退会画面を表示する
     public function showWithdrawForm()
     {
         return view('users.withdraw');
     }
+
     // 退会する
     public function withdraw()
     {
