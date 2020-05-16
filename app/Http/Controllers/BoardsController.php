@@ -9,7 +9,7 @@ use App\Message;
 
 class BoardsController extends Controller
 {
-    // メッセージボード一覧を取得する
+    // メッセージ一覧画面を表示する
     public function index()
     {
        return view('messages.index');
@@ -35,7 +35,7 @@ class BoardsController extends Controller
         $board->delete();
     }
 
-    // ログインユーザーのメッセージボードを取得する
+    // ログインユーザーのBoardsを取得する
     public function getBoards()
     {
         $user_id = Auth::id();
@@ -43,13 +43,25 @@ class BoardsController extends Controller
         // 応募のあった案件に対するBoardsを取得する
         $requested_boards = Board::with(['work:id,title', 'fromUser', 'toUser'])->where('to_user_id', $user_id)->get();
 
+        // それぞれのBoardについて、最新Commentを取得する
+        $requested_boards = $requested_boards->map(function($board) {
+            $board->message = Message::with('user')->where('board_id', $board->id)->latest()->first();
+            return $board;
+        });
+
         // 自身が応募した案件に対するBoardsを取得する
         $applied_boards = Board::with(['work:id,title', 'fromUser', 'toUser'])->where('from_user_id', $user_id)->get();
+
+        // それぞれのBoardについて、最新Commentを取得する
+        $applied_boards = $applied_boards->map(function($board) {
+            $board->message = Message::with('user')->where('board_id', $board->id)->latest()->first();
+            return $board;
+        });
 
         return response(compact('requested_boards', 'applied_boards'));
     }
 
-    // メッセージ詳細ページ表示
+    // Board詳細画面を表示する
     public function show($id)
     {
         $board = Board::with(['fromUser', 'toUser'])->find($id);
