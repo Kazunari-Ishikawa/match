@@ -9,9 +9,9 @@
 
   <!-- メインコンテンツ -->
   <section class="l-container__body--withSide">
-    <h2 class="c-mypage__title">プロフィール編集</h2>
+    <h2 class="c-settings__title">プロフィール編集</h2>
 
-    <div class="c-mypage__contents">
+    <div class="c-settings__contents">
       <form action="{{ route('users.edit') }}" method="POST" enctype="multipart/form-data" class="c-form">
         @csrf
 
