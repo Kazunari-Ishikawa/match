@@ -51,7 +51,7 @@ return [
             'database' => env('DB_DATABASE', 'match'),
             'username' => env('DB_USERNAME', 'homestead'),
             'password' => env('DB_PASSWORD', 'secret'),
-            'unix_socket' => env('DB_SOCKET', '/var/run/mysqld/mysqld.sock'),
+            'unix_socket' => env('DB_SOCKET'),
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
