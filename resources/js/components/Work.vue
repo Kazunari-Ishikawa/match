@@ -32,9 +32,12 @@
           </div>
         </div>
         <div class="c-btn__container">
-          <div class="c-flatBtn c-flatBtn--twitter">
+          <a
+            class="twitter-share-button c-flatBtn c-flatBtn--twitter"
+            :href="`https://twitter.com/intent/tweet?url=https://matchwork.herokuapp.com/works/${this.work.id}`"
+          >
             <i class="fab fa-twitter fa-lg fa-fw u-icon"></i>でシェア
-          </div>
+          </a>
         </div>
       </div>
     </div>
@@ -91,6 +94,10 @@ export default {
         id: this.work.id,
         bookmarked: this.work.bookmarked
       });
+    },
+    async tweetWork() {
+      const response = await axios.post(`/api/works/${this.work.id}/tweet`);
+      console.log(response);
     }
   }
 };
