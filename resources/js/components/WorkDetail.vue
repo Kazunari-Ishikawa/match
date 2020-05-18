@@ -70,6 +70,7 @@ export default {
     };
   },
   methods: {
+    // Bookmarkへの追加または削除を判定する
     clickBookmark() {
       if (this.work.bookmarked) {
         this.deleteBookmark();
@@ -77,32 +78,40 @@ export default {
         this.addBookmark();
       }
     },
+    // Bookmarkへ追加する
     async addBookmark() {
       const response = await axios
         .post(`/api/bookmarks/${this.work.id}/add`)
         .catch(error => {
-          if (error.response.status === 401) {
-            alert("気になる機能を使うにはログインしてください。");
-            return false;
-          }
           return error.response;
         });
-
+      if (response.status === 401) {
+        alert("気になる機能を使うにはログインしてください。");
+        return false;
+      }
+      if (response.status !== 200) {
+        alert("エラーが発生しました。再度やり直してください。");
+        return false;
+      }
       if (response.status === 200) {
         this.work.bookmarked = true;
       }
     },
+    // Bookmarkから削除する
     async deleteBookmark() {
       const response = await axios
         .post(`/api/bookmarks/${this.work.id}/delete`)
         .catch(error => {
-          if (error.response.status === 401) {
-            alert("気になる機能を使うにはログインしてください。");
-            return false;
-          }
           return error.response;
         });
-
+      if (response.status === 401) {
+        alert("気になる機能を使うにはログインしてください。");
+        return false;
+      }
+      if (response.status !== 200) {
+        alert("エラーが発生しました。再度やり直してください。");
+        return false;
+      }
       if (response.status === 200) {
         this.work.bookmarked = false;
       }

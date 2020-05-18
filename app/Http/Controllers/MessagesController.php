@@ -26,6 +26,7 @@ class MessagesController extends Controller
         return response($message);
     }
 
+    // Messageを削除する
     public function deleteMessage($id)
     {
         // 登録者以外が対象のmessageを削除しようとした場合エラーを返す

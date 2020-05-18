@@ -30,6 +30,7 @@ export default {
     }
   },
   methods: {
+    // 削除を通知する
     clickDelete() {
       this.$emit("click-delete", this.comment.id);
     }

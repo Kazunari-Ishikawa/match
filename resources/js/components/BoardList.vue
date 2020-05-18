@@ -40,15 +40,20 @@ export default {
     this.getBoards();
   },
   methods: {
+    // メッセージ表示のBoardを取得する
     async getBoards() {
       this.isLoading = true;
-      const response = await axios.get("/api/boards").catch();
-      console.log(response);
+      const response = await axios.get("/api/boards").catch(error => {
+        return error.response;
+      });
+      if (response.status !== 200) {
+        alert("エラーが発生しました。再度やり直してください。");
+        return false;
+      }
       if (response.status === 200) {
         this.requestedBoards = response.data.requested_boards;
         this.appliedBoards = response.data.applied_boards;
       }
-
       this.isLoading = false;
     }
   }

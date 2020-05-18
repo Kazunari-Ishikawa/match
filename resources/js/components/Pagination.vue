@@ -37,8 +37,6 @@ export default {
     pages() {
       let pages = [];
       for (let i = 1; i <= this.lastPage; i++) {
-        // pages.id = i;
-        // pages.num = i;
         pages.push(i);
       }
       return pages;
