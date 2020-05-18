@@ -13,7 +13,7 @@
     <a class="p-userDetail" href="{{ route('users.show', $user->id) }}">
       <div class="p-userDetail__icon">
         @if ($user->icon)
-        <img src="/storage/img/icons/{{$user->icon}}" alt="アイコン" class="p-userDetail__img">
+        <img src="{{asset('/storage/img/icons/'.$user->icon)}}" alt="アイコン" class="p-userDetail__img">
         @else
         <img src="{{asset('/images/icon_sample.png')}}" alt="アイコン" class="p-userDetail__img">
         @endif

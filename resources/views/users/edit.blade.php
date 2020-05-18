@@ -32,14 +32,14 @@
         </div>
 
         <div class="c-form__group">
-          <label for="icon">アイコン（1MB以内）</label>
+          <label for="icon">アイコン（1MB以内。縦横150px以上の正方形を推奨）</label>
           @error('icon')
           <span class="c-form__error">{{ $message }}</span>
           @enderror
           <label class="c-form__group--drop">
             <input type="hidden" name="MAX_FILE_SIZE" value="1048576">
             <input type="file" class="c-form__file js-preview-input" name="icon" id="icon" accept="image/*" />
-            <img src="@if($user->icon)/storage/img/icons/{{ $user->icon }} @endif" class="c-form__preview js-preview">
+            <img src="@if($user->icon){{ asset('/storage/img/icons/'.$user->icon) }}@endif" class="c-form__preview js-preview">
             ファイルを選択
           </label>
         </div>
