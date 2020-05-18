@@ -28,6 +28,7 @@ class UpdatePasswordRule implements Rule
     public function passes($attribute, $value)
     {
         $user = Auth::user();
+
         // DBに登録されている値と同一であるかチェックする
         return Hash::check($value, $user->password);
     }

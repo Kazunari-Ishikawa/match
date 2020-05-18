@@ -9,9 +9,9 @@
 
   <!-- メインコンテンツ -->
   <section class="l-container__body--withSide">
-    <h2 class="c-mypage__title">パスワード変更</h2>
+    <h2 class="c-settings__title">パスワード変更</h2>
 
-    <div class="c-mypage__contents">
+    <div class="c-settings__contents">
       <form action="{{ route('users.editPassword') }}" method="POST" class="c-form">
         @csrf
 
@@ -36,9 +36,7 @@
           <input type="password" class="c-form__input" name="password_confirmation" id="password_confirmation">
         </div>
 
-        <div class="c-form__group">
-          <input type="submit" class="c-btn c-btn--full" value="変更する">
-        </div>
+        <input type="submit" class="c-btn c-btn--full" value="変更する">
 
       </form>
     </div>

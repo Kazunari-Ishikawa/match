@@ -19,17 +19,25 @@
         <p class="c-work__count">
           <span>{{work.counts}}</span>人が応募中です
         </p>
+        <a :href="`/works/${work.id}`" class="c-work__link">詳細をみる</a>
       </div>
       <div class="c-work__right">
-        <div class="c-work__right--inner">
-          <a :href="`/works/${work.id}`" class="c-work__tag c-work__tag--more">くわしく!</a>
-          <a
-            class="c-work__tag c-work__tag--bookmark"
-            :class="{ 'c-work__tag--isBookmarked': work.bookmarked }"
+        <div class="c-btn__container">
+          <div
+            class="c-flatBtn c-flatBtn--bookmark"
+            :class="{ 'c-flatBtn--isBookmarked': work.bookmarked }"
             @click="bookmark"
-          >気になる!</a>
-
-          <a class="c-work__tag c-work__tag--twitter">シェア</a>
+          >
+            <i class="far fa-bookmark fa-lg fa-fw u-icon"></i>気になる
+          </div>
+        </div>
+        <div class="c-btn__container">
+          <a
+            class="twitter-share-button c-flatBtn c-flatBtn--twitter"
+            :href="`https://twitter.com/intent/tweet?url=https://matchwork.herokuapp.com/works/${this.work.id}`"
+          >
+            <i class="fab fa-twitter fa-lg fa-fw u-icon"></i>でシェア
+          </a>
         </div>
       </div>
     </div>
@@ -86,6 +94,10 @@ export default {
         id: this.work.id,
         bookmarked: this.work.bookmarked
       });
+    },
+    async tweetWork() {
+      const response = await axios.post(`/api/works/${this.work.id}/tweet`);
+      console.log(response);
     }
   }
 };
