@@ -299,18 +299,20 @@ class WorksController extends Controller
         $min_price = 0;
         $max_price = 0;
 
-        // 案件種別が入力されていれば入力値を代入
+        // 案件種別が指定されていれば入力値を代入
         // 0は指定無しなのでwhere句不要
         if ($request->form['type'] !== 0) {
             $type = $request->form['type'];
         }
 
-        // カテゴリが入力されていれば入力値を代入
+        // カテゴリが指定されていれば入力値を代入
         // 0は指定無しなのでwhere句不要
         if ($request->form['category'] !== 0) {
             $category = $request->form['category'];
         }
 
+        // 最小金額が指定されていれば入力値を代入
+        // 0は指定無しなのでwhere句不要
         if ($request->form['minPrice'] !== 0) {
             $min_price = $request->form['minPrice'];
             switch ($min_price) {
@@ -337,11 +339,13 @@ class WorksController extends Controller
                 break;
                 case 8:
                     $min_price = 1000;
-                default:
+                    default:
                 break;
             }
         }
 
+        // 最大金額が指定されていれば入力値を代入
+        // 0は指定無しなのでwhere句不要
         if ($request->form['maxPrice'] !== 0) {
             $max_price = $request->form['maxPrice'];
             switch ($max_price) {
@@ -368,25 +372,25 @@ class WorksController extends Controller
                 break;
                 case 8:
                     $max_price = 1000;
-                default:
+                    default:
                 break;
             }
         }
 
         $works = Work::with(['user', 'category'])
-                    ->when($type, function($query, $type){
-                        return $query->where('type', $type);
-                    })
-                    ->when($category, function($query, $category) {
-                        return $query->where('category_id', $category);
-                    })
-                    ->when($min_price, function($query, $min_price) {
-                        return $query->where('min_price', '>=', $min_price);
-                    })
-                    ->when($max_price, function($query, $max_price) {
-                        return $query->where('max_price', '<=', $max_price);
-                    })
-                    ->where('is_closed', false)->orderBy('created_at', 'desc')->paginate(5);
+                ->when($type, function($query, $type){
+                    return $query->where('type', $type);
+                })
+                ->when($category, function($query, $category) {
+                    return $query->where('category_id', $category);
+                })
+                ->when($min_price, function($query, $min_price) {
+                    return $query->where('min_price', '>=', $min_price);
+                })
+                ->when($max_price, function($query, $max_price) {
+                    return $query->where('max_price', '<=', $max_price);
+                })
+                ->where('is_closed', false)->orderBy('created_at', 'desc')->paginate(5);
 
         return $works;
     }

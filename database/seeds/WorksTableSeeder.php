@@ -25,5 +25,9 @@ class WorksTableSeeder extends Seeder
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
+
+        factory(App\Work::class,30)->create();
+        factory(App\Work::class,30)->states('revenue')->create();
+
     }
 }
