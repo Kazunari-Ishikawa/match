@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Apply extends Model
 {
+    protected $table = 'applies';
+
     public function work()
     {
         return $this->belongsTo('App\Work');
