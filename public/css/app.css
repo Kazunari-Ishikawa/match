@@ -1209,15 +1209,13 @@ textarea {
 .c-work__right {
   flex: 1 1 20%;
   box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 @media screen and (max-width: 576px) {
-  .c-work__right--inner {
+  .c-work__right {
     display: flex;
     align-items: center;
+    justify-content: space-around;
   }
 }
 
@@ -1279,7 +1277,7 @@ textarea {
 
 .c-work__count {
   font-size: 14px;
-  text-align: center;
+  margin-bottom: 15px;
 }
 
 .c-work__count > span {
@@ -1287,60 +1285,9 @@ textarea {
   font-weight: bold;
 }
 
-.c-work__tag {
-  display: block;
-  font-size: 12px;
-  padding: 5px;
-  text-align: center;
-  border: 1px solid #707070;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  transition: 0.3s;
-}
-
-.c-work__tag:last-child {
-  margin-bottom: 0;
-}
-
-.c-work__tag:hover {
-  color: white;
-}
-
-@media screen and (max-width: 576px) {
-  .c-work__tag {
-    margin-bottom: 0;
-    margin-right: 10px;
-  }
-
-  .c-work__tag:last-child {
-    margin-right: 0;
-  }
-}
-
-.c-work__tag--more:hover {
-  background: #51a1a2;
-  border: 1px solid #51a1a2;
-}
-
-.c-work__tag--isBookmarked {
-  color: white;
-  background: #f6993f;
-  border: 1px solid #f6993f;
-}
-
-.c-work__tag--isBookmarked:hover {
-  background: #f6993f;
-  border: 1px solid #f6993f;
-}
-
-.c-work__tag--bookmark:hover {
-  background: #f6993f;
-  border: 1px solid #f6993f;
-}
-
-.c-work__tag--twitter:hover {
-  background: #1DA1F2;
-  border: 1px solid #1DA1F2;
+.c-work__link {
+  font-size: 14px;
+  margin-bottom: 15px;
 }
 
 .c-work__sub {

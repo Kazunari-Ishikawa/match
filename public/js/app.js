@@ -2977,6 +2977,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -40910,34 +40915,35 @@ var render = function() {
           _c("p", { staticClass: "c-work__count" }, [
             _c("span", [_vm._v(_vm._s(_vm.work.counts))]),
             _vm._v("人が応募中です\n      ")
-          ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "a",
+            {
+              staticClass: "c-work__link",
+              attrs: { href: "/works/" + _vm.work.id }
+            },
+            [_vm._v("詳細をみる")]
+          )
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "c-work__right" }, [
-          _c("div", { staticClass: "c-work__right--inner" }, [
+          _c("div", { staticClass: "c-btn__container" }, [
             _c(
-              "a",
+              "div",
               {
-                staticClass: "c-work__tag c-work__tag--more",
-                attrs: { href: "/works/" + _vm.work.id }
-              },
-              [_vm._v("くわしく!")]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "c-work__tag c-work__tag--bookmark",
-                class: { "c-work__tag--isBookmarked": _vm.work.bookmarked },
+                staticClass: "c-flatBtn c-flatBtn--bookmark",
+                class: { "c-flatBtn--isBookmarked": _vm.work.bookmarked },
                 on: { click: _vm.bookmark }
               },
-              [_vm._v("気になる!")]
-            ),
-            _vm._v(" "),
-            _c("a", { staticClass: "c-work__tag c-work__tag--twitter" }, [
-              _vm._v("シェア")
-            ])
-          ])
+              [
+                _c("i", { staticClass: "far fa-bookmark fa-lg fa-fw u-icon" }),
+                _vm._v("気になる\n        ")
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _vm._m(0)
         ])
       ]),
       _vm._v(" "),
@@ -40969,7 +40975,19 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "c-btn__container" }, [
+      _c("div", { staticClass: "c-flatBtn c-flatBtn--twitter" }, [
+        _c("i", { staticClass: "fab fa-twitter fa-lg fa-fw u-icon" }),
+        _vm._v("でシェア\n        ")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

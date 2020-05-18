@@ -34,14 +34,10 @@
   &__right {
     flex: 1 1 20%;
     box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    &--inner {
-      @include mq() {
-        display: flex;
-        align-items: center;
-      }
+    @include mq() {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
     }
   }
   &__title {
@@ -86,61 +82,15 @@
   }
   &__count {
     font-size: $font-size_m;
-    text-align: center;
+    margin-bottom: $space_m;
     & > span {
       font-size: $font-size_default;
       font-weight: bold;
     }
   }
-  &__tag {
-    display: block;
-    font-size: $font-size_s;
-    padding: 5px;
-    text-align: center;
-    border: 1px solid $color_sub2;
-    border-radius: $radius_s;
-    margin-bottom: $space_s;
-    transition: $time_s;
-    &:last-child {
-      margin-bottom: 0;
-    }
-    &:hover {
-      color: white;
-    }
-    @include mq() {
-      margin-bottom: 0;
-      margin-right: $space_s;
-      &:last-child {
-        margin-right: 0;
-      }
-    }
-    &--more {
-      &:hover {
-        background: $color_main;
-        border: 1px solid $color_main;
-      }
-    }
-    &--isBookmarked {
-      color: white;
-      background: $orange;
-      border: 1px solid $orange;
-      &:hover {
-        background: $orange;
-        border: 1px solid $orange;
-      }
-    }
-    &--bookmark {
-      &:hover {
-        background: $orange;
-        border: 1px solid $orange;
-      }
-    }
-    &--twitter {
-      &:hover {
-        background: $twitter;
-        border: 1px solid $twitter;
-      }
-    }
+  &__link {
+    font-size: $font-size_m;
+    margin-bottom: $space_m;
   }
   &__sub {
     display: flex;
