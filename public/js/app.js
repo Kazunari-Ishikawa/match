@@ -2982,6 +2982,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3054,6 +3057,30 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }, _callee2);
       }))();
+    },
+    tweetWork: function tweetWork() {
+      var _this3 = this;
+
+      return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee3() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return axios.post("/api/works/".concat(_this3.work.id, "/tweet"));
+
+              case 2:
+                response = _context3.sent;
+                console.log(response);
+
+              case 4:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }))();
     }
   }
 });
@@ -3077,6 +3104,9 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
+//
 //
 //
 //
@@ -40943,7 +40973,24 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _vm._m(0)
+          _c("div", { staticClass: "c-btn__container" }, [
+            _c(
+              "a",
+              {
+                staticClass:
+                  "twitter-share-button c-flatBtn c-flatBtn--twitter",
+                attrs: {
+                  href:
+                    "https://twitter.com/intent/tweet?url=https://matchwork.herokuapp.com/works/" +
+                    this.work.id
+                }
+              },
+              [
+                _c("i", { staticClass: "fab fa-twitter fa-lg fa-fw u-icon" }),
+                _vm._v("でシェア\n        ")
+              ]
+            )
+          ])
         ])
       ]),
       _vm._v(" "),
@@ -40975,19 +41022,7 @@ var render = function() {
     2
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "c-btn__container" }, [
-      _c("div", { staticClass: "c-flatBtn c-flatBtn--twitter" }, [
-        _c("i", { staticClass: "fab fa-twitter fa-lg fa-fw u-icon" }),
-        _vm._v("でシェア\n        ")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -41101,7 +41136,23 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _vm._m(0)
+        _c("div", { staticClass: "c-btn__container" }, [
+          _c(
+            "a",
+            {
+              staticClass: "twitter-share-button c-flatBtn c-flatBtn--twitter",
+              attrs: {
+                href:
+                  "https://twitter.com/intent/tweet?url=https://matchwork.herokuapp.com/works/" +
+                  this.work.id
+              }
+            },
+            [
+              _c("i", { staticClass: "fab fa-twitter fa-lg fa-fw u-icon" }),
+              _vm._v("でシェア\n        ")
+            ]
+          )
+        ])
       ])
     ]),
     _vm._v(" "),
@@ -41110,19 +41161,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "c-btn__container" }, [
-      _c("div", { staticClass: "c-flatBtn c-flatBtn--twitter" }, [
-        _c("i", { staticClass: "fab fa-twitter fa-lg fa-fw u-icon" }),
-        _vm._v("でシェア\n        ")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
