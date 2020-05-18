@@ -8,7 +8,7 @@ $factory->define(Work::class, function (Faker $faker) {
     return [
         'title' => $faker->sentence,
         'category_id' => $faker->numberBetween(1,7),
-        'type' => $faker->numberBetween(1,2),
+        'type' => 1,
         'max_price' => $faker->numberBetween(50, 80),
         'min_price' => $faker->numberBetween(5, 10),
         'content' => $faker->text,
@@ -18,3 +18,9 @@ $factory->define(Work::class, function (Faker $faker) {
         'is_closed' => 0,
     ];
 });
+
+$factory->state(App\Work::class, 'revenue',[
+    'type' => 2,
+    'max_price' => 0,
+    'min_price' => 0,
+]);
