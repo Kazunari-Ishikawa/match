@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bookmark extends Model
 {
+    protected $table = 'bookmarks';
+
     public function work()
     {
         return $this->belongsTo('App\Work');

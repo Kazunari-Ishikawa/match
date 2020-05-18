@@ -3,7 +3,6 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
-use Faker\Factory;
 
 class WorksTableSeeder extends Seeder
 {
