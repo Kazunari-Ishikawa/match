@@ -7,6 +7,8 @@ use Carbon\Carbon;
 
 class Comment extends Model
 {
+    protected $table = 'comments';
+
     protected $fillable = [
         'work_id', 'user_id', 'content'
     ];

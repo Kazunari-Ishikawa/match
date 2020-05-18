@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 
 class Work extends Model
 {
+    protected $table = 'works';
+
     // 案件種別の定義
     const TYPE = [
         1 => '単発案件',

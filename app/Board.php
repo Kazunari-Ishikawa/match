@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Board extends Model
 {
+    protected $table = 'boards';
+
     public function work()
     {
         return $this->belongsTo('App\Work');
