@@ -17,12 +17,12 @@ class MessagesController extends Controller
     }
 
     // MessageをDBに保存する
-    public function sendMessage($request)
+    public function sendMessage(Request $request)
     {
         $message = new Message;
-        $message->board_id = $request->board_id;
+        $message->board_id = $request->input('board_id');
         $message->user_id = Auth::id();
-        $message->content = $request->content;
+        $message->content = $request->input('content');
         $message->save();
 
         return $message;
