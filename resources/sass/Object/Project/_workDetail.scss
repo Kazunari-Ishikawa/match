@@ -46,6 +46,7 @@
   &__content {
     background: $color_bg;
     padding: $space_default;
+    white-space: pre-wrap;
     @include mq() {
       font-size: $font-size_m;
       padding: $space_s;

@@ -30,6 +30,7 @@
     font-size: $font-size_m;
     min-height: 60px;
     padding: $space_default;
+    white-space: pre-wrap;
     @include mq() {
       font-size: $font-size_s;
     }
