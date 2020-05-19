@@ -74,14 +74,14 @@ export default {
     // Messageを送信する
     async sendMessage() {
       const response = await axios
-        .post(`/api/messages/${this.boardId}/`, {
+        .post(`/api/messages/${this.boardId}`, {
           board_id: this.boardId,
           content: this.messageText
         })
         .catch(error => {
           return error.response;
         });
-        console.log(response);
+      console.log(response);
       if (response.status !== 201) {
         alert("エラーが発生しました。再度やり直してください。");
         return false;
