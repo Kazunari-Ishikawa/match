@@ -17,7 +17,7 @@ class MessagesController extends Controller
     }
 
     // MessageをDBに保存する
-    public function sendMessage(Request $request)
+    public function sendMessage($request)
     {
         $message = new Message;
         $message->board_id = $request->board_id;
