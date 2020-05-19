@@ -26,6 +26,19 @@ class WorksTableSeeder extends Seeder
             'updated_at' => Carbon::now()
         ]);
 
+        DB::table('works')->insert([
+            'title' => '弊社業務システムの改善',
+            'category_id' => 3,
+            'type' => 2,
+            'max_price' => 0,
+            'min_price' => 0,
+            'content' => '弊社の業務システムの改善に参画いただきたいです。',
+            'user_id' => 2,
+            'is_closed' => 0,
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+        ]);
+
         factory(App\Work::class,30)->create();
         factory(App\Work::class,30)->states('revenue')->create();
 
