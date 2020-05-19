@@ -132,10 +132,6 @@ export default {
         alert("気になる機能を使うにはログインしてください。");
         return false;
       }
-      if (response.status !== 200) {
-        alert("エラーが発生しました。再度やり直してください。");
-        return false;
-      }
       if (response.status === 200) {
         this.works = this.works.map(work => {
           if (work.id === response.data) {
@@ -154,10 +150,6 @@ export default {
         });
       if (response.status === 401) {
         alert("気になる機能を使うにはログインしてください。");
-        return false;
-      }
-      if (response.status !== 200) {
-        alert("エラーが発生しました。再度やり直してください。");
         return false;
       }
       if (response.status === 200) {

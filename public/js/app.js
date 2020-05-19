@@ -2214,7 +2214,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 if (!confirm("削除します。よろしいですか？")) {
-                  _context2.next = 11;
+                  _context2.next = 8;
                   break;
                 }
 
@@ -2235,21 +2235,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context2.abrupt("return", false);
 
               case 7:
-                if (!(response.status !== 200)) {
-                  _context2.next = 10;
-                  break;
-                }
-
-                alert("エラーが発生しました。再度やり直してください。");
-                return _context2.abrupt("return", false);
-
-              case 10:
                 if (response.status === 200) {
                   alert("削除しました。");
                   window.location.href = "/works/".concat(_this2.workId);
                 }
 
-              case 11:
+              case 8:
               case "end":
                 return _context2.stop();
             }
@@ -2438,23 +2429,24 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 response = _context2.sent;
+                console.log(response);
 
-                if (!(response.status !== 200)) {
-                  _context2.next = 6;
+                if (!(response.status !== 201)) {
+                  _context2.next = 7;
                   break;
                 }
 
                 alert("エラーが発生しました。再度やり直してください。");
                 return _context2.abrupt("return", false);
 
-              case 6:
-                if (response.status === 200) {
+              case 7:
+                if (response.status === 201) {
                   _this2.reset();
 
                   _this2.getMessages();
                 }
 
-              case 7:
+              case 8:
               case "end":
                 return _context2.stop();
             }
@@ -2473,7 +2465,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context3.prev = _context3.next) {
               case 0:
                 if (!confirm("削除します。よろしいですか？")) {
-                  _context3.next = 9;
+                  _context3.next = 6;
                   break;
                 }
 
@@ -2489,22 +2481,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   alert("あなたのメッセージではないので削除できません。");
                 }
 
-                if (!(response.status !== 200)) {
-                  _context3.next = 8;
-                  break;
-                }
-
-                alert("エラーが発生しました。再度やり直してください。");
-                return _context3.abrupt("return", false);
-
-              case 8:
                 if (response.status === 200) {
                   alert("削除しました。");
 
                   _this3.getMessages();
                 }
 
-              case 9:
+              case 6:
               case "end":
                 return _context3.stop();
             }
@@ -2945,15 +2928,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context2.abrupt("return", false);
 
               case 6:
-                if (!(response.status !== 200)) {
-                  _context2.next = 9;
-                  break;
-                }
-
-                alert("エラーが発生しました。再度やり直してください。");
-                return _context2.abrupt("return", false);
-
-              case 9:
                 if (response.status === 200) {
                   _this2.works = _this2.works.map(function (work) {
                     if (work.id === response.data) {
@@ -2964,7 +2938,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   });
                 }
 
-              case 10:
+              case 7:
               case "end":
                 return _context2.stop();
             }
@@ -2999,15 +2973,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context3.abrupt("return", false);
 
               case 6:
-                if (!(response.status !== 200)) {
-                  _context3.next = 9;
-                  break;
-                }
-
-                alert("エラーが発生しました。再度やり直してください。");
-                return _context3.abrupt("return", false);
-
-              case 9:
                 if (response.status === 200) {
                   _this3.works = _this3.works.map(function (work) {
                     if (work.id === response.data) {
@@ -3018,7 +2983,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   });
                 }
 
-              case 10:
+              case 7:
               case "end":
                 return _context3.stop();
             }
@@ -3315,20 +3280,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context.abrupt("return", false);
 
               case 6:
-                if (!(response.status !== 200)) {
-                  _context.next = 9;
-                  break;
-                }
-
-                alert("エラーが発生しました。再度やり直してください。");
-                return _context.abrupt("return", false);
-
-              case 9:
                 if (response.status === 200) {
                   _this.work.bookmarked = true;
                 }
 
-              case 10:
+              case 7:
               case "end":
                 return _context.stop();
             }
@@ -3363,20 +3319,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context2.abrupt("return", false);
 
               case 6:
-                if (!(response.status !== 200)) {
-                  _context2.next = 9;
-                  break;
-                }
-
-                alert("エラーが発生しました。再度やり直してください。");
-                return _context2.abrupt("return", false);
-
-              case 9:
                 if (response.status === 200) {
                   _this2.work.bookmarked = false;
                 }
 
-              case 10:
+              case 7:
               case "end":
                 return _context2.stop();
             }
@@ -3591,15 +3538,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context2.abrupt("return", false);
 
               case 6:
-                if (!(response.status !== 200)) {
-                  _context2.next = 9;
-                  break;
-                }
-
-                alert("エラーが発生しました。再度やり直してください。");
-                return _context2.abrupt("return", false);
-
-              case 9:
                 if (response.status === 200) {
                   _this2.works = _this2.works.map(function (work) {
                     if (work.id === response.data) {
@@ -3610,7 +3548,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   });
                 }
 
-              case 10:
+              case 7:
               case "end":
                 return _context2.stop();
             }
@@ -3645,15 +3583,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context3.abrupt("return", false);
 
               case 6:
-                if (!(response.status !== 200)) {
-                  _context3.next = 9;
-                  break;
-                }
-
-                alert("エラーが発生しました。再度やり直してください。");
-                return _context3.abrupt("return", false);
-
-              case 9:
                 if (response.status === 200) {
                   _this3.works = _this3.works.map(function (work) {
                     if (work.id === response.data) {
@@ -3669,7 +3598,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this3.getWorks();
                 }
 
-              case 11:
+              case 8:
               case "end":
                 return _context3.stop();
             }

@@ -55,10 +55,6 @@ export default {
           alert("あなたのコメントではないので削除できません。");
           return false;
         }
-        if (response.status !== 200) {
-          alert("エラーが発生しました。再度やり直してください。");
-          return false;
-        }
         if (response.status === 200) {
           alert("削除しました。");
           window.location.href = `/works/${this.workId}`;
