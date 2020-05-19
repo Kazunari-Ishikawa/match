@@ -82,11 +82,12 @@ export default {
         .catch(error => {
           return error.response;
         });
-      if (response.status !== 200) {
+      console.log(response);
+      if (response.status !== 201) {
         alert("エラーが発生しました。再度やり直してください。");
         return false;
       }
-      if (response.status === 200) {
+      if (response.status === 201) {
         this.reset();
         this.getMessages();
       }
@@ -101,10 +102,6 @@ export default {
           });
         if (response.status === 401) {
           alert("あなたのメッセージではないので削除できません。");
-        }
-        if (response.status !== 200) {
-          alert("エラーが発生しました。再度やり直してください。");
-          return false;
         }
         if (response.status === 200) {
           alert("削除しました。");
