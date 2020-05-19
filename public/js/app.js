@@ -2421,7 +2421,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _context2.next = 2;
                 return axios.post("/api/messages/".concat(_this2.boardId, "/"), {
                   board_id: _this2.boardId,
-                  user_id: _this2.requestUserId,
                   content: _this2.messageText
                 })["catch"](function (error) {
                   return error.response;
@@ -2431,7 +2430,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 response = _context2.sent;
                 console.log(response);
 
-                if (!(response.status !== 200)) {
+                if (!(response.status !== 201)) {
                   _context2.next = 7;
                   break;
                 }
@@ -2440,7 +2439,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context2.abrupt("return", false);
 
               case 7:
-                if (response.status === 200) {
+                if (response.status === 201) {
                   _this2.reset();
 
                   _this2.getMessages();

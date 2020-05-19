@@ -76,18 +76,17 @@ export default {
       const response = await axios
         .post(`/api/messages/${this.boardId}/`, {
           board_id: this.boardId,
-          user_id: this.requestUserId,
           content: this.messageText
         })
         .catch(error => {
           return error.response;
         });
       console.log(response);
-      if (response.status !== 200) {
+      if (response.status !== 201) {
         alert("エラーが発生しました。再度やり直してください。");
         return false;
       }
-      if (response.status === 200) {
+      if (response.status === 201) {
         this.reset();
         this.getMessages();
       }

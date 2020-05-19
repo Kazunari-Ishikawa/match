@@ -20,7 +20,10 @@ class MessagesController extends Controller
     public function sendMessage(Request $request)
     {
         $message = new Message;
-        $message->fill($request->all())->save();
+        $message->board_id = $request->board_id;
+        $message->user_id = Auth::id();
+        $message->content = $request->content;
+        $message->save();
 
         return $message;
     }
