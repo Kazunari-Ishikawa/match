@@ -31,7 +31,7 @@
       <!-- フラッシュメッセージ -->
       @if (session('flash_message'))
       <div class="c-flash">
-        {{ session('flash_message') }}
+        <p>{{ session('flash_message') }}</p>
       </div>
       @endif
 

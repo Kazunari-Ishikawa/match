@@ -1,8 +1,7 @@
 .c-flash {
   background: $color_sub1;
   color: white;
-  height: $height_header;
-  line-height: $height_header;
-  width: 100%;
+  font-size: $font-size_m;
   text-align: center;
+  padding: $space_m 0;
 }
