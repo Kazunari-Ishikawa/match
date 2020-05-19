@@ -1,6 +1,5 @@
 $(function () {
   $('.js-preview-input').change(function (e) {
-    console.log('change.');
     var file = e.target.files[0];
     var reader = new FileReader();
 
@@ -19,7 +18,5 @@ $(function () {
     })(file);
 
     reader.readAsDataURL(file);
-    console.log('OK.');
-
   });
 });

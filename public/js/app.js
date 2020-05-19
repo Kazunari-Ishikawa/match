@@ -2428,24 +2428,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
               case 2:
                 response = _context2.sent;
-                console.log(response);
 
                 if (!(response.status !== 201)) {
-                  _context2.next = 7;
+                  _context2.next = 6;
                   break;
                 }
 
                 alert("エラーが発生しました。再度やり直してください。");
                 return _context2.abrupt("return", false);
 
-              case 7:
+              case 6:
                 if (response.status === 201) {
                   _this2.reset();
 
                   _this2.getMessages();
                 }
 
-              case 8:
+              case 7:
               case "end":
                 return _context2.stop();
             }
@@ -54536,7 +54535,6 @@ $(function () {
 
 $(function () {
   $('.js-preview-input').change(function (e) {
-    console.log('change.');
     var file = e.target.files[0];
     var reader = new FileReader(); // 画像ファイルでない場合false
 
@@ -54554,7 +54552,6 @@ $(function () {
     }(file);
 
     reader.readAsDataURL(file);
-    console.log('OK.');
   });
 });
 
