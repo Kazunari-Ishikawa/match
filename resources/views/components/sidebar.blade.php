@@ -23,7 +23,6 @@
   <ul class="c-menu--side">
     <li class="c-menu__item c-menu__item--side"><a href="{{ route('users.edit')}}" class="c-menu__link c-menu__link--side">プロフィール編集</a></li>
     <li class="c-menu__item c-menu__item--side"><a href="{{ route('users.editPassword')}}" class="c-menu__link c-menu__link--side">パスワード変更</a></li>
-    <li class="c-menu__item c-menu__item--side"><a href="help.html" class="c-menu__link c-menu__link--side">ヘルプ</a></li>
     <li class="c-menu__item c-menu__item--side">
       <a href="{{'logout'}}" class="c-menu__link c-menu__link--side" onclick="event.preventDefault();
         document.getElementById('logoutSideForm').submit();">ログアウト</a>
