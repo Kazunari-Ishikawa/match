@@ -83,11 +83,11 @@ export default {
           return error.response;
         });
       console.log(response);
-      if (response.status !== 201) {
+      if (response.status !== 200) {
         alert("エラーが発生しました。再度やり直してください。");
         return false;
       }
-      if (response.status === 201) {
+      if (response.status === 200) {
         this.reset();
         this.getMessages();
       }

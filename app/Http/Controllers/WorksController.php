@@ -88,13 +88,13 @@ class WorksController extends Controller
         }
 
         // 該当のWorkに対して、ユーザーがWorkの登録者であるか判定
-        $is_registered = ($work->user_id === Auth::id()) ? true : false;
+        $is_registered = ($work->user_id == Auth::id()) ? true : false;
 
         // 該当のWorkに対して、ユーザーが応募済みであるか判定
         $applies = Apply::where('work_id', $id)->get();
         $is_applied = false;
         foreach( $applies as $apply) {
-            if($apply->user_id === Auth::id()) {
+            if($apply->user_id == Auth::id()) {
                 $is_applied = true;
                 break;
             };
