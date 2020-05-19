@@ -13,17 +13,16 @@ class MessagesController extends Controller
     {
         $messages = Message::where('board_id', $id)->with(['user', 'board'])->get();
 
-        return response($messages);
+        return $messages;
     }
 
     // MessageをDBに保存する
     public function sendMessage(Request $request)
     {
-        \Log::debug($request);
         $message = new Message;
         $message->fill($request->all())->save();
 
-        return response($message);
+        return $message;
     }
 
     // Messageを削除する
