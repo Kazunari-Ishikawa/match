@@ -22,6 +22,7 @@ export default {
     requestUserId: Number
   },
   methods: {
+    // 削除を通知する
     clickDelete() {
       this.$emit("click-delete", this.message.id);
     }

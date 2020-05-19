@@ -64,11 +64,6 @@ export default {
     work: Object,
     withComment: Boolean
   },
-  computed: {
-    bookmarkState() {
-      return this.work.bookmarked;
-    }
-  },
   data() {
     return {
       comment: null,
@@ -81,23 +76,28 @@ export default {
     }
   },
   methods: {
+    // 最新Commentを取得する
     async getLatestComment() {
-      const response = await axios.get(
-        `/api/works/${this.work.id}/comments/latest`
-      );
-      console.log(response);
-      this.comment = response.data;
-      this.getCommentFinished = true;
+      const response = await axios
+        .get(`/api/works/${this.work.id}/comments/latest`)
+        .catch(error => {
+          return error.response;
+        });
+      if (response.status !== 200) {
+        alert("エラーが発生しました。再度やり直してください。");
+        return false;
+      }
+      if (response.status === 200) {
+        this.comment = response.data;
+        this.getCommentFinished = true;
+      }
     },
+    // Bookmarkが押されたことを通知する
     async bookmark() {
       this.$emit("bookmark", {
         id: this.work.id,
         bookmarked: this.work.bookmarked
       });
-    },
-    async tweetWork() {
-      const response = await axios.post(`/api/works/${this.work.id}/tweet`);
-      console.log(response);
     }
   }
 };

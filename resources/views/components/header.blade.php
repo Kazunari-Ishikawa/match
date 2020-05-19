@@ -2,7 +2,7 @@
 <header class="l-header">
 
   <a class="l-header__title" href="/">
-    <h1>match</h1>
+    <h1>matchworks</h1>
   </a>
 
   <!-- ハンバーガーメニュー -->
@@ -70,7 +70,6 @@
       <ul class="c-accordion__body">
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('users.edit') }}">プロフィール編集</a></li>
         <li class="c-spMenu__item"><a class="c-spMenu__link" href="{{ route('users.editPassword')}}">パスワード変更</a></li>
-        <li class="c-spMenu__item"><a class="c-spMenu__link" href="">ヘルプ</a></li>
         <li class="c-spMenu__item">
           <a href="{{'logout'}}" class="c-spMenu__link" onclick="event.preventDefault();
             document.getElementById('logoutForm').submit();">ログアウト</a>

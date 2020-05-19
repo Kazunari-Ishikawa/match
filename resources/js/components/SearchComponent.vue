@@ -1,5 +1,4 @@
 <template>
-  <!-- サイドバー -->
   <section class="p-searchbox">
     <p class="c-accordion__btn c-accordion__btn--search" @click="openSearch">絞り込み条件</p>
     <SlideUpDown :active="active">
@@ -123,9 +122,11 @@ export default {
     };
   },
   methods: {
+    // 検索フォームを開閉する
     openSearch() {
       this.active = !this.active;
     },
+    // 検索を通知する
     clickSearch() {
       if (this.validSearch()) {
         this.$emit("click-search", this.form);
@@ -134,6 +135,7 @@ export default {
         this.message = "";
       }
     },
+    // 検索フォームのバリデーションを行う
     validSearch() {
       if (this.form.type < 0 || 2 < this.form.type) {
         this.message = "不正な値です。やり直してください。";
