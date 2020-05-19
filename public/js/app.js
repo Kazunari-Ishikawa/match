@@ -2419,7 +2419,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
-                return axios.post("/api/messages/".concat(_this2.boardId, "/"), {
+                return axios.post("/api/messages/".concat(_this2.boardId), {
                   board_id: _this2.boardId,
                   content: _this2.messageText
                 })["catch"](function (error) {
