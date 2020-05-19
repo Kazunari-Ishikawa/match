@@ -7,7 +7,7 @@
     <div class="p-hero__inner">
       <p class="p-hero__text">IT系の仕事を探しているけど、大手のクラウドソーシングは分かりにくい…</p>
       <p class="p-hero__text">業者に頼むと高いしもっと簡単に頼めないかな…</p>
-      <p class="p-hero__text p-hero__text--em">そんなあなたをmatchは<br><span>3</span>ステップで繋ぎます！</p>
+      <p class="p-hero__text p-hero__text--em">そんなあなたの思いを<br><span>3</span>ステップで繋ぎます！</p>
       <a class="c-btn c-btn--hero" href="{{ route('works.index') }}">案件を探す</a>
     </div>
   </div>

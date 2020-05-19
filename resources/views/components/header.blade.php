@@ -2,7 +2,7 @@
 <header class="l-header">
 
   <a class="l-header__title" href="/">
-    <h1>match</h1>
+    <h1>matchworks</h1>
   </a>
 
   <!-- ハンバーガーメニュー -->
