@@ -34,18 +34,19 @@ Route::group(['middleware' => 'auth'], function(){
     Route::post('/works/{id}/edit', 'WorksController@update')->name('works.update');
     Route::post('/works/{id}/delete', 'WorksController@destroy')->name('works.destroy');
     Route::post('/works/{id}/close', 'WorksController@close')->name('works.close');
+    Route::post('/works/{id}/apply', 'WorksController@apply')->name('works.apply');
+    Route::post('/works/{id}/cancel', 'WorksController@cancel')->name('works.cancel');
     Route::get('/works/registered', 'WorksController@showRegisteredWorks')->name('works.registered');
+    Route::get('/works/applied', 'WorksController@showAppliedWorks')->name('works.applied');
+    Route::get('/works/closed', 'WorksController@showClosedWorks')->name('works.closed');
+    Route::get('/works/bookmarks', 'WorksController@showBookmarksWorks')->name('works.bookmarks');
     Route::get('/api/works/registered', 'WorksController@getRegisteredWorks');
     Route::get('/api/works/commented', 'WorksController@getCommentedWorks');
-    Route::get('/works/applied', 'WorksController@showAppliedWorks')->name('works.applied');
     Route::get('/api/works/applied', 'WorksController@getAppliedWorks');
-    Route::get('/works/closed', 'WorksController@showClosedWorks')->name('works.closed');
     Route::get('/api/works/closed', 'WorksController@getClosedWorks');
-    Route::post('/works/{id}/apply', 'WorksController@apply')->name('works.apply');
-    Route::get('/api/works/{id}/apply', 'WorksController@getApplyCount');
-    Route::post('/works/{id}/cancel', 'WorksController@cancel')->name('works.cancel');
-    Route::get('/works/bookmarks', 'WorksController@showBookmarksWorks')->name('works.bookmarks');
-    Route::get('/api/works/bookmarks', 'BookmarksController@getBookmarksWorks');
+    Route::get('/api/works/bookmarks', 'WorksController@getBookmarksWorks');
+
+    // Bookmarks
     Route::post('/api/bookmarks/{id}/add', 'BookmarksController@add');
     Route::post('/api/bookmarks/{id}/delete', 'BookmarksController@delete');
 
@@ -59,16 +60,15 @@ Route::group(['middleware' => 'auth'], function(){
     Route::get('/messages', 'BoardsController@index')->name('messages.index');
     Route::get('/api/boards', 'BoardsController@getBoards');
     Route::get('/api/boards/{id}/messages/latest', 'MessagesController@getLatestMessage');
-    Route::post('/api/boards/{id}/delete', 'BoardsController@destroy');
     Route::get('/messages/{id}', 'BoardsController@show')->name('messages.show');
     Route::get('/api/messages/{id}', 'MessagesController@getMessages');
     Route::post('/api/messages/{id}', 'MessagesController@sendMessage');
     Route::post('/api/messages/{id}/delete', 'MessagesController@deleteMessage');
 });
 
+Route::get('/users/{id}', 'UsersController@show')->name('users.show');
 Route::get('/works', 'WorksController@index')->name('works.index');
 Route::get('/api/works', 'WorksController@getworks');
 Route::get('/works/{id}', 'WorksController@show')->name('works.show');
 Route::get('/api/works/{id}/comments', 'CommentsController@getComments');
 Route::post('/api/works/search', 'WorksController@searchWorks');
-Route::get('/users/{id}', 'UsersController@show')->name('users.show');

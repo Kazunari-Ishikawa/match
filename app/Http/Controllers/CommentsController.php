@@ -64,6 +64,6 @@ class CommentsController extends Controller
 
         $comment = Auth::user()->comments()->find($id)->delete();
 
-        return response(200);
+        return $id;
     }
 }

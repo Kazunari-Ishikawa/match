@@ -55,8 +55,13 @@
       margin-bottom: $space_default;
     }
     &--right {
+      background: white;
       display: flex;
       justify-content: flex-end;
+      padding: $space_3l;
+      @include mq() {
+        padding: $space_default;
+      }
     }
   }
 }

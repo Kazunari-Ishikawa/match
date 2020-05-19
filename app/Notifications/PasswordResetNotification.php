@@ -47,7 +47,6 @@ class PasswordResetNotification extends Notification
             ->greeting('パスワードリセット')
             ->line('以下のボタンを押して、パスワードリセットの手続きを行ってください。')
             ->action('パスワードリセット', url('password/reset', $this->token));
-            // ->view('mail.html.passwordReset', ['reset_url' => url('password/reset', $this->token)]);
     }
 
     /**

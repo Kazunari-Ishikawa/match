@@ -78,7 +78,7 @@ class UsersController extends Controller
         $user->password = bcrypt($request->password);
         $user->save();
 
-        return redirect('/mypage')->with('flash_message', 'パスワードをしました。');
+        return redirect('/mypage')->with('flash_message', 'パスワードを変更しました。');
     }
 
     // 退会画面を表示する

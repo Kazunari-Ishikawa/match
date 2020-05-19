@@ -10,12 +10,12 @@
   <div class="l-container__body l-container__body--1column">
     <p class="c-form__link"><a href="{{ url()->previous('/') }}">前ページへ戻る</a></p>
 
-    <div class="c-flatBtn__container--right">
-      <form action="{{ route('works.destroy', $work->id) }}" method="POST" class="c-form--btn">
+    <div class="c-btn__container--right">
+      <form action="{{ route('works.destroy', $work->id) }}" method="POST" class="u-mr20">
         @csrf
         <input type="submit" id="js-delete-work" class="c-flatBtn" value="削除する">
       </form>
-      <form action="{{ route('works.close', $work->id) }}" method="POST" class="c-form--btn">
+      <form action="{{ route('works.close', $work->id) }}" method="POST" class="">
         @csrf
         <input type="submit" id="js-close-work" class="c-flatBtn" value="完了する">
       </form>
@@ -29,7 +29,7 @@
         @error('title')
         <span class="c-form__text c-form__text--error">{{ $message }}</span>
         @enderror
-        <input type="text" name="title" id="title" class="c-form__input @error('title') is-invalid @enderror" value="{{ old('title', $work->title) }}" placeholder="30文字以内で入力してください">
+        <input type="text" name="title" id="title" class="c-form__input @error('title') isInvalid @enderror" value="{{ old('title', $work->title) }}" placeholder="30文字以内で入力してください">
       </div>
 
       <div class="c-form__group">
@@ -64,13 +64,13 @@
 
       <div class="c-form__group">
         <p for="price" class="c-form__label">金額（1,000円〜）</p>
-        <p class="c-form__text">※レベニューシェアの場合、相談により配分率を決めていだたくだめ、入力は不要です。</p>
+        <p class="c-form__text">※レベニューシェアの場合相談により配分率を決めていだたくだめ、入力は不要です。</p>
         <span class="c-form__text c-form__text--error">{{ $errors->first('min_price') }}</span>
         <span class="c-form__text c-form__text--error">{{ $errors->first('max_price') }}</span>
         <div class="c-form__group--price">
-          <input type="number" class="c-form__input c-form__input--price" name="min_price" id="lower" placeholder="1" value="{{ old('min_price', $work->min_price/1000) }}">
+          <input type="number" class="c-form__input c-form__input--price @error('min_price') isInvalid @enderror" name="min_price" id="lower" placeholder="1" value="{{ old('min_price', $work->min_price/1000) }}">
           <span class="c-form__price">,000〜</span>
-          <input type="number" class="c-form__input c-form__input--price" name="max_price" id="upper" value="{{ old('max_price', $work->max_price/1000) }}">
+          <input type="number" class="c-form__input c-form__input--price @error('max_price') isInvalid @enderror" name="max_price" id="upper" value="{{ old('max_price', $work->max_price/1000) }}">
           <span class="c-form__price">,000円</span>
         </div>
       </div>
@@ -81,12 +81,12 @@
         <span class="c-form__text c-form__text--error">{{ $message }}</span>
         @enderror
         <p class="c-form__sample">内容には下記の項目を含めて、案件を分かりやすく説明しましょう。<br>・サービス、案件のコンセプト<br>・期限（単発案件なら納期、レベニューシェアなら期間）<br>・デザイン素材（写真やイラストなど）の準備はどちらが行うか</p>
-        <textarea name="content" id="content" class="c-form__textarea">{{ old('content', $work->content) }}</textarea>
+        <textarea name="content" id="content" class="c-form__textarea @error('content') isInvalid @enderror">{{ old('content', $work->content) }}</textarea>
       </div>
 
       <input type="submit" class="c-btn c-btn--em c-btn--full" value="編集する">
-
     </form>
+
   </div>
 </section>
 
