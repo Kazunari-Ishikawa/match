@@ -528,8 +528,16 @@ textarea {
 }
 
 .c-btn__container--right {
+  background: white;
   display: flex;
   justify-content: flex-end;
+  padding: 40px;
+}
+
+@media screen and (max-width: 576px) {
+  .c-btn__container--right {
+    padding: 20px;
+  }
 }
 
 .c-card {
@@ -773,6 +781,7 @@ textarea {
 }
 
 .c-flatBtn {
+  background: white;
   cursor: pointer;
   display: block;
   font-size: 14px;
@@ -808,19 +817,6 @@ textarea {
   color: white;
   background: #1DA1F2;
   border: 1px solid #1DA1F2;
-}
-
-.c-flatBtn__container--right {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding: 20px 40px;
-}
-
-@media screen and (max-width: 576px) {
-  .c-flatBtn__container--right {
-    padding: 15px 20px;
-  }
 }
 
 .c-form {
@@ -2160,5 +2156,9 @@ textarea {
 .u-icon {
   cursor: pointer;
   display: inline-block;
+}
+
+.u-mr20 {
+  margin-right: 20px;
 }
 
