@@ -23,7 +23,7 @@
     <template v-else>
       <div class="c-board__body">
         <div class="c-board__main">
-          <p class="c-board__content">まだコメントがありません</p>
+          <p class="c-board__content">まだメッセージはありません</p>
         </div>
       </div>
     </template>
