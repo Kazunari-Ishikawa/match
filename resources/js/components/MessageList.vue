@@ -81,6 +81,7 @@ export default {
         .catch(error => {
           return error.response;
         });
+        console.log(response);
       if (response.status !== 201) {
         alert("エラーが発生しました。再度やり直してください。");
         return false;
