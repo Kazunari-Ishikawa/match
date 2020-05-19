@@ -11,18 +11,13 @@
   }
   &__item {
     display: block;
-    margin: 0 $space_3l;
+    margin: 0 auto;
     text-align: center;
-    @include mq() {
-      margin: 0 $space_default;
-    }
   }
   &__link {
     display: inline-block;
+    font-size: $font-size_m;
     padding: $space_s 0;
     transition: $time_s;
-    @include mq() {
-      font-size: $font-size_s;
-    }
   }
 }
