@@ -1283,8 +1283,17 @@ textarea {
 }
 
 .c-work__link {
+  background: #51a1a2;
+  border-radius: 4px;
+  color: white;
   font-size: 14px;
   margin-bottom: 15px;
+  padding: 10px;
+}
+
+.c-work__link:hover {
+  color: white;
+  opacity: 0.8;
 }
 
 .c-work__sub {
@@ -1383,26 +1392,15 @@ textarea {
 
 .c-spMenu__item {
   display: block;
-  margin: 0 40px;
+  margin: 0 auto;
   text-align: center;
-}
-
-@media screen and (max-width: 576px) {
-  .c-spMenu__item {
-    margin: 0 20px;
-  }
 }
 
 .c-spMenu__link {
   display: inline-block;
+  font-size: 14px;
   padding: 10px 0;
   transition: 0.3s;
-}
-
-@media screen and (max-width: 576px) {
-  .c-spMenu__link {
-    font-size: 12px;
-  }
 }
 
 .c-menuTrigger {
