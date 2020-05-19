@@ -14,10 +14,14 @@ use App\Category;
 use App\User;
 use App\Comment;
 use App\Apply;
+use App\Bookmark;
 
 class WorksController extends Controller
 {
-    // Work一覧表示
+    // 1ページあたりのWorkの表示数
+    protected $per_page = 10;
+
+    // Work一覧画面を表示する
     public function index(Request $request)
     {
         $category = 0;
@@ -49,7 +53,7 @@ class WorksController extends Controller
         return view('works.new');
     }
 
-    // Work新規登録機能
+    // WorkをDBへ保存する
     public function create(CreateWorkRequest $request)
     {
         $work = new Work;
@@ -68,7 +72,7 @@ class WorksController extends Controller
         return redirect('/mypage')->with('flash_message', '新しく登録しました。');
     }
 
-    // Work詳細表示
+    // Work詳細画面を表示する
     public function show($id)
     {
         // パラメータが数字でない場合リダイレクト
@@ -96,13 +100,10 @@ class WorksController extends Controller
             };
         }
 
-        // 該当のWorkの応募数をカウント
-        $count = $applies->count();
-
-        return view('works.show', compact('work', 'is_registered','is_applied','count'));
+        return view('works.show', compact('work', 'is_registered','is_applied'));
     }
 
-    // Work編集画面表示
+    // Work編集画面を表示する
     public function edit($id)
     {
         // パラメータが数字でない場合リダイレクト
@@ -120,7 +121,7 @@ class WorksController extends Controller
         return view('works.edit', compact('work'));
     }
 
-    // Work編集機能
+    // Workを編集する
     public function update(CreateWorkRequest $request, $id)
     {
         $work = Work::find($id);
@@ -129,7 +130,6 @@ class WorksController extends Controller
         if ($request->type === '1') {
             $work->fill($request->all())->save();
         } else {
-            \Log::debug('レベニュー');
             $work->fill($request->except(['min_price', 'max_price']));
             $work->max_price = 0;
             $work->min_price = 0;
@@ -139,7 +139,7 @@ class WorksController extends Controller
         return redirect('/mypage')->with('flash_message', '案件を編集しました。');
     }
 
-    // Workの削除
+    // Work削除をする
     public function destroy($id)
     {
         // パラメータが数字でない場合リダイレクト
@@ -217,6 +217,51 @@ class WorksController extends Controller
         return redirect('/mypage')->with('flash_message', '成約済みに変更しました。');;
     }
 
+    // Workへの応募処理
+    public function apply($id)
+    {
+        $work = Work::with('user')->find($id);
+        $applied_user = Auth::user();
+
+        // Applyを保存
+        $apply = new Apply;
+        $apply->work_id = $work->id;
+        $apply->user_id = $applied_user->id;
+        $apply->save();
+
+        // BoardsControllerを呼び出して、createメソッドを行う
+        // create(work_id, from_user_id, to_user_id)
+        $board = app()->make('App\Http\Controllers\BoardsController');
+        $board->create($id, $applied_user->id, $work->user_id);
+
+        // Workの登録者へ、応募をメール通知する
+        $registered_user = User::find($work->user_id);
+        $registered_user->notify(new ApplyWorkNotification($work, $applied_user));
+
+        return redirect('/messages')->with('flash_message','応募しました。メッセージで連絡しましょう。');
+    }
+
+    // Workへの応募を取り消す
+    public function cancel($id)
+    {
+        $work = Work::find($id);
+        $cancel_user = Auth::user();
+
+        // BoardsControllerを呼び出して、cancelメソッドを行う
+        // cancel(work_id, from_user_id, to_user_id)
+        $board = app()->make('App\Http\Controllers\BoardsController');
+        $board->cancel($id, $cancel_user->id, $work->user_id);
+
+        // 該当するApplyを削除する
+        Apply::where(['work_id' => $id, 'user_id' => $cancel_user->id])->delete();
+
+        // Workの登録者へ、応募を取り消したことをメール通知する
+        $registered_user = User::find($work->user_id);
+        $registered_user->notify(new CancelApplyNotification($work, $cancel_user));
+
+        return redirect('/works/applied')->with('flash_message','応募を取り消しました。メッセージも削除されました。');
+    }
+
     // 登録した案件一覧画面表示
     public function showRegisteredWorks()
     {
@@ -244,7 +289,7 @@ class WorksController extends Controller
     // Work一覧を取得する
     public function getworks()
     {
-        $works = Work::with(['user', 'category'])->where('is_closed', false)->orderBy('created_at', 'desc')->paginate(5);
+        $works = Work::with(['user', 'category'])->where('is_closed', false)->orderBy('created_at', 'desc')->paginate($this->per_page);
 
         return $works;
     }
@@ -252,7 +297,7 @@ class WorksController extends Controller
     // ユーザーが登録したWork一覧を取得する
     public function getRegisteredWorks()
     {
-        $works = Work::where(['user_id' => Auth::id(), 'is_closed' => false])->with(['user', 'category'])->paginate(5);
+        $works = Work::where(['user_id' => Auth::id(), 'is_closed' => false])->with(['user', 'category'])->paginate($this->per_page);
 
         return $works;
     }
@@ -264,7 +309,7 @@ class WorksController extends Controller
         $applied_work_id = Apply::select('work_id')->where('user_id', Auth::id())->get();
 
         // 該当するWorkを取得
-        $works = Work::with(['user', 'category'])->where('is_closed', false)->whereIn('id', $applied_work_id)->paginate(5);
+        $works = Work::with(['user', 'category'])->where('is_closed', false)->whereIn('id', $applied_work_id)->paginate($this->per_page);
 
         return $works;
     }
@@ -276,7 +321,7 @@ class WorksController extends Controller
         $commented_work_id = Comment::select('work_id')->where('user_id', Auth::id())->groupBy('work_id')->get();
 
         // 該当するWorkを取得
-        $works = Work::with(['user', 'category'])->where('is_closed', false)->whereIn('id', $commented_work_id)->paginate(5);
+        $works = Work::with(['user', 'category'])->where('is_closed', false)->whereIn('id', $commented_work_id)->paginate($this->per_page);
 
         return $works;
     }
@@ -285,15 +330,27 @@ class WorksController extends Controller
     public function getClosedWorks()
     {
         // 成約したWorkを取得する
-        $works = Work::with(['user', 'category'])->where(['user_id' => Auth::id(), 'is_closed' => true])->paginate(5);
+        $works = Work::with(['user', 'category'])->where(['user_id' => Auth::id(), 'is_closed' => true])->paginate($this->per_page);
 
         return $works;
     }
 
+    // BookmarkしたWork一覧を取得する
+    public function getBookmarksWorks()
+    {
+        // ユーザーがBookmarkしたWorkのIDを取得する
+        $bookmarked_work_id = Bookmark::select('work_id')->where('user_id', Auth::id())->groupBy('work_id')->get();
+
+        // 該当するWorkを取得
+        $works = Work::with(['user', 'category'])->where(['is_closed' => false])->whereIn('id', $bookmarked_work_id)->paginate($this->per_page);
+
+        return $works;
+    }
+
+    // Workの検索結果を表示する
     public function searchWorks(Request $request)
     {
-        \Log::debug($request);
-
+        // 検索条件
         $type = 0;
         $category = 0;
         $min_price = 0;
@@ -390,53 +447,8 @@ class WorksController extends Controller
                 ->when($max_price, function($query, $max_price) {
                     return $query->where('max_price', '<=', $max_price);
                 })
-                ->where('is_closed', false)->orderBy('created_at', 'desc')->paginate(5);
+                ->where('is_closed', false)->orderBy('created_at', 'desc')->paginate($this->per_page);
 
         return $works;
-    }
-
-    // Workへの応募処理
-    public function apply($id)
-    {
-        $work = Work::with('user')->find($id);
-        $applied_user = Auth::user();
-
-        // Applyを保存
-        $apply = new Apply;
-        $apply->work_id = $work->id;
-        $apply->user_id = $applied_user->id;
-        $apply->save();
-
-        // BoardsControllerを呼び出して、createメソッドを行う
-        // create(work_id, from_user_id, to_user_id)
-        $board = app()->make('App\Http\Controllers\BoardsController');
-        $board->create($id, $applied_user->id, $work->user_id);
-
-        // Workの登録者へ、応募をメール通知する
-        $registered_user = User::find($work->user_id);
-        $registered_user->notify(new ApplyWorkNotification($work, $applied_user));
-
-        return redirect('/messages')->with('flash_message','応募しました。メッセージで連絡しましょう。');
-    }
-
-    // Workへの応募を取り消す
-    public function cancel($id)
-    {
-        $work = Work::find($id);
-        $cancel_user = Auth::user();
-
-        // BoardsControllerを呼び出して、cancelメソッドを行う
-        // cancel(work_id, from_user_id, to_user_id)
-        $board = app()->make('App\Http\Controllers\BoardsController');
-        $board->cancel($id, $cancel_user->id, $work->user_id);
-
-        // 該当するApplyを削除する
-        Apply::where(['work_id' => $id, 'user_id' => $cancel_user->id])->delete();
-
-        // Workの登録者へ、応募を取り消したことをメール通知する
-        $registered_user = User::find($work->user_id);
-        $registered_user->notify(new CancelApplyNotification($work, $cancel_user));
-
-        return redirect('/works/applied')->with('flash_message','応募を取り消しました。メッセージも削除されました。');
     }
 }
