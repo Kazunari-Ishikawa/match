@@ -66,11 +66,13 @@ class BoardsController extends Controller
     {
         $board = Board::with(['fromUser', 'toUser'])->find($id);
 
+        $user_id = Auth::id();
+
         // ログインしているユーザーIDを取得する
-        $request_user_id = (Auth::id() === $board->from_user_id ) ? $board->from_user_id : $board->to_user_id;
+        $request_user_id = ($user_id == $board->from_user_id ) ? $board->from_user_id : $board->to_user_id;
 
         // メッセージのやり取り相手の名前を取得する
-        $send_user_name = (Auth::id() === $board->from_user_id) ? $board->toUser->name : $board->fromUser->name;
+        $send_user_name = ($user_id == $board->from_user_id) ? $board->toUser->name : $board->fromUser->name;
 
         return view('messages.show', compact('board', 'request_user_id', 'send_user_name'));
     }
