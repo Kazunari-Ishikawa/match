@@ -54,6 +54,7 @@
     flex-grow: 1;
     font-size: $font-size_m;
     margin-bottom: $space_m;
+    white-space: pre-wrap;
   }
   &__date {
     font-size: $font-size_s;
