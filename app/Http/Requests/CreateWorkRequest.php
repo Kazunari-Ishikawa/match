@@ -27,8 +27,8 @@ class CreateWorkRequest extends FormRequest
             'title' => 'required|string|max:30',
             'type' => 'required|numeric|between:1,2',
             'category_id' => 'required|numeric|between:1,7',
-            'max_price' => 'required_if:type,1|nullable|numeric|min:1|gt:min_price',
-            'min_price' => 'required_if:type,1|nullable|numeric|min:1',
+            'max_price' => 'required_if:type,1',
+            'min_price' => 'required_if:type,1',
             'content' => 'required|string',
         ];
     }
@@ -40,7 +40,31 @@ class CreateWorkRequest extends FormRequest
             'category_id.between' => 'カテゴリは必ず指定してください。',
             'max_price.required_if' => '単発案件の場合、最大金額を指定してください。',
             'min_price.required_if' => '単発案件の場合、最小金額を指定してください。',
-
+            'max_price.gt' => '最大金額は最小金額より大きい数字を設定してください。',
         ];
+    }
+
+    /**
+     * バリデータインスタンスの設定
+     *
+     * @param  \Illuminate\Validation\Validator  $validator
+     * @return void
+     */
+    public function withValidator($validator)
+    {
+        // 案件種別が単発の場合、最小金額に対するvalidationを追加
+        $validator->sometimes('min_price', 'required_with:max_price|numeric|min:1', function($input){
+            return $input->type === 1;
+        });
+
+        // 案件種別が単発の場合、最大金額に対するvalidationを追加
+        $validator->sometimes('max_price', 'required_with:min_price|numeric|min:1', function($input){
+            return $input->type === 1;
+        });
+
+        // 案件種別が単発かつ両金額がnullでない場合、最大金額に対するvalidationを追加
+        $validator->sometimes('max_price', 'gt:min_price', function($input){
+            return $input->type === 1 && $input->min_price !== null && $input->max_price !== null;
+        });
     }
 }
