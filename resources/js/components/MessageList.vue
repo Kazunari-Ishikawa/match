@@ -7,7 +7,7 @@
       </h2>
     </div>
 
-    <div id="messageBox" class="p-messageDetail__body">
+    <div class="p-messageDetail__body js-scroll-box">
       <Message
         v-for="message in messages"
         :key="message.id"
@@ -81,7 +81,6 @@ export default {
         .catch(error => {
           return error.response;
         });
-      console.log(response);
       if (response.status !== 201) {
         alert("エラーが発生しました。再度やり直してください。");
         return false;
@@ -110,7 +109,7 @@ export default {
     },
     // 最下部までスクロールする
     scroll() {
-      const meesageBox = document.getElementById("messageBox");
+      const meesageBox = document.getElementsByClassName("js-scroll-box");
       messageBox.scrollTop = messageBox.scrollHeight;
     }
   }
