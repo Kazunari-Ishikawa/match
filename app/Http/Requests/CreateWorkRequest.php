@@ -52,16 +52,19 @@ class CreateWorkRequest extends FormRequest
      */
     public function withValidator($validator)
     {
+        // 案件種別が単発の場合、最小金額に対するvalidationを追加
         $validator->sometimes('min_price', 'required_with:max_price|numeric|min:1', function($input){
-            return $input->type == 1;
+            return $input->type === 1;
         });
 
+        // 案件種別が単発の場合、最大金額に対するvalidationを追加
         $validator->sometimes('max_price', 'required_with:min_price|numeric|min:1', function($input){
-            return $input->type == 1;
+            return $input->type === 1;
         });
 
+        // 案件種別が単発かつ両金額がnullでない場合、最大金額に対するvalidationを追加
         $validator->sometimes('max_price', 'gt:min_price', function($input){
-            return $input->min_price != null && $input->max_price != null;
+            return $input->type === 1 && $input->min_price !== null && $input->max_price !== null;
         });
     }
 }
