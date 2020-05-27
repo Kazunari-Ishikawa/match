@@ -89,6 +89,10 @@ export default {
         alert("気になる機能を使うにはログインしてください。");
         return false;
       }
+      if (response.status === 403) {
+        alert("自分が登録した案件には気になる機能は使えません。");
+        return false;
+      }
       if (response.status === 200) {
         this.work.bookmarked = true;
       }

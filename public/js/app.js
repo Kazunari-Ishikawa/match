@@ -2926,6 +2926,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context2.abrupt("return", false);
 
               case 6:
+                if (!(response.status === 403)) {
+                  _context2.next = 9;
+                  break;
+                }
+
+                alert("自分が登録した案件には気になる機能は使えません。");
+                return _context2.abrupt("return", false);
+
+              case 9:
                 if (response.status === 200) {
                   _this2.works = _this2.works.map(function (work) {
                     if (work.id === response.data) {
@@ -2936,7 +2945,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   });
                 }
 
-              case 7:
+              case 10:
               case "end":
                 return _context2.stop();
             }
@@ -3278,11 +3287,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context.abrupt("return", false);
 
               case 6:
+                if (!(response.status === 403)) {
+                  _context.next = 9;
+                  break;
+                }
+
+                alert("自分が登録した案件には気になる機能は使えません。");
+                return _context.abrupt("return", false);
+
+              case 9:
                 if (response.status === 200) {
                   _this.work.bookmarked = true;
                 }
 
-              case 7:
+              case 10:
               case "end":
                 return _context.stop();
             }
@@ -3536,6 +3554,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 return _context2.abrupt("return", false);
 
               case 6:
+                if (!(response.status === 403)) {
+                  _context2.next = 9;
+                  break;
+                }
+
+                alert("自分が登録した案件には気になる機能は使えません。");
+                return _context2.abrupt("return", false);
+
+              case 9:
                 if (response.status === 200) {
                   _this2.works = _this2.works.map(function (work) {
                     if (work.id === response.data) {
@@ -3546,7 +3573,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   });
                 }
 
-              case 7:
+              case 10:
               case "end":
                 return _context2.stop();
             }
