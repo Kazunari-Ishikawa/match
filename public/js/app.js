@@ -2495,7 +2495,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     },
     // 最下部までスクロールする
     scroll: function scroll() {
-      var meesageBox = document.getElementsByClassName("js-scroll-box");
+      var messageBox = document.querySelector(".js-scroll-box");
       messageBox.scrollTop = messageBox.scrollHeight;
     }
   }

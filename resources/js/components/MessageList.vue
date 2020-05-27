@@ -109,7 +109,7 @@ export default {
     },
     // 最下部までスクロールする
     scroll() {
-      const meesageBox = document.getElementsByClassName("js-scroll-box");
+      const messageBox = document.querySelector(".js-scroll-box");
       messageBox.scrollTop = messageBox.scrollHeight;
     }
   }
