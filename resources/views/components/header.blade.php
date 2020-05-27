@@ -7,9 +7,9 @@
 
   <!-- ハンバーガーメニュー -->
   <div class="c-menuTrigger js-header-trigger">
-    <span class="c-menuTrigger__bar"></span>
-    <span class="c-menuTrigger__bar"></span>
-    <span class="c-menuTrigger__bar"></span>
+    <span class="c-menuTrigger__bar js-trigger-bar"></span>
+    <span class="c-menuTrigger__bar js-trigger-bar"></span>
+    <span class="c-menuTrigger__bar js-trigger-bar"></span>
   </div>
 
   <nav class="l-nav js-header-toggle-target">

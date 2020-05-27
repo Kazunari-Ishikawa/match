@@ -12,6 +12,10 @@
   padding: $space_default;
   transition: $time_s;
   width: calc(25% - #{$space_3l});
+  &:hover {
+    box-shadow: 0 0 20px rgba($color: #000000, $alpha: 0.3);
+    transform: translateY(-5px);
+  }
   @include mq('md') {
     &:nth-child(even) {
       margin-right: 0;
@@ -26,10 +30,6 @@
       margin-right: 0;
     }
     width: calc(50% - #{$space_default});
-  }
-  &:hover {
-    box-shadow: 0 0 20px rgba($color: #000000, $alpha: 0.3);
-    transform: translateY(-5px);
   }
   &--lg {
     width: calc(50% - #{$space_3l});
