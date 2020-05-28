@@ -1,5 +1,17 @@
 @extends('layouts.app')
 
+@section('description')
+<meta name="description" content="パスワード変更ページです。">
+@endsection
+
+@section('keywords')
+<meta name="keywords" content="パスワード変更">
+@endsection
+
+@section('title')
+<title>パスワード変更 - {{ config('app.name', 'Laravel') }}</title>
+@endsection
+
 @section('content')
 
 <div class="l-container l-container--withSide">

@@ -1,5 +1,17 @@
 @extends('layouts.app')
 
+@section('description')
+<meta name="description" content="プロフィール編集ページです。">
+@endsection
+
+@section('keywords')
+<meta name="keywords" content="マイページ">
+@endsection
+
+@section('title')
+<title>プロフィール編集 - {{ config('app.name', 'Laravel') }}</title>
+@endsection
+
 @section('content')
 
 <div class="l-container l-container--withSide">
