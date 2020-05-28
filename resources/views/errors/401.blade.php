@@ -7,8 +7,8 @@
   <!-- メインコンテンツ -->
   <section class="l-container__body">
     <div class="c-errorPage">
-      <h2 class="c-errorPage__title">404 Not Found</h2>
-      <p class="c-errorPage__message">該当アドレスのページを見つけることができませんでした。</p>
+      <h2 class="c-errorPage__title">401 Unauthorized</h2>
+      <p class="c-errorPage__message">認証に失敗しました。このページを見るにはログインが必要です。</p>
 
       @guest
       <p class="c-errorPage__link"><a href="/">TOPページへ戻る</a></p>

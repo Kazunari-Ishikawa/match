@@ -7,8 +7,8 @@
   <!-- メインコンテンツ -->
   <section class="l-container__body">
     <div class="c-errorPage">
-      <h2 class="c-errorPage__title">404 Not Found</h2>
-      <p class="c-errorPage__message">該当アドレスのページを見つけることができませんでした。</p>
+      <h2 class="c-errorPage__title">500 Internal Server Error</h2>
+      <p class="c-errorPage__message">サーバーでエラーが発生しました。</p>
 
       @guest
       <p class="c-errorPage__link"><a href="/">TOPページへ戻る</a></p>
