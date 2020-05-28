@@ -1,8 +1,15 @@
 @extends('layouts.app')
 
+@section('description')
+<meta name="description" content="サーバーでエラーが発生しました。">
+@endsection
+
+@section('title')
+<title>500 - サーバーでエラーが発生しました。</title>
+@endsection
+
 @section('content')
 <div class="l-container">
-
 
   <!-- メインコンテンツ -->
   <section class="l-container__body">
