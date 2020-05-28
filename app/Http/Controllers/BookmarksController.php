@@ -16,7 +16,7 @@ class BookmarksController extends Controller
     $work = Work::find($id);
 
     // 追加しようとしたWorkの依頼者がログインユーザーと同じ場合、エラーを返す
-    if($work->user_id === $user_id) {
+    if((int)($work->user_id) === (int)($user_id)) {
       abort(403);
     }
 
