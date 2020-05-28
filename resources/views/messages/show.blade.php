@@ -1,5 +1,17 @@
 @extends('layouts.app')
 
+@section('description')
+<meta name="description" content="個別メッセージページです。">
+@endsection
+
+@section('keywords')
+<meta name="keywords" content="メッセージ">
+@endsection
+
+@section('title')
+<title>{{ $send_user_name }}さんとのメッセージ - {{ config('app.name', 'Laravel') }}</title>
+@endsection
+
 @section('content')
 <div class="l-container l-container--withSide">
 

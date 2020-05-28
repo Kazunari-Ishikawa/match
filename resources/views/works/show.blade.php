@@ -1,5 +1,17 @@
 @extends('layouts.app')
 
+@section('description')
+<meta name="description" content="{{ $work->title }}の詳細です。#カテゴリ/{{ $work->category->name }}#案件種別/{{ $work->type }}">
+@endsection
+
+@section('keywords')
+<meta name="keywords" content="{{ $work->category->name }}, {{ $work->type }}">
+@endsection
+
+@section('title')
+<title>{{ $work->title }} - {{ config('app.name', 'Laravel') }}</title>
+@endsection
+
 @section('content')
 <section class="l-container">
 

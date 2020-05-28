@@ -3250,7 +3250,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       work: this.data,
-      twitterText: encodeURIComponent("\u300C".concat(this.work.title, "\u300D\u3092matchworks\u3067\u30C1\u30A7\u30C3\u30AF!"))
+      twitterText: encodeURIComponent("\u300C".concat(this.data.title, "\u300D\u3092matchworks\u3067\u30C1\u30A7\u30C3\u30AF!"))
     };
   },
   methods: {

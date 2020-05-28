@@ -1,5 +1,17 @@
 @extends('layouts.app')
 
+@section('description')
+<meta name="description" content="{{ $work->title }}の編集をします。">
+@endsection
+
+@section('keywords')
+<meta name="keywords" content="編集, 案件種別, カテゴリ">
+@endsection
+
+@section('title')
+<title>案件を編集する - {{ config('app.name', 'Laravel') }}</title>
+@endsection
+
 @section('content')
 <section class="l-container">
   <!-- 案件編集 -->

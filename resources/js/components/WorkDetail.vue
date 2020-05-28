@@ -68,7 +68,7 @@ export default {
     return {
       work: this.data,
       twitterText: encodeURIComponent(
-        `「${this.work.title}」をmatchworksでチェック!`
+        `「${this.data.title}」をmatchworksでチェック!`
       )
     };
   },

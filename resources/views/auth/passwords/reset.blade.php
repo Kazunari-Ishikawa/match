@@ -1,5 +1,17 @@
 @extends('layouts.app')
 
+@section('description')
+<meta name="description" content="matchworksのパスワードの再設定ページです。">
+@endsection
+
+@section('keywords')
+<meta name="keywords" content="パスワード, 再設定">
+@endsection
+
+@section('title')
+<title>パスワードの再設定 - {{ config('app.name', 'Laravel') }}</title>
+@endsection
+
 @section('content')
 
 <section class="l-container">

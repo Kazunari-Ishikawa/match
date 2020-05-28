@@ -1,5 +1,17 @@
 @extends('layouts.app')
 
+@section('description')
+<meta name="description" content="{{ $user->name }}さんのプロフィールです。">
+@endsection
+
+@section('keywords')
+<meta name="keywords" content="ユーザー, プロフィール">
+@endsection
+
+@section('title')
+<title>{{ $user->name }}さん - {{ config('app.name', 'Laravel') }}</title>
+@endsection
+
 @section('content')
 <section class="l-container">
 
