@@ -364,24 +364,6 @@ textarea {
   }
 }
 
-.l-searchbar {
-  display: block;
-  width: 25%;
-}
-
-@media screen and (max-width: 768px) {
-  .l-searchbar {
-    width: 100%;
-    margin-bottom: 40px;
-  }
-}
-
-@media screen and (max-width: 576px) {
-  .l-searchbar {
-    margin-bottom: 20px;
-  }
-}
-
 .c-accordion__body {
   display: none;
 }
@@ -831,10 +813,6 @@ textarea {
   }
 }
 
-.c-form--message {
-  padding: 0;
-}
-
 .c-form__group {
   margin-bottom: 40px;
 }
@@ -1089,74 +1067,6 @@ textarea {
 
 .c-menu__link--side:hover {
   border: none;
-}
-
-.c-nav {
-  display: flex;
-  align-items: center;
-}
-
-@media screen and (max-width: 768px) {
-  .c-nav {
-    display: none;
-  }
-}
-
-.c-nav--sp {
-  display: none;
-}
-
-@media screen and (max-width: 768px) {
-  .c-nav--sp {
-    display: block;
-  }
-}
-
-.c-nav__item {
-  display: block;
-  box-sizing: border-box;
-  border-radius: 4px;
-  font-size: 14px;
-  height: 40px;
-  line-height: 40px;
-  margin-right: 10px;
-  text-align: center;
-  transition: 0.3s;
-  min-width: 80px;
-}
-
-.c-nav__item:last-child {
-  margin-right: 0;
-}
-
-@media screen and (max-width: 768px) {
-  .c-nav__item {
-    font-size: 16px;
-    margin-right: 0;
-    margin-bottom: 20px;
-  }
-}
-
-.c-nav__link {
-  display: block;
-  box-sizing: border-box;
-  border-bottom: 2px solid white;
-  height: 40px;
-  transition: 0.3s;
-}
-
-.c-nav__link:hover {
-  border-bottom: 2px solid #51a1a2;
-}
-
-@media screen and (max-width: 768px) {
-  .c-nav__link {
-    border: none;
-  }
-
-  .c-nav__link:hover {
-    border: none;
-  }
 }
 
 .c-work {
