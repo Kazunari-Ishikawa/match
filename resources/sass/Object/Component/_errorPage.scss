@@ -1,0 +1,29 @@
+.c-errorPage {
+  display: block;
+  width: 100%;
+  &__title {
+    font-size: $font-size_2l;
+    font-weight: bold;
+    margin-bottom: $space_2l;
+    text-align: center;
+    @include mq() {
+      font-size: $font-size_l;
+      margin-bottom: $space_l;
+    }
+  }
+  &__message {
+    font-size: $font-size_default;
+    margin-bottom: $space_default;
+    @include mq() {
+      font-size: $font-size_m;
+      margin-bottom: $space_m ;
+    }
+  }
+  &__link {
+    font-size: $font-size_m;
+    text-decoration: underline;
+    @include mq() {
+      font-size: $font-size_s;
+    }
+  }
+}
