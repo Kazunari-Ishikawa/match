@@ -93,6 +93,8 @@ class UsersController extends Controller
         $user = Auth::user();
         $works = $user->works;
 
+        Auth::logout();
+
         // 投稿したコメント削除
         $user->comments()->delete();
 
@@ -124,8 +126,6 @@ class UsersController extends Controller
 
         // Userを削除
         $user->delete();
-
-        Auth::logout();
 
         return redirect('/');
     }
