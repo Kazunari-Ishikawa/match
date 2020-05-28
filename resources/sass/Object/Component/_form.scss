@@ -4,9 +4,6 @@
   @include mq() {
     padding: $space_default;
   }
-  &--message {
-    padding: 0;
-  }
   &__group {
     margin-bottom: $space_3l;
     @include mq() {
@@ -121,7 +118,6 @@
   &__link {
     font-size: $font-size_m;
     margin-bottom: $space_m;
-    // text-align: left;
     text-decoration: underline;
     &:last-child {
       margin-bottom: 0;

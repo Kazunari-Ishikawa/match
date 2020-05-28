@@ -1,5 +1,17 @@
 @extends('layouts.app')
 
+@section('description')
+<meta name="description" content="{{ $work->title }}の詳細です。#カテゴリ/{{ $work->category->name }}#案件種別/{{ $work->type }}">
+@endsection
+
+@section('keywords')
+<meta name="keywords" content="{{ $work->category->name }}, {{ $work->type }}">
+@endsection
+
+@section('title')
+<title>{{ $work->title }} - {{ config('app.name', 'Laravel') }}</title>
+@endsection
+
 @section('content')
 <section class="l-container">
 
@@ -16,12 +28,12 @@
       @elseif($is_applied)
       <form action="{{ route('works.cancel', $work->id) }}" method="POST">
         @csrf
-        <input type="submit" class="c-btn c-btn--em c-btn--full" id="js-cancel-apply" value="応募を取り消す">
+        <input type="submit" class="c-btn c-btn--em c-btn--full js-cancel-apply" value="応募を取り消す">
       </form>
       @else
       <form action="{{ route('works.apply', $work->id) }}" method="POST">
         @csrf
-        <input type="submit" class="c-btn c-btn--em c-btn--full" value="応募する">
+        <input type="submit" class="c-btn c-btn--em c-btn--full js-apply-work" value="応募する">
       </form>
       @endif
     </div>

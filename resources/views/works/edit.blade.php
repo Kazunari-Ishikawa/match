@@ -1,5 +1,17 @@
 @extends('layouts.app')
 
+@section('description')
+<meta name="description" content="{{ $work->title }}の編集をします。">
+@endsection
+
+@section('keywords')
+<meta name="keywords" content="編集, 案件種別, カテゴリ">
+@endsection
+
+@section('title')
+<title>案件を編集する - {{ config('app.name', 'Laravel') }}</title>
+@endsection
+
 @section('content')
 <section class="l-container">
   <!-- 案件編集 -->
@@ -13,11 +25,11 @@
     <div class="c-btn__container--right">
       <form action="{{ route('works.destroy', $work->id) }}" method="POST" class="u-mr20">
         @csrf
-        <input type="submit" id="js-delete-work" class="c-flatBtn" value="削除する">
+        <input type="submit" class="c-flatBtn js-delete-work" value="削除する">
       </form>
       <form action="{{ route('works.close', $work->id) }}" method="POST" class="">
         @csrf
-        <input type="submit" id="js-close-work" class="c-flatBtn" value="完了する">
+        <input type="submit" class="c-flatBtn js-close-work" value="完了する">
       </form>
     </div>
 

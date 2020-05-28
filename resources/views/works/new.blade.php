@@ -1,5 +1,17 @@
 @extends('layouts.app')
 
+@section('description')
+<meta name="description" content="案件を依頼します。タイトル、案件種別、カテゴリと内容を入力するだけでかんたんに依頼できます。">
+@endsection
+
+@section('keywords')
+<meta name="keywords" content="依頼, 案件種別, カテゴリ">
+@endsection
+
+@section('title')
+<title>案件を依頼する - {{ config('app.name', 'Laravel') }}</title>
+@endsection
+
 @section('content')
 <section class="l-container">
   <!-- 案件登録 -->

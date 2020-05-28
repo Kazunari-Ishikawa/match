@@ -1,5 +1,17 @@
 @extends('layouts.app')
 
+@section('description')
+<meta name="description" content="matchworksは、IT系の仕事探しや仕事を依頼したい方々向けに、かんたん3ステップで繋げるビジネスマッチングサービスです。">
+@endsection
+
+@section('keywords')
+<meta name="keywords" content="ビジネスマッチング, IT系, 仕事探し">
+@endsection
+
+@section('title')
+<title>{{ config('app.name', 'Laravel') }}</title>
+@endsection
+
 @section('content')
 
 <section id="hero">

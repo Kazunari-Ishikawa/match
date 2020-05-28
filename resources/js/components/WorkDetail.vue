@@ -48,7 +48,7 @@
         <div class="c-btn__container">
           <a
             class="twitter-share-button c-flatBtn c-flatBtn--twitter"
-            :href="`https://twitter.com/intent/tweet?url=https://matchworks.site/works/${this.work.id}`"
+            :href="`https://twitter.com/intent/tweet?url=https://matchworks.site/works/${this.work.id}&text=${this.twitterText}`"
           >
             <i class="fab fa-twitter fa-lg fa-fw u-icon"></i>でシェア
           </a>
@@ -66,7 +66,10 @@ export default {
   },
   data() {
     return {
-      work: this.data
+      work: this.data,
+      twitterText: encodeURIComponent(
+        `「${this.data.title}」をmatchworksでチェック!`
+      )
     };
   },
   methods: {
@@ -87,6 +90,10 @@ export default {
         });
       if (response.status === 401) {
         alert("気になる機能を使うにはログインしてください。");
+        return false;
+      }
+      if (response.status === 403) {
+        alert("自分が登録した案件には気になる機能は使えません。");
         return false;
       }
       if (response.status === 200) {

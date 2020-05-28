@@ -34,7 +34,7 @@
         <div class="c-btn__container">
           <a
             class="twitter-share-button c-flatBtn c-flatBtn--twitter"
-            :href="`https://twitter.com/intent/tweet?url=https://matchworks.site/works/${this.work.id}`"
+            :href="`https://twitter.com/intent/tweet?url=https://matchworks.site/works/${this.work.id}&text=${this.twitterText}`"
           >
             <i class="fab fa-twitter fa-lg fa-fw u-icon"></i>でシェア
           </a>
@@ -67,7 +67,10 @@ export default {
   data() {
     return {
       comment: null,
-      getCommentFinished: false
+      getCommentFinished: false,
+      twitterText: encodeURIComponent(
+        `「${this.work.title}」をmatchworksでチェック!`
+      )
     };
   },
   created() {

@@ -12,7 +12,6 @@
 @import 'Layout/container';
 @import 'Layout/footer';
 @import 'Layout/sidebar';
-@import 'Layout/searchbar';
 
 // Component
 @import 'Object/Component/accordion';
@@ -21,10 +20,10 @@
 @import 'Object/Component/cardList';
 @import 'Object/Component/comment';
 @import 'Object/Component/commentList';
+@import 'Object/Component/errorPage';
 @import 'Object/Component/flaBtn';
 @import 'Object/Component/form';
 @import 'Object/Component/menu';
-@import 'Object/Component/nav';
 @import 'Object/Component/work';
 @import 'Object/Component/workList';
 @import 'Object/Component/spMenu';

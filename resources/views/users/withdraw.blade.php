@@ -1,5 +1,17 @@
 @extends('layouts.app')
 
+@section('description')
+<meta name="description" content="退会確認ページです。">
+@endsection
+
+@section('keywords')
+<meta name="keywords" content="退会">
+@endsection
+
+@section('title')
+<title>退会の確認 - {{ config('app.name', 'Laravel') }}</title>
+@endsection
+
 @section('content')
 
 <div class="l-container l-container--withSide">
