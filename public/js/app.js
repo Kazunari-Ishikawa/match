@@ -3088,7 +3088,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   data: function data() {
     return {
       comment: null,
-      getCommentFinished: false
+      getCommentFinished: false,
+      twitterText: encodeURIComponent("\u300C".concat(this.work.title, "\u300D\u3092matchworks\u3067\u30C1\u30A7\u30C3\u30AF!"))
     };
   },
   created: function created() {
@@ -3248,7 +3249,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
   },
   data: function data() {
     return {
-      work: this.data
+      work: this.data,
+      twitterText: encodeURIComponent("\u300C".concat(this.work.title, "\u300D\u3092matchworks\u3067\u30C1\u30A7\u30C3\u30AF!"))
     };
   },
   methods: {
@@ -41108,7 +41110,9 @@ var render = function() {
                 attrs: {
                   href:
                     "https://twitter.com/intent/tweet?url=https://matchworks.site/works/" +
-                    this.work.id
+                    this.work.id +
+                    "&text=" +
+                    this.twitterText
                 }
               },
               [
@@ -41270,7 +41274,9 @@ var render = function() {
               attrs: {
                 href:
                   "https://twitter.com/intent/tweet?url=https://matchworks.site/works/" +
-                  this.work.id
+                  this.work.id +
+                  "&text=" +
+                  this.twitterText
               }
             },
             [
