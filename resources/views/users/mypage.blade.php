@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('description')
-<meta name="description" content="matchworksのマイページです。matchworksとは、IT系の仕事探しや仕事を依頼したい方々向けに、かんたん3ステップで繋げるビジネスマッチングサービスです。">
+<meta name="description" content="matchworksのマイページです。">
 @endsection
 
 @section('keywords')
