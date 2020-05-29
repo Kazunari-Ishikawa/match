@@ -15,14 +15,14 @@ class MessagesTableSeeder extends Seeder
     {
         // 応募データ作成
         DB::table('applies')->insert([
-            'work_id' => 1,
+            'work_id' => 2,
             'user_id' => 1,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
         // Board作成
         DB::table('boards')->insert([
-            'work_id' => 1,
+            'work_id' => 2,
             'from_user_id' => 1,
             'to_user_id' => 2,
             'created_at' => Carbon::now(),
