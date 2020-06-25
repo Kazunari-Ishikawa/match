@@ -5,21 +5,26 @@
     margin-top: $space_default;
   }
   &__item {
+    cursor: pointer;
     display: inline-block;
     background: white;
     color: $color_main;
     border: 1px solid $color_bg;
-    &.isActive {
-      color: white;
-      background: $color_main;
-    }
-  }
-  &__link {
-    display: block;
     padding: $space_s;
+    &.isActive {
+      background: $color_main;
+      color: $color_default;
+    }
     &:hover {
       background: $color_main;
       color: $color_default;
+    }
+    &.disabled {
+      cursor: not-allowed;
+      &:hover {
+        background: white;
+        color: $color_main;
+      }
     }
   }
 }
